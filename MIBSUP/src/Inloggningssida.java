@@ -53,7 +53,7 @@ public class Inloggningssida extends javax.swing.JFrame {
 
         txtInloggAnvandare.setBackground(new java.awt.Color(255, 255, 255));
         txtInloggAnvandare.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
-        txtInloggAnvandare.setForeground(new java.awt.Color(102, 102, 102));
+        txtInloggAnvandare.setForeground(new java.awt.Color(0, 0, 0));
         txtInloggAnvandare.setToolTipText("");
         txtInloggAnvandare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,7 +198,26 @@ public class Inloggningssida extends javax.swing.JFrame {
             System.out.println(query2);
             String hamtaAgent = idb.fetchSingle(query2);
             System.out.println(hamtaAgent);
+            String queryAdmin = "SELECT ADMINISTRATOR FROM AGENT WHERE AGENT.NAMN = '" + anvandarNamn + "'";
+            String hamtaAdmin = idb.fetchSingle(queryAdmin); 
+            System.out.println(hamtaAdmin);
+            
+            if(hamtaAgent != null && hamtaAdmin.equals("N"))
+            {
+                new InloggadAgent(anvandarNamn, losenordet).setVisible(true);
             }
+            
+            else if(hamtaAgent != null && hamtaAdmin.equals("J")){
+                new InloggadAdmin(anvandarNamn, losenordet).setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
+                
+            }
+          
+                
+            }
+            
             catch(InfException EE){
                 JOptionPane.showMessageDialog(null, "Något gick fel " + EE);
                 

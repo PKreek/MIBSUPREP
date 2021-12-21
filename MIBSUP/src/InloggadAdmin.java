@@ -9,11 +9,15 @@
  */
 public class InloggadAdmin extends javax.swing.JFrame {
 
+    private static String anvandarnamn;
+    private static String losenord;
     /**
      * Creates new form InloggadAdmin
      */
-    public InloggadAdmin() {
+    public InloggadAdmin(String anvandarnamn, String losenord) {
         initComponents();
+        this.anvandarnamn = anvandarnamn;
+        this.losenord = losenord;
     }
 
     /**
@@ -25,17 +29,27 @@ public class InloggadAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jButton1)
+                .addContainerGap(290, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jButton1)
+                .addContainerGap(262, Short.MAX_VALUE))
         );
 
         pack();
@@ -71,11 +85,12 @@ public class InloggadAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InloggadAdmin().setVisible(true);
+                new InloggadAdmin(anvandarnamn, losenord).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
