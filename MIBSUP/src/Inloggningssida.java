@@ -25,84 +25,115 @@ public class Inloggningssida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         lblRubrik = new javax.swing.JLabel();
-        lblAnvandarnamn = new javax.swing.JLabel();
-        lblLosenord = new javax.swing.JLabel();
-        btnLoggaIn = new javax.swing.JButton();
-        lblAndraLosen = new javax.swing.JLabel();
         txtInloggAnvandare = new javax.swing.JTextField();
         pswInloggLosen = new javax.swing.JPasswordField();
+        btnLoggaIn = new javax.swing.JButton();
+        lblAndraLosen = new javax.swing.JLabel();
+        lblAnvandarnamn = new javax.swing.JLabel();
+        lblLosenord = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblRubrik.setFont(new java.awt.Font("Helvetica", 0, 24)); // NOI18N
-        lblRubrik.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(33, 31, 31));
+
+        lblRubrik.setFont(new java.awt.Font("Apple LiGothic", 1, 24)); // NOI18N
+        lblRubrik.setForeground(new java.awt.Color(255, 255, 255));
         lblRubrik.setText("Logga in");
 
-        lblAnvandarnamn.setFont(new java.awt.Font("Helvetica", 1, 12)); // NOI18N
-        lblAnvandarnamn.setForeground(new java.awt.Color(0, 0, 0));
-        lblAnvandarnamn.setText("Användarnamn:");
+        txtInloggAnvandare.setBackground(new java.awt.Color(255, 255, 255));
+        txtInloggAnvandare.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
+        txtInloggAnvandare.setForeground(new java.awt.Color(102, 102, 102));
+        txtInloggAnvandare.setToolTipText("");
+        txtInloggAnvandare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInloggAnvandareActionPerformed(evt);
+            }
+        });
 
-        lblLosenord.setFont(new java.awt.Font("Helvetica", 1, 12)); // NOI18N
-        lblLosenord.setForeground(new java.awt.Color(0, 0, 0));
-        lblLosenord.setText("Lösenord:");
+        pswInloggLosen.setBackground(new java.awt.Color(255, 255, 255));
+        pswInloggLosen.setForeground(new java.awt.Color(0, 0, 0));
+        pswInloggLosen.setToolTipText("");
 
-        btnLoggaIn.setBackground(new java.awt.Color(51, 153, 255));
-        btnLoggaIn.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
-        btnLoggaIn.setForeground(new java.awt.Color(255, 255, 255));
-        btnLoggaIn.setText("Logga in");
+        btnLoggaIn.setBackground(new java.awt.Color(255, 255, 255));
+        btnLoggaIn.setForeground(new java.awt.Color(0, 0, 0));
+        btnLoggaIn.setText("Logga In");
 
-        lblAndraLosen.setFont(new java.awt.Font("Helvetica", 0, 10)); // NOI18N
+        lblAndraLosen.setBackground(new java.awt.Color(153, 153, 153));
+        lblAndraLosen.setForeground(new java.awt.Color(153, 153, 153));
         lblAndraLosen.setText("Ändra lösenord");
         lblAndraLosen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        txtInloggAnvandare.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
+        lblAnvandarnamn.setBackground(new java.awt.Color(153, 153, 153));
+        lblAnvandarnamn.setForeground(new java.awt.Color(153, 153, 153));
+        lblAnvandarnamn.setText("Användarnamn:");
+
+        lblLosenord.setBackground(new java.awt.Color(153, 153, 153));
+        lblLosenord.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lblLosenord.setForeground(new java.awt.Color(153, 153, 153));
+        lblLosenord.setText("Lösenord:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(lblAndraLosen)
+                .addContainerGap(162, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(lblRubrik)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLosenord)
+                    .addComponent(lblAnvandarnamn)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnLoggaIn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                        .addComponent(pswInloggLosen)
+                        .addComponent(txtInloggAnvandare, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(lblRubrik)
+                .addGap(18, 18, 18)
+                .addComponent(lblAnvandarnamn)
+                .addGap(1, 1, 1)
+                .addComponent(txtInloggAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblLosenord)
+                .addGap(1, 1, 1)
+                .addComponent(pswInloggLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(btnLoggaIn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblAndraLosen)
+                .addContainerGap(88, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblLosenord)
-                            .addComponent(lblAnvandarnamn)
-                            .addComponent(lblAndraLosen)
-                            .addComponent(txtInloggAnvandare)
-                            .addComponent(pswInloggLosen, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(lblRubrik)))
-                .addContainerGap(50, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 73, Short.MAX_VALUE)
-                .addComponent(btnLoggaIn, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(lblRubrik)
-                .addGap(18, 18, 18)
-                .addComponent(lblAnvandarnamn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtInloggAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLosenord)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pswInloggLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(btnLoggaIn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtInloggAnvandareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInloggAnvandareActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtInloggAnvandareActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +172,7 @@ public class Inloggningssida extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaIn;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAndraLosen;
     private javax.swing.JLabel lblAnvandarnamn;
     private javax.swing.JLabel lblLosenord;
