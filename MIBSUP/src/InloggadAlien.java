@@ -1,3 +1,6 @@
+
+import oru.inf.InfDB;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -11,13 +14,15 @@ public class InloggadAlien extends javax.swing.JFrame {
 
     private static String anvandarnamn;
     private static String losenord;
+    private static InfDB idb;
     /**
      * Creates new form InloggadAlien
      */
-    public InloggadAlien(String anvandarnamn, String losenord) {
+    public InloggadAlien(String anvandarnamn, String losenord, InfDB idb) {
         initComponents();
         this.anvandarnamn = anvandarnamn;
         this.losenord = losenord;
+        this.idb = idb;
     }
 
     /**
@@ -123,7 +128,7 @@ public class InloggadAlien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InloggadAlien(anvandarnamn, losenord).setVisible(true);
+                new InloggadAlien(anvandarnamn, losenord, idb).setVisible(true);
             }
         });
     }

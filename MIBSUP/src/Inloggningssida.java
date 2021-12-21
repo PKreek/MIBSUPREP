@@ -173,7 +173,7 @@ public class Inloggningssida extends javax.swing.JFrame {
                 String hamtaAlien = idb.fetchSingle(query);
                 System.out.println(hamtaAlien);
                 if (hamtaAlien != null) {
-                    new InloggadAlien(anvandarNamn, losenordet).setVisible(true);
+                    new InloggadAlien(anvandarNamn, losenordet, idb).setVisible(true);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
@@ -194,9 +194,9 @@ public class Inloggningssida extends javax.swing.JFrame {
                 System.out.println(hamtaAdmin);
 
                 if (hamtaAgent != null && hamtaAdmin.equals("N")) {
-                    new InloggadAgent(anvandarNamn, losenordet).setVisible(true);
+                    new InloggadAgent(anvandarNamn, losenordet, idb).setVisible(true);
                 } else if (hamtaAgent != null && hamtaAdmin.equals("J")) {
-                    new InloggadAdmin(anvandarNamn, losenordet).setVisible(true);
+                    new InloggadAdmin(anvandarNamn, losenordet, idb).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
 
