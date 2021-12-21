@@ -1,4 +1,5 @@
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -55,15 +56,15 @@ public class Inloggningssida extends javax.swing.JFrame {
         txtInloggAnvandare.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
         txtInloggAnvandare.setForeground(new java.awt.Color(0, 0, 0));
         txtInloggAnvandare.setToolTipText("");
-        txtInloggAnvandare.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInloggAnvandareActionPerformed(evt);
-            }
-        });
 
         pswInloggLosen.setBackground(new java.awt.Color(255, 255, 255));
         pswInloggLosen.setForeground(new java.awt.Color(0, 0, 0));
         pswInloggLosen.setToolTipText("");
+        pswInloggLosen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pswInloggLosenKeyPressed(evt);
+            }
+        });
 
         btnLoggaIn.setBackground(new java.awt.Color(255, 255, 255));
         btnLoggaIn.setForeground(new java.awt.Color(0, 0, 0));
@@ -161,10 +162,6 @@ public class Inloggningssida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtInloggAnvandareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInloggAnvandareActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInloggAnvandareActionPerformed
-
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
 
         String selectedValue = cbxVerifiering.getSelectedItem().toString();
@@ -212,6 +209,14 @@ public class Inloggningssida extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
+
+    private void pswInloggLosenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswInloggLosenKeyPressed
+       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            btnLoggaIn.doClick();
+        }
+       
+    }//GEN-LAST:event_pswInloggLosenKeyPressed
 
     /**
      * @param args the command line arguments
