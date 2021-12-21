@@ -38,7 +38,9 @@ public class InloggadAlien extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(31, 32, 33));
 
+        lblOmrådesChef.setBackground(new java.awt.Color(0, 0, 0));
         lblOmrådesChef.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        lblOmrådesChef.setForeground(new java.awt.Color(255, 255, 255));
         lblOmrådesChef.setText("Områdeschefen i ditt område är:");
 
         lblAgentNamn.setFont(new java.awt.Font("Helvetica", 0, 18)); // NOI18N
