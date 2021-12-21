@@ -1,3 +1,8 @@
+
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,11 +14,13 @@
  */
 public class Inloggningssida extends javax.swing.JFrame {
 
+    private static InfDB idb;
     /**
      * Creates new form Inloggningssida
      */
-    public Inloggningssida() {
+    public Inloggningssida(InfDB idb) {
         initComponents();
+        this.idb = idb;
     }
 
     /**
@@ -33,6 +40,8 @@ public class Inloggningssida extends javax.swing.JFrame {
         lblAndraLosen = new javax.swing.JLabel();
         lblAnvandarnamn = new javax.swing.JLabel();
         lblLosenord = new javax.swing.JLabel();
+        cbxVerifiering = new javax.swing.JComboBox<>();
+        lblValjAnvandare = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +68,11 @@ public class Inloggningssida extends javax.swing.JFrame {
         btnLoggaIn.setBackground(new java.awt.Color(255, 255, 255));
         btnLoggaIn.setForeground(new java.awt.Color(0, 0, 0));
         btnLoggaIn.setText("Logga In");
+        btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaInActionPerformed(evt);
+            }
+        });
 
         lblAndraLosen.setBackground(new java.awt.Color(153, 153, 153));
         lblAndraLosen.setForeground(new java.awt.Color(153, 153, 153));
@@ -74,47 +88,63 @@ public class Inloggningssida extends javax.swing.JFrame {
         lblLosenord.setForeground(new java.awt.Color(153, 153, 153));
         lblLosenord.setText("Lösenord:");
 
+        cbxVerifiering.setBackground(new java.awt.Color(255, 255, 255));
+        cbxVerifiering.setForeground(new java.awt.Color(0, 0, 0));
+        cbxVerifiering.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alien", "Agent" }));
+
+        lblValjAnvandare.setBackground(new java.awt.Color(153, 153, 153));
+        lblValjAnvandare.setForeground(new java.awt.Color(153, 153, 153));
+        lblValjAnvandare.setText("Välj användare:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(149, 149, 149)
+                .addGap(150, 150, 150)
                 .addComponent(lblAndraLosen)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(158, 158, 158)
+                .addGap(156, 156, 156)
                 .addComponent(lblRubrik)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLosenord)
-                    .addComponent(lblAnvandarnamn)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnLoggaIn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                        .addComponent(pswInloggLosen)
-                        .addComponent(txtInloggAnvandare, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(lblValjAnvandare)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(cbxVerifiering, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLosenord)
+                            .addComponent(lblAnvandarnamn)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnLoggaIn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                .addComponent(pswInloggLosen)
+                                .addComponent(txtInloggAnvandare, javax.swing.GroupLayout.Alignment.TRAILING)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(48, 48, 48)
                 .addComponent(lblRubrik)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
+                .addComponent(lblValjAnvandare)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbxVerifiering, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblAnvandarnamn)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtInloggAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblLosenord)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pswInloggLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(btnLoggaIn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblAndraLosen)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,6 +164,34 @@ public class Inloggningssida extends javax.swing.JFrame {
     private void txtInloggAnvandareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInloggAnvandareActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtInloggAnvandareActionPerformed
+
+    private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
+        
+        String selectedValue = cbxVerifiering.getSelectedItem().toString();
+        String anvandarNamn = txtInloggAnvandare.getText();
+        String losenordet = new String(pswInloggLosen.getPassword());
+        if(selectedValue == "Alien")
+        {
+            try{
+            String query = "SELECT LOSENORD FROM ALIEN WHERE ALIEN.LOSENORD = '" + losenordet + "'" + "AND ALIEN.NAMN = '" + anvandarNamn + "'";
+            System.out.println(query);
+            String hamtaAnvandare = idb.fetchSingle(query);
+            System.out.println(hamtaAnvandare);
+            if(hamtaAnvandare != null){
+                new InloggadAlien(anvandarNamn, losenordet).setVisible(true);
+                
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
+            }
+              
+            }
+            catch(InfException e){
+                JOptionPane.showMessageDialog(null, "Något gick fel " + e);
+            }
+        }
+    }//GEN-LAST:event_btnLoggaInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,18 +223,20 @@ public class Inloggningssida extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inloggningssida().setVisible(true);
+                new Inloggningssida(idb).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaIn;
+    private javax.swing.JComboBox<String> cbxVerifiering;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAndraLosen;
     private javax.swing.JLabel lblAnvandarnamn;
     private javax.swing.JLabel lblLosenord;
     private javax.swing.JLabel lblRubrik;
+    private javax.swing.JLabel lblValjAnvandare;
     private javax.swing.JPasswordField pswInloggLosen;
     private javax.swing.JTextField txtInloggAnvandare;
     // End of variables declaration//GEN-END:variables

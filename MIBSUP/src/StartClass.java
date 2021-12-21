@@ -15,7 +15,7 @@ public class StartClass {
         
         try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            
+            new Inloggningssida(idb).setVisible(true);
         } catch (InfException ex){
             Logger.getLogger(StartClass.class.getName()).log(Level.SEVERE, null, ex);
         }
