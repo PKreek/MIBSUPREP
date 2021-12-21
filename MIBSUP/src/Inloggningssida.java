@@ -85,7 +85,6 @@ public class Inloggningssida extends javax.swing.JFrame {
         lblAnvandarnamn.setText("Användarnamn:");
 
         lblLosenord.setBackground(new java.awt.Color(153, 153, 153));
-        lblLosenord.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblLosenord.setForeground(new java.awt.Color(153, 153, 153));
         lblLosenord.setText("Lösenord:");
 
@@ -106,10 +105,6 @@ public class Inloggningssida extends javax.swing.JFrame {
                 .addComponent(lblAndraLosen)
                 .addContainerGap(161, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(lblRubrik)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblValjAnvandare)
@@ -123,13 +118,17 @@ public class Inloggningssida extends javax.swing.JFrame {
                                 .addComponent(pswInloggLosen)
                                 .addComponent(txtInloggAnvandare, javax.swing.GroupLayout.Alignment.TRAILING)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(lblRubrik)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(54, 54, 54)
                 .addComponent(lblRubrik)
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addComponent(lblValjAnvandare)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbxVerifiering, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -145,7 +144,7 @@ public class Inloggningssida extends javax.swing.JFrame {
                 .addComponent(btnLoggaIn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblAndraLosen)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
