@@ -175,9 +175,9 @@ public class Inloggningssida extends javax.swing.JFrame {
             try{
             String query = "SELECT LOSENORD FROM ALIEN WHERE ALIEN.LOSENORD = '" + losenordet + "'" + "AND ALIEN.NAMN = '" + anvandarNamn + "'";
             System.out.println(query);
-            String hamtaAnvandare = idb.fetchSingle(query);
-            System.out.println(hamtaAnvandare);
-            if(hamtaAnvandare != null){
+            String hamtaAlien = idb.fetchSingle(query);
+            System.out.println(hamtaAlien);
+            if(hamtaAlien != null){
                 new InloggadAlien(anvandarNamn, losenordet).setVisible(true);
                 
                 
@@ -189,6 +189,19 @@ public class Inloggningssida extends javax.swing.JFrame {
             }
             catch(InfException e){
                 JOptionPane.showMessageDialog(null, "Något gick fel " + e);
+            }
+        }
+        if(selectedValue == "Agent")
+        {
+            try{
+            String query2 = "SELECT LOSENORD FROM AGENT WHERE AGENT.LOSENORD = '" + losenordet + "'" + "AND AGENT.NAMN = '" + anvandarNamn + "'";  
+            System.out.println(query2);
+            String hamtaAgent = idb.fetchSingle(query2);
+            System.out.println(hamtaAgent);
+            }
+            catch(InfException EE){
+                JOptionPane.showMessageDialog(null, "Något gick fel " + EE);
+                
             }
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
