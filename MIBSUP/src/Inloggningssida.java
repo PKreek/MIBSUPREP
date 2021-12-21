@@ -166,61 +166,49 @@ public class Inloggningssida extends javax.swing.JFrame {
     }//GEN-LAST:event_txtInloggAnvandareActionPerformed
 
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
-        
+
         String selectedValue = cbxVerifiering.getSelectedItem().toString();
         String anvandarNamn = txtInloggAnvandare.getText();
         String losenordet = new String(pswInloggLosen.getPassword());
-        if(selectedValue == "Alien")
-        {
-            try{
-            String query = "SELECT LOSENORD FROM ALIEN WHERE ALIEN.LOSENORD = '" + losenordet + "'" + "AND ALIEN.NAMN = '" + anvandarNamn + "'";
-            System.out.println(query);
-            String hamtaAlien = idb.fetchSingle(query);
-            System.out.println(hamtaAlien);
-            if(hamtaAlien != null){
-                new InloggadAlien(anvandarNamn, losenordet).setVisible(true);
-                
-                
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
-            }
-              
-            }
-            catch(InfException e){
+        if (selectedValue == "Alien") {
+            try {
+                String query = "SELECT LOSENORD FROM ALIEN WHERE ALIEN.LOSENORD = '" + losenordet + "'" + "AND ALIEN.NAMN = '" + anvandarNamn + "'";
+                System.out.println(query);
+                String hamtaAlien = idb.fetchSingle(query);
+                System.out.println(hamtaAlien);
+                if (hamtaAlien != null) {
+                    new InloggadAlien(anvandarNamn, losenordet).setVisible(true);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
+                }
+
+            } catch (InfException e) {
                 JOptionPane.showMessageDialog(null, "Något gick fel " + e);
             }
         }
-        if(selectedValue == "Agent")
-        {
-            try{
-            String query2 = "SELECT LOSENORD FROM AGENT WHERE AGENT.LOSENORD = '" + losenordet + "'" + "AND AGENT.NAMN = '" + anvandarNamn + "'";  
-            System.out.println(query2);
-            String hamtaAgent = idb.fetchSingle(query2);
-            System.out.println(hamtaAgent);
-            String queryAdmin = "SELECT ADMINISTRATOR FROM AGENT WHERE AGENT.NAMN = '" + anvandarNamn + "'";
-            String hamtaAdmin = idb.fetchSingle(queryAdmin); 
-            System.out.println(hamtaAdmin);
-            
-            if(hamtaAgent != null && hamtaAdmin.equals("N"))
-            {
-                new InloggadAgent(anvandarNamn, losenordet).setVisible(true);
-            }
-            
-            else if(hamtaAgent != null && hamtaAdmin.equals("J")){
-                new InloggadAdmin(anvandarNamn, losenordet).setVisible(true);
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
-                
-            }
-          
-                
-            }
-            
-            catch(InfException EE){
+        if (selectedValue == "Agent") {
+            try {
+                String query2 = "SELECT LOSENORD FROM AGENT WHERE AGENT.LOSENORD = '" + losenordet + "'" + "AND AGENT.NAMN = '" + anvandarNamn + "'";
+                System.out.println(query2);
+                String hamtaAgent = idb.fetchSingle(query2);
+                System.out.println(hamtaAgent);
+                String queryAdmin = "SELECT ADMINISTRATOR FROM AGENT WHERE AGENT.NAMN = '" + anvandarNamn + "'";
+                String hamtaAdmin = idb.fetchSingle(queryAdmin);
+                System.out.println(hamtaAdmin);
+
+                if (hamtaAgent != null && hamtaAdmin.equals("N")) {
+                    new InloggadAgent(anvandarNamn, losenordet).setVisible(true);
+                } else if (hamtaAgent != null && hamtaAdmin.equals("J")) {
+                    new InloggadAdmin(anvandarNamn, losenordet).setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
+
+                }
+
+            } catch (InfException EE) {
                 JOptionPane.showMessageDialog(null, "Något gick fel " + EE);
-                
+
             }
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
