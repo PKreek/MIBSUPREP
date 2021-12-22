@@ -18,7 +18,7 @@ public class StartClass {
             new Inloggningssida(idb).setVisible(true);
         } catch (InfException ex){
             Logger.getLogger(StartClass.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }dkasdjasdka
         
     }
     
