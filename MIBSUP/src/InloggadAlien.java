@@ -24,6 +24,14 @@ public class InloggadAlien extends javax.swing.JFrame {
         this.losenord = losenord;
         this.idb = idb;
     }
+    
+    private void lblAgentNamn()
+    {
+        String query = "Select Alien.Namn, Agent.Namn, Agent.Agent_ID from Agent" +
+        "join Omradeschef on Omradeschef.Agent_ID = Agent.Agent_ID" +
+        "join Alien on alien.Plats = Omradeschef.Omrade";
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
