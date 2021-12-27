@@ -36,7 +36,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="21" green="20" red="1f" type="rgb"/>
+          <Color blue="1f" green="1f" red="21" type="rgb"/>
         </Property>
       </Properties>
 
@@ -59,6 +59,11 @@
                   </Group>
                   <EmptySpace pref="115" max="32767" attributes="0"/>
               </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="btnAndraLosen" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -70,7 +75,9 @@
                   <Component id="lblOmrådesChef" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblAgentNamn" min="-2" pref="23" max="-2" attributes="0"/>
-                  <EmptySpace pref="252" max="32767" attributes="0"/>
+                  <EmptySpace pref="204" max="32767" attributes="0"/>
+                  <Component id="btnAndraLosen" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -111,6 +118,14 @@
             </Property>
             <Property name="text" type="java.lang.String" value="V&#xe4;lkommen Alien"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnAndraLosen">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#xc4;ndra l&#xf6;senord"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAndraLosenActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

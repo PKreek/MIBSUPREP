@@ -16,6 +16,7 @@ import oru.inf.InfException;
 public class Inloggningssida extends javax.swing.JFrame {
 
     private static InfDB idb;
+    
     /**
      * Creates new form Inloggningssida
      */
@@ -48,7 +49,7 @@ public class Inloggningssida extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(33, 31, 31));
 
-        lblRubrik.setFont(new java.awt.Font("Apple LiGothic", 1, 24)); // NOI18N
+        lblRubrik.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 24)); // NOI18N
         lblRubrik.setForeground(new java.awt.Color(255, 255, 255));
         lblRubrik.setText("Logga in");
 
@@ -144,7 +145,7 @@ public class Inloggningssida extends javax.swing.JFrame {
                 .addComponent(btnLoggaIn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblAndraLosen)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,7 +174,7 @@ public class Inloggningssida extends javax.swing.JFrame {
                 String hamtaAlien = idb.fetchSingle(query);
                 System.out.println(hamtaAlien);
                 if (hamtaAlien != null) {
-                    new InloggadAlien(anvandarNamn, losenordet, idb).setVisible(true);
+                    new InloggadAlien(anvandarNamn, losenordet, idb, selectedValue).setVisible(true);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
@@ -194,9 +195,9 @@ public class Inloggningssida extends javax.swing.JFrame {
                 System.out.println(hamtaAdmin);
 
                 if (hamtaAgent != null && hamtaAdmin.equals("N")) {
-                    new InloggadAgent(anvandarNamn, losenordet, idb).setVisible(true);
+                    new InloggadAgent(anvandarNamn, losenordet, idb, selectedValue).setVisible(true);
                 } else if (hamtaAgent != null && hamtaAdmin.equals("J")) {
-                    new InloggadAdmin(anvandarNamn, losenordet, idb).setVisible(true);
+                    new InloggadAdmin(anvandarNamn, losenordet, idb, selectedValue).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
 

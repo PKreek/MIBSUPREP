@@ -14,15 +14,17 @@ public class InloggadAlien extends javax.swing.JFrame {
 
     private static String anvandarnamn;
     private static String losenord;
+    private static String anvandare;
     private static InfDB idb;
     /**
      * Creates new form InloggadAlien
      */
-    public InloggadAlien(String anvandarnamn, String losenord, InfDB idb) {
+    public InloggadAlien(String anvandarnamn, String losenord, InfDB idb, String anvandare) {
         initComponents();
         this.anvandarnamn = anvandarnamn;
         this.losenord = losenord;
         this.idb = idb;
+        this.anvandare = anvandare;
     }
     
     private void lblAgentNamn()
@@ -46,10 +48,11 @@ public class InloggadAlien extends javax.swing.JFrame {
         lblOmrådesChef = new javax.swing.JLabel();
         lblAgentNamn = new javax.swing.JLabel();
         lblValkommenAlien = new javax.swing.JLabel();
+        btnAndraLosen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(31, 32, 33));
+        jPanel1.setBackground(new java.awt.Color(33, 31, 31));
 
         lblOmrådesChef.setBackground(new java.awt.Color(0, 0, 0));
         lblOmrådesChef.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
@@ -63,6 +66,13 @@ public class InloggadAlien extends javax.swing.JFrame {
         lblValkommenAlien.setFont(new java.awt.Font("Apple LiGothic", 1, 24)); // NOI18N
         lblValkommenAlien.setForeground(new java.awt.Color(255, 255, 255));
         lblValkommenAlien.setText("Välkommen Alien");
+
+        btnAndraLosen.setText("Ändra lösenord");
+        btnAndraLosen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraLosenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,6 +89,10 @@ public class InloggadAlien extends javax.swing.JFrame {
                         .addGap(123, 123, 123)
                         .addComponent(lblValkommenAlien)))
                 .addContainerGap(115, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAndraLosen)
+                .addGap(28, 28, 28))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +103,9 @@ public class InloggadAlien extends javax.swing.JFrame {
                 .addComponent(lblOmrådesChef)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                .addComponent(btnAndraLosen)
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -105,6 +121,11 @@ public class InloggadAlien extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraLosenActionPerformed
+        // TODO add your handling code here:
+        new ÄndraLösenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
+    }//GEN-LAST:event_btnAndraLosenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,12 +157,13 @@ public class InloggadAlien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InloggadAlien(anvandarnamn, losenord, idb).setVisible(true);
+                new InloggadAlien(anvandarnamn, losenord, idb, anvandare).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAndraLosen;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAgentNamn;
     private javax.swing.JLabel lblOmrådesChef;
