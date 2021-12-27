@@ -39,7 +39,6 @@ public class Inloggningssida extends javax.swing.JFrame {
         txtInloggAnvandare = new javax.swing.JTextField();
         pswInloggLosen = new javax.swing.JPasswordField();
         btnLoggaIn = new javax.swing.JButton();
-        lblAndraLosen = new javax.swing.JLabel();
         lblAnvandarnamn = new javax.swing.JLabel();
         lblLosenord = new javax.swing.JLabel();
         cbxVerifiering = new javax.swing.JComboBox<>();
@@ -76,11 +75,6 @@ public class Inloggningssida extends javax.swing.JFrame {
             }
         });
 
-        lblAndraLosen.setBackground(new java.awt.Color(153, 153, 153));
-        lblAndraLosen.setForeground(new java.awt.Color(153, 153, 153));
-        lblAndraLosen.setText("Ändra lösenord");
-        lblAndraLosen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         lblAnvandarnamn.setBackground(new java.awt.Color(153, 153, 153));
         lblAnvandarnamn.setForeground(new java.awt.Color(153, 153, 153));
         lblAnvandarnamn.setText("Användarnamn:");
@@ -102,10 +96,6 @@ public class Inloggningssida extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(lblAndraLosen)
-                .addContainerGap(161, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblValjAnvandare)
@@ -122,7 +112,7 @@ public class Inloggningssida extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(lblRubrik)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,9 +133,7 @@ public class Inloggningssida extends javax.swing.JFrame {
                 .addComponent(pswInloggLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLoggaIn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblAndraLosen)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -257,7 +245,6 @@ public class Inloggningssida extends javax.swing.JFrame {
     private javax.swing.JButton btnLoggaIn;
     private javax.swing.JComboBox<String> cbxVerifiering;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblAndraLosen;
     private javax.swing.JLabel lblAnvandarnamn;
     private javax.swing.JLabel lblLosenord;
     private javax.swing.JLabel lblRubrik;

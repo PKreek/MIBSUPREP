@@ -67,6 +67,8 @@ public class InloggadAlien extends javax.swing.JFrame {
         lblValkommenAlien.setForeground(new java.awt.Color(255, 255, 255));
         lblValkommenAlien.setText("Välkommen Alien");
 
+        btnAndraLosen.setBackground(new java.awt.Color(255, 255, 255));
+        btnAndraLosen.setForeground(new java.awt.Color(0, 0, 0));
         btnAndraLosen.setText("Ändra lösenord");
         btnAndraLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

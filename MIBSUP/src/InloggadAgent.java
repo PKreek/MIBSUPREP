@@ -46,7 +46,7 @@ public class InloggadAgent extends javax.swing.JFrame {
         btnAndraLosen.setBackground(new java.awt.Color(255, 255, 255));
         btnAndraLosen.setForeground(new java.awt.Color(0, 0, 0));
         btnAndraLosen.setText("Ändra lösenord");
-        btnAndraLosen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAndraLosen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAndraLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAndraLosenActionPerformed(evt);

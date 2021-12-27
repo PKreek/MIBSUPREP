@@ -43,6 +43,8 @@ public class InloggadAdmin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(33, 31, 31));
 
+        btnAndraLosen.setBackground(new java.awt.Color(255, 255, 255));
+        btnAndraLosen.setForeground(new java.awt.Color(0, 0, 0));
         btnAndraLosen.setText("Ändra lösenord");
         btnAndraLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,16 +57,16 @@ public class InloggadAdmin extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(252, Short.MAX_VALUE)
+                .addContainerGap(265, Short.MAX_VALUE)
                 .addComponent(btnAndraLosen)
-                .addGap(29, 29, 29))
+                .addGap(16, 16, 16))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(248, Short.MAX_VALUE)
+                .addContainerGap(260, Short.MAX_VALUE)
                 .addComponent(btnAndraLosen)
-                .addGap(31, 31, 31))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
