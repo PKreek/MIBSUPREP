@@ -61,9 +61,19 @@ public class ÄndraLösenord extends javax.swing.JFrame {
 
         pswAktuelltLosen.setBackground(new java.awt.Color(255, 255, 255));
         pswAktuelltLosen.setForeground(new java.awt.Color(0, 0, 0));
+        pswAktuelltLosen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pswAktuelltLosenActionPerformed(evt);
+            }
+        });
 
         pswNyttLosen.setBackground(new java.awt.Color(255, 255, 255));
         pswNyttLosen.setForeground(new java.awt.Color(0, 0, 0));
+        pswNyttLosen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pswNyttLosenActionPerformed(evt);
+            }
+        });
 
         pswNyttLosenIgen.setBackground(new java.awt.Color(255, 255, 255));
         pswNyttLosenIgen.setForeground(new java.awt.Color(0, 0, 0));
@@ -157,8 +167,9 @@ public class ÄndraLösenord extends javax.swing.JFrame {
         String nyttLosen = new String(pswNyttLosen.getPassword());
         String nyttLosenIgen = new String(pswNyttLosenIgen.getPassword());
      
-        if(anvandare.equals("Agent")){
-            if(gammaltLosen.equals(losenord) && nyttLosen.equals(nyttLosenIgen) && nyttLosen != gammaltLosen && nyttLosen.length() <= 6){
+        if(Validering.gickDet(anvandare)==false){
+            if(Validering.kollaLosen(losenord, gammaltLosen, nyttLosen, nyttLosenIgen) == true)
+            { 
             String query = "UPDATE AGENT SET LOSENORD = '" + nyttLosen + "' WHERE AGENT.NAMN = '" + anvandarNamn + "'";
             try {
                 String hamtaLosen = idb.fetchSingle(query);
@@ -166,17 +177,18 @@ public class ÄndraLösenord extends javax.swing.JFrame {
             } catch (InfException e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-            JOptionPane.showMessageDialog(null, "Lösenordet har bytts");
             }
         
-        else if(nyttLosen != nyttLosenIgen && gammaltLosen.equals(losenord)){
+            else if (Validering.nyttLosen(nyttLosenIgen, nyttLosen, gammaltLosen, losenord)== true)
+            {
+            //else if(nyttLosen != nyttLosenIgen && gammaltLosen.equals(losenord)){
             JOptionPane.showMessageDialog(null, "Nya lösenordet stämmer inte");
-        }
-        else{
+             }
+             else{
             JOptionPane.showMessageDialog(null, "Det gamla lösenordet stämmer inte");
         }
         }   
-        if(anvandare.equals("Alien")){
+        if(Validering.gickDet(anvandare)==true){
             if(gammaltLosen.equals(losenord) && nyttLosen.equals(nyttLosenIgen) && nyttLosen != gammaltLosen && nyttLosen.length() <= 6){
             String query2 = "UPDATE ALIEN SET LOSENORD = '" + nyttLosen + "' WHERE ALIEN.NAMN = '" + anvandarNamn + "'";
             try {
@@ -188,7 +200,7 @@ public class ÄndraLösenord extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Lösenordet har bytts");
             }
         
-        else if(nyttLosen != nyttLosenIgen && gammaltLosen.equals(losenord)){
+         else if (Validering.nyttLosen(nyttLosenIgen, nyttLosen, gammaltLosen, losenord)== true){
             JOptionPane.showMessageDialog(null, "Nya lösenordet stämmer inte");
         }
         else{
@@ -197,6 +209,14 @@ public class ÄndraLösenord extends javax.swing.JFrame {
         }
    
     }//GEN-LAST:event_btnAndraLosenActionPerformed
+
+    private void pswAktuelltLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswAktuelltLosenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pswAktuelltLosenActionPerformed
+
+    private void pswNyttLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswNyttLosenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pswNyttLosenActionPerformed
 
     /**
      * @param args the command line arguments
