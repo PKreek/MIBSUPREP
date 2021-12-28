@@ -20,6 +20,8 @@ public class Validering {
         }
         return resultat;
     }
+    
+    
 public static boolean kollaLosen(String losen, String gammalt, String nytt, String nyttIgen)
 {
     boolean funkar = false; 
@@ -29,6 +31,8 @@ public static boolean kollaLosen(String losen, String gammalt, String nytt, Stri
     }
     return funkar; 
 }
+
+
 public static boolean nyttLosen (String nyttLosen,String nyttLosenIgen, String gammalt, String losenord)
 {
     boolean stammer = false;

@@ -181,7 +181,6 @@ public class ÄndraLösenord extends javax.swing.JFrame {
         
             else if (Validering.nyttLosen(nyttLosenIgen, nyttLosen, gammaltLosen, losenord)== true)
             {
-            //else if(nyttLosen != nyttLosenIgen && gammaltLosen.equals(losenord)){
             JOptionPane.showMessageDialog(null, "Nya lösenordet stämmer inte");
              }
              else{
@@ -189,7 +188,7 @@ public class ÄndraLösenord extends javax.swing.JFrame {
         }
         }   
         if(Validering.gickDet(anvandare)==true){
-            if(gammaltLosen.equals(losenord) && nyttLosen.equals(nyttLosenIgen) && nyttLosen != gammaltLosen && nyttLosen.length() <= 6){
+            if(Validering.kollaLosen(losenord, gammaltLosen, nyttLosen, nyttLosenIgen) == true){
             String query2 = "UPDATE ALIEN SET LOSENORD = '" + nyttLosen + "' WHERE ALIEN.NAMN = '" + anvandarNamn + "'";
             try {
                 String hamtaLosen2 = idb.fetchSingle(query2);
