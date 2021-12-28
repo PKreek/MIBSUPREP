@@ -1,5 +1,7 @@
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -27,13 +29,24 @@ public class InloggadAlien extends javax.swing.JFrame {
         this.anvandare = anvandare;
     }
     
-    private void lblAgentNamn()
+    
+    /*public String getAgentNamnDB(String key)
     {
-        String query = "Select Alien.Namn, Agent.Namn, Agent.Agent_ID from Agent" +
+        try{
+        String query = "Select Alien.Namn, Agent.Namn from Agent" +
         "join Omradeschef on Omradeschef.Agent_ID = Agent.Agent_ID" +
-        "join Alien on alien.Plats = Omradeschef.Omrade";
-        
-    }
+        "join Alien on alien.Plats = Omradeschef.Omrade" + 
+        "Where Alien.Namn = '" + this.anvandarnamn + "'";
+        String agentTest = idb.fetchSingle(query);
+        System.out.println(agentTest);
+        lblAgentNamn.setText(query);
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Något gick fel " + e);
+        }
+        return key;
+    }*/
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,7 +74,6 @@ public class InloggadAlien extends javax.swing.JFrame {
 
         lblAgentNamn.setFont(new java.awt.Font("Helvetica", 0, 18)); // NOI18N
         lblAgentNamn.setForeground(new java.awt.Color(255, 255, 255));
-        lblAgentNamn.setText("Agent ");
 
         lblValkommenAlien.setFont(new java.awt.Font("Apple LiGothic", 1, 24)); // NOI18N
         lblValkommenAlien.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,6 +145,7 @@ public class InloggadAlien extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
