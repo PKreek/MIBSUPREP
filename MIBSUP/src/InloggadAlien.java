@@ -30,22 +30,27 @@ public class InloggadAlien extends javax.swing.JFrame {
     }
     
     
-    /*public String getAgentNamnDB(String key)
+    public String getAgentNamnDB()
     {
         try{
-        String query = "Select Alien.Namn, Agent.Namn from Agent" +
+        String query = "Select Agent.Namn from Agent" +
         "join Omradeschef on Omradeschef.Agent_ID = Agent.Agent_ID" +
         "join Alien on alien.Plats = Omradeschef.Omrade" + 
-        "Where Alien.Namn = '" + this.anvandarnamn + "'";
+        "Where Alien.Namn = '" + this.anvandare + "'";
         String agentTest = idb.fetchSingle(query);
-        System.out.println(agentTest);
-        lblAgentNamn.setText(query);
+        System.out.println(query);
+        lblAgentNamn.setText(agentTest);
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Något gick fel " + e);
         }
-        return key;
-    }*/
+        return InloggadAlien.anvandare;
+    }
+    
+    public void setAgentNamnDB()
+    {
+        lblAgentNamn.setText(getAgentNamnDB());
+    }
     
 
     /**
