@@ -155,7 +155,9 @@ public class Inloggningssida extends javax.swing.JFrame {
         String selectedValue = cbxVerifiering.getSelectedItem().toString();
         String anvandarNamn = txtInloggAnvandare.getText();
         String losenordet = new String(pswInloggLosen.getPassword());
-        if (Validering.gickDet(selectedValue)==false) {
+        
+        // Kollar om det är en Alien
+        if (Validering.gickDet(selectedValue)==true) {
             try {
                 String query = "SELECT LOSENORD FROM ALIEN WHERE ALIEN.LOSENORD = '" + losenordet + "'" + "AND ALIEN.NAMN = '" + anvandarNamn + "'";
                 System.out.println(query);
@@ -174,7 +176,9 @@ public class Inloggningssida extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Något gick fel " + e);
             }
         }
-       if (Validering.gickDet(selectedValue)==true) {
+        
+        //Kolla om det är en agent
+       if (Validering.gickDet(selectedValue)==false) {
             try {
                 String query2 = "SELECT LOSENORD FROM AGENT WHERE AGENT.LOSENORD = '" + losenordet + "'" + "AND AGENT.NAMN = '" + anvandarNamn + "'";
                 System.out.println(query2);

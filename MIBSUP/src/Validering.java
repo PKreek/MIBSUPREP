@@ -21,7 +21,6 @@ public class Validering {
         return resultat;
     }
     
-    
 public static boolean kollaLosen(String losen, String gammalt, String nytt, String nyttIgen)
 {
     boolean funkar = false; 
