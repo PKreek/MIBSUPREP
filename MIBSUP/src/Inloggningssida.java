@@ -165,8 +165,6 @@ public class Inloggningssida extends javax.swing.JFrame {
                 System.out.println(hamtaAlien);
                 if (hamtaAlien != null) {
                     new InloggadAlien(anvandarNamn, losenordet, idb, selectedValue).setVisible(true);
-                    
-                    
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
