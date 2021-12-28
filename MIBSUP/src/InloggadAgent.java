@@ -38,18 +38,38 @@ public class InloggadAgent extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnAndraLosen = new javax.swing.JButton();
+        lblVälkommenAgent = new javax.swing.JLabel();
+        btnRegistreraAlien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(33, 31, 31));
 
-        btnAndraLosen.setBackground(new java.awt.Color(255, 255, 255));
-        btnAndraLosen.setForeground(new java.awt.Color(0, 0, 0));
+        btnAndraLosen.setBackground(new java.awt.Color(33, 31, 31));
+        btnAndraLosen.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnAndraLosen.setForeground(new java.awt.Color(153, 153, 153));
         btnAndraLosen.setText("Ändra lösenord");
-        btnAndraLosen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAndraLosen.setBorder(null);
+        btnAndraLosen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAndraLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAndraLosenActionPerformed(evt);
+            }
+        });
+
+        lblVälkommenAgent.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 24)); // NOI18N
+        lblVälkommenAgent.setForeground(new java.awt.Color(255, 255, 255));
+        lblVälkommenAgent.setText("Välkommen Agent");
+
+        btnRegistreraAlien.setBackground(new java.awt.Color(33, 31, 31));
+        btnRegistreraAlien.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnRegistreraAlien.setForeground(new java.awt.Color(153, 153, 153));
+        btnRegistreraAlien.setText("Registrera ny alien");
+        btnRegistreraAlien.setBorder(null);
+        btnRegistreraAlien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistreraAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistreraAlienActionPerformed(evt);
             }
         });
 
@@ -59,15 +79,22 @@ public class InloggadAgent extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAndraLosen)
-                .addContainerGap(385, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAndraLosen)
+                    .addComponent(lblVälkommenAgent)
+                    .addComponent(btnRegistreraAlien))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(126, 126, 126)
+                .addGap(48, 48, 48)
+                .addComponent(lblVälkommenAgent)
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistreraAlien)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
                 .addComponent(btnAndraLosen)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,6 +115,12 @@ public class InloggadAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ÄndraLösenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
     }//GEN-LAST:event_btnAndraLosenActionPerformed
+
+    private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
+        // TODO add your handling code here:
+        new RegistreraAlien().setVisible(true);
+        
+    }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,6 +159,8 @@ public class InloggadAgent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndraLosen;
+    private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblVälkommenAgent;
     // End of variables declaration//GEN-END:variables
 }

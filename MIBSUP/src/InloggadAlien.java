@@ -79,9 +79,12 @@ public class InloggadAlien extends javax.swing.JFrame {
         lblValkommenAlien.setForeground(new java.awt.Color(255, 255, 255));
         lblValkommenAlien.setText("Välkommen Alien");
 
-        btnAndraLosen.setBackground(new java.awt.Color(255, 255, 255));
-        btnAndraLosen.setForeground(new java.awt.Color(0, 0, 0));
+        btnAndraLosen.setBackground(new java.awt.Color(33, 31, 31));
+        btnAndraLosen.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnAndraLosen.setForeground(new java.awt.Color(153, 153, 153));
         btnAndraLosen.setText("Ändra lösenord");
+        btnAndraLosen.setBorder(null);
+        btnAndraLosen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAndraLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAndraLosenActionPerformed(evt);
@@ -101,12 +104,11 @@ public class InloggadAlien extends javax.swing.JFrame {
                             .addComponent(lblOmrådesChef)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
-                        .addComponent(lblValkommenAlien)))
-                .addContainerGap(115, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAndraLosen)
-                .addGap(28, 28, 28))
+                        .addComponent(lblValkommenAlien))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAndraLosen)))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,9 +119,9 @@ public class InloggadAlien extends javax.swing.JFrame {
                 .addComponent(lblOmrådesChef)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
                 .addComponent(btnAndraLosen)
-                .addGap(27, 27, 27))
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
