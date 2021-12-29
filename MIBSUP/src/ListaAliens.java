@@ -240,7 +240,7 @@ public class ListaAliens extends javax.swing.JFrame {
             
             
             for(HashMap<String, String> alienNamn : alienLista){
-                txtAreaLista.append(alienNamn.toString()+ "\n");
+                txtAreaLista.append(alienNamn.get("NAMN") + " " + alienNamn.get("BENAMNING") + ("\n"));
                 
                
                 System.out.println(alienNamn);
