@@ -79,7 +79,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblAlienID" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtAlienID" max="32767" attributes="0"/>
+                  <Component id="txtAlienID" pref="29" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblRegistreringsDatum" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>

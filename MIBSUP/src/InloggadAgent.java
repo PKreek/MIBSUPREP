@@ -50,7 +50,7 @@ public class InloggadAgent extends javax.swing.JFrame {
         lblVälkommenAgent.setText("Välkommen Agent");
 
         btnAndraLosen.setBackground(new java.awt.Color(33, 31, 31));
-        btnAndraLosen.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnAndraLosen.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
         btnAndraLosen.setForeground(new java.awt.Color(153, 153, 153));
         btnAndraLosen.setText("Ändra lösenord");
         btnAndraLosen.setBorder(null);
@@ -62,7 +62,7 @@ public class InloggadAgent extends javax.swing.JFrame {
         });
 
         btnRegistreraAlien.setBackground(new java.awt.Color(33, 31, 31));
-        btnRegistreraAlien.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnRegistreraAlien.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
         btnRegistreraAlien.setForeground(new java.awt.Color(153, 153, 153));
         btnRegistreraAlien.setText("Registrera ny alien");
         btnRegistreraAlien.setBorder(null);
@@ -78,25 +78,28 @@ public class InloggadAgent extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblVälkommenAgent)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistreraAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(lblVälkommenAgent))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnRegistreraAlien)))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(40, 40, 40)
                 .addComponent(lblVälkommenAgent)
-                .addGap(53, 53, 53)
-                .addComponent(btnRegistreraAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(btnRegistreraAlien)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(264, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

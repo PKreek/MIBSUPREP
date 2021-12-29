@@ -2,6 +2,9 @@
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,7 +33,7 @@ public class InloggadAlien extends javax.swing.JFrame {
     }
     
     
-    public String getAgentNamnDB()
+    /*public String getAgentNamnDB()
     {
         try{
         String query = "Select Agent.Namn from Agent" +
@@ -63,19 +66,16 @@ public class InloggadAlien extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblOmrådesChef = new javax.swing.JLabel();
         lblAgentNamn = new javax.swing.JLabel();
         lblValkommenAlien = new javax.swing.JLabel();
         btnAndraLosen = new javax.swing.JButton();
+        btnKontaktUppgifter = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JtxtKollaUppgifter = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(33, 31, 31));
-
-        lblOmrådesChef.setBackground(new java.awt.Color(0, 0, 0));
-        lblOmrådesChef.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-        lblOmrådesChef.setForeground(new java.awt.Color(255, 255, 255));
-        lblOmrådesChef.setText("Områdeschefen i ditt område är:");
 
         lblAgentNamn.setFont(new java.awt.Font("Helvetica", 0, 18)); // NOI18N
         lblAgentNamn.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,6 +96,24 @@ public class InloggadAlien extends javax.swing.JFrame {
             }
         });
 
+        btnKontaktUppgifter.setBackground(new java.awt.Color(255, 255, 255));
+        btnKontaktUppgifter.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnKontaktUppgifter.setForeground(new java.awt.Color(0, 0, 0));
+        btnKontaktUppgifter.setText("Kolla kontaktuppgifter");
+        btnKontaktUppgifter.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnKontaktUppgifter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKontaktUppgifterActionPerformed(evt);
+            }
+        });
+
+        JtxtKollaUppgifter.setBackground(new java.awt.Color(255, 255, 255));
+        JtxtKollaUppgifter.setColumns(10);
+        JtxtKollaUppgifter.setForeground(new java.awt.Color(0, 0, 0));
+        JtxtKollaUppgifter.setRows(4);
+        JtxtKollaUppgifter.setTabSize(1);
+        jScrollPane1.setViewportView(JtxtKollaUppgifter);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -103,30 +121,39 @@ public class InloggadAlien extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblOmrådesChef)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(lblValkommenAlien))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnAndraLosen)))
-                .addContainerGap(108, Short.MAX_VALUE))
+                        .addComponent(btnKontaktUppgifter)
+                        .addGap(56, 56, 56)
+                        .addComponent(lblAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAndraLosen))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(lblValkommenAlien)
-                .addGap(31, 31, 31)
-                .addComponent(lblOmrådesChef)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(lblAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnKontaktUppgifter)
+                        .addGap(18, 18, 18)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(btnAndraLosen)
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,6 +174,31 @@ public class InloggadAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ÄndraLösenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
     }//GEN-LAST:event_btnAndraLosenActionPerformed
+
+    private void btnKontaktUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKontaktUppgifterActionPerformed
+       System.out.println(anvandarnamn);
+        try {
+            String query = "SELECT AGENT.NAMN, AGENT.TELEFON, OMRADE.BENAMNING "
+                    + "FROM AGENT JOIN OMRADESCHEF ON AGENT.AGENT_ID = OMRADESCHEF.AGENT_ID "
+                    + "JOIN OMRADE ON OMRADESCHEF.OMRADE = OMRADES_ID JOIN PLATS ON FINNS_I = OMRADES_ID "
+                    + "JOIN ALIEN ON PLATS_ID = ALIEN.PLATS WHERE ALIEN.NAMN = '" + anvandarnamn + "'";
+            
+            HashMap<String, String>kontaktUppgifter = idb.fetchRow(query);
+            System.out.println(kontaktUppgifter);
+            
+            JtxtKollaUppgifter.append("Områdeschef:\t" + kontaktUppgifter.get("NAMN"));
+            JtxtKollaUppgifter.append("\nOmråde:\t" + kontaktUppgifter.get("BENAMNING"));
+            JtxtKollaUppgifter.append("\nTelefonnummer:\t" + kontaktUppgifter.get("TELEFON"));
+            
+            
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_btnKontaktUppgifterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,10 +237,12 @@ public class InloggadAlien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea JtxtKollaUppgifter;
     private javax.swing.JButton btnAndraLosen;
+    private javax.swing.JButton btnKontaktUppgifter;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAgentNamn;
-    private javax.swing.JLabel lblOmrådesChef;
     private javax.swing.JLabel lblValkommenAlien;
     // End of variables declaration//GEN-END:variables
 }

@@ -54,7 +54,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
         lblVälkommenAdmin.setText("Välkommen Admin");
 
         btnAndraLosen.setBackground(new java.awt.Color(33, 31, 31));
-        btnAndraLosen.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnAndraLosen.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         btnAndraLosen.setForeground(new java.awt.Color(153, 153, 153));
         btnAndraLosen.setText("Ändra lösenord");
         btnAndraLosen.setBorder(null);
@@ -66,9 +66,9 @@ public class InloggadAdmin extends javax.swing.JFrame {
         });
 
         btnRegistreraAlien.setBackground(new java.awt.Color(33, 31, 31));
-        btnRegistreraAlien.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnRegistreraAlien.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
         btnRegistreraAlien.setForeground(new java.awt.Color(153, 153, 153));
-        btnRegistreraAlien.setText("Registrera alien");
+        btnRegistreraAlien.setText("Registrera ny alien");
         btnRegistreraAlien.setBorder(null);
         btnRegistreraAlien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,13 +80,16 @@ public class InloggadAdmin extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(100, Short.MAX_VALUE)
+                .addComponent(lblVälkommenAdmin)
+                .addGap(97, 97, 97))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblVälkommenAdmin)
-                    .addComponent(btnAndraLosen)
-                    .addComponent(btnRegistreraAlien))
-                .addContainerGap(191, Short.MAX_VALUE))
+                    .addComponent(btnRegistreraAlien)
+                    .addComponent(btnAndraLosen))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,9 +98,9 @@ public class InloggadAdmin extends javax.swing.JFrame {
                 .addComponent(lblVälkommenAdmin)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistreraAlien)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAndraLosen)
-                .addGap(16, 16, 16))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
