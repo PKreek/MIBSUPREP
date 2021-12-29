@@ -1,5 +1,8 @@
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -40,6 +43,8 @@ public class InloggadAgent extends javax.swing.JFrame {
         lblVälkommenAgent = new javax.swing.JLabel();
         btnAndraLosen = new javax.swing.JButton();
         btnRegistreraAlien = new javax.swing.JButton();
+        lblKontoÖversikt = new javax.swing.JLabel();
+        btnListaAliens = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,33 +78,59 @@ public class InloggadAgent extends javax.swing.JFrame {
             }
         });
 
+        lblKontoÖversikt.setFont(new java.awt.Font("sansserif", 0, 20)); // NOI18N
+        lblKontoÖversikt.setForeground(new java.awt.Color(255, 255, 255));
+        lblKontoÖversikt.setText("Kontoöversikt");
+
+        btnListaAliens.setBackground(new java.awt.Color(33, 31, 31));
+        btnListaAliens.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        btnListaAliens.setForeground(new java.awt.Color(153, 153, 153));
+        btnListaAliens.setText("Lista aliens");
+        btnListaAliens.setBorder(null);
+        btnListaAliens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnListaAliens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaAliensActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(99, 99, 99)
                         .addComponent(lblVälkommenAgent))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblKontoÖversikt, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegistreraAlien)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnRegistreraAlien)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(btnListaAliens))
+                            .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(27, 27, 27)
                 .addComponent(lblVälkommenAgent)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblKontoÖversikt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRegistreraAlien)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnListaAliens)
+                .addContainerGap(209, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -110,22 +141,33 @@ public class InloggadAgent extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
+        // TODO add your handling code here:
+        new RegistreraAlien(anvandarnamn, idb).setVisible(true);
+
+    }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     private void btnAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraLosenActionPerformed
         // TODO add your handling code here:
         new ÄndraLösenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
     }//GEN-LAST:event_btnAndraLosenActionPerformed
 
-    private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
-        // TODO add your handling code here:
-        new RegistreraAlien(anvandarnamn, idb).setVisible(true);
-        
-    }//GEN-LAST:event_btnRegistreraAlienActionPerformed
+    private void btnListaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaAliensActionPerformed
+        try {
+            // TODO add your handling code here:
+            new ListaAliens(idb).setVisible(true);
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnListaAliensActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,8 +206,10 @@ public class InloggadAgent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndraLosen;
+    private javax.swing.JButton btnListaAliens;
     private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblKontoÖversikt;
     private javax.swing.JLabel lblVälkommenAgent;
     // End of variables declaration//GEN-END:variables
 }

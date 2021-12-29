@@ -193,6 +193,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
+        
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     /**
