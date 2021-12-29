@@ -40,6 +40,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lblVälkommenAdmin = new javax.swing.JLabel();
         btnAndraLosen = new javax.swing.JButton();
+        btnRegistreraAlien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -64,6 +65,17 @@ public class InloggadAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnRegistreraAlien.setBackground(new java.awt.Color(33, 31, 31));
+        btnRegistreraAlien.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnRegistreraAlien.setForeground(new java.awt.Color(153, 153, 153));
+        btnRegistreraAlien.setText("Registrera alien");
+        btnRegistreraAlien.setBorder(null);
+        btnRegistreraAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistreraAlienActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -72,7 +84,8 @@ public class InloggadAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblVälkommenAdmin)
-                    .addComponent(btnAndraLosen))
+                    .addComponent(btnAndraLosen)
+                    .addComponent(btnRegistreraAlien))
                 .addContainerGap(191, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -80,7 +93,9 @@ public class InloggadAdmin extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(lblVälkommenAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistreraAlien)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
                 .addComponent(btnAndraLosen)
                 .addGap(16, 16, 16))
         );
@@ -103,6 +118,11 @@ public class InloggadAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ÄndraLösenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
     }//GEN-LAST:event_btnAndraLosenActionPerformed
+
+    private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
+        // TODO add your handling code here:
+        new RegistreraAlien(anvandarnamn, idb).setVisible(true);
+    }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +161,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndraLosen;
+    private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblVälkommenAdmin;
     // End of variables declaration//GEN-END:variables

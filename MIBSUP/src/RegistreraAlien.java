@@ -1,3 +1,6 @@
+
+import oru.inf.InfDB;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,11 +12,15 @@
  */
 public class RegistreraAlien extends javax.swing.JFrame {
 
+    private static String anvandarnamn;
+    private static InfDB idb;
     /**
      * Creates new form RegistreraAlien
      */
-    public RegistreraAlien() {
+    public RegistreraAlien(String anvandarnamn, InfDB idb) {
         initComponents();
+        this.anvandarnamn = anvandarnamn;
+        this.idb = idb;
     }
 
     /**
@@ -27,13 +34,20 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblRegistreraAlien = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        txtRegistreringsDatum = new javax.swing.JTextField();
+        txtNamn = new javax.swing.JTextField();
+        txtLosenord = new javax.swing.JTextField();
+        txtTelefonNr = new javax.swing.JTextField();
+        txtPlats = new javax.swing.JTextField();
+        btnRegistreraAlien = new javax.swing.JButton();
+        btnAvbryt = new javax.swing.JButton();
+        lblRegistreringsDatum = new javax.swing.JLabel();
+        lblNamn = new javax.swing.JLabel();
+        lblLosenord = new javax.swing.JLabel();
+        lblTelefonNr = new javax.swing.JLabel();
+        lblPlats = new javax.swing.JLabel();
+        txtAlienID = new javax.swing.JTextField();
+        lblAlienID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,19 +57,60 @@ public class RegistreraAlien extends javax.swing.JFrame {
         lblRegistreraAlien.setForeground(new java.awt.Color(255, 255, 255));
         lblRegistreraAlien.setText("Registrera ny alien");
 
-        jTextField1.setText("jTextField1");
+        txtRegistreringsDatum.setBackground(new java.awt.Color(255, 255, 255));
+        txtRegistreringsDatum.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextField2.setText("jTextField2");
+        txtNamn.setBackground(new java.awt.Color(255, 255, 255));
+        txtNamn.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextField3.setText("jTextField3");
+        txtLosenord.setBackground(new java.awt.Color(255, 255, 255));
+        txtLosenord.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextField4.setText("jTextField4");
+        txtTelefonNr.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefonNr.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextField5.setText("jTextField5");
+        txtPlats.setBackground(new java.awt.Color(255, 255, 255));
+        txtPlats.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextField6.setText("jTextField6");
+        btnRegistreraAlien.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistreraAlien.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegistreraAlien.setText("Registrera Alien");
+        btnRegistreraAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistreraAlienActionPerformed(evt);
+            }
+        });
 
-        jTextField7.setText("jTextField7");
+        btnAvbryt.setBackground(new java.awt.Color(255, 255, 255));
+        btnAvbryt.setForeground(new java.awt.Color(0, 0, 0));
+        btnAvbryt.setText("Avbryt");
+
+        lblRegistreringsDatum.setBackground(new java.awt.Color(153, 153, 153));
+        lblRegistreringsDatum.setForeground(new java.awt.Color(153, 153, 153));
+        lblRegistreringsDatum.setText("Välj ett datum för registrering:");
+
+        lblNamn.setBackground(new java.awt.Color(153, 153, 153));
+        lblNamn.setForeground(new java.awt.Color(153, 153, 153));
+        lblNamn.setText("Välj ett namn:");
+
+        lblLosenord.setBackground(new java.awt.Color(153, 153, 153));
+        lblLosenord.setForeground(new java.awt.Color(153, 153, 153));
+        lblLosenord.setText("Välj ett lösenord:");
+
+        lblTelefonNr.setBackground(new java.awt.Color(153, 153, 153));
+        lblTelefonNr.setForeground(new java.awt.Color(153, 153, 153));
+        lblTelefonNr.setText("Välj ett telefonnumer:");
+
+        lblPlats.setBackground(new java.awt.Color(153, 153, 153));
+        lblPlats.setForeground(new java.awt.Color(153, 153, 153));
+        lblPlats.setText("Välj platsen alien bor i:");
+
+        txtAlienID.setBackground(new java.awt.Color(255, 255, 255));
+        txtAlienID.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblAlienID.setBackground(new java.awt.Color(153, 153, 153));
+        lblAlienID.setForeground(new java.awt.Color(153, 153, 153));
+        lblAlienID.setText("Välj ett alien ID:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -64,36 +119,60 @@ public class RegistreraAlien extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRegistreraAlien))
-                .addContainerGap(185, Short.MAX_VALUE))
+                    .addComponent(lblPlats)
+                    .addComponent(lblLosenord)
+                    .addComponent(lblNamn)
+                    .addComponent(lblRegistreringsDatum)
+                    .addComponent(lblRegistreraAlien)
+                    .addComponent(lblTelefonNr)
+                    .addComponent(lblAlienID)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtAlienID, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtRegistreringsDatum, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtNamn, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtTelefonNr, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtPlats, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnRegistreraAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                            .addComponent(btnAvbryt))
+                        .addComponent(txtLosenord, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(22, 22, 22)
                 .addComponent(lblRegistreraAlien)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAlienID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAlienID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblRegistreringsDatum)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRegistreringsDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNamn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblLosenord)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTelefonNr)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTelefonNr, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPlats)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistreraAlien)
+                    .addComponent(btnAvbryt))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,6 +188,11 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,20 +224,27 @@ public class RegistreraAlien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistreraAlien().setVisible(true);
+                new RegistreraAlien(anvandarnamn, idb).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAvbryt;
+    private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel lblAlienID;
+    private javax.swing.JLabel lblLosenord;
+    private javax.swing.JLabel lblNamn;
+    private javax.swing.JLabel lblPlats;
     private javax.swing.JLabel lblRegistreraAlien;
+    private javax.swing.JLabel lblRegistreringsDatum;
+    private javax.swing.JLabel lblTelefonNr;
+    private javax.swing.JTextField txtAlienID;
+    private javax.swing.JTextField txtLosenord;
+    private javax.swing.JTextField txtNamn;
+    private javax.swing.JTextField txtPlats;
+    private javax.swing.JTextField txtRegistreringsDatum;
+    private javax.swing.JTextField txtTelefonNr;
     // End of variables declaration//GEN-END:variables
 }
