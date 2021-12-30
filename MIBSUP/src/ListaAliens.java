@@ -84,10 +84,11 @@ public class ListaAliens extends javax.swing.JFrame {
 
         cbxListaAliensPlats.setBackground(new java.awt.Color(255, 255, 255));
         cbxListaAliensPlats.setForeground(new java.awt.Color(0, 0, 0));
+        cbxListaAliensPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj plats" }));
 
         cbxListaAliensRas.setBackground(new java.awt.Color(255, 255, 255));
         cbxListaAliensRas.setForeground(new java.awt.Color(0, 0, 0));
-        cbxListaAliensRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boglodite", "Squid", "Worm" }));
+        cbxListaAliensRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj ras", "Boglodite", "Squid", "Worm" }));
 
         btnSokAlienPlats.setBackground(new java.awt.Color(255, 255, 255));
         btnSokAlienPlats.setForeground(new java.awt.Color(0, 0, 0));

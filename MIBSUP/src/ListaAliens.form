@@ -210,7 +210,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
+              <StringArray count="1">
+                <StringItem index="0" value="V&#xe4;lj plats"/>
+              </StringArray>
             </Property>
           </Properties>
           <AuxValues>
@@ -226,10 +228,11 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Boglodite"/>
-                <StringItem index="1" value="Squid"/>
-                <StringItem index="2" value="Worm"/>
+              <StringArray count="4">
+                <StringItem index="0" value="V&#xe4;lj ras"/>
+                <StringItem index="1" value="Boglodite"/>
+                <StringItem index="2" value="Squid"/>
+                <StringItem index="3" value="Worm"/>
               </StringArray>
             </Property>
           </Properties>

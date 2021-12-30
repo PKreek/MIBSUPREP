@@ -314,7 +314,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
             case 3: {
                 try {
                     idb.insert("INSERT INTO WORM (ALIEN_ID)"
-                            + "VALUES(" + "'" + fragaID + "')");
+                            + "VALUES(" + fragaID + ")");
+
                 } catch (InfException e) {
                     JOptionPane.showMessageDialog(null, e);
                 }
