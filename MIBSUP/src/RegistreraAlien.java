@@ -311,8 +311,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, e);
                 }
             }
-            case 3:
-            {
+            case 3: {
                 try {
                     idb.insert("INSERT INTO WORM (ALIEN_ID)"
                             + "VALUES(" + "'" + fragaID + "')");
@@ -320,7 +319,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, e);
                 }
             }
-
 
         }
 

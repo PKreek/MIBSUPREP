@@ -54,6 +54,7 @@ public class ListaAliens extends javax.swing.JFrame {
         btnNollStall = new javax.swing.JButton();
         lblDatum1 = new javax.swing.JLabel();
         lblDatum2 = new javax.swing.JLabel();
+        btnAvbryt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,6 +131,15 @@ public class ListaAliens extends javax.swing.JFrame {
         lblDatum2.setForeground(new java.awt.Color(153, 153, 153));
         lblDatum2.setText("Andra datumet:");
 
+        btnAvbryt.setBackground(new java.awt.Color(255, 255, 255));
+        btnAvbryt.setForeground(new java.awt.Color(0, 0, 0));
+        btnAvbryt.setText("Avbryt");
+        btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvbrytActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -157,7 +167,10 @@ public class ListaAliens extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblListaAliens)
-                            .addComponent(btnNollStall)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnNollStall)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAvbryt))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbxListaAliensPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,7 +209,9 @@ public class ListaAliens extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNollStall)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNollStall)
+                    .addComponent(btnAvbryt))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -257,6 +272,11 @@ public class ListaAliens extends javax.swing.JFrame {
         txtAreaLista.setText("");
     }//GEN-LAST:event_btnNollStallActionPerformed
 
+    private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnAvbrytActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -297,6 +317,7 @@ public class ListaAliens extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAvbryt;
     private javax.swing.JButton btnNollStall;
     private javax.swing.JButton btnSokAlienDatum;
     private javax.swing.JButton btnSokAlienPlats;
