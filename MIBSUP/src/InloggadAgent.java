@@ -150,8 +150,12 @@ public class InloggadAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
-        // TODO add your handling code here:
-        new RegistreraAlien(anvandarnamn, idb).setVisible(true);
+        try {
+            // TODO add your handling code here:
+            new RegistreraAlien(anvandarnamn, idb).setVisible(true);
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 

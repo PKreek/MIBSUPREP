@@ -1,5 +1,8 @@
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -123,8 +126,12 @@ public class InloggadAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAndraLosenActionPerformed
 
     private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
-        // TODO add your handling code here:
-        new RegistreraAlien(anvandarnamn, idb).setVisible(true);
+        try {
+            // TODO add your handling code here:
+            new RegistreraAlien(anvandarnamn, idb).setVisible(true);
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     /**
