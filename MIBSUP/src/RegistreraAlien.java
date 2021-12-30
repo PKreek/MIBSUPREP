@@ -300,16 +300,18 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 } catch (InfException e) {
                     JOptionPane.showMessageDialog(null, e);
                 }
+                break;
             }
             case 2: {
                 try {
-                    idb.insert("INSERT INTO SQUID (ALIEN_ID, ANTAl_ARMAR)"
+                    idb.insert("INSERT INTO SQUID (ALIEN_ID, ANTAL_ARMAR)"
                             + "VALUES(" + fragaID + "," + "'"
                             + antalArmar + "')");
 
                 } catch (InfException e) {
                     JOptionPane.showMessageDialog(null, e);
                 }
+                break;
             }
             case 3: {
                 try {
@@ -319,6 +321,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 } catch (InfException e) {
                     JOptionPane.showMessageDialog(null, e);
                 }
+                break;
             }
 
         }
@@ -349,6 +352,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
             case 3:
                 txtAntalArmar.setVisible(false);
                 lblAntalArmar.setVisible(false);
+                break;
 
         }
     }//GEN-LAST:event_cbxRasActionPerformed
