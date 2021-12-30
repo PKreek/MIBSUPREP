@@ -50,28 +50,6 @@
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="lblListaAliensPlats" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="lblListaAliensRas" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblListaAliensDatum" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnSokAlienDatum" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txtDatum1" alignment="0" pref="120" max="32767" attributes="0"/>
-                                      <Component id="txtDatum2" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblDatum1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblDatum2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="15" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblListaAliens" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -79,20 +57,46 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnAvbryt" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbxListaAliensPlats" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                                      <Component id="btnSokAlienPlats" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbxListaAliensRas" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                                      <Component id="btnSokAlienRas" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
                               <Component id="jScrollPane1" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbxListaAliensPlats" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="btnSokAlienPlats" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblListaAliensPlats" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbxListaAliensRas" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="lblListaAliensRas" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSokAlienRas" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="lblListaAliensDatum" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnSokAlienDatum" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="txtDatum1" min="-2" pref="120" max="-2" attributes="0"/>
+                                              <Component id="txtDatum2" min="-2" pref="120" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="lblDatum2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblDatum1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="47" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -132,7 +136,7 @@
                       <Component id="btnNollStall" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnAvbryt" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -286,6 +290,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDatum1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDatum2">
           <Properties>
@@ -297,6 +304,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDatum2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNollStall">
           <Properties>
