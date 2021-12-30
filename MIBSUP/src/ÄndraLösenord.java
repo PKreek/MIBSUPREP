@@ -61,19 +61,9 @@ public class ÄndraLösenord extends javax.swing.JFrame {
 
         pswAktuelltLosen.setBackground(new java.awt.Color(255, 255, 255));
         pswAktuelltLosen.setForeground(new java.awt.Color(0, 0, 0));
-        pswAktuelltLosen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pswAktuelltLosenActionPerformed(evt);
-            }
-        });
 
         pswNyttLosen.setBackground(new java.awt.Color(255, 255, 255));
         pswNyttLosen.setForeground(new java.awt.Color(0, 0, 0));
-        pswNyttLosen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pswNyttLosenActionPerformed(evt);
-            }
-        });
 
         pswNyttLosenIgen.setBackground(new java.awt.Color(255, 255, 255));
         pswNyttLosenIgen.setForeground(new java.awt.Color(0, 0, 0));
@@ -93,6 +83,11 @@ public class ÄndraLösenord extends javax.swing.JFrame {
         btnAvbryt.setBackground(new java.awt.Color(255, 255, 255));
         btnAvbryt.setForeground(new java.awt.Color(0, 0, 0));
         btnAvbryt.setText("Avbryt");
+        btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvbrytActionPerformed(evt);
+            }
+        });
 
         btnAndraLosen.setBackground(new java.awt.Color(255, 255, 255));
         btnAndraLosen.setForeground(new java.awt.Color(0, 0, 0));
@@ -209,13 +204,10 @@ public class ÄndraLösenord extends javax.swing.JFrame {
    
     }//GEN-LAST:event_btnAndraLosenActionPerformed
 
-    private void pswAktuelltLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswAktuelltLosenActionPerformed
+    private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pswAktuelltLosenActionPerformed
-
-    private void pswNyttLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswNyttLosenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pswNyttLosenActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnAvbrytActionPerformed
 
     /**
      * @param args the command line arguments

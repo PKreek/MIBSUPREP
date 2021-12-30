@@ -111,9 +111,6 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pswAktuelltLosenActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="pswNyttLosen">
           <Properties>
@@ -124,9 +121,6 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pswNyttLosenActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="pswNyttLosenIgen">
           <Properties>
@@ -181,6 +175,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Avbryt"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAvbrytActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAndraLosen">
           <Properties>

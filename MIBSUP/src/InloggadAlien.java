@@ -177,7 +177,9 @@ public class InloggadAlien extends javax.swing.JFrame {
 
     private void btnKontaktUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKontaktUppgifterActionPerformed
        System.out.println(anvandarnamn);
+       
         try {
+            JtxtKollaUppgifter.setText("");
             String query = "SELECT AGENT.NAMN, AGENT.TELEFON, OMRADE.BENAMNING "
                     + "FROM AGENT JOIN OMRADESCHEF ON AGENT.AGENT_ID = OMRADESCHEF.AGENT_ID "
                     + "JOIN OMRADE ON OMRADESCHEF.OMRADE = OMRADES_ID JOIN PLATS ON FINNS_I = OMRADES_ID "

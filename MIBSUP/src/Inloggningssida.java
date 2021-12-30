@@ -165,6 +165,7 @@ public class Inloggningssida extends javax.swing.JFrame {
                 System.out.println(hamtaAlien);
                 if (hamtaAlien != null) {
                     new InloggadAlien(anvandarNamn, losenordet, idb, selectedValue).setVisible(true);
+                    dispose();
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
@@ -188,8 +189,10 @@ public class Inloggningssida extends javax.swing.JFrame {
 
                 if (hamtaAgent != null && hamtaAdmin.equals("N")) {
                     new InloggadAgent(anvandarNamn, losenordet, idb, selectedValue).setVisible(true);
+                    dispose();
                 } else if (hamtaAgent != null && hamtaAdmin.equals("J")) {
                     new InloggadAdmin(anvandarNamn, losenordet, idb, selectedValue).setVisible(true);
+                    dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Användarnamn eller lösenord stämmer inte");
 

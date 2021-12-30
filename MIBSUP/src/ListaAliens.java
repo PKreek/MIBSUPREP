@@ -11,12 +11,12 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author noahjarvback
  */
 public class ListaAliens extends javax.swing.JFrame {
+
     private static InfDB idb;
 
     /**
@@ -66,6 +66,7 @@ public class ListaAliens extends javax.swing.JFrame {
         txtAreaLista.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaLista.setColumns(20);
         txtAreaLista.setRows(5);
+        txtAreaLista.setTabSize(2);
         jScrollPane1.setViewportView(txtAreaLista);
 
         lblListaAliensPlats.setBackground(new java.awt.Color(153, 153, 153));
@@ -215,46 +216,40 @@ public class ListaAliens extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void fillComboBox() throws InfException
-    {
+    public void fillComboBox() throws InfException {
         String query = "SELECT BENAMNING FROM PLATS";
         ArrayList<String> omrade = idb.fetchColumn(query);
-        for(String ettOmrade : omrade)
+        for (String ettOmrade : omrade) {
             cbxListaAliensPlats.addItem(ettOmrade);
+        }
         System.out.println(idb.fetchColumn(query));
-        
-    
-        
+
     }
-    
+
     private void btnSokAlienPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienPlatsActionPerformed
         // TODO add your handling code here:
         txtAreaLista.setText("");
-        
+
         String valdStad = cbxListaAliensPlats.getSelectedItem().toString();
         String query2 = "SELECT NAMN, BENAMNING FROM Alien "
                 + "JOIN PLATS ON ALIEN.PLATS = PLATS.PLATS_ID "
-                + "WHERE BENAMNING = '" + valdStad +"'";
+                + "WHERE BENAMNING = '" + valdStad + "'";
         System.out.println(query2);
         try {
             ArrayList<HashMap<String, String>> alienLista = idb.fetchRows(query2);
-            
-            
-            for(HashMap<String, String> alienNamn : alienLista){
-                txtAreaLista.append(alienNamn.get("NAMN") + " " + alienNamn.get("BENAMNING") + ("\n"));
-                
-               
+
+            for (HashMap<String, String> alienNamn : alienLista) {
+                txtAreaLista.append(alienNamn.get("NAMN") + "\t" + alienNamn.get("BENAMNING") + ("\n"));
+
                 System.out.println(alienNamn);
-            
+
             }
-            
-            
+
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_btnSokAlienPlatsActionPerformed
 
     private void btnNollStallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNollStallActionPerformed
