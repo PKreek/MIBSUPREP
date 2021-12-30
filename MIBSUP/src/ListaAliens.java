@@ -66,7 +66,6 @@ public class ListaAliens extends javax.swing.JFrame {
         txtAreaLista.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaLista.setColumns(20);
         txtAreaLista.setRows(5);
-        txtAreaLista.setTabSize(1);
         jScrollPane1.setViewportView(txtAreaLista);
 
         lblListaAliensPlats.setBackground(new java.awt.Color(153, 153, 153));
@@ -86,6 +85,7 @@ public class ListaAliens extends javax.swing.JFrame {
 
         cbxListaAliensRas.setBackground(new java.awt.Color(255, 255, 255));
         cbxListaAliensRas.setForeground(new java.awt.Color(0, 0, 0));
+        cbxListaAliensRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boglodite", "Squid", "Worm" }));
 
         btnSokAlienPlats.setBackground(new java.awt.Color(255, 255, 255));
         btnSokAlienPlats.setForeground(new java.awt.Color(0, 0, 0));
@@ -229,6 +229,7 @@ public class ListaAliens extends javax.swing.JFrame {
     
     private void btnSokAlienPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienPlatsActionPerformed
         // TODO add your handling code here:
+        txtAreaLista.setText("");
         
         String valdStad = cbxListaAliensPlats.getSelectedItem().toString();
         String query2 = "SELECT NAMN, BENAMNING FROM Alien "

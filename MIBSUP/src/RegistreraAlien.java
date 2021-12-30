@@ -1,11 +1,15 @@
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author noahjarvback
@@ -14,13 +18,15 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
     private static String anvandarnamn;
     private static InfDB idb;
+
     /**
      * Creates new form RegistreraAlien
      */
-    public RegistreraAlien(String anvandarnamn, InfDB idb) {
+    public RegistreraAlien(String anvandarnamn, InfDB idb) throws InfException {
         initComponents();
         this.anvandarnamn = anvandarnamn;
         this.idb = idb;
+        fillComboBox();
     }
 
     /**
@@ -38,7 +44,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
         txtNamn = new javax.swing.JTextField();
         txtLosenord = new javax.swing.JTextField();
         txtTelefonNr = new javax.swing.JTextField();
-        txtPlats = new javax.swing.JTextField();
         btnRegistreraAlien = new javax.swing.JButton();
         btnAvbryt = new javax.swing.JButton();
         lblRegistreringsDatum = new javax.swing.JLabel();
@@ -46,8 +51,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
         lblLosenord = new javax.swing.JLabel();
         lblTelefonNr = new javax.swing.JLabel();
         lblPlats = new javax.swing.JLabel();
-        txtAlienID = new javax.swing.JTextField();
-        lblAlienID = new javax.swing.JLabel();
+        cbxStad = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,9 +72,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         txtTelefonNr.setBackground(new java.awt.Color(255, 255, 255));
         txtTelefonNr.setForeground(new java.awt.Color(0, 0, 0));
-
-        txtPlats.setBackground(new java.awt.Color(255, 255, 255));
-        txtPlats.setForeground(new java.awt.Color(0, 0, 0));
 
         btnRegistreraAlien.setBackground(new java.awt.Color(255, 255, 255));
         btnRegistreraAlien.setForeground(new java.awt.Color(0, 0, 0));
@@ -105,12 +106,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
         lblPlats.setForeground(new java.awt.Color(153, 153, 153));
         lblPlats.setText("Välj platsen alien bor i:");
 
-        txtAlienID.setBackground(new java.awt.Color(255, 255, 255));
-        txtAlienID.setForeground(new java.awt.Color(0, 0, 0));
-
-        lblAlienID.setBackground(new java.awt.Color(153, 153, 153));
-        lblAlienID.setForeground(new java.awt.Color(153, 153, 153));
-        lblAlienID.setText("Välj ett alien ID:");
+        cbxStad.setBackground(new java.awt.Color(255, 255, 255));
+        cbxStad.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,25 +115,22 @@ public class RegistreraAlien extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblPlats)
                     .addComponent(lblLosenord)
                     .addComponent(lblNamn)
                     .addComponent(lblRegistreringsDatum)
                     .addComponent(lblRegistreraAlien)
                     .addComponent(lblTelefonNr)
-                    .addComponent(lblAlienID)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtAlienID, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtRegistreringsDatum, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtNamn, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtTelefonNr, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtPlats, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(btnRegistreraAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                            .addComponent(btnAvbryt))
-                        .addComponent(txtLosenord, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(txtRegistreringsDatum)
+                    .addComponent(txtNamn)
+                    .addComponent(txtTelefonNr)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnRegistreraAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addComponent(btnAvbryt))
+                    .addComponent(txtLosenord)
+                    .addComponent(cbxStad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,11 +138,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblRegistreraAlien)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblAlienID)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAlienID, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(lblRegistreringsDatum)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtRegistreringsDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +157,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPlats)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxStad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistreraAlien)
@@ -189,11 +179,63 @@ public class RegistreraAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fillComboBox() throws InfException {
+        String query1 = "SELECT BENAMNING FROM PLATS";
+        ArrayList<String> omrade = idb.fetchColumn(query1);
+        for (String ettOmrade : omrade) {
+            cbxStad.addItem(ettOmrade);
+        }
+        System.out.println(idb.fetchColumn(query1));
+
+    }
     private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
-        // TODO add your handling code here:
-        
-        
-        
+        // TODO add your handling code here
+        String losenord = txtLosenord.getText();
+        String alienNamn = txtNamn.getText();
+        String valdStad = cbxStad.getSelectedItem().toString();
+        String datum = txtRegistreringsDatum.getText();
+        String teleNr = txtTelefonNr.getText();
+        String anvandare = "SELECT AGENT_ID FROM AGENT WHERE NAMN = '" + anvandarnamn + "'";
+        String query = "SELECT NAMN FROM ALIEN";
+
+        try {
+            int staden = Integer.parseInt(idb.fetchSingle("SELECT PLATS_ID FROM PLATS WHERE BENAMNING = '" + valdStad + "'"));
+            int alienId = Integer.parseInt(idb.fetchSingle("SELECT MAX(ALIEN_ID) FROM ALIEN"));
+            alienId += 1;
+            int anvandarID = Integer.parseInt(idb.fetchSingle(anvandare));
+            System.out.println(anvandarID);
+            ArrayList<String> listaAliens = idb.fetchColumn(query);
+            System.out.println(listaAliens);
+
+            int i = 0;
+            boolean isFound = false;
+
+            while (isFound == false && i < listaAliens.size()) {
+                if (listaAliens.get(i).equals(alienNamn)) {
+                    isFound = true;
+                    JOptionPane.showMessageDialog(null, "Namnet finns redan registrerat");
+                } else {
+                    i++;
+                }
+            }
+            if (isFound == false) {
+                idb.insert("INSERT INTO ALIEN (ALIEN_ID, REGISTRERINGSDATUM, LOSENORD, NAMN, TELEFON, PLATS, ANSVARIG_AGENT)"
+                        + "VALUES(" + alienId + "," + "'"
+                        + datum + "'," + "'"
+                        + losenord + "'," + "'"
+                        + alienNamn + "'," + "'"
+                        + teleNr + "'," + "'"
+                        + staden + "'," + "'"
+                        + anvandarID + "')");
+                JOptionPane.showMessageDialog(null, "Alien är registrerad");
+
+            }
+
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+
+
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     /**
@@ -226,7 +268,11 @@ public class RegistreraAlien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistreraAlien(anvandarnamn, idb).setVisible(true);
+                try {
+                    new RegistreraAlien(anvandarnamn, idb).setVisible(true);
+                } catch (InfException ex) {
+                    Logger.getLogger(RegistreraAlien.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -234,18 +280,16 @@ public class RegistreraAlien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvbryt;
     private javax.swing.JButton btnRegistreraAlien;
+    private javax.swing.JComboBox<String> cbxStad;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblAlienID;
     private javax.swing.JLabel lblLosenord;
     private javax.swing.JLabel lblNamn;
     private javax.swing.JLabel lblPlats;
     private javax.swing.JLabel lblRegistreraAlien;
     private javax.swing.JLabel lblRegistreringsDatum;
     private javax.swing.JLabel lblTelefonNr;
-    private javax.swing.JTextField txtAlienID;
     private javax.swing.JTextField txtLosenord;
     private javax.swing.JTextField txtNamn;
-    private javax.swing.JTextField txtPlats;
     private javax.swing.JTextField txtRegistreringsDatum;
     private javax.swing.JTextField txtTelefonNr;
     // End of variables declaration//GEN-END:variables

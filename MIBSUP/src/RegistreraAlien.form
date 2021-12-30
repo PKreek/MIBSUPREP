@@ -45,27 +45,23 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="lblPlats" min="-2" max="-2" attributes="0"/>
                       <Component id="lblLosenord" min="-2" max="-2" attributes="0"/>
                       <Component id="lblNamn" min="-2" max="-2" attributes="0"/>
                       <Component id="lblRegistreringsDatum" min="-2" max="-2" attributes="0"/>
                       <Component id="lblRegistreraAlien" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTelefonNr" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblAlienID" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txtAlienID" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRegistreringsDatum" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtNamn" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtTelefonNr" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtPlats" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnRegistreraAlien" min="-2" pref="202" max="-2" attributes="0"/>
-                              <EmptySpace pref="29" max="32767" attributes="0"/>
-                              <Component id="btnAvbryt" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="txtLosenord" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtRegistreringsDatum" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtNamn" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtTelefonNr" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnRegistreraAlien" min="-2" pref="202" max="-2" attributes="0"/>
+                          <EmptySpace pref="29" max="32767" attributes="0"/>
+                          <Component id="btnAvbryt" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="txtLosenord" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cbxStad" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="82" max="32767" attributes="0"/>
               </Group>
@@ -76,11 +72,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="lblRegistreraAlien" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblAlienID" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtAlienID" pref="29" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="62" max="32767" attributes="0"/>
                   <Component id="lblRegistreringsDatum" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtRegistreringsDatum" min="-2" pref="30" max="-2" attributes="0"/>
@@ -99,7 +91,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblPlats" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtPlats" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="cbxStad" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnRegistreraAlien" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -153,16 +145,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTelefonNr">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtPlats">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -252,7 +234,7 @@
             <Property name="text" type="java.lang.String" value="V&#xe4;lj platsen alien bor i:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtAlienID">
+        <Component class="javax.swing.JComboBox" name="cbxStad">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -260,18 +242,13 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblAlienID">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="V&#xe4;lj ett alien ID:"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
