@@ -69,7 +69,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         txtRegistreringsDatum.setBackground(new java.awt.Color(255, 255, 255));
         txtRegistreringsDatum.setForeground(new java.awt.Color(0, 0, 0));
-        txtRegistreringsDatum.setText("YY-MM-DD");
+        txtRegistreringsDatum.setText("YYYY-MM-DD");
         txtRegistreringsDatum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRegistreringsDatumActionPerformed(evt);
