@@ -109,11 +109,11 @@ public class ListaAliens extends javax.swing.JFrame {
 
         txtDatum1.setBackground(new java.awt.Color(255, 255, 255));
         txtDatum1.setForeground(new java.awt.Color(0, 0, 0));
-        txtDatum1.setText("jTextField1");
+        txtDatum1.setText("YYYY-MM-DD");
 
         txtDatum2.setBackground(new java.awt.Color(255, 255, 255));
         txtDatum2.setForeground(new java.awt.Color(0, 0, 0));
-        txtDatum2.setText("jTextField2");
+        txtDatum2.setText("YYYY-MM-DD");
 
         btnNollStall.setBackground(new java.awt.Color(255, 255, 255));
         btnNollStall.setForeground(new java.awt.Color(0, 0, 0));
