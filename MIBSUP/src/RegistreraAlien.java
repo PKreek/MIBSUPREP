@@ -18,6 +18,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
     private static String anvandarnamn;
     private static InfDB idb;
+    
 
     /**
      * Creates new form RegistreraAlien
@@ -289,14 +290,14 @@ public class RegistreraAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
 
-        int antalArmar = Integer.parseInt(txtAntalArmar.getText());
         int i = cbxRas.getSelectedIndex();
         switch (i) {
             case 1: {
                 try {
+                    int antalBoogies = Integer.parseInt(txtAntalArmar.getText());
                     idb.insert("INSERT INTO BOGLODITE (ALIEN_ID, ANTAL_BOOGIES)"
                             + "VALUES(" + fragaID + "," + "'"
-                            + antalArmar + "')");
+                            + antalBoogies + "')");
                 } catch (InfException e) {
                     JOptionPane.showMessageDialog(null, e);
                 }
@@ -304,6 +305,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
             }
             case 2: {
                 try {
+                    int antalArmar = Integer.parseInt(txtAntalArmar.getText());
                     idb.insert("INSERT INTO SQUID (ALIEN_ID, ANTAL_ARMAR)"
                             + "VALUES(" + fragaID + "," + "'"
                             + antalArmar + "')");
