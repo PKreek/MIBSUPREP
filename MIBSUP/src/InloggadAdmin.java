@@ -44,6 +44,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
         lblVälkommenAdmin = new javax.swing.JLabel();
         btnAndraLosen = new javax.swing.JButton();
         btnRegistreraAlien = new javax.swing.JButton();
+        lblKontoOversikt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -79,6 +80,10 @@ public class InloggadAdmin extends javax.swing.JFrame {
             }
         });
 
+        lblKontoOversikt.setFont(new java.awt.Font("sansserif", 0, 20)); // NOI18N
+        lblKontoOversikt.setForeground(new java.awt.Color(255, 255, 255));
+        lblKontoOversikt.setText("Kontoöversikt");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -90,8 +95,9 @@ public class InloggadAdmin extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAndraLosen)
                     .addComponent(btnRegistreraAlien)
-                    .addComponent(btnAndraLosen))
+                    .addComponent(lblKontoOversikt))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -99,11 +105,13 @@ public class InloggadAdmin extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(lblVälkommenAdmin)
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
+                .addComponent(lblKontoOversikt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistreraAlien)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAndraLosen)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,6 +181,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAndraLosen;
     private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblKontoOversikt;
     private javax.swing.JLabel lblVälkommenAdmin;
     // End of variables declaration//GEN-END:variables
 }
