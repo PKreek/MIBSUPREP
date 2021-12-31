@@ -111,6 +111,11 @@ public class ListaAliens extends javax.swing.JFrame {
         btnSokAlienDatum.setBackground(new java.awt.Color(255, 255, 255));
         btnSokAlienDatum.setForeground(new java.awt.Color(0, 0, 0));
         btnSokAlienDatum.setText("Sök");
+        btnSokAlienDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokAlienDatumActionPerformed(evt);
+            }
+        });
 
         txtDatum1.setBackground(new java.awt.Color(255, 255, 255));
         txtDatum1.setForeground(new java.awt.Color(0, 0, 0));
@@ -269,8 +274,9 @@ public class ListaAliens extends javax.swing.JFrame {
                 + "WHERE BENAMNING = '" + valdStad + "'";
         System.out.println(query2);
         try {
+            String textStad = cbxListaAliensPlats.getSelectedItem().toString();
             ArrayList<String> alienLista = idb.fetchColumn(query2);
-            txtAreaLista.append("Namn:\t" + ("\n"));
+            txtAreaLista.append("Namn från:\t" + textStad + ("\n"));
             for (String alienNamn : alienLista) {
                 txtAreaLista.append(alienNamn + ("\n"));
 
@@ -312,7 +318,7 @@ public class ListaAliens extends javax.swing.JFrame {
         switch (i) {
             case 1: {
                 try {
-                    txtAreaLista.append("Namn:\t" + ("\n"));
+                    txtAreaLista.append("Namn från rasen: Boglodite\t" + ("\n"));
                     ArrayList<String> bogloditeRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
                             + "JOIN BOGLODITE ON ALIEN.ALIEN_ID = BOGLODITE.ALIEN_ID");
                     for (String alienNamn : bogloditeRas) {
@@ -321,13 +327,13 @@ public class ListaAliens extends javax.swing.JFrame {
 
                 } catch (InfException ex) {
                     JOptionPane.showMessageDialog(null, ex);
-                    
+
                 }
                 break;
             }
             case 2: {
                 try {
-                    txtAreaLista.append("Namn:\t" + ("\n"));
+                    txtAreaLista.append("Namn från rasen: Squid\t" + ("\n"));
                     ArrayList<String> squidRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
                             + "JOIN SQUID ON ALIEN.ALIEN_ID = SQUID.ALIEN_ID");
                     for (String alienNamn : squidRas) {
@@ -341,7 +347,7 @@ public class ListaAliens extends javax.swing.JFrame {
                 break;
             }
             case 3: {
-                txtAreaLista.append("Namn:\t" + ("\n"));
+                txtAreaLista.append("Namn från rasen: Worm\t" + ("\n"));
                 try {
                     ArrayList<String> wormRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
                             + "JOIN WORM ON ALIEN.ALIEN_ID = WORM.ALIEN_ID");
@@ -351,7 +357,7 @@ public class ListaAliens extends javax.swing.JFrame {
 
                 } catch (InfException ex) {
                     JOptionPane.showMessageDialog(null, ex);
-                    
+
                 }
                 break;
 
@@ -360,6 +366,25 @@ public class ListaAliens extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnSokAlienRasActionPerformed
+
+    private void btnSokAlienDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienDatumActionPerformed
+        // TODO add your handling code here:
+        txtAreaLista.setText("");
+        String datum1 = txtDatum1.getText();
+        String datum2 = txtDatum2.getText();
+        String query = "SELECT ALIEN.NAMN FROM AlIEN WHERE REGISTRERINGSDATUM BETWEEN '" + datum1 + "'" + "AND'" + datum2 + "'";
+
+        try {
+            txtAreaLista.append("Aliens registrerade:\t" + ("\n"));
+            ArrayList<String> datumLista = idb.fetchColumn(query);
+            for(String datum : datumLista){
+                txtAreaLista.append(datum + ("\n"));
+            }
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+
+    }//GEN-LAST:event_btnSokAlienDatumActionPerformed
 
     /**
      * @param args the command line arguments
