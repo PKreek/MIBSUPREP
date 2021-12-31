@@ -102,6 +102,11 @@ public class ListaAliens extends javax.swing.JFrame {
         btnSokAlienRas.setBackground(new java.awt.Color(255, 255, 255));
         btnSokAlienRas.setForeground(new java.awt.Color(0, 0, 0));
         btnSokAlienRas.setText("Sök");
+        btnSokAlienRas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokAlienRasActionPerformed(evt);
+            }
+        });
 
         btnSokAlienDatum.setBackground(new java.awt.Color(255, 255, 255));
         btnSokAlienDatum.setForeground(new java.awt.Color(0, 0, 0));
@@ -259,15 +264,15 @@ public class ListaAliens extends javax.swing.JFrame {
         txtAreaLista.setText("");
 
         String valdStad = cbxListaAliensPlats.getSelectedItem().toString();
-        String query2 = "SELECT NAMN, BENAMNING FROM Alien "
+        String query2 = "SELECT NAMN FROM Alien "
                 + "JOIN PLATS ON ALIEN.PLATS = PLATS.PLATS_ID "
                 + "WHERE BENAMNING = '" + valdStad + "'";
         System.out.println(query2);
         try {
-            ArrayList<HashMap<String, String>> alienLista = idb.fetchRows(query2);
-
-            for (HashMap<String, String> alienNamn : alienLista) {
-                txtAreaLista.append(alienNamn.get("NAMN") + "\t" + alienNamn.get("BENAMNING") + ("\n"));
+            ArrayList<String> alienLista = idb.fetchColumn(query2);
+            txtAreaLista.append("Namn:\t" + ("\n"));
+            for (String alienNamn : alienLista) {
+                txtAreaLista.append(alienNamn + ("\n"));
 
                 System.out.println(alienNamn);
 
@@ -299,6 +304,62 @@ public class ListaAliens extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtDatum2.setText("");
     }//GEN-LAST:event_txtDatum2ActionPerformed
+
+    private void btnSokAlienRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienRasActionPerformed
+        // TODO add your handling code here:
+        txtAreaLista.setText("");
+        int i = cbxListaAliensRas.getSelectedIndex();
+        switch (i) {
+            case 1: {
+                try {
+                    txtAreaLista.append("Namn:\t" + ("\n"));
+                    ArrayList<String> bogloditeRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
+                            + "JOIN BOGLODITE ON ALIEN.ALIEN_ID = BOGLODITE.ALIEN_ID");
+                    for (String alienNamn : bogloditeRas) {
+                        txtAreaLista.append(alienNamn + ("\n"));
+                    }
+
+                } catch (InfException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                    
+                }
+                break;
+            }
+            case 2: {
+                try {
+                    txtAreaLista.append("Namn:\t" + ("\n"));
+                    ArrayList<String> squidRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
+                            + "JOIN SQUID ON ALIEN.ALIEN_ID = SQUID.ALIEN_ID");
+                    for (String alienNamn : squidRas) {
+                        txtAreaLista.append(alienNamn + ("\n"));
+
+                    }
+                } catch (InfException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+
+                }
+                break;
+            }
+            case 3: {
+                txtAreaLista.append("Namn:\t" + ("\n"));
+                try {
+                    ArrayList<String> wormRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
+                            + "JOIN WORM ON ALIEN.ALIEN_ID = WORM.ALIEN_ID");
+                    for (String alienNamn : wormRas) {
+                        txtAreaLista.append(alienNamn + ("\n"));
+                    }
+
+                } catch (InfException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                    
+                }
+                break;
+
+            }
+
+        }
+
+    }//GEN-LAST:event_btnSokAlienRasActionPerformed
 
     /**
      * @param args the command line arguments
