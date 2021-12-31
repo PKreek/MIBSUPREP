@@ -45,6 +45,7 @@ public class InloggadAgent extends javax.swing.JFrame {
         btnRegistreraAlien = new javax.swing.JButton();
         lblKontoÖversikt = new javax.swing.JLabel();
         btnListaAliens = new javax.swing.JButton();
+        btnSokInformation = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +95,18 @@ public class InloggadAgent extends javax.swing.JFrame {
             }
         });
 
+        btnSokInformation.setBackground(new java.awt.Color(33, 31, 31));
+        btnSokInformation.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        btnSokInformation.setForeground(new java.awt.Color(153, 153, 153));
+        btnSokInformation.setText("Sök fram information");
+        btnSokInformation.setBorder(null);
+        btnSokInformation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSokInformation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokInformationActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,7 +125,10 @@ public class InloggadAgent extends javax.swing.JFrame {
                     .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnListaAliens)))
+                        .addComponent(btnListaAliens))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnSokInformation)))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -124,11 +140,13 @@ public class InloggadAgent extends javax.swing.JFrame {
                 .addComponent(lblKontoÖversikt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistreraAlien)
-                .addGap(32, 32, 32)
+                .addGap(5, 5, 5)
+                .addComponent(btnSokInformation)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnListaAliens)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,6 +189,11 @@ public class InloggadAgent extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnListaAliensActionPerformed
 
+    private void btnSokInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokInformationActionPerformed
+        // TODO add your handling code here:
+        new SökInformation(idb).setVisible(true);
+    }//GEN-LAST:event_btnSokInformationActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -210,6 +233,7 @@ public class InloggadAgent extends javax.swing.JFrame {
     private javax.swing.JButton btnAndraLosen;
     private javax.swing.JButton btnListaAliens;
     private javax.swing.JButton btnRegistreraAlien;
+    private javax.swing.JButton btnSokInformation;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblKontoÖversikt;
     private javax.swing.JLabel lblVälkommenAgent;
