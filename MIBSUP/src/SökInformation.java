@@ -69,9 +69,8 @@ public class SökInformation extends javax.swing.JFrame {
         });
 
         lblAnge.setBackground(new java.awt.Color(153, 153, 153));
-        lblAnge.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblAnge.setForeground(new java.awt.Color(153, 153, 153));
-        lblAnge.setText("Ange ett namn eller en plats:");
+        lblAnge.setText("Ange ett namn för alien eller en plats för områdeschefen:");
 
         txtAnge.setBackground(new java.awt.Color(255, 255, 255));
         txtAnge.setForeground(new java.awt.Color(0, 0, 0));
@@ -96,21 +95,16 @@ public class SökInformation extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSok)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtAnge, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblAnge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(115, 115, 115))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSok)
+                    .addComponent(txtAnge, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAnge)
                     .addComponent(lblSokFram)
                     .addComponent(cbxSokval, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +121,7 @@ public class SökInformation extends javax.swing.JFrame {
                 .addComponent(btnSok)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,17 +160,16 @@ public class SökInformation extends javax.swing.JFrame {
             case 1: {
 
                 try {
-            
+
                     HashMap<String, String> alienInfo2 = idb.fetchRow("SELECT AGENT.NAMN, BENAMNING FROM ALIEN "
                             + "JOIN PLATS ON ALIEN.PLATS = PLATS.PLATS_ID "
                             + "JOIN AGENT on ALIEN.ANSVARIG_AGENT = AGENT.AGENT_ID "
                             + "WHERE ALIEN.NAMN = '" + angeSokning + "'");
                     System.out.println(alienInfo2);
-                    
+
                     HashMap<String, String> alienInfo = idb.fetchRow("SELECT ALIEN_ID, NAMN, LOSENORD, REGISTRERINGSDATUM, TELEFON FROM ALIEN "
                             + "WHERE ALIEN.NAMN = '" + angeSokning + "'");
-                    
-                    
+
                     txtAreaLista.append("Aliens ID:\t" + alienInfo.get("ALIEN_ID"));
                     txtAreaLista.append("\nAliens namn:\t" + alienInfo.get("NAMN"));
                     txtAreaLista.append("\nAliens lösenord:\t" + alienInfo.get("LOSENORD"));
@@ -184,10 +177,24 @@ public class SökInformation extends javax.swing.JFrame {
                     txtAreaLista.append("\nTelefonnummer:\t" + alienInfo.get("TELEFON"));
                     txtAreaLista.append("\nAnsvarig agent:\t" + alienInfo2.get("NAMN"));
                     txtAreaLista.append("\nStad:\t" + alienInfo2.get("BENAMNING"));
-                   
-                    
-                    
-                    System.out.println(alienInfo);
+
+                   if(!angeSokning.equals(alienInfo.get("NAMN"))){
+                       JOptionPane.showMessageDialog(null, "Aliennamnet finns inte");
+                   }
+                } catch (InfException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
+                break;
+            }
+            case 2: {
+                try {
+                    String omradeschef = idb.fetchSingle("SELECT Agent.NAMN FROM Agent "
+                            + "JOIN Omradeschef ON Agent.Agent_ID = Omradeschef.Agent_ID "
+                            + "JOIN Omrade ON Agent.Omrade = Omrade.Omrades_ID "
+                            + "JOIN Plats ON Omrade.Omrades_ID = Plats.Finns_I "
+                            + "WHERE Plats.Benamning = '" + angeSokning + "'");
+
+                    txtAreaLista.append("Områdeschef:\t" + omradeschef);
                 } catch (InfException ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }
