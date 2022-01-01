@@ -61,6 +61,11 @@ public class ÄndraLösenord extends javax.swing.JFrame {
 
         pswAktuelltLosen.setBackground(new java.awt.Color(255, 255, 255));
         pswAktuelltLosen.setForeground(new java.awt.Color(0, 0, 0));
+        pswAktuelltLosen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pswAktuelltLosenActionPerformed(evt);
+            }
+        });
 
         pswNyttLosen.setBackground(new java.awt.Color(255, 255, 255));
         pswNyttLosen.setForeground(new java.awt.Color(0, 0, 0));
@@ -208,6 +213,10 @@ public class ÄndraLösenord extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
+
+    private void pswAktuelltLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswAktuelltLosenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pswAktuelltLosenActionPerformed
 
     /**
      * @param args the command line arguments

@@ -88,8 +88,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnListaAliens" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                   <Component id="btnAndraLosen" min="-2" pref="-3" max="-2" attributes="0"/>
                   <EmptySpace pref="184" max="32767" attributes="0"/>
+=======
+                  <Component id="btnAndraLosen" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="183" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
               </Group>
           </Group>
         </DimensionLayout>
