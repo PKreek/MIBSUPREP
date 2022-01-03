@@ -176,8 +176,12 @@ public class InloggadAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTaBortAlienActionPerformed
 
     private void btnSattAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSattAdminActionPerformed
-        new SattAdmin(idb).setVisible(true);        
+        try {        
+            new SattAdmin(idb).setVisible(true);
 // TODO add your handling code here:
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSattAdminActionPerformed
 
     /**

@@ -64,7 +64,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="vilkenAlie">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vilkenAlieActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="vilkenAlieKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="enterKnapp">

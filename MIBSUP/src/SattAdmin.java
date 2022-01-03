@@ -92,9 +92,6 @@ public class SattAdmin extends javax.swing.JFrame {
 
     private void btnConfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmeraActionPerformed
            String agenten = (String) cbxAgentNamn.getSelectedItem();
-           
-           String admin = "select Administrator from agent where namn = '" + agenten +"'"; 
-      
           String uppdatera = "UPDATE AGENT SET ADMINISTRATOR = '" + "J" + "'" + "WHERE AGENT.NAMN = '" + agenten + "'";
            try {
              String hamtaAdmin = idb.fetchSingle(uppdatera);

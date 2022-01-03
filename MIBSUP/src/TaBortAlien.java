@@ -1,4 +1,5 @@
- /*
+
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -7,8 +8,10 @@
  *
  * @author nikla
  */
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -24,8 +27,6 @@ public class TaBortAlien extends javax.swing.JFrame {
         this.idb = idb;
         initComponents();
     }
-    
-  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,9 +45,9 @@ public class TaBortAlien extends javax.swing.JFrame {
 
         jLabel1.setText("Ange namn för den alie du vill ta bort");
 
-        vilkenAlie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vilkenAlieActionPerformed(evt);
+        vilkenAlie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                vilkenAlieKeyPressed(evt);
             }
         });
 
@@ -89,38 +90,40 @@ public class TaBortAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void vilkenAlieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vilkenAlieActionPerformed
-
-        
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vilkenAlieActionPerformed
-
     private void enterKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterKnappActionPerformed
         // TODO add your handling code here:
-           try { 
-       String alien = vilkenAlie.getText();
-        System.out.println(alien);
-       String query = "select namn from alien where namn = '"+alien+"'"; 
-       System.out.println(query);
-        
-      String hamtaAlien = idb.fetchSingle(query);
-       System.out.println(hamtaAlien);
-       System.out.println(alien);
-      
-       if(hamtaAlien.equals(alien))
-       {
-           System.out.println("De gick");
-       }
-         if(!hamtaAlien.equals(alien)) {
-                System.out.println("Alien finns ej");
-               }
-        
+        try {
+            String alien = vilkenAlie.getText();
+            System.out.println(alien);
+            String query = "select * from alien where namn = '" + alien + "'";
+            System.out.println(query);
+
+            //String hamtaAlien = idb.fetchSingle(query);
+            //System.out.println(hamtaAlien);
+           // System.out.println(alien);
+
+            if (idb.fetchSingle(query) == null) {
+                System.out.println("Fel inmatning");
+            } else {
+                String deleteQuery = "delete from alien where namn ='"+alien+"'";
+                idb.delete(deleteQuery);
+                System.out.println("Alien är borttagen");
+            }
+
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Fel namn " + ex);
         }
-      
-    
+
+
     }//GEN-LAST:event_enterKnappActionPerformed
+
+    private void vilkenAlieKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vilkenAlieKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            enterKnapp.doClick();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vilkenAlieKeyPressed
 
     /**
      * @param args the command line arguments
@@ -152,7 +155,7 @@ public class TaBortAlien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
