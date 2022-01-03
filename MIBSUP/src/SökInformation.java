@@ -22,7 +22,7 @@ public class SökInformation extends javax.swing.JFrame {
     /**
      * Creates new form SökInformation
      */
-    public SökInformation(InfDB idb) {
+    public SökInformation(InfDB idb) throws InfException {
         initComponents();
         this.idb = idb;
         txtAnge.setVisible(false);
@@ -30,6 +30,9 @@ public class SökInformation extends javax.swing.JFrame {
         btnSok.setVisible(false);
         jScrollPane1.setVisible(false);
         txtAreaLista.setVisible(false);
+        cbxOmrade.setVisible(false);
+        btnAvbryt.setVisible(false);
+        fillComboBox();
     }
 
     /**
@@ -49,6 +52,8 @@ public class SökInformation extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaLista = new javax.swing.JTextArea();
         btnSok = new javax.swing.JButton();
+        cbxOmrade = new javax.swing.JComboBox<>();
+        btnAvbryt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,7 +66,7 @@ public class SökInformation extends javax.swing.JFrame {
 
         cbxSokval.setBackground(new java.awt.Color(255, 255, 255));
         cbxSokval.setForeground(new java.awt.Color(0, 0, 0));
-        cbxSokval.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj sökval", "Alien", "Områdeschef" }));
+        cbxSokval.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj sökval:", "Alien", "Områdeschef" }));
         cbxSokval.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxSokvalActionPerformed(evt);
@@ -70,7 +75,7 @@ public class SökInformation extends javax.swing.JFrame {
 
         lblAnge.setBackground(new java.awt.Color(153, 153, 153));
         lblAnge.setForeground(new java.awt.Color(153, 153, 153));
-        lblAnge.setText("Ange ett namn för alien eller en plats för områdeschefen:");
+        lblAnge.setText("Ange ett namn för alien eller välj ett område för områdeschefen:");
 
         txtAnge.setBackground(new java.awt.Color(255, 255, 255));
         txtAnge.setForeground(new java.awt.Color(0, 0, 0));
@@ -91,6 +96,24 @@ public class SökInformation extends javax.swing.JFrame {
             }
         });
 
+        cbxOmrade.setBackground(new java.awt.Color(255, 255, 255));
+        cbxOmrade.setForeground(new java.awt.Color(0, 0, 0));
+        cbxOmrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj område:" }));
+        cbxOmrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxOmradeActionPerformed(evt);
+            }
+        });
+
+        btnAvbryt.setBackground(new java.awt.Color(255, 255, 255));
+        btnAvbryt.setForeground(new java.awt.Color(0, 0, 0));
+        btnAvbryt.setText("Avbryt");
+        btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvbrytActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -98,13 +121,16 @@ public class SökInformation extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAvbryt)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSok)
                     .addComponent(txtAnge, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAnge)
                     .addComponent(lblSokFram)
-                    .addComponent(cbxSokval, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(142, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cbxOmrade, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbxSokval, javax.swing.GroupLayout.Alignment.LEADING, 0, 187, Short.MAX_VALUE)))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,15 +139,19 @@ public class SökInformation extends javax.swing.JFrame {
                 .addComponent(lblSokFram)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbxSokval, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblAnge)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAnge, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSok)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAvbryt)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,6 +168,16 @@ public class SökInformation extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fillComboBox() throws InfException {
+        String query = "SELECT BENAMNING FROM OMRADE";
+        ArrayList<String> omrade = idb.fetchColumn(query);
+        for (String ettOmrade : omrade) {
+            cbxOmrade.addItem(ettOmrade);
+            System.out.println(omrade);
+        }
+    }
+            
+    
     private void cbxSokvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSokvalActionPerformed
         // TODO add your handling code here:
         String sokVal = cbxSokval.getSelectedItem().toString();
@@ -148,8 +188,16 @@ public class SökInformation extends javax.swing.JFrame {
             btnSok.setVisible(true);
             jScrollPane1.setVisible(true);
             txtAreaLista.setVisible(true);
+            btnAvbryt.setVisible(true);
             txtAnge.setText("");
             txtAreaLista.setText("");
+            if(sokVal.equals("Områdeschef")){
+                cbxOmrade.setVisible(true);
+            }
+            if(sokVal.equals("Alien")){
+                cbxOmrade.setVisible(false);
+            }
+            
         }
     }//GEN-LAST:event_cbxSokvalActionPerformed
 
@@ -205,6 +253,17 @@ public class SökInformation extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSokActionPerformed
 
+    private void cbxOmradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxOmradeActionPerformed
+        // TODO add your handling code here:
+        String valtOmrade = cbxOmrade.getSelectedItem().toString();
+        txtAnge.setText(valtOmrade);
+    }//GEN-LAST:event_cbxOmradeActionPerformed
+
+    private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnAvbrytActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -239,13 +298,19 @@ public class SökInformation extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SökInformation(idb).setVisible(true);
+                try {
+                    new SökInformation(idb).setVisible(true);
+                } catch (InfException ex) {
+                    Logger.getLogger(SökInformation.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAvbryt;
     private javax.swing.JButton btnSok;
+    private javax.swing.JComboBox<String> cbxOmrade;
     private javax.swing.JComboBox<String> cbxSokval;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

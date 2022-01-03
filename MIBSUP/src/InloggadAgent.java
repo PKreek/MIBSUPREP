@@ -46,6 +46,8 @@ public class InloggadAgent extends javax.swing.JFrame {
         lblKontoÖversikt = new javax.swing.JLabel();
         btnListaAliens = new javax.swing.JButton();
         btnSokInformation = new javax.swing.JButton();
+        btnRegistreraUtrustning = new javax.swing.JButton();
+        btnÄndraAlien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,7 +88,7 @@ public class InloggadAgent extends javax.swing.JFrame {
         btnListaAliens.setBackground(new java.awt.Color(33, 31, 31));
         btnListaAliens.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
         btnListaAliens.setForeground(new java.awt.Color(153, 153, 153));
-        btnListaAliens.setText("Lista aliens");
+        btnListaAliens.setText("Listor av aliens");
         btnListaAliens.setBorder(null);
         btnListaAliens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnListaAliens.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +106,30 @@ public class InloggadAgent extends javax.swing.JFrame {
         btnSokInformation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSokInformationActionPerformed(evt);
+            }
+        });
+
+        btnRegistreraUtrustning.setBackground(new java.awt.Color(33, 31, 31));
+        btnRegistreraUtrustning.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        btnRegistreraUtrustning.setForeground(new java.awt.Color(153, 153, 153));
+        btnRegistreraUtrustning.setText("Registrera utrustning");
+        btnRegistreraUtrustning.setBorder(null);
+        btnRegistreraUtrustning.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistreraUtrustning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistreraUtrustningActionPerformed(evt);
+            }
+        });
+
+        btnÄndraAlien.setBackground(new java.awt.Color(33, 31, 31));
+        btnÄndraAlien.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        btnÄndraAlien.setForeground(new java.awt.Color(153, 153, 153));
+        btnÄndraAlien.setText("Ändra information om en alien");
+        btnÄndraAlien.setBorder(null);
+        btnÄndraAlien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnÄndraAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnÄndraAlienActionPerformed(evt);
             }
         });
 
@@ -130,7 +156,11 @@ public class InloggadAgent extends javax.swing.JFrame {
                         .addComponent(btnSokInformation))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnRegistreraUtrustning))
+                    .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnÄndraAlien)))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -143,12 +173,16 @@ public class InloggadAgent extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistreraAlien)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnÄndraAlien)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSokInformation)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnListaAliens)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRegistreraUtrustning)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAndraLosen)
-                .addGap(14, 14, 14))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,9 +226,23 @@ public class InloggadAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListaAliensActionPerformed
 
     private void btnSokInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokInformationActionPerformed
-        // TODO add your handling code here:
-        new SökInformation(idb).setVisible(true);
+        try {
+            // TODO add your handling code here:
+            new SökInformation(idb).setVisible(true);
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSokInformationActionPerformed
+
+    private void btnRegistreraUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraUtrustningActionPerformed
+        // TODO add your handling code here:
+        new RegistreraUtrustning(idb).setVisible(true);
+    }//GEN-LAST:event_btnRegistreraUtrustningActionPerformed
+
+    private void btnÄndraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraAlienActionPerformed
+        // TODO add your handling code here:
+        new ÄndraInformationAlien(idb).setVisible(true);
+    }//GEN-LAST:event_btnÄndraAlienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,7 +283,9 @@ public class InloggadAgent extends javax.swing.JFrame {
     private javax.swing.JButton btnAndraLosen;
     private javax.swing.JButton btnListaAliens;
     private javax.swing.JButton btnRegistreraAlien;
+    private javax.swing.JButton btnRegistreraUtrustning;
     private javax.swing.JButton btnSokInformation;
+    private javax.swing.JButton btnÄndraAlien;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblKontoÖversikt;
     private javax.swing.JLabel lblVälkommenAgent;

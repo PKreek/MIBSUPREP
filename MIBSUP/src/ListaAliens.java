@@ -64,6 +64,8 @@ public class ListaAliens extends javax.swing.JFrame {
         lblListaAliens.setForeground(new java.awt.Color(255, 255, 255));
         lblListaAliens.setText("Lista aliens");
 
+        jScrollPane1.setAutoscrolls(true);
+
         txtAreaLista.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaLista.setColumns(20);
         txtAreaLista.setRows(5);
