@@ -56,10 +56,20 @@ public class Inloggningssida extends javax.swing.JFrame {
         txtInloggAnvandare.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
         txtInloggAnvandare.setForeground(new java.awt.Color(0, 0, 0));
         txtInloggAnvandare.setToolTipText("");
+        txtInloggAnvandare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInloggAnvandareActionPerformed(evt);
+            }
+        });
 
         pswInloggLosen.setBackground(new java.awt.Color(255, 255, 255));
         pswInloggLosen.setForeground(new java.awt.Color(0, 0, 0));
         pswInloggLosen.setToolTipText("");
+        pswInloggLosen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pswInloggLosenActionPerformed(evt);
+            }
+        });
         pswInloggLosen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 pswInloggLosenKeyPressed(evt);
@@ -212,6 +222,14 @@ public class Inloggningssida extends javax.swing.JFrame {
         }
        
     }//GEN-LAST:event_pswInloggLosenKeyPressed
+
+    private void txtInloggAnvandareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInloggAnvandareActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtInloggAnvandareActionPerformed
+
+    private void pswInloggLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswInloggLosenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pswInloggLosenActionPerformed
 
     /**
      * @param args the command line arguments
