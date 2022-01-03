@@ -86,11 +86,11 @@ try {
  String query = "select * from agent where namn = '" + agenten + "'";
 
   if (idb.fetchSingle(query) == null) {
-                System.out.println("Fel inmatning");
-                } else {
-                String deleteQuery = "delete from agent where namn ='"+agenten+"'";
-                idb.delete(deleteQuery);
-                System.out.println("Alien är borttagen");
+       System.out.println("Fel inmatning");
+          } else {
+       String deleteQuery = "delete from agent where namn ='"+agenten+"'";
+         idb.delete(deleteQuery);
+        System.out.println("Alien är borttagen");
             }
 
         } catch (InfException ex) {

@@ -49,6 +49,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
         btnSattAdmin = new javax.swing.JButton();
         btnTaBortUtr = new javax.swing.JButton();
         btnTaBortAgent = new javax.swing.JButton();
+        btnSokAgent = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -121,6 +122,13 @@ public class InloggadAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnSokAgent.setText("Sök info om agent");
+        btnSokAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokAgentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -143,7 +151,9 @@ public class InloggadAdmin extends javax.swing.JFrame {
                             .addComponent(btnTaBortUtr)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(btnTaBortAgent)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnTaBortAgent)
+                            .addComponent(btnSokAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -165,7 +175,9 @@ public class InloggadAdmin extends javax.swing.JFrame {
                 .addComponent(btnTaBortUtr)
                 .addGap(18, 18, 18)
                 .addComponent(btnTaBortAgent)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSokAgent)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,6 +238,15 @@ new TaBortAgent (idb).setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTaBortAgentActionPerformed
 
+    private void btnSokAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAgentActionPerformed
+        try {
+            new SokInfoAgent(idb).setVisible(true);
+            // TODO add your handling code here:
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSokAgentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -265,6 +286,7 @@ new TaBortAgent (idb).setVisible(true);
     private javax.swing.JButton btnAndraLosen;
     private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JButton btnSattAdmin;
+    private javax.swing.JButton btnSokAgent;
     private javax.swing.JButton btnTaBortAgent;
     private javax.swing.JButton btnTaBortAlien;
     private javax.swing.JButton btnTaBortUtr;
