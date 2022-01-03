@@ -105,9 +105,6 @@ public class SattAdmin extends javax.swing.JFrame {
          } catch (InfException ex) {
              Logger.getLogger(SattAdmin.class.getName()).log(Level.SEVERE, null, ex);
          }
-            //String query = "select namn from agent where namn = 'agenten'";
-            
-            
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnConfirmeraActionPerformed

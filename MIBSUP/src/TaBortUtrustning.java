@@ -1,5 +1,8 @@
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -55,6 +58,11 @@ public class TaBortUtrustning extends javax.swing.JFrame {
         cbxUtrustning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vilken utrustning" }));
 
         btnConfirmera.setText("OK");
+        btnConfirmera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmeraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,6 +90,17 @@ public class TaBortUtrustning extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmeraActionPerformed
+String utrustningen = (String) cbxUtrustning.getSelectedItem();
+String borttagen = "delete from utrustning where benamning ='"+utrustningen+"'";
+        try {
+            idb.delete(borttagen);
+            // TODO add your handling code here:
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Fel" + ex);
+        }
+    }//GEN-LAST:event_btnConfirmeraActionPerformed
 
     /**
      * @param args the command line arguments

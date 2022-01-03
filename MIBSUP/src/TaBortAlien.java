@@ -45,6 +45,11 @@ public class TaBortAlien extends javax.swing.JFrame {
 
         jLabel1.setText("Ange namn för den alie du vill ta bort");
 
+        vilkenAlie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vilkenAlieActionPerformed(evt);
+            }
+        });
         vilkenAlie.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 vilkenAlieKeyPressed(evt);
@@ -124,6 +129,10 @@ public class TaBortAlien extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_vilkenAlieKeyPressed
+
+    private void vilkenAlieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vilkenAlieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vilkenAlieActionPerformed
 
     /**
      * @param args the command line arguments

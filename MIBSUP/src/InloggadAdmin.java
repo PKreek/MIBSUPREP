@@ -48,6 +48,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
         btnTaBortAlien = new javax.swing.JButton();
         btnSattAdmin = new javax.swing.JButton();
         btnTaBortUtr = new javax.swing.JButton();
+        btnTaBortAgent = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -113,6 +114,13 @@ public class InloggadAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnTaBortAgent.setText("Ta bort agent");
+        btnTaBortAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortAgentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -122,15 +130,20 @@ public class InloggadAdmin extends javax.swing.JFrame {
                 .addComponent(lblVälkommenAdmin)
                 .addGap(97, 97, 97))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegistreraAlien)
-                    .addComponent(lblKontoOversikt)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnTaBortAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAndraLosen)
-                        .addComponent(btnSattAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnTaBortUtr))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRegistreraAlien)
+                            .addComponent(lblKontoOversikt)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnTaBortAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAndraLosen)
+                                .addComponent(btnSattAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnTaBortUtr)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(btnTaBortAgent)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -150,7 +163,9 @@ public class InloggadAdmin extends javax.swing.JFrame {
                 .addComponent(btnSattAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnTaBortUtr)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnTaBortAgent)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,10 +211,20 @@ public class InloggadAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSattAdminActionPerformed
 
     private void btnTaBortUtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortUtrActionPerformed
+        try {
             new TaBortUtrustning(idb).setVisible(true);
+            
+            // TODO add your handling code here:
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnTaBortUtrActionPerformed
+
+    private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAgentActionPerformed
+new TaBortAgent (idb).setVisible(true);
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnTaBortUtrActionPerformed
+    }//GEN-LAST:event_btnTaBortAgentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,6 +265,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAndraLosen;
     private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JButton btnSattAdmin;
+    private javax.swing.JButton btnTaBortAgent;
     private javax.swing.JButton btnTaBortAlien;
     private javax.swing.JButton btnTaBortUtr;
     private javax.swing.JPanel jPanel2;
