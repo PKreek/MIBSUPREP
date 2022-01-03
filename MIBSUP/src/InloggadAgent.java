@@ -147,7 +147,7 @@ public class InloggadAgent extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(btnListaAliens)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
-                .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAndraLosen)
                 .addGap(14, 14, 14))
         );
 

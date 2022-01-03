@@ -91,7 +91,7 @@
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="btnListaAliens" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="176" max="32767" attributes="0"/>
-                  <Component id="btnAndraLosen" min="-2" pref="-3" max="-2" attributes="0"/>
+                  <Component id="btnAndraLosen" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
           </Group>

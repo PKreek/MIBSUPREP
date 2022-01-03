@@ -193,8 +193,7 @@ public class SökInformation extends javax.swing.JFrame {
                     String omradeschef = idb.fetchSingle("SELECT Agent.NAMN FROM Agent "
                             + "JOIN Omradeschef ON Agent.Agent_ID = Omradeschef.Agent_ID "
                             + "JOIN Omrade ON Agent.Omrade = Omrade.Omrades_ID "
-                            + "JOIN Plats ON Omrade.Omrades_ID = Plats.Finns_I "
-                            + "WHERE Plats.Benamning = '" + angeSokning + "'");
+                            + "WHERE OMRADE.Benamning = '" + angeSokning + "'");
 
                     txtAreaLista.append("Områdeschef:\t" + omradeschef);
                 } catch (InfException ex) {
