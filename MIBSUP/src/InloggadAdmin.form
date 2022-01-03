@@ -64,6 +64,7 @@
                           <Component id="btnAndraLosen" min="-2" max="-2" attributes="0"/>
                           <Component id="btnSattAdmin" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="btnTaBortUtr" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -84,7 +85,9 @@
                   <Component id="btnTaBortAlien" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnSattAdmin" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace pref="156" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnTaBortUtr" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="116" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -187,6 +190,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSattAdminActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnTaBortUtr">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ta bort utrustning"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaBortUtrActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

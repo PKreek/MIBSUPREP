@@ -55,6 +55,11 @@ public class SattAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         cbxAgentNamn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
+        cbxAgentNamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAgentNamnActionPerformed(evt);
+            }
+        });
 
         btnConfirmera.setText("OK");
         btnConfirmera.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +111,10 @@ public class SattAdmin extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnConfirmeraActionPerformed
+
+    private void cbxAgentNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAgentNamnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxAgentNamnActionPerformed
 
     /**
      * @param args the command line arguments
