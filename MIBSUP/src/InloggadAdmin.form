@@ -55,16 +55,27 @@
                   <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnRegistreraAlien" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblKontoOversikt" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="btnTaBortAlien" min="-2" pref="114" max="-2" attributes="0"/>
-                          <Component id="btnAndraLosen" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnSattAdmin" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnRegistreraAlien" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblKontoOversikt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="btnTaBortAlien" min="-2" pref="114" max="-2" attributes="0"/>
+                                  <Component id="btnAndraLosen" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnSattAdmin" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="btnTaBortUtr" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Component id="btnTaBortUtr" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnTaBortAgent" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSokAgent" min="-2" pref="164" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -87,7 +98,11 @@
                   <Component id="btnSattAdmin" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnTaBortUtr" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="116" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnTaBortAgent" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="btnSokAgent" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="42" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -198,6 +213,22 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaBortUtrActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnTaBortAgent">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ta bort agent"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaBortAgentActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnSokAgent">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="S&#xf6;k info om agent"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSokAgentActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

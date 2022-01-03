@@ -1,7 +1,4 @@
 
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -15,27 +12,16 @@ import oru.inf.InfException;
  *
  * @author nikla
  */
-public class TaBortUtrustning extends javax.swing.JFrame {
+public class TaBortAgent extends javax.swing.JFrame {
 
     private final InfDB idb;
 
     /**
-     * Creates new form TaBortUtrustning
+     * Creates new form TaBortAgent
      */
-    public TaBortUtrustning(InfDB idb) throws InfException {
-         this.idb = idb;
+    public TaBortAgent(InfDB idb) {
+     this.idb = idb;
         initComponents();
-        fyllVarde();
-    }
-    
-    public void fyllVarde() throws InfException
-    {
-        String query1 = "Select Benamning from utrustning";
-        ArrayList<String> lista = idb.fetchColumn(query1);
-        for (String i : lista)
-        {
-            cbxUtrustning.addItem(i);
-        }
     }
 
     /**
@@ -47,22 +33,20 @@ public class TaBortUtrustning extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
-        cbxUtrustning = new javax.swing.JComboBox<>();
-        btnConfirmera = new javax.swing.JButton();
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Konfirmera = new javax.swing.JButton();
+        vilkenAgent = new javax.swing.JTextField();
+        labelText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        cbxUtrustning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vilken utrustning" }));
-
-        btnConfirmera.setText("OK");
-        btnConfirmera.addActionListener(new java.awt.event.ActionListener() {
+        Konfirmera.setText("OK");
+        Konfirmera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmeraActionPerformed(evt);
+                KonfirmeraActionPerformed(evt);
             }
         });
+
+        labelText.setText("Vänligen skriv vilken agent du vill ta bort");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,36 +55,49 @@ public class TaBortUtrustning extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(cbxUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(114, 114, 114)
+                        .addComponent(vilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(btnConfirmera)))
-                .addContainerGap(145, Short.MAX_VALUE))
+                        .addGap(78, 78, 78)
+                        .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(Konfirmera)))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(cbxUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(btnConfirmera)
-                .addContainerGap(113, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(vilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(Konfirmera)
+                .addGap(119, 119, 119))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmeraActionPerformed
-String utrustningen = (String) cbxUtrustning.getSelectedItem();
-String borttagen = "delete from utrustning where benamning ='"+utrustningen+"'";
-        try {
-            idb.delete(borttagen);
-            // TODO add your handling code here:
+    private void KonfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KonfirmeraActionPerformed
+try {
+        String agenten = vilkenAgent.getText();
+ String query = "select * from agent where namn = '" + agenten + "'";
+
+  if (idb.fetchSingle(query) == null) {
+       System.out.println("Fel inmatning");
+          } else {
+       String deleteQuery = "delete from agent where namn ='"+agenten+"'";
+         idb.delete(deleteQuery);
+        System.out.println("Alien är borttagen");
+            }
+
         } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Fel" + ex);
+            JOptionPane.showMessageDialog(null, "Fel namn " + ex);
         }
-    }//GEN-LAST:event_btnConfirmeraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KonfirmeraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,13 +116,13 @@ String borttagen = "delete from utrustning where benamning ='"+utrustningen+"'";
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaBortAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaBortAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaBortAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaBortAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -138,8 +135,8 @@ String borttagen = "delete from utrustning where benamning ='"+utrustningen+"'";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConfirmera;
-    private javax.swing.JComboBox<String> cbxUtrustning;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton Konfirmera;
+    private javax.swing.JLabel labelText;
+    private javax.swing.JTextField vilkenAgent;
     // End of variables declaration//GEN-END:variables
 }
