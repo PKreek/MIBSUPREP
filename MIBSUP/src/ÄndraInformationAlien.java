@@ -1,5 +1,10 @@
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,9 +21,12 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
     /**
      * Creates new form ÄndraInformationAlien
      */
-    public ÄndraInformationAlien(InfDB idb) {
+    public ÄndraInformationAlien(InfDB idb) throws InfException {
         initComponents();
         this.idb = idb;
+        fillComboBoxPlats();
+        fillComboBoxAgent();
+        
     }
 
     /**
@@ -32,13 +40,25 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
 
         lblAngeAndring = new javax.swing.JPanel();
         lblÄndraInformation = new javax.swing.JLabel();
-        cbxValjAndra = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        txtAngeDatum = new javax.swing.JTextField();
+        lblRegDatum = new javax.swing.JLabel();
         btnAndra = new javax.swing.JButton();
         btnAvbryt = new javax.swing.JButton();
         lblAngeAlien = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtAngeAlien = new javax.swing.JTextField();
+        lblAlienNamn = new javax.swing.JLabel();
+        txtAlienNamn = new javax.swing.JTextField();
+        lblLosenord = new javax.swing.JLabel();
+        txtLosenord = new javax.swing.JTextField();
+        lblTelefon = new javax.swing.JLabel();
+        txtTelefonnr = new javax.swing.JTextField();
+        cbxPlats = new javax.swing.JComboBox<>();
+        lblPlats = new javax.swing.JLabel();
+        cbxAgent = new javax.swing.JComboBox<>();
+        cbxRas = new javax.swing.JComboBox<>();
+        lblAgent = new javax.swing.JLabel();
+        lblRas = new javax.swing.JLabel();
+        btnSokAlien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,16 +68,12 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         lblÄndraInformation.setForeground(new java.awt.Color(255, 255, 255));
         lblÄndraInformation.setText("Ändra information om en alien");
 
-        cbxValjAndra.setBackground(new java.awt.Color(255, 255, 255));
-        cbxValjAndra.setForeground(new java.awt.Color(0, 0, 0));
-        cbxValjAndra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj vad du vill ändra:", "Registreringsdatum", "Lösenord", "Namn", "Telefon", "Plats", "Ansvarig agent", "Ras" }));
+        txtAngeDatum.setBackground(new java.awt.Color(255, 255, 255));
+        txtAngeDatum.setForeground(new java.awt.Color(0, 0, 0));
+        txtAngeDatum.setText("YYYY-MM-DD");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-
-        jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("Ange vad du vill ändra till:");
+        lblRegDatum.setForeground(new java.awt.Color(153, 153, 153));
+        lblRegDatum.setText("Registreringsdatum:");
 
         btnAndra.setBackground(new java.awt.Color(255, 255, 255));
         btnAndra.setForeground(new java.awt.Color(0, 0, 0));
@@ -81,8 +97,51 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         lblAngeAlien.setForeground(new java.awt.Color(153, 153, 153));
         lblAngeAlien.setText("Ange namn på den alien du vill byta:");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
+        txtAngeAlien.setBackground(new java.awt.Color(255, 255, 255));
+        txtAngeAlien.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblAlienNamn.setForeground(new java.awt.Color(153, 153, 153));
+        lblAlienNamn.setText("Aliens namn:");
+
+        txtAlienNamn.setBackground(new java.awt.Color(255, 255, 255));
+        txtAlienNamn.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblLosenord.setForeground(new java.awt.Color(153, 153, 153));
+        lblLosenord.setText("Lösenord:");
+
+        txtLosenord.setBackground(new java.awt.Color(255, 255, 255));
+        txtLosenord.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblTelefon.setForeground(new java.awt.Color(153, 153, 153));
+        lblTelefon.setText("Telefonnummer:");
+
+        txtTelefonnr.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefonnr.setForeground(new java.awt.Color(0, 0, 0));
+
+        cbxPlats.setBackground(new java.awt.Color(255, 255, 255));
+        cbxPlats.setForeground(new java.awt.Color(0, 0, 0));
+        cbxPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj plats:" }));
+
+        lblPlats.setForeground(new java.awt.Color(153, 153, 153));
+        lblPlats.setText("Välj plats:");
+
+        cbxAgent.setBackground(new java.awt.Color(255, 255, 255));
+        cbxAgent.setForeground(new java.awt.Color(0, 0, 0));
+        cbxAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent:" }));
+
+        cbxRas.setBackground(new java.awt.Color(255, 255, 255));
+        cbxRas.setForeground(new java.awt.Color(0, 0, 0));
+        cbxRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj ras:", "Boglodite", "Squid", "Worm" }));
+
+        lblAgent.setForeground(new java.awt.Color(153, 153, 153));
+        lblAgent.setText("Välj ansvarig agent:");
+
+        lblRas.setForeground(new java.awt.Color(153, 153, 153));
+        lblRas.setText("Välj ras:");
+
+        btnSokAlien.setBackground(new java.awt.Color(255, 255, 255));
+        btnSokAlien.setForeground(new java.awt.Color(0, 0, 0));
+        btnSokAlien.setText("Sök");
 
         javax.swing.GroupLayout lblAngeAndringLayout = new javax.swing.GroupLayout(lblAngeAndring);
         lblAngeAndring.setLayout(lblAngeAndringLayout);
@@ -91,40 +150,90 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             .addGroup(lblAngeAndringLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblÄndraInformation)
-                    .addComponent(jLabel1)
-                    .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(lblAngeAndringLayout.createSequentialGroup()
-                            .addComponent(btnAndra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnAvbryt))
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblAngeAlien)
-                    .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cbxValjAndra, javax.swing.GroupLayout.Alignment.LEADING, 0, 200, Short.MAX_VALUE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addGroup(lblAngeAndringLayout.createSequentialGroup()
+                        .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(lblAngeAndringLayout.createSequentialGroup()
+                                .addComponent(btnAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAvbryt))
+                            .addGroup(lblAngeAndringLayout.createSequentialGroup()
+                                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtAlienNamn)
+                                    .addGroup(lblAngeAndringLayout.createSequentialGroup()
+                                        .addComponent(lblAlienNamn)
+                                        .addGap(0, 36, Short.MAX_VALUE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtAngeDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblRegDatum))
+                                .addGap(18, 18, 18)
+                                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblLosenord)
+                                    .addComponent(txtLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTelefon)
+                                    .addComponent(txtTelefonnr, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(lblAngeAndringLayout.createSequentialGroup()
+                                .addComponent(cbxPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbxAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblAgent))
+                                .addGap(18, 18, 18)
+                                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblRas)
+                                    .addComponent(cbxRas, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 30, Short.MAX_VALUE))
+                    .addGroup(lblAngeAndringLayout.createSequentialGroup()
+                        .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPlats)
+                            .addComponent(lblÄndraInformation)
+                            .addGroup(lblAngeAndringLayout.createSequentialGroup()
+                                .addComponent(txtAngeAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSokAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAngeAlien))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         lblAngeAndringLayout.setVerticalGroup(
             lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lblAngeAndringLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(lblÄndraInformation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblAngeAlien)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbxValjAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAndra)
-                    .addComponent(btnAvbryt))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(txtAngeAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSokAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAlienNamn)
+                    .addComponent(lblLosenord)
+                    .addComponent(lblTelefon)
+                    .addComponent(lblRegDatum))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAlienNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAngeDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefonnr, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlats)
+                    .addComponent(lblAgent)
+                    .addComponent(lblRas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxRas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAvbryt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,6 +250,22 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fillComboBoxPlats() throws InfException {
+        String query = "SELECT BENAMNING FROM PLATS";
+        ArrayList<String> omrade = idb.fetchColumn(query);
+        for (String ettOmrade : omrade) {
+            cbxPlats.addItem(ettOmrade);
+            System.out.println(omrade);
+        }
+    }
+    
+    private void fillComboBoxAgent() throws InfException {
+        String query = "SELECT AGENT.NAMN FROM AGENT";
+        ArrayList<String> agent = idb.fetchColumn(query);
+        for(String agentNamn : agent)
+            cbxAgent.addItem(agentNamn);
+    }
+    
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -148,10 +273,16 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
 
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
-        int i = cbxValjAndra.getSelectedIndex();
-        switch (i){
-            case 1 : 
-        }
+        String alienNamn = txtAlienNamn.getText();
+        String datum = txtAngeDatum.getText();
+        String losenord = txtLosenord.getText();
+        String telefonNr = txtTelefonnr.getText();
+        String valdPlats = cbxPlats.getSelectedItem().toString();
+        String valdAgent = cbxAgent.getSelectedItem().toString();
+        String valdRas = cbxRas.getSelectedItem().toString();
+        
+        
+    
     }//GEN-LAST:event_btnAndraActionPerformed
 
     /**
@@ -184,7 +315,11 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ÄndraInformationAlien(idb).setVisible(true);
+                try {
+                    new ÄndraInformationAlien(idb).setVisible(true);
+                } catch (InfException ex) {
+                    Logger.getLogger(ÄndraInformationAlien.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -192,12 +327,24 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndra;
     private javax.swing.JButton btnAvbryt;
-    private javax.swing.JComboBox<String> cbxValjAndra;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton btnSokAlien;
+    private javax.swing.JComboBox<String> cbxAgent;
+    private javax.swing.JComboBox<String> cbxPlats;
+    private javax.swing.JComboBox<String> cbxRas;
+    private javax.swing.JLabel lblAgent;
+    private javax.swing.JLabel lblAlienNamn;
     private javax.swing.JLabel lblAngeAlien;
     private javax.swing.JPanel lblAngeAndring;
+    private javax.swing.JLabel lblLosenord;
+    private javax.swing.JLabel lblPlats;
+    private javax.swing.JLabel lblRas;
+    private javax.swing.JLabel lblRegDatum;
+    private javax.swing.JLabel lblTelefon;
     private javax.swing.JLabel lblÄndraInformation;
+    private javax.swing.JTextField txtAlienNamn;
+    private javax.swing.JTextField txtAngeAlien;
+    private javax.swing.JTextField txtAngeDatum;
+    private javax.swing.JTextField txtLosenord;
+    private javax.swing.JTextField txtTelefonnr;
     // End of variables declaration//GEN-END:variables
 }
