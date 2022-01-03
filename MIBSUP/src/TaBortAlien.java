@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -97,12 +97,12 @@ public class TaBortAlien extends javax.swing.JFrame {
 
     private void enterKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterKnappActionPerformed
         // TODO add your handling code here:
-           
+           try { 
        String alien = vilkenAlie.getText();
         System.out.println(alien);
        String query = "select namn from alien where namn = '"+alien+"'"; 
        System.out.println(query);
-        try { 
+        
       String hamtaAlien = idb.fetchSingle(query);
        System.out.println(hamtaAlien);
        System.out.println(alien);
@@ -111,12 +111,12 @@ public class TaBortAlien extends javax.swing.JFrame {
        {
            System.out.println("De gick");
        }
-          if(hamtaAlien == null) {
-                 System.out.println("Alien finns ej");
+         if(!hamtaAlien.equals(alien)) {
+                System.out.println("Alien finns ej");
                }
         
         } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Något gick fel " + ex);
+            JOptionPane.showMessageDialog(null, "Fel namn " + ex);
         }
       
     
