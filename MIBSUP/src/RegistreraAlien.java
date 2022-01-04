@@ -79,12 +79,27 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         txtNamn.setBackground(new java.awt.Color(255, 255, 255));
         txtNamn.setForeground(new java.awt.Color(0, 0, 0));
+        txtNamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNamnActionPerformed(evt);
+            }
+        });
 
         txtLosenord.setBackground(new java.awt.Color(255, 255, 255));
         txtLosenord.setForeground(new java.awt.Color(0, 0, 0));
+        txtLosenord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLosenordActionPerformed(evt);
+            }
+        });
 
         txtTelefonNr.setBackground(new java.awt.Color(255, 255, 255));
         txtTelefonNr.setForeground(new java.awt.Color(0, 0, 0));
+        txtTelefonNr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonNrActionPerformed(evt);
+            }
+        });
 
         btnRegistreraAlien.setBackground(new java.awt.Color(255, 255, 255));
         btnRegistreraAlien.setForeground(new java.awt.Color(0, 0, 0));
@@ -127,6 +142,11 @@ public class RegistreraAlien extends javax.swing.JFrame {
         cbxStad.setBackground(new java.awt.Color(255, 255, 255));
         cbxStad.setForeground(new java.awt.Color(0, 0, 0));
         cbxStad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj stad" }));
+        cbxStad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxStadActionPerformed(evt);
+            }
+        });
 
         cbxRas.setBackground(new java.awt.Color(255, 255, 255));
         cbxRas.setForeground(new java.awt.Color(0, 0, 0));
@@ -143,6 +163,11 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         txtAntalArmar.setBackground(new java.awt.Color(255, 255, 255));
         txtAntalArmar.setForeground(new java.awt.Color(0, 0, 0));
+        txtAntalArmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAntalArmarActionPerformed(evt);
+            }
+        });
 
         lblAntalArmar.setBackground(new java.awt.Color(153, 153, 153));
         lblAntalArmar.setForeground(new java.awt.Color(153, 153, 153));
@@ -207,7 +232,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                     .addComponent(lblAntalArmar))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxRas, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(cbxRas)
                     .addComponent(txtAntalArmar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPlats)
@@ -363,6 +388,26 @@ public class RegistreraAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
+
+    private void txtNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNamnActionPerformed
+
+    private void txtLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLosenordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLosenordActionPerformed
+
+    private void txtTelefonNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonNrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonNrActionPerformed
+
+    private void txtAntalArmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAntalArmarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAntalArmarActionPerformed
+
+    private void cbxStadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxStadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxStadActionPerformed
 
     /**
      * @param args the command line arguments
