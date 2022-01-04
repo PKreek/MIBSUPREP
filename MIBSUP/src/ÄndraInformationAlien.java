@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -10,7 +11,6 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author noahjarvback
@@ -18,6 +18,7 @@ import oru.inf.InfException;
 public class ÄndraInformationAlien extends javax.swing.JFrame {
 
     private static InfDB idb;
+
     /**
      * Creates new form ÄndraInformationAlien
      */
@@ -26,7 +27,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         this.idb = idb;
         fillComboBoxPlats();
         fillComboBoxAgent();
-        
+
     }
 
     /**
@@ -142,6 +143,11 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         btnSokAlien.setBackground(new java.awt.Color(255, 255, 255));
         btnSokAlien.setForeground(new java.awt.Color(0, 0, 0));
         btnSokAlien.setText("Sök");
+        btnSokAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokAlienActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout lblAngeAndringLayout = new javax.swing.GroupLayout(lblAngeAndring);
         lblAngeAndring.setLayout(lblAngeAndringLayout);
@@ -258,14 +264,15 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             System.out.println(omrade);
         }
     }
-    
+
     private void fillComboBoxAgent() throws InfException {
         String query = "SELECT AGENT.NAMN FROM AGENT";
         ArrayList<String> agent = idb.fetchColumn(query);
-        for(String agentNamn : agent)
+        for (String agentNamn : agent) {
             cbxAgent.addItem(agentNamn);
+        }
     }
-    
+
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -273,17 +280,51 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
 
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
-        String alienNamn = txtAlienNamn.getText();
+        String alienNamn = txtAngeAlien.getText();
+        String alienNytt = txtAlienNamn.getText();
         String datum = txtAngeDatum.getText();
         String losenord = txtLosenord.getText();
         String telefonNr = txtTelefonnr.getText();
         String valdPlats = cbxPlats.getSelectedItem().toString();
         String valdAgent = cbxAgent.getSelectedItem().toString();
         String valdRas = cbxRas.getSelectedItem().toString();
-        
-        
-    
+
+        try {
+            idb.update("UPDATE ALIEN SET NAMN = '" + alienNytt + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+            idb.update("UPDATE ALIEN SET REGISTRERINGSDATUM = '" + datum + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+            idb.update("UPDATE ALIEN SET LOSENORD = '" + losenord + "'" + "WHERE ALIEN.NAMN ='" + alienNamn + "'");
+            idb.update("UPDATE ALIEN SET TELEFON = '" + telefonNr + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+            int agentID = Integer.parseInt(idb.fetchSingle("SELECT AGENT_ID FROM AGENT WHERE NAMN = '" + valdAgent + "'"));
+            idb.update("UPDATE ALIEN SET ANSVARIG_AGENT = '" + agentID + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+            int platsID = Integer.parseInt(idb.fetchSingle("SELECT PLATS_ID FROM PLATS WHERE BENAMNING = '" + valdPlats + "'"));
+            idb.update("UPDATE ALIEN SET PLATS = '" + platsID + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+            JOptionPane.showMessageDialog(null, "Alien har blivit uppdaterad");
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+
+
     }//GEN-LAST:event_btnAndraActionPerformed
+
+    private void btnSokAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienActionPerformed
+        // TODO add your handling code here:
+        txtAlienNamn.setText("");
+        txtAngeDatum.setText("");
+        txtLosenord.setText("");
+        txtTelefonnr.setText("");
+        String alienNamn = txtAngeAlien.getText();
+        try {
+            HashMap<String, String> aliens = idb.fetchRow("SELECT NAMN, REGISTRERINGSDATUM, LOSENORD, TELEFON FROM ALIEN "
+                    + "WHERE NAMN = '" + alienNamn + "'");
+            txtAlienNamn.setText(aliens.get("NAMN"));
+            txtAngeDatum.setText(aliens.get("REGISTRERINGSDATUM"));
+            txtLosenord.setText(aliens.get("LOSENORD"));
+            txtTelefonnr.setText(aliens.get("TELEFON"));
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+
+    }//GEN-LAST:event_btnSokAlienActionPerformed
 
     /**
      * @param args the command line arguments

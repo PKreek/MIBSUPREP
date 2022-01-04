@@ -383,6 +383,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="S&#xf6;k"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSokAlienActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
