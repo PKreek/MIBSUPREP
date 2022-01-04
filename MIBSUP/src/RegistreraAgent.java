@@ -49,20 +49,22 @@ public class RegistreraAgent extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         cbxAdmin = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
         lblRubrik = new javax.swing.JLabel();
-        txtNamn = new javax.swing.JTextField();
         lblNamn = new javax.swing.JLabel();
+        txtNamn = new javax.swing.JTextField();
+        lblLösen = new javax.swing.JLabel();
+        txtLosen = new javax.swing.JTextField();
+        lblAnstallningsDatum = new javax.swing.JLabel();
+        txtAnstallningsDatum = new javax.swing.JTextField();
         lblTelefon = new javax.swing.JLabel();
         txtTelefon = new javax.swing.JTextField();
-        txtLosen = new javax.swing.JTextField();
-        lblLösen = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        txtAnstallningsDatum = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        cbxOmråde = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        btnÄndra = new javax.swing.JButton();
+        lblAdmin = new javax.swing.JLabel();
         checkBox = new javax.swing.JCheckBox();
+        lblValjOmrade = new javax.swing.JLabel();
+        cbxOmråde = new javax.swing.JComboBox<>();
+        btnÄndra = new javax.swing.JButton();
+        btnAvbryt = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -70,28 +72,34 @@ public class RegistreraAgent extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblRubrik.setText("Registrera Agent");
+        jPanel1.setBackground(new java.awt.Color(33, 31, 31));
 
+        lblRubrik.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 24)); // NOI18N
+        lblRubrik.setForeground(new java.awt.Color(255, 255, 255));
+        lblRubrik.setText("Registrera ny agent");
+
+        lblNamn.setForeground(new java.awt.Color(153, 153, 153));
+        lblNamn.setText("Namn");
+
+        txtNamn.setBackground(new java.awt.Color(255, 255, 255));
+        txtNamn.setForeground(new java.awt.Color(0, 0, 0));
         txtNamn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNamnActionPerformed(evt);
             }
         });
 
-        lblNamn.setText("Namn");
-
-        lblTelefon.setText("Telefon");
-
-        txtTelefon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonActionPerformed(evt);
-            }
-        });
-
+        lblLösen.setForeground(new java.awt.Color(153, 153, 153));
         lblLösen.setText("Ange lösen");
 
-        jLabel1.setText("Anställningsdatum");
+        txtLosen.setBackground(new java.awt.Color(255, 255, 255));
+        txtLosen.setForeground(new java.awt.Color(0, 0, 0));
 
+        lblAnstallningsDatum.setForeground(new java.awt.Color(153, 153, 153));
+        lblAnstallningsDatum.setText("Anställningsdatum");
+
+        txtAnstallningsDatum.setBackground(new java.awt.Color(255, 255, 255));
+        txtAnstallningsDatum.setForeground(new java.awt.Color(0, 0, 0));
         txtAnstallningsDatum.setText("YYYY-MM-DD");
         txtAnstallningsDatum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,23 +107,22 @@ public class RegistreraAgent extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Kommer hen vara admin?");
+        lblTelefon.setForeground(new java.awt.Color(153, 153, 153));
+        lblTelefon.setText("Telefon");
 
-        cbxOmråde.addActionListener(new java.awt.event.ActionListener() {
+        txtTelefon.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefon.setForeground(new java.awt.Color(0, 0, 0));
+        txtTelefon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxOmrådeActionPerformed(evt);
+                txtTelefonActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Välj område");
+        lblAdmin.setForeground(new java.awt.Color(153, 153, 153));
+        lblAdmin.setText("Kommer hen vara admin?");
 
-        btnÄndra.setText("Ändra");
-        btnÄndra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnÄndraActionPerformed(evt);
-            }
-        });
-
+        checkBox.setBackground(new java.awt.Color(255, 255, 255));
+        checkBox.setForeground(new java.awt.Color(255, 255, 255));
         checkBox.setText("Ja");
         checkBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,73 +130,109 @@ public class RegistreraAgent extends javax.swing.JFrame {
             }
         });
 
+        lblValjOmrade.setForeground(new java.awt.Color(153, 153, 153));
+        lblValjOmrade.setText("Välj område");
+
+        cbxOmråde.setBackground(new java.awt.Color(255, 255, 255));
+        cbxOmråde.setForeground(new java.awt.Color(0, 0, 0));
+        cbxOmråde.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxOmrådeActionPerformed(evt);
+            }
+        });
+
+        btnÄndra.setBackground(new java.awt.Color(255, 255, 255));
+        btnÄndra.setForeground(new java.awt.Color(0, 0, 0));
+        btnÄndra.setText("Registrera");
+        btnÄndra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnÄndraActionPerformed(evt);
+            }
+        });
+
+        btnAvbryt.setBackground(new java.awt.Color(255, 255, 255));
+        btnAvbryt.setForeground(new java.awt.Color(0, 0, 0));
+        btnAvbryt.setText("Avbryt");
+        btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvbrytActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnÄndra, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(btnAvbryt))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(checkBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblValjOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblLösen, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblAnstallningsDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAnstallningsDatum, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                        .addComponent(txtNamn)
+                        .addComponent(txtLosen)
+                        .addComponent(txtTelefon)
+                        .addComponent(cbxOmråde, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 85, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAnstallningsDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAnstallningsDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(lblNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblLösen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTelefon)
+                .addGap(4, 4, 4)
+                .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblValjOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbxOmråde, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkBox)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnÄndra)
+                    .addComponent(btnAvbryt))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(lblRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                                .addComponent(txtLosen)
-                                .addComponent(txtNamn)
-                                .addComponent(lblNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblLösen, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(checkBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelefon)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAnstallningsDatum, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(cbxOmråde, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(btnÄndra, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTelefon))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
-                        .addComponent(lblLösen, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtLosen, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(txtAnstallningsDatum))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxOmråde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(btnÄndra, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -304,6 +347,11 @@ public class RegistreraAgent extends javax.swing.JFrame {
 //                System.out.println(listaAgent);
 //        }
     }//GEN-LAST:event_btnÄndraActionPerformed
+
+    private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnAvbrytActionPerformed
     
     /**
      * @param args the command line arguments
@@ -341,19 +389,21 @@ public class RegistreraAgent extends javax.swing.JFrame {
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAvbryt;
     private javax.swing.JButton btnÄndra;
     private javax.swing.JComboBox<String> cbxAdmin;
     private javax.swing.JComboBox<String> cbxOmråde;
     private javax.swing.JCheckBox checkBox;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblAdmin;
+    private javax.swing.JLabel lblAnstallningsDatum;
     private javax.swing.JLabel lblLösen;
     private javax.swing.JLabel lblNamn;
     private javax.swing.JLabel lblRubrik;
     private javax.swing.JLabel lblTelefon;
+    private javax.swing.JLabel lblValjOmrade;
     private javax.swing.JTextField txtAnstallningsDatum;
     private javax.swing.JTextField txtLosen;
     private javax.swing.JTextField txtNamn;

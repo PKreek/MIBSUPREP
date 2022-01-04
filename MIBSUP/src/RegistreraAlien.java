@@ -186,7 +186,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
                     .addComponent(lblRegistreringsDatum)
                     .addComponent(lblRegistreraAlien)
                     .addComponent(lblTelefonNr)
-                    .addComponent(txtRegistreringsDatum)
                     .addComponent(txtNamn)
                     .addComponent(txtTelefonNr)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -202,7 +201,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAntalArmar)
-                            .addComponent(txtAntalArmar))))
+                            .addComponent(txtAntalArmar)))
+                    .addComponent(txtRegistreringsDatum))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
