@@ -23,6 +23,7 @@ public class SetOmradeschef extends javax.swing.JFrame {
         initComponents();
         fillCmbAgent();
         fillCmbOmrade();
+        fillTxtfldInfo();
     }
 
     /**
@@ -77,7 +78,11 @@ public class SetOmradeschef extends javax.swing.JFrame {
             }
         });
 
-        txtfldInfo.setText("jTextField1");
+        txtfldInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldInfoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -164,6 +169,10 @@ public class SetOmradeschef extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAndraActionPerformed
 
+    private void txtfldInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldInfoActionPerformed
+
     private void fillCmbOmrade(){
         String query1 = "SELECT Omrade.Benamning FROM Omrade";
         ArrayList<String> allAreas;
@@ -179,6 +188,14 @@ public class SetOmradeschef extends javax.swing.JFrame {
             System.out.println("Internt felmeddelande" + err.getMessage());
         }
     }
+    
+    private void fillTxtfldInfo(){
+        txtfldInfo.setText("");
+        String query2 = "SELECT Agent.Agent_ID, Agent.Namn, agent.Telefon, agent.Omrade from Agent";
+        ArrayList<String> agentInfo;
+       
+    }
+    
     /**
      * @param args the command line arguments
      */
