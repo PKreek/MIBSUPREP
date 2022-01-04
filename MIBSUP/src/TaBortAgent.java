@@ -130,7 +130,7 @@ try {
             } else {
                 String deleteQuery = "delete from agent where namn ='" + agenten + "'";
                 idb.delete(deleteQuery);
-                System.out.println("Alien är borttagen");
+                System.out.println("Agent är borttagen");
             }
 
         } catch (InfException ex) {
