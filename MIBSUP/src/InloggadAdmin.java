@@ -48,6 +48,8 @@ public class InloggadAdmin extends javax.swing.JFrame {
         btnTaBortAlien = new javax.swing.JButton();
         btnSattAdmin = new javax.swing.JButton();
         btnTaBortUtr = new javax.swing.JButton();
+        btnTaBortAgent = new javax.swing.JButton();
+        btnSokAgent = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -77,6 +79,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
         btnRegistreraAlien.setForeground(new java.awt.Color(153, 153, 153));
         btnRegistreraAlien.setText("Registrera ny alien");
         btnRegistreraAlien.setBorder(null);
+        btnRegistreraAlien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistreraAlien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistreraAlienActionPerformed(evt);
@@ -99,17 +102,51 @@ public class InloggadAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnSattAdmin.setText("Sätt admin");
+        btnSattAdmin.setBackground(new java.awt.Color(33, 31, 31));
+        btnSattAdmin.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        btnSattAdmin.setForeground(new java.awt.Color(153, 153, 153));
+        btnSattAdmin.setText("Sätt administratör");
+        btnSattAdmin.setBorder(null);
+        btnSattAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSattAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSattAdminActionPerformed(evt);
             }
         });
 
+        btnTaBortUtr.setBackground(new java.awt.Color(33, 31, 31));
+        btnTaBortUtr.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        btnTaBortUtr.setForeground(new java.awt.Color(153, 153, 153));
         btnTaBortUtr.setText("Ta bort utrustning");
+        btnTaBortUtr.setBorder(null);
+        btnTaBortUtr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTaBortUtr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaBortUtrActionPerformed(evt);
+            }
+        });
+
+        btnTaBortAgent.setBackground(new java.awt.Color(33, 31, 31));
+        btnTaBortAgent.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        btnTaBortAgent.setForeground(new java.awt.Color(153, 153, 153));
+        btnTaBortAgent.setText("Ta bort agent");
+        btnTaBortAgent.setBorder(null);
+        btnTaBortAgent.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTaBortAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortAgentActionPerformed(evt);
+            }
+        });
+
+        btnSokAgent.setBackground(new java.awt.Color(33, 31, 31));
+        btnSokAgent.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        btnSokAgent.setForeground(new java.awt.Color(153, 153, 153));
+        btnSokAgent.setText("Sök info om agent");
+        btnSokAgent.setBorder(null);
+        btnSokAgent.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSokAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokAgentActionPerformed(evt);
             }
         });
 
@@ -117,21 +154,35 @@ public class InloggadAdmin extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
-                .addComponent(lblVälkommenAdmin)
-                .addGap(97, 97, 97))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnSokAgent))
+                    .addComponent(btnTaBortAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSattAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegistreraAlien)
-                    .addComponent(lblKontoOversikt)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnTaBortAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAndraLosen)
-                        .addComponent(btnSattAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnTaBortUtr))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 94, Short.MAX_VALUE)
+                                .addComponent(lblVälkommenAdmin))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblKontoOversikt)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(97, 97, 97))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnTaBortUtr)
+                        .addContainerGap(250, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnTaBortAgent)
+                            .addComponent(btnRegistreraAlien)
+                            .addComponent(btnAndraLosen))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,17 +191,21 @@ public class InloggadAdmin extends javax.swing.JFrame {
                 .addComponent(lblVälkommenAdmin)
                 .addGap(26, 26, 26)
                 .addComponent(lblKontoOversikt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistreraAlien)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAndraLosen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnTaBortAlien)
-                .addGap(18, 18, 18)
-                .addComponent(btnSattAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSattAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTaBortAgent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSokAgent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnTaBortUtr)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAndraLosen)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,6 +260,20 @@ public class InloggadAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTaBortUtrActionPerformed
 
+    private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAgentActionPerformed
+        // TODO add your handling code here:
+        new TaBortAgent(idb).setVisible(true);
+    }//GEN-LAST:event_btnTaBortAgentActionPerformed
+
+    private void btnSokAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAgentActionPerformed
+        try {
+            // TODO add your handling code here:
+            new SokInfoAgent(idb).setVisible(true);
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSokAgentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,6 +313,8 @@ public class InloggadAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAndraLosen;
     private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JButton btnSattAdmin;
+    private javax.swing.JButton btnSokAgent;
+    private javax.swing.JButton btnTaBortAgent;
     private javax.swing.JButton btnTaBortAlien;
     private javax.swing.JButton btnTaBortUtr;
     private javax.swing.JPanel jPanel2;

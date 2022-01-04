@@ -33,48 +33,88 @@ public class TaBortAgent extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Konfirmera = new javax.swing.JButton();
-        vilkenAgent = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         labelText = new javax.swing.JLabel();
+        vilkenAgent = new javax.swing.JTextField();
+        Konfirmera = new javax.swing.JButton();
+        lblTaBortAgent = new javax.swing.JLabel();
+        btnAvbryt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Konfirmera.setText("OK");
+        jPanel1.setBackground(new java.awt.Color(33, 31, 31));
+
+        labelText.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        labelText.setForeground(new java.awt.Color(153, 153, 153));
+        labelText.setText("Ange namn för den agent du vill ta bort:");
+
+        vilkenAgent.setBackground(new java.awt.Color(255, 255, 255));
+        vilkenAgent.setForeground(new java.awt.Color(0, 0, 0));
+
+        Konfirmera.setBackground(new java.awt.Color(255, 255, 255));
+        Konfirmera.setForeground(new java.awt.Color(0, 0, 0));
+        Konfirmera.setText("Ta bort");
         Konfirmera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 KonfirmeraActionPerformed(evt);
             }
         });
 
-        labelText.setText("Vänligen skriv vilken agent du vill ta bort");
+        lblTaBortAgent.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 24)); // NOI18N
+        lblTaBortAgent.setForeground(new java.awt.Color(255, 255, 255));
+        lblTaBortAgent.setText("Ta bort agent från systemet");
+
+        btnAvbryt.setBackground(new java.awt.Color(255, 255, 255));
+        btnAvbryt.setForeground(new java.awt.Color(0, 0, 0));
+        btnAvbryt.setText("Avbryt");
+        btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvbrytActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTaBortAgent)
+                    .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(vilkenAgent, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(Konfirmera)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnAvbryt))))
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblTaBortAgent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Konfirmera)
+                    .addComponent(btnAvbryt))
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(vilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(Konfirmera)))
-                .addContainerGap(90, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(vilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(Konfirmera)
-                .addGap(119, 119, 119))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -98,6 +138,11 @@ try {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_KonfirmeraActionPerformed
+
+    private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnAvbrytActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,7 +181,10 @@ try {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Konfirmera;
+    private javax.swing.JButton btnAvbryt;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelText;
+    private javax.swing.JLabel lblTaBortAgent;
     private javax.swing.JTextField vilkenAgent;
     // End of variables declaration//GEN-END:variables
 }

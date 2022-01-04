@@ -49,11 +49,19 @@ public class SattAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollBar1 = new javax.swing.JScrollBar();
+        jPanel1 = new javax.swing.JPanel();
         cbxAgentNamn = new javax.swing.JComboBox<>();
         btnConfirmera = new javax.swing.JButton();
+        lblRegistreraAdmin = new javax.swing.JLabel();
+        lblValjAgent = new javax.swing.JLabel();
+        btnAvbryt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(33, 31, 31));
+
+        cbxAgentNamn.setBackground(new java.awt.Color(255, 255, 255));
+        cbxAgentNamn.setForeground(new java.awt.Color(0, 0, 0));
         cbxAgentNamn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
         cbxAgentNamn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,35 +69,72 @@ public class SattAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnConfirmera.setText("OK");
+        btnConfirmera.setBackground(new java.awt.Color(255, 255, 255));
+        btnConfirmera.setForeground(new java.awt.Color(0, 0, 0));
+        btnConfirmera.setText("Registrera");
         btnConfirmera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmeraActionPerformed(evt);
             }
         });
 
+        lblRegistreraAdmin.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 24)); // NOI18N
+        lblRegistreraAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        lblRegistreraAdmin.setText("Registrera en ny administratör");
+
+        lblValjAgent.setForeground(new java.awt.Color(153, 153, 153));
+        lblValjAgent.setText("Välj agent att sätta till administratör:");
+
+        btnAvbryt.setBackground(new java.awt.Color(255, 255, 255));
+        btnAvbryt.setForeground(new java.awt.Color(0, 0, 0));
+        btnAvbryt.setText("Avbryt");
+        btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvbrytActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblValjAgent)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnConfirmera)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAvbryt))
+                    .addComponent(lblRegistreraAdmin)
+                    .addComponent(cbxAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lblRegistreraAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblValjAgent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbxAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConfirmera)
+                    .addComponent(btnAvbryt))
+                .addContainerGap(73, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(cbxAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(btnConfirmera)))
-                .addContainerGap(172, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(cbxAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(btnConfirmera)
-                .addContainerGap(101, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -112,6 +157,11 @@ public class SattAdmin extends javax.swing.JFrame {
     private void cbxAgentNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAgentNamnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxAgentNamnActionPerformed
+
+    private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnAvbrytActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,8 +199,12 @@ public class SattAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAvbryt;
     private javax.swing.JButton btnConfirmera;
     private javax.swing.JComboBox<String> cbxAgentNamn;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JLabel lblRegistreraAdmin;
+    private javax.swing.JLabel lblValjAgent;
     // End of variables declaration//GEN-END:variables
 }
