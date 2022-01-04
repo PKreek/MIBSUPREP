@@ -50,6 +50,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
         btnTaBortUtr = new javax.swing.JButton();
         btnTaBortAgent = new javax.swing.JButton();
         btnSokAgent = new javax.swing.JButton();
+        btnSetOmradeschef = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -150,6 +151,17 @@ public class InloggadAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnSetOmradeschef.setBackground(new java.awt.Color(33, 31, 31));
+        btnSetOmradeschef.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        btnSetOmradeschef.setForeground(new java.awt.Color(153, 153, 153));
+        btnSetOmradeschef.setText("Ändra områdeschef");
+        btnSetOmradeschef.setBorder(null);
+        btnSetOmradeschef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetOmradeschefActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -181,7 +193,8 @@ public class InloggadAdmin extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnTaBortAgent)
                             .addComponent(btnRegistreraAlien)
-                            .addComponent(btnAndraLosen))
+                            .addComponent(btnAndraLosen)
+                            .addComponent(btnSetOmradeschef))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -205,7 +218,9 @@ public class InloggadAdmin extends javax.swing.JFrame {
                 .addComponent(btnTaBortUtr)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAndraLosen)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSetOmradeschef)
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -274,6 +289,11 @@ public class InloggadAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSokAgentActionPerformed
 
+    private void btnSetOmradeschefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetOmradeschefActionPerformed
+            // TODO add your handling code here:
+            new SetOmradeschef(idb).setVisible(true);
+    }//GEN-LAST:event_btnSetOmradeschefActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -313,6 +333,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAndraLosen;
     private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JButton btnSattAdmin;
+    private javax.swing.JButton btnSetOmradeschef;
     private javax.swing.JButton btnSokAgent;
     private javax.swing.JButton btnTaBortAgent;
     private javax.swing.JButton btnTaBortAlien;
