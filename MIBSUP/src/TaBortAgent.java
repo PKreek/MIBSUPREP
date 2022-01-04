@@ -122,15 +122,15 @@ public class TaBortAgent extends javax.swing.JFrame {
 
     private void KonfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KonfirmeraActionPerformed
 try {
-        String agenten = vilkenAgent.getText();
- String query = "select * from agent where namn = '" + agenten + "'";
+            String agenten = vilkenAgent.getText();
+            String query = "select * from agent where namn = '" + agenten + "'";
 
-  if (idb.fetchSingle(query) == null) {
-       System.out.println("Fel inmatning");
-          } else {
-       String deleteQuery = "delete from agent where namn ='"+agenten+"'";
-         idb.delete(deleteQuery);
-        System.out.println("Alien är borttagen");
+            if (idb.fetchSingle(query) == null) {
+                System.out.println("Fel inmatning");
+            } else {
+                String deleteQuery = "delete from agent where namn ='" + agenten + "'";
+                idb.delete(deleteQuery);
+                System.out.println("Alien är borttagen");
             }
 
         } catch (InfException ex) {

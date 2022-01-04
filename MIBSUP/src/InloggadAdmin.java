@@ -50,6 +50,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
         btnTaBortUtr = new javax.swing.JButton();
         btnTaBortAgent = new javax.swing.JButton();
         btnSokAgent = new javax.swing.JButton();
+        btnLaggTillAgent = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -150,6 +151,13 @@ public class InloggadAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnLaggTillAgent.setText("Lägg till agent");
+        btnLaggTillAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTillAgentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -183,6 +191,10 @@ public class InloggadAdmin extends javax.swing.JFrame {
                             .addComponent(btnRegistreraAlien)
                             .addComponent(btnAndraLosen))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnLaggTillAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,7 +217,9 @@ public class InloggadAdmin extends javax.swing.JFrame {
                 .addComponent(btnTaBortUtr)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAndraLosen)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnLaggTillAgent)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -274,6 +288,15 @@ public class InloggadAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSokAgentActionPerformed
 
+    private void btnLaggTillAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAgentActionPerformed
+        try {
+            new RegistreraAgent(idb).setVisible(true);
+            // TODO add your handling code here:
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnLaggTillAgentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +334,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndraLosen;
+    private javax.swing.JButton btnLaggTillAgent;
     private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JButton btnSattAdmin;
     private javax.swing.JButton btnSokAgent;
