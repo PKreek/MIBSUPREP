@@ -65,6 +65,8 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         txtAntalAB = new javax.swing.JTextField();
         lblAntal = new javax.swing.JLabel();
         lblFyll = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaLista = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,6 +171,12 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         lblFyll.setForeground(new java.awt.Color(153, 153, 153));
         lblFyll.setText("Fyll i alla fält:");
 
+        txtAreaLista.setBackground(new java.awt.Color(255, 255, 255));
+        txtAreaLista.setColumns(20);
+        txtAreaLista.setRows(4);
+        txtAreaLista.setTabSize(2);
+        jScrollPane1.setViewportView(txtAreaLista);
+
         javax.swing.GroupLayout lblAngeAndringLayout = new javax.swing.GroupLayout(lblAngeAndring);
         lblAngeAndring.setLayout(lblAngeAndringLayout);
         lblAngeAndringLayout.setHorizontalGroup(
@@ -178,32 +186,43 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                 .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(lblAngeAndringLayout.createSequentialGroup()
                         .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblÄndraInformation)
+                            .addComponent(lblAngeAlien)
                             .addGroup(lblAngeAndringLayout.createSequentialGroup()
                                 .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAlienNamn)
+                                    .addComponent(txtAngeAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblFyll)
+                                    .addComponent(lblAlienNamn)
+                                    .addComponent(txtAlienNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(lblAngeAndringLayout.createSequentialGroup()
-                                        .addComponent(lblAlienNamn)
-                                        .addGap(0, 36, Short.MAX_VALUE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAngeDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblRegDatum))
-                                .addGap(18, 18, 18)
-                                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblLosenord)
-                                    .addComponent(txtLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTelefon)
-                                    .addComponent(txtTelefonnr, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(lblRegDatum)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblLosenord))
+                                    .addComponent(btnSokAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(lblAngeAndringLayout.createSequentialGroup()
+                                        .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtAngeDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblAgent))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblRas)
+                                            .addComponent(txtLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(18, 18, 18)
+                        .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTelefonnr, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTelefon))
+                        .addContainerGap(39, Short.MAX_VALUE))
+                    .addGroup(lblAngeAndringLayout.createSequentialGroup()
+                        .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPlats)
                             .addGroup(lblAngeAndringLayout.createSequentialGroup()
                                 .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(lblAngeAndringLayout.createSequentialGroup()
                                         .addComponent(cbxPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cbxAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblAgent)))
+                                        .addComponent(cbxAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(lblAngeAndringLayout.createSequentialGroup()
                                         .addComponent(btnAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -211,24 +230,9 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblAntal)
-                                    .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lblRas)
-                                        .addComponent(cbxRas, 0, 120, Short.MAX_VALUE)
-                                        .addComponent(txtAntalAB)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(0, 30, Short.MAX_VALUE))
-                    .addGroup(lblAngeAndringLayout.createSequentialGroup()
-                        .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPlats)
-                            .addComponent(lblÄndraInformation)
-                            .addGroup(lblAngeAndringLayout.createSequentialGroup()
-                                .addComponent(txtAngeAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSokAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblAngeAlien))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(lblAngeAndringLayout.createSequentialGroup()
-                        .addComponent(lblFyll)
+                                    .addComponent(cbxRas, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAntalAB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         lblAngeAndringLayout.setVerticalGroup(
@@ -242,21 +246,21 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                 .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAngeAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSokAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblFyll)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAlienNamn)
+                    .addComponent(lblRegDatum)
                     .addComponent(lblLosenord)
-                    .addComponent(lblTelefon)
-                    .addComponent(lblRegDatum))
+                    .addComponent(lblTelefon))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAlienNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAngeDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefonnr, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPlats)
                     .addComponent(lblAgent)
@@ -266,14 +270,16 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                     .addComponent(cbxPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxRas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblAntal)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAntalAB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAvbryt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAntalAB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51))
+                    .addComponent(btnAvbryt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -338,6 +344,8 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        sokAlien();
+        
     }//GEN-LAST:event_btnAndraActionPerformed
 
     private void registreraRas() throws InfException {
@@ -378,14 +386,13 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
 
         }
     }
-
-
-    private void btnSokAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienActionPerformed
-        // TODO add your handling code here:
+    private void sokAlien(){
         txtAlienNamn.setText("");
         txtAngeDatum.setText("");
         txtLosenord.setText("");
         txtTelefonnr.setText("");
+        
+        
         String alienNamn = txtAngeAlien.getText();
       
         try {
@@ -404,11 +411,24 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             txtTelefonnr.setText(aliens.get("TELEFON"));
             cbxAgent.setSelectedItem(lista.get("NAMN"));
             cbxPlats.setSelectedItem(lista.get("BENAMNING"));
+            txtAreaLista.setText("");
+            txtAreaLista.append("Namn:  " + aliens.get("NAMN") + "\n");
+            txtAreaLista.append("Registreringsdatum:  " + aliens.get("REGISTRERINGSDATUM") + "\n");
+            txtAreaLista.append("Lösenord:  "+ aliens.get("LOSENORD") + "\n");
+            txtAreaLista.append("Telefonnummer:  " + aliens.get("TELEFON") + "\n");
+            txtAreaLista.append("Ansvarig agent:  " + lista.get("NAMN") + "\n");
+            txtAreaLista.append("Plats:  " + lista.get("BENAMNING"));
+            
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+       
+}
 
 
+    private void btnSokAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienActionPerformed
+        // TODO add your handling code here:
+        sokAlien();
     }//GEN-LAST:event_btnSokAlienActionPerformed
 
     private void cbxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRasActionPerformed
@@ -487,6 +507,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxAgent;
     private javax.swing.JComboBox<String> cbxPlats;
     private javax.swing.JComboBox<String> cbxRas;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAgent;
     private javax.swing.JLabel lblAlienNamn;
     private javax.swing.JLabel lblAngeAlien;
@@ -503,6 +524,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
     private javax.swing.JTextField txtAngeAlien;
     private javax.swing.JTextField txtAngeDatum;
     private javax.swing.JTextField txtAntalAB;
+    private javax.swing.JTextArea txtAreaLista;
     private javax.swing.JTextField txtLosenord;
     private javax.swing.JTextField txtTelefonnr;
     // End of variables declaration//GEN-END:variables

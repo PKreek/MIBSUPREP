@@ -43,44 +43,58 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblÄndraInformation" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAngeAlien" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtAlienNamn" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblAlienNamn" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="txtAngeAlien" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
+                                      <Component id="lblFyll" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblAlienNamn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtAlienNamn" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtAngeDatum" min="-2" pref="120" max="-2" attributes="0"/>
-                                      <Component id="lblRegDatum" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblLosenord" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtLosenord" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblTelefon" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtTelefonnr" min="-2" pref="115" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="cbxPlats" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblRegDatum" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="lblLosenord" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="btnSokAlien" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cbxAgent" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                              <Component id="txtAngeDatum" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                                               <Component id="lblAgent" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblRas" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtLosenord" min="-2" pref="115" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtTelefonnr" min="-2" pref="115" max="-2" attributes="0"/>
+                              <Component id="lblTelefon" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="39" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblPlats" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="cbxPlats" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="cbxAgent" min="-2" pref="120" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="btnAndra" min="-2" pref="115" max="-2" attributes="0"/>
@@ -91,32 +105,12 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblAntal" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblRas" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbxRas" pref="120" max="32767" attributes="0"/>
-                                          <Component id="txtAntalAB" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="cbxRas" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Component id="txtAntalAB" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
+                              <Component id="jScrollPane1" alignment="0" min="-2" pref="396" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblPlats" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblÄndraInformation" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtAngeAlien" min="-2" pref="115" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnSokAlien" min="-2" pref="90" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="lblAngeAlien" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblFyll" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -135,14 +129,14 @@
                       <Component id="txtAngeAlien" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btnSokAlien" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lblFyll" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblAlienNamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblRegDatum" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblLosenord" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTelefon" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblRegDatum" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -151,7 +145,7 @@
                       <Component id="txtLosenord" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="txtTelefonnr" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblPlats" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblAgent" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -163,15 +157,17 @@
                       <Component id="cbxAgent" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="cbxRas" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblAntal" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtAntalAB" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btnAndra" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btnAvbryt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="txtAntalAB" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="113" max="-2" attributes="0"/>
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -437,6 +433,25 @@
             <Property name="text" type="java.lang.String" value="Fyll i alla f&#xe4;lt:"/>
           </Properties>
         </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="txtAreaLista">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="4"/>
+                <Property name="tabSize" type="int" value="2"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>
