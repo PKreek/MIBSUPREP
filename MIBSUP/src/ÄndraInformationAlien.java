@@ -211,8 +211,8 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                                             .addComponent(txtLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(18, 18, 18)
                         .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTelefonnr, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTelefon))
+                            .addComponent(lblTelefon)
+                            .addComponent(txtTelefonnr, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(39, Short.MAX_VALUE))
                     .addGroup(lblAngeAndringLayout.createSequentialGroup()
                         .addGroup(lblAngeAndringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,8 +278,8 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                     .addComponent(btnAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAvbryt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
