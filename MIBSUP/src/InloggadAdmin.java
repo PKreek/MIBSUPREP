@@ -54,7 +54,6 @@ public class InloggadAdmin extends javax.swing.JFrame {
         btnRegistreraAgent = new javax.swing.JButton();
         btnSetOmradesChef = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        btnSetKontorschef = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -203,18 +202,6 @@ public class InloggadAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnSetKontorschef.setBackground(new java.awt.Color(33, 31, 31));
-        btnSetKontorschef.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        btnSetKontorschef.setForeground(new java.awt.Color(153, 153, 153));
-        btnSetKontorschef.setText("Ändra kontorschef");
-        btnSetKontorschef.setBorder(null);
-        btnSetKontorschef.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSetKontorschef.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetKontorschefActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -248,8 +235,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
                             .addComponent(btnSokAgent)
                             .addComponent(btnAndraLosen)
                             .addComponent(btnRegistreraAgent)
-                            .addComponent(jButton1)
-                            .addComponent(btnSetKontorschef))
+                            .addComponent(jButton1))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -280,10 +266,8 @@ public class InloggadAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSetOmradesChef)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSetKontorschef)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAndraLosen)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -374,20 +358,15 @@ public class InloggadAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         new SetOmradeschef(idb).setVisible(true);
     }//GEN-LAST:event_btnSetOmradesChefActionPerformed
- 
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         try {
-        new ÄndraInformationAgent(idb).setVisible(true);
+            // TODO add your handling code here:
+            new ÄndraInformationAgent(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btnSetKontorschefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetKontorschefActionPerformed
-        // TODO add your handling code here:
-        new setKontorschef(idb).setVisible(true);
-    }//GEN-LAST:event_btnSetKontorschefActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,7 +409,6 @@ public class InloggadAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistreraAgent;
     private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JButton btnSattAdmin;
-    private javax.swing.JButton btnSetKontorschef;
     private javax.swing.JButton btnSetOmradesChef;
     private javax.swing.JButton btnSokAgent;
     private javax.swing.JButton btnTaBortAgent;
