@@ -171,7 +171,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         lblAntalArmar.setBackground(new java.awt.Color(153, 153, 153));
         lblAntalArmar.setForeground(new java.awt.Color(153, 153, 153));
-        lblAntalArmar.setText("Välj antal armar:");
+        lblAntalArmar.setText("Välj antal armar/boogies:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -190,7 +190,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                     .addComponent(txtTelefonNr)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnRegistreraAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAvbryt))
                     .addComponent(txtLosenord)
                     .addComponent(cbxStad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -203,7 +203,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                             .addComponent(lblAntalArmar)
                             .addComponent(txtAntalArmar)))
                     .addComponent(txtRegistreringsDatum))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
