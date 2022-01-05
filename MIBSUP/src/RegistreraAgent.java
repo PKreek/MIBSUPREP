@@ -260,35 +260,39 @@ public class RegistreraAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_checkBoxActionPerformed
 
     private void btnÄndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraActionPerformed
+         
         String namn = txtNamn.getText();
         String telefonnummer = txtTelefon.getText();
         String losen = txtLosen.getText();
         String datum = txtAnstallningsDatum.getText();
-        String query = "SELECT NAMN FROM AGENT";
+        String hamtaNamn =txtNamn.getText();
+        String query = "SELECT * FROM AGENT where namn = '" + hamtaNamn +"'";
         String omradet = (String) cbxOmråde.getSelectedItem();
         String admin = "N";
-
+try {
         if (checkBox.isSelected()) {
            admin = "J";
            }
-        try {
+       
             String omradeID = idb.fetchSingle("Select omrades_ID from omrade where benamning = '" + omradet + "'");
             String fragaID = idb.getAutoIncrement("Agent", "Agent_ID");
+            String ettNamn = idb.fetchSingle(query);
             
-            if(idb.fetchSingle(query) == null)
+            if(ettNamn != null)
             {
-              idb.insert("Insert into Agent(Agent_id, namn, telefon, anstallningsdatum, administrator, losenord, omrade)"
-                        + "values(" + fragaID + ","
-                        + namn + "," + "'"
+                System.out.println("Namnet finns redan");
+            }
+            else
+            {
+                idb.insert("Insert into Agent(Agent_id, namn, telefon, anstallningsdatum, administrator, losenord, omrade)"
+                        + "values(" + fragaID + ",'"
+                        + namn + "'," + "'"
                         + telefonnummer + "'," + "'"
                         + datum + "'," + "'"
                         + admin + "'," + "'"
                         + losen + "',"
-                        + omradeID + ");");  
-            }
-            else
-            {
-                System.out.println("Namnet finns redan");
+                        + omradeID + ");"); 
+               
             }
                System.out.println(telefonnummer);
                 System.out.println(losen);
@@ -296,6 +300,8 @@ public class RegistreraAgent extends javax.swing.JFrame {
                 System.out.println(query);
                 System.out.println(omradet);
                 System.out.println(admin);
+                 System.out.println(ettNamn);
+                  System.out.println(hamtaNamn);
             
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Fel namn " + ex);
