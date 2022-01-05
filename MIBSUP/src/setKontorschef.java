@@ -170,7 +170,7 @@ public class setKontorschef extends javax.swing.JFrame {
                 int agentID = Integer.parseInt(idb.fetchSingle("Select Agent_ID from Agent where Namn = '" + valdAgent + "'"));
                 idb.update("Update Kontorschef set Kontorschef.Agent_ID = '" + agentID + "'" + "Where Kontorsbeteckning = '" + valtKontor + "'");
                 System.out.println("Kontorschef har uppdaterats. ");
-                JOptionPane.showMessageDialog(null, valdAgent + " Är nu kontorschef för: ");
+                JOptionPane.showMessageDialog(null, valdAgent + " Är nu kontorschef för: " + valtKontor);
                 txtaInfo.setText("");
                 fillTxtAInfo();
                 }
