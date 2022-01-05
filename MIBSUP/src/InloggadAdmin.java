@@ -360,8 +360,12 @@ public class InloggadAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSetOmradesChefActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        new ÄndraInformationAgent(idb).setVisible(true);
+        try {
+            // TODO add your handling code here:
+            new ÄndraInformationAgent(idb).setVisible(true);
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

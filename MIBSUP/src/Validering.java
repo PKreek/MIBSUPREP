@@ -1,6 +1,7 @@
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import oru.inf.InfDB;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,6 +14,13 @@ import javax.swing.JTextField;
  */
 public class Validering {
 
+    private static InfDB idb;
+    
+    public Validering(InfDB idb){
+        this.idb = idb;
+        
+    }
+            
     public static boolean gickDet(String vem) {
         boolean resultat = true;
         if (vem.equals("Agent")) {
@@ -23,6 +31,7 @@ public class Validering {
     
 public static boolean kollaLosen(String losen, String gammalt, String nytt, String nyttIgen)
 {
+    
     boolean funkar = false; 
     if(gammalt.equals(losen) && nytt.equals(nyttIgen) && nytt != gammalt && nytt.length() <= 6){
     funkar = true;
