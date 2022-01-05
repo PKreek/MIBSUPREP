@@ -23,6 +23,7 @@ public class setKontorschef extends javax.swing.JFrame {
         initComponents();
         fillCmbAgent();
         fillCmbKontor();
+        fillTxtAInfo();
     }
 
     /**
@@ -44,6 +45,7 @@ public class setKontorschef extends javax.swing.JFrame {
         cmbKontor = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaInfo = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +83,9 @@ public class setKontorschef extends javax.swing.JFrame {
         txtaInfo.setRows(5);
         jScrollPane1.setViewportView(txtaInfo);
 
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setText("Kontorschef");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -94,7 +99,11 @@ public class setKontorschef extends javax.swing.JFrame {
                             .addComponent(cmbAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -110,7 +119,7 @@ public class setKontorschef extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(LblRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(164, 164, 164))
+                .addGap(184, 184, 184))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,13 +134,15 @@ public class setKontorschef extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbKontor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(86, 86, 86)
+                .addGap(57, 57, 57)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAndra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAvbryt))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
                 .addGap(29, 29, 29))
         );
 
@@ -185,11 +196,37 @@ public class setKontorschef extends javax.swing.JFrame {
                 System.out.println("Internt felmeddelande" + err.getMessage());
             }
         }
+        
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         //Stänger ner rutan.
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
+    private void fillTxtAInfo(){
+        txtaInfo.append("Agent_ID" + "\t");
+        txtaInfo.append("Namn" + "\t");
+        txtaInfo.append("Telefon" + "\t");
+        txtaInfo.append("Kontor" + "\n");
+        
+        ArrayList<HashMap<String, String>> agentInfo;
+        
+        try {
+        String query2 = "SELECT Agent.Agent_ID, Agent.Namn, agent.Telefon, KontorsChef.Kontorsbeteckning from Agent, Kontorschef where Agent.Agent_ID = Kontorschef.Agent_ID";
+        agentInfo = idb.fetchRows(query2);
+        
+        for(HashMap<String, String> aI : agentInfo){
+            txtaInfo.append(aI.get("Agent_ID") + "\t");
+            txtaInfo.append(aI.get("Namn") + "\t");
+            txtaInfo.append(aI.get("Telefon") + "\t");
+            txtaInfo.append(aI.get("Kontorsbeteckning") + "\n");
+            }
+        } catch (InfException err){
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + err.getMessage());
+        
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -231,6 +268,7 @@ public class setKontorschef extends javax.swing.JFrame {
     private javax.swing.JButton btnAvbryt;
     private javax.swing.JComboBox<String> cmbAgent;
     private javax.swing.JComboBox<String> cmbKontor;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAgent;
