@@ -176,8 +176,8 @@ public class SökInformation extends javax.swing.JFrame {
             System.out.println(omrade);
         }
     }
-            
-    
+
+
     private void cbxSokvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSokvalActionPerformed
         // TODO add your handling code here:
         String sokVal = cbxSokval.getSelectedItem().toString();
@@ -191,13 +191,13 @@ public class SökInformation extends javax.swing.JFrame {
             btnAvbryt.setVisible(true);
             txtAnge.setText("");
             txtAreaLista.setText("");
-            if(sokVal.equals("Områdeschef")){
+            if (sokVal.equals("Områdeschef")) {
                 cbxOmrade.setVisible(true);
             }
-            if(sokVal.equals("Alien")){
+            if (sokVal.equals("Alien")) {
                 cbxOmrade.setVisible(false);
             }
-            
+
         }
     }//GEN-LAST:event_cbxSokvalActionPerformed
 
@@ -227,10 +227,11 @@ public class SökInformation extends javax.swing.JFrame {
                     txtAreaLista.append("\nTelefonnummer:\t" + alienInfo.get("TELEFON"));
                     txtAreaLista.append("\nAnsvarig agent:\t" + alienInfo2.get("NAMN"));
                     txtAreaLista.append("\nStad:\t" + alienInfo2.get("BENAMNING"));
+                    hamtaRas();
 
-                   if(!angeSokning.equals(alienInfo.get("NAMN"))){
-                       JOptionPane.showMessageDialog(null, "Aliennamnet finns inte");
-                   }
+                    if (!angeSokning.equals(alienInfo.get("NAMN"))) {
+                        JOptionPane.showMessageDialog(null, "Aliennamnet finns inte");
+                    }
                 } catch (InfException ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }
@@ -252,6 +253,31 @@ public class SökInformation extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnSokActionPerformed
+
+    private void hamtaRas() throws InfException {
+        String angeSokning = txtAnge.getText();
+        String query1 = "Select alien_id from Alien where namn = '" + angeSokning + "'";
+        int alienId = Integer.parseInt(idb.fetchSingle(query1));
+        String query = "Select alien_id from Boglodite where alien_id = " + alienId + "";
+        String isBoggie = idb.fetchSingle(query);
+
+        String query2 = "Select alien_id from Squid where alien_id = " + alienId + "";
+        String isSquid = idb.fetchSingle(query2);
+
+        String query3 = "Select alien_id from Worm where alien_id = " + alienId + "";
+        String isWorm = idb.fetchSingle(query3);
+        if (isBoggie != null) {
+            txtAreaLista.append("\n" + "Ras:\t" + "Boglodite");
+        }
+        else if (isSquid != null)
+        {
+            txtAreaLista.append("\n" + "Ras:\t" + "Squid");
+        }
+        else{
+            txtAreaLista.append("\n" + "Ras:\t" + "Worm");
+        }
+
+    }
 
     private void cbxOmradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxOmradeActionPerformed
         // TODO add your handling code here:
