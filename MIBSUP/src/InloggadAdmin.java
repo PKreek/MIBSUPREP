@@ -323,27 +323,25 @@ public class InloggadAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegistreraAgentActionPerformed
 
-    private void btnAndraInfoAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraInfoAlienActionPerformed
+    private void btnAndraInfoAlienActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         try {
             // TODO add your handling code here:
             new ÄndraInformationAlien(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
-<<<<<<< HEAD
-    }//GEN-LAST:event_btnTaBortUtrActionPerformed
 
-    private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAgentActionPerformed
+    }                                            
+
+    private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {                                               
         try {
             // TODO add your handling code here:
             new TaBortAgent(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnTaBortAgentActionPerformed
-=======
-    }//GEN-LAST:event_btnAndraInfoAlienActionPerformed
->>>>>>> 09d5c225d0266fb9a76e7bfd18aafb68bb9b8140
+    }                                              
+
 
     private void btnSokAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAgentActionPerformed
         try {
@@ -355,8 +353,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokAgentActionPerformed
 
     private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAgentActionPerformed
-        // TODO add your handling code here:
-        new TaBortAgent(idb).setVisible(true);
+
     }//GEN-LAST:event_btnTaBortAgentActionPerformed
 
     private void btnTaBortUtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortUtrActionPerformed

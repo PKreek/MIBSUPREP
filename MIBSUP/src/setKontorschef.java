@@ -165,6 +165,7 @@ public class setKontorschef extends javax.swing.JFrame {
 
         }
         private void fillCmbAgent(){
+            //Fyller agent comboboxen. 
             String query = "Select namn from agent";
             ArrayList<String> allAgentNames;
             try{
@@ -182,6 +183,7 @@ public class setKontorschef extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAndraActionPerformed
 
         private void fillCmbKontor(){
+            //Fyller kontor comboboxen. 
             String query1 = "SELECT Kontorsbeteckning FROM Kontorschef;";
             ArrayList<String> allKontorNames;
             try{
@@ -203,6 +205,7 @@ public class setKontorschef extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void fillTxtAInfo(){
+        //Fyller textarean med vilka kontorschefer det finns. 
         txtaInfo.append("Agent_ID" + "\t");
         txtaInfo.append("Namn" + "\t");
         txtaInfo.append("Telefon" + "\t");
