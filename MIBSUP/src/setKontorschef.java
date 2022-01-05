@@ -162,8 +162,25 @@ public class setKontorschef extends javax.swing.JFrame {
 
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         //Ändrar kontorschef
-
+        String valdAgent = cmbAgent.getSelectedItem().toString();
+        String valtKontor = cmbKontor.getSelectedItem().toString();
+        
+        try{
+            if(valdAgent != null && valtKontor != null){
+                int agentID = Integer.parseInt(idb.fetchSingle("Select Agent_ID from Agent where Namn = '" + valdAgent + "'"));
+                idb.update("Update Kontorschef set Kontorschef.Agent_ID = '" + agentID + "'" + "Where Kontorsbeteckning = '" + valtKontor + "'");
+                System.out.println("Kontorschef har uppdaterats. ");
+                JOptionPane.showMessageDialog(null, valdAgent + " Är nu kontorschef för: ");
+                txtaInfo.setText("");
+                fillTxtAInfo();
+                }
+            }
+            catch (InfException err){
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + err.getMessage());
+        
         }
+    }
         private void fillCmbAgent(){
             //Fyller agent comboboxen. 
             String query = "Select namn from agent";

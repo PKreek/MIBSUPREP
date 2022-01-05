@@ -206,9 +206,10 @@ public class SetOmradeschef extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, valdAgent + " Är nu områdeschef för område: " + valtOmrade);
                 txtaOmrade.setText("");
                 fillTxtOmrade();
-            }
+                }
             
-        }   catch (InfException err){
+            }   
+            catch (InfException err){
             JOptionPane.showMessageDialog(null, valtOmrade + " har redan en områdeschef!");
             System.out.println("Internt felmeddelande" + err.getMessage());
         }
