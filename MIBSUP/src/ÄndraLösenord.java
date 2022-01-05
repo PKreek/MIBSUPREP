@@ -9,7 +9,6 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author noahjarvback
@@ -20,6 +19,7 @@ public class ÄndraLösenord extends javax.swing.JFrame {
     private static String losenord;
     private static String anvandare;
     private static InfDB idb;
+
     /**
      * Creates new form ÄndraLösenord
      */
@@ -162,53 +162,66 @@ public class ÄndraLösenord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraLosenActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            if (Validering.gickDet(anvandare) == false) {
+                losenordAgenten();
+            } else {
+                losenordAliens();
+            }
+
+        } catch (InfException ex) {
+            Logger.getLogger(ÄndraLösenord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAndraLosenActionPerformed
+
+    private void losenordAliens() throws InfException {
         String gammaltLosen = new String(pswAktuelltLosen.getPassword());
         String nyttLosen = new String(pswNyttLosen.getPassword());
         String nyttLosenIgen = new String(pswNyttLosenIgen.getPassword());
-     
-        if(Validering.gickDet(anvandare)==false){
-            if(Validering.kollaLosen(losenord, gammaltLosen, nyttLosen, nyttLosenIgen) == true)
-            { 
-            String query = "UPDATE AGENT SET LOSENORD = '" + nyttLosen + "' WHERE AGENT.NAMN = '" + anvandarNamn + "'";
+        this.losenord = idb.fetchSingle("SELECT LOSENORD FROM ALIEN WHERE NAMN = '" + anvandarNamn + "'");
+        System.out.println(losenord);
+
+        if (Validering.kollaLosen(losenord, gammaltLosen, nyttLosen, nyttLosenIgen) == true) {
+            idb.update("UPDATE ALIEN SET LOSENORD = '" + nyttLosen + "' WHERE ALIEN.NAMN = '" + anvandarNamn + "'");
             try {
-                String hamtaLosen = idb.fetchSingle(query);
-                System.out.println(hamtaLosen);
-            } catch (InfException e) {
-                JOptionPane.showMessageDialog(null, e);
-            }
-            }
-        
-            else if (Validering.nyttLosen(nyttLosenIgen, nyttLosen, gammaltLosen, losenord)== true)
-            {
-            JOptionPane.showMessageDialog(null, "Nya lösenordet stämmer inte");
-             }
-             else{
-            JOptionPane.showMessageDialog(null, "Det gamla lösenordet stämmer inte");
-        }
-        }   
-        if(Validering.gickDet(anvandare)==true){
-            if(Validering.kollaLosen(losenord, gammaltLosen, nyttLosen, nyttLosenIgen) == true){
-            String query2 = "UPDATE ALIEN SET LOSENORD = '" + nyttLosen + "' WHERE ALIEN.NAMN = '" + anvandarNamn + "'";
-            try {
-                String hamtaLosen2 = idb.fetchSingle(query2);
-                System.out.println(hamtaLosen2);
+                this.losenord = idb.fetchSingle("SELECT LOSENORD FROM ALIEN WHERE NAMN = '" + anvandarNamn + "'");
+                System.out.println(losenord);
+
             } catch (InfException ee) {
                 JOptionPane.showMessageDialog(null, ee);
             }
-            JOptionPane.showMessageDialog(null, "Lösenordet har bytts");
-            }
-        
-         else if (Validering.nyttLosen(nyttLosenIgen, nyttLosen, gammaltLosen, losenord)== true){
+
+        } else if (Validering.nyttLosen(nyttLosenIgen, nyttLosen, gammaltLosen, losenord) == true) {
             JOptionPane.showMessageDialog(null, "Nya lösenordet stämmer inte");
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "Det gamla lösenordet stämmer inte");
         }
-        }
-   
-    }//GEN-LAST:event_btnAndraLosenActionPerformed
 
+    }
+
+    private void losenordAgenten() throws InfException {
+        String gammaltLosen = new String(pswAktuelltLosen.getPassword());
+        String nyttLosen = new String(pswNyttLosen.getPassword());
+        String nyttLosenIgen = new String(pswNyttLosenIgen.getPassword());
+        this.losenord = idb.fetchSingle("SELECT LOSENORD FROM AGENT WHERE NAMN = '" + anvandarNamn + "'");
+        System.out.println(losenord);
+
+        if (Validering.kollaLosen(losenord, gammaltLosen, nyttLosen, nyttLosenIgen) == true) {
+            idb.update("UPDATE AGENT SET LOSENORD = '" + nyttLosen + "' WHERE AGENT.NAMN = '" + anvandarNamn + "'");
+            try {
+                this.losenord = idb.fetchSingle("SELECT LOSENORD FROM AGENT WHERE NAMN = '" + anvandarNamn + "'");
+                System.out.println(losenord);
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        } else if (Validering.nyttLosen(nyttLosenIgen, nyttLosen, gammaltLosen, losenord) == true) {
+            JOptionPane.showMessageDialog(null, "Nya lösenordet stämmer inte");
+        } else {
+            JOptionPane.showMessageDialog(null, "Det gamla lösenordet stämmer inte");
+        }
+
+    }
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         // TODO add your handling code here:
         dispose();
