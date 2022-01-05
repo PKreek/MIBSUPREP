@@ -323,8 +323,12 @@ public class InloggadAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTaBortUtrActionPerformed
 
     private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAgentActionPerformed
-        // TODO add your handling code here:
-        new TaBortAgent(idb).setVisible(true);
+        try {
+            // TODO add your handling code here:
+            new TaBortAgent(idb).setVisible(true);
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnTaBortAgentActionPerformed
 
     private void btnSokAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAgentActionPerformed
