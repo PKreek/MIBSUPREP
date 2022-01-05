@@ -330,7 +330,6 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         String valdRas = cbxRas.getSelectedItem().toString();
 
         try {
-            idb.update("UPDATE ALIEN SET NAMN = '" + alienNytt + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
             idb.update("UPDATE ALIEN SET REGISTRERINGSDATUM = '" + datum + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
             idb.update("UPDATE ALIEN SET LOSENORD = '" + losenord + "'" + "WHERE ALIEN.NAMN ='" + alienNamn + "'");
             idb.update("UPDATE ALIEN SET TELEFON = '" + telefonNr + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
@@ -339,6 +338,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             int platsID = Integer.parseInt(idb.fetchSingle("SELECT PLATS_ID FROM PLATS WHERE BENAMNING = '" + valdPlats + "'"));
             idb.update("UPDATE ALIEN SET PLATS = '" + platsID + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
             registreraRas();
+            idb.update("UPDATE ALIEN SET NAMN = '" + alienNytt + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
 
             JOptionPane.showMessageDialog(null, "Alien har blivit uppdaterad");
         } catch (InfException ex) {
