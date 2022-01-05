@@ -323,13 +323,13 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
         String admin = cbxAdmin.getSelectedItem().toString();
         
         try {
-            idb.update("UPDATE AGENT SET NAMN = '" + agentNytt + "'" + "WHERE NAMN = '" + agentNamn +"'");
             idb.update("UPDATE AGENT SET ANSTALLNINGSDATUM = '" + datum + "'" + "WHERE NAMN = '" + agentNamn + "'");
             idb.update("UPDATE AGENT SET LOSENORD = '" + losen +"'" + "WHERE NAMN = '" + agentNamn + "'");
             idb.update("UPDATE AGENT SET TELEFON = '" + telefonNr + "'" + "WHERE NAMN = '" + agentNamn + "'");
             idb.update("UPDATE AGENT SET ADMINISTRATOR = '" + admin + "'" + "WHERE NAMN = '" + agentNamn + "'");
             int omradesID = Integer.parseInt(idb.fetchSingle("SELECT OMRADES_ID FROM OMRADE WHERE BENAMNING = '" + omrade + "'"));
             idb.update("UPDATE AGENT SET OMRADE = '" + omradesID + "'" + "WHERE NAMN = '" + agentNamn + "'");
+            idb.update("UPDATE AGENT SET NAMN = '" + agentNytt + "'" + "WHERE NAMN = '" + agentNamn +"'");
             JOptionPane.showMessageDialog(null, "Agenten har uppdaterats");
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);

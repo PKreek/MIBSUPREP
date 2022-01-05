@@ -269,6 +269,9 @@ public class ListaAliens extends javax.swing.JFrame {
     private void btnSokAlienPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienPlatsActionPerformed
         // TODO add your handling code here:
         txtAreaLista.setText("");
+        cbxListaAliensRas.setSelectedItem("Välj ras");
+        txtDatum1.setText("YYYY-MM-DD");
+        txtDatum2.setText("YYYY-MM-DD");
 
         String valdStad = cbxListaAliensPlats.getSelectedItem().toString();
         String query2 = "SELECT NAMN FROM Alien "
@@ -316,6 +319,10 @@ public class ListaAliens extends javax.swing.JFrame {
     private void btnSokAlienRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienRasActionPerformed
         // TODO add your handling code here:
         txtAreaLista.setText("");
+        cbxListaAliensPlats.setSelectedItem("Välj plats");
+        txtDatum1.setText("YYYY-MM-DD");
+        txtDatum2.setText("YYYY-MM-DD");
+        
         int i = cbxListaAliensRas.getSelectedIndex();
         switch (i) {
             case 1: {
@@ -372,6 +379,9 @@ public class ListaAliens extends javax.swing.JFrame {
     private void btnSokAlienDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienDatumActionPerformed
         // TODO add your handling code here:
         txtAreaLista.setText("");
+        cbxListaAliensPlats.setSelectedItem("Välj plats");
+        cbxListaAliensRas.setSelectedItem("Välj ras");
+        
         String datum1 = txtDatum1.getText();
         String datum2 = txtDatum2.getText();
         String query = "SELECT ALIEN.NAMN FROM AlIEN WHERE REGISTRERINGSDATUM BETWEEN '" + datum1 + "'" + "AND'" + datum2 + "'";
