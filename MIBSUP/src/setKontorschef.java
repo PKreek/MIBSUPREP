@@ -12,20 +12,17 @@ import java.util.HashMap;
  *
  * @author patrickkreek
  */
-public class SetOmradeschef extends javax.swing.JFrame {
-    
+public class setKontorschef extends javax.swing.JFrame {
+
     private InfDB idb;
-    
     /**
-     * Creates new form SetOmradeschef
+     * Creates new form setKontorschef
      */
-    public SetOmradeschef(InfDB idb) {
+    public setKontorschef(InfDB idb) {
         this.idb = idb;
         initComponents();
         fillCmbAgent();
-        fillCmbOmrade();
-        fillTxtAInfo();
-        
+        fillCmbKontor();
     }
 
     /**
@@ -40,28 +37,27 @@ public class SetOmradeschef extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         LblRubrik = new javax.swing.JLabel();
         lblAgent = new javax.swing.JLabel();
-        lblOmrade = new javax.swing.JLabel();
+        lblKontor = new javax.swing.JLabel();
         btnAndra = new javax.swing.JButton();
         btnAvbryt = new javax.swing.JButton();
         cmbAgent = new javax.swing.JComboBox<>();
-        cmbOmrade = new javax.swing.JComboBox<>();
+        cmbKontor = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaInfo = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(33, 31, 31));
 
         jPanel1.setBackground(new java.awt.Color(33, 31, 31));
 
         LblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         LblRubrik.setForeground(new java.awt.Color(255, 255, 255));
-        LblRubrik.setText("Ändra områdeschef");
+        LblRubrik.setText("Ändra kontorschef");
 
         lblAgent.setForeground(new java.awt.Color(153, 153, 153));
         lblAgent.setText("Agent");
 
-        lblOmrade.setForeground(new java.awt.Color(153, 153, 153));
-        lblOmrade.setText("Område");
+        lblKontor.setForeground(new java.awt.Color(153, 153, 153));
+        lblKontor.setText("Kontor");
 
         btnAndra.setBackground(new java.awt.Color(255, 255, 255));
         btnAndra.setForeground(new java.awt.Color(0, 0, 0));
@@ -89,23 +85,22 @@ public class SetOmradeschef extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAgent)
-                            .addComponent(cmbAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(cmbAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblOmrade))
+                            .addComponent(cmbKontor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblKontor))
                         .addGap(50, 50, 50))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,9 +108,9 @@ public class SetOmradeschef extends javax.swing.JFrame {
                             .addComponent(btnAvbryt))
                         .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LblRubrik)
-                .addGap(176, 176, 176))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(LblRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(164, 164, 164))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,18 +120,18 @@ public class SetOmradeschef extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAgent)
-                    .addComponent(lblOmrade))
+                    .addComponent(lblKontor))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbKontor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(86, 86, 86)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAndra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAvbryt))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
                 .addGap(29, 29, 29))
         );
 
@@ -144,88 +139,57 @@ public class SetOmradeschef extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
+        //Ändrar kontorschef
+
+        }
+        private void fillCmbAgent(){
+            String query = "Select namn from agent";
+            ArrayList<String> allAgentNames;
+            try{
+                allAgentNames = idb.fetchColumn(query);
+
+                for(String names : allAgentNames){
+                    cmbAgent.addItem(names);
+
+                }
+            }
+            catch (InfException err){
+                JOptionPane.showMessageDialog(null, "Databasfel!");
+                System.out.println("Internt felmeddelande" + err.getMessage());
+            }
+    }//GEN-LAST:event_btnAndraActionPerformed
+
+        private void fillCmbKontor(){
+            String query1 = "SELECT Kontorsbeteckning FROM Kontorschef;";
+            ArrayList<String> allKontorNames;
+            try{
+                allKontorNames = idb.fetchColumn(query1);
+                
+                for(String kontor : allKontorNames){
+                    cmbKontor.addItem(kontor);
+                }
+            }
+            catch (InfException err){
+                JOptionPane.showMessageDialog(null, "Databasfel!");
+                System.out.println("Internt felmeddelande" + err.getMessage());
+            }
+        }
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        //Stänger ner rutan. 
+        //Stänger ner rutan.
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
-    private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
-        //Ändrar områdeschef
-        
-    }
-    private void fillCmbAgent(){
-        String query = "Select namn from agent";
-        ArrayList<String> allAgentNames;
-        try{
-            allAgentNames = idb.fetchColumn(query);
-            
-            for(String names : allAgentNames){
-                cmbAgent.addItem(names);
-                
-            }
-        }    
-        catch (InfException err){
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmeddelande" + err.getMessage());
-        }
-    }//GEN-LAST:event_btnAndraActionPerformed
-
-    private void fillCmbOmrade(){
-        String query1 = "SELECT Omrade.Benamning FROM Omrade";
-        ArrayList<String> allAreas;
-        try{
-            allAreas = idb.fetchColumn(query1);
-            
-            for(String areas : allAreas){
-                cmbOmrade.addItem(areas);
-            }
-        }
-        catch (InfException err){
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmeddelande" + err.getMessage());
-        }
-    }
-    
-    private void fillTxtAInfo(){
-        txtaInfo.append("Agent_ID" + "\t");
-        txtaInfo.append("Namn" + "\t");
-        txtaInfo.append("Telefon" + "\t");
-        txtaInfo.append("Område" + "\n");
-        
-        ArrayList<HashMap<String, String>> agentInfo;
-        
-        try {
-        String query2 = "SELECT Agent.Agent_ID, Agent.Namn, agent.Telefon, agent.Omrade from Agent";
-        agentInfo = idb.fetchRows(query2);
-        
-        for(HashMap<String, String> aI : agentInfo){
-            txtaInfo.append(aI.get("Agent_ID") + "\t");
-            txtaInfo.append(aI.get("Namn") + "\t");
-            txtaInfo.append(aI.get("Telefon") + "\t");
-            txtaInfo.append(aI.get("Omrade") + "\n");
-            }
-        } catch (InfException err){
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmeddelande" + err.getMessage());
-        
-        }
-    }
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -243,13 +207,13 @@ public class SetOmradeschef extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SetOmradeschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(setKontorschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SetOmradeschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(setKontorschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SetOmradeschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(setKontorschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SetOmradeschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(setKontorschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -266,11 +230,11 @@ public class SetOmradeschef extends javax.swing.JFrame {
     private javax.swing.JButton btnAndra;
     private javax.swing.JButton btnAvbryt;
     private javax.swing.JComboBox<String> cmbAgent;
-    private javax.swing.JComboBox<String> cmbOmrade;
+    private javax.swing.JComboBox<String> cmbKontor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAgent;
-    private javax.swing.JLabel lblOmrade;
+    private javax.swing.JLabel lblKontor;
     private javax.swing.JTextArea txtaInfo;
     // End of variables declaration//GEN-END:variables
 }
