@@ -50,6 +50,13 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnTaBortAlien" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="btnSattAdmin" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
@@ -73,22 +80,16 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btnTaBortAgent" min="-2" max="-2" attributes="0"/>
                               <Component id="btnRegistreraAlien" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAndraLosen" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAndraInfoAlien" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnRegistreraAgent" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnSokAgent" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="btnSetOmradesChef" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAndraInfoAlien" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSokAgent" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAndraLosen" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnRegistreraAgent" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-              </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnTaBortAlien" min="-2" pref="114" max="-2" attributes="0"/>
-                      <Component id="btnSattAdmin" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -108,7 +109,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnRegistreraAgent" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnSattAdmin" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="btnSattAdmin" min="-2" pref="20" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnTaBortAgent" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -116,10 +119,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnTaBortUtr" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnAndraLosen" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnSetOmradesChef" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="43" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnAndraLosen" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -378,6 +381,29 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSetOmradesChefActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="1f" green="1f" red="21" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="sansserif" size="16" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xc4;ndra information om en agent"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

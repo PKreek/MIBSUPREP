@@ -1,19 +1,31 @@
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author noahjarvback
  */
 public class ÄndraInformationAgent extends javax.swing.JFrame {
 
+    private static InfDB idb;
+
     /**
      * Creates new form ÄndraInformationAgent
      */
-    public ÄndraInformationAgent() {
+    public ÄndraInformationAgent(InfDB idb) throws InfException {
         initComponents();
+        this.idb = idb;
+        fillComboBoxOmrade();
     }
 
     /**
@@ -83,7 +95,7 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
 
         cbxAdmin.setBackground(new java.awt.Color(255, 255, 255));
         cbxAdmin.setForeground(new java.awt.Color(0, 0, 0));
-        cbxAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj admin:" }));
+        cbxAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj admin:", "J", "N" }));
         cbxAdmin.setSize(new java.awt.Dimension(72, 30));
 
         lblAgentNamn.setForeground(new java.awt.Color(153, 153, 153));
@@ -107,14 +119,29 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
         btnSokAgent.setBackground(new java.awt.Color(255, 255, 255));
         btnSokAgent.setForeground(new java.awt.Color(0, 0, 0));
         btnSokAgent.setText("Sök");
+        btnSokAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokAgentActionPerformed(evt);
+            }
+        });
 
         btnAndra.setBackground(new java.awt.Color(255, 255, 255));
         btnAndra.setForeground(new java.awt.Color(0, 0, 0));
         btnAndra.setText("Ändra");
+        btnAndra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraActionPerformed(evt);
+            }
+        });
 
         btnAvbryt.setBackground(new java.awt.Color(255, 255, 255));
         btnAvbryt.setForeground(new java.awt.Color(0, 0, 0));
         btnAvbryt.setText("Avbryt");
+        btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvbrytActionPerformed(evt);
+            }
+        });
 
         txtAreaLista.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaLista.setColumns(20);
@@ -134,61 +161,57 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblOmrade)
+                            .addComponent(lblAgentNamn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAndra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtAngeAgent)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblAgentNamn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cbxOmrade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnAndra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtAngeAgent)
-                                    .addComponent(txtAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbxOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblOmrade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(btnSokAgent))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAvbryt)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(22, 22, 22)
-                                        .addComponent(btnSokAgent))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(btnAvbryt)
-                                                .addGap(67, 67, 67))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtAnstDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblAnstDatum))
-                                                .addGap(18, 18, 18)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblLosen)
-                                            .addComponent(txtLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblTelefon)))
+                                            .addComponent(lblAnstDatum)
+                                            .addComponent(txtAnstDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblLosen))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTelefon)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbxAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblAdmin))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cbxAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGap(8, 8, 8)
+                                        .addComponent(lblAdmin)))))
+                        .addGap(70, 70, 70))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblAngeNamn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblFyllVarde))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(49, 49, 49))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblRubrik)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAngeNamn)
+                            .addComponent(lblFyllVarde)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblRubrik))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,10 +238,10 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
                     .addComponent(txtAnstDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOmrade)
-                    .addComponent(lblAdmin))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAdmin)
+                    .addComponent(lblOmrade))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,7 +252,7 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
                     .addComponent(btnAvbryt))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -245,6 +268,79 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fillComboBoxOmrade() throws InfException {
+        String query = "SELECT BENAMNING FROM OMRADE";
+        ArrayList<String> omrade = idb.fetchColumn(query);
+        for (String ettOmrade : omrade) {
+            cbxOmrade.addItem(ettOmrade);
+        }
+    }
+
+    private void sokAgent() {
+
+        String agentNamn = txtAngeAgent.getText();
+        try {
+            HashMap<String, String> agentLista = idb.fetchRow("SELECT NAMN, TELEFON, ANSTALLNINGSDATUM, ADMINISTRATOR, LOSENORD, BENAMNING FROM AGENT"
+                    + " JOIN OMRADE ON OMRADES_ID = OMRADE "
+                    + " WHERE NAMN = '" + agentNamn + "'");
+            System.out.println(agentLista);
+
+            txtAgentNamn.setText(agentLista.get("NAMN"));
+            txtAnstDatum.setText(agentLista.get("ANSTALLNINGSDATUM"));
+            txtLosen.setText(agentLista.get("LOSENORD"));
+            txtTelefon.setText(agentLista.get("TELEFON"));
+            cbxAdmin.setSelectedItem(agentLista.get("ADMINISTRATOR"));
+            cbxOmrade.setSelectedItem(agentLista.get("BENAMNING"));
+            
+            txtAreaLista.setText("");
+            txtAreaLista.append("Namn:  " + agentLista.get("NAMN") + "\n");
+            txtAreaLista.append("Anställningsdatum:  " + agentLista.get("ANSTALLNINGSDATUM") + "\n");
+            txtAreaLista.append("Lösenord:  " + agentLista.get("LOSENORD") + "\n");
+            txtAreaLista.append("Telefonnummer:  " + agentLista.get("TELEFON") + "\n");
+            txtAreaLista.append("Administratör:  " + agentLista.get("ADMINISTRATOR") + "\n");
+            txtAreaLista.append("Område:  " + agentLista.get("BENAMNING")+ "\n");
+
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+
+    }
+    private void btnSokAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAgentActionPerformed
+        // TODO add your handling code here:
+        sokAgent();
+
+    }//GEN-LAST:event_btnSokAgentActionPerformed
+
+    private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
+        // TODO add your handling code here:
+        String agentNamn = txtAngeAgent.getText();
+        String agentNytt = txtAgentNamn.getText();
+        String datum = txtAnstDatum.getText();
+        String losen = txtLosen.getText();
+        String telefonNr = txtTelefon.getText();
+        String omrade = cbxOmrade.getSelectedItem().toString();
+        String admin = cbxAdmin.getSelectedItem().toString();
+        
+        try {
+            idb.update("UPDATE AGENT SET NAMN = '" + agentNytt + "'" + "WHERE NAMN = '" + agentNamn +"'");
+            idb.update("UPDATE AGENT SET ANSTALLNINGSDATUM = '" + datum + "'" + "WHERE NAMN = '" + agentNamn + "'");
+            idb.update("UPDATE AGENT SET LOSENORD = '" + losen +"'" + "WHERE NAMN = '" + agentNamn + "'");
+            idb.update("UPDATE AGENT SET TELEFON = '" + telefonNr + "'" + "WHERE NAMN = '" + agentNamn + "'");
+            idb.update("UPDATE AGENT SET ADMINISTRATOR = '" + admin + "'" + "WHERE NAMN = '" + agentNamn + "'");
+            int omradesID = Integer.parseInt(idb.fetchSingle("SELECT OMRADES_ID FROM OMRADE WHERE BENAMNING = '" + omrade + "'"));
+            idb.update("UPDATE AGENT SET OMRADE = '" + omradesID + "'" + "WHERE NAMN = '" + agentNamn + "'");
+            JOptionPane.showMessageDialog(null, "Agenten har uppdaterats");
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        sokAgent();
+    }//GEN-LAST:event_btnAndraActionPerformed
+
+    private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnAvbrytActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,7 +372,11 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ÄndraInformationAgent().setVisible(true);
+                try {
+                    new ÄndraInformationAgent(idb).setVisible(true);
+                } catch (InfException ex) {
+                    Logger.getLogger(ÄndraInformationAgent.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

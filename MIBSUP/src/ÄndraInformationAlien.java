@@ -405,6 +405,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             HashMap<String, String> aliens = idb.fetchRow("SELECT NAMN, REGISTRERINGSDATUM, LOSENORD, TELEFON FROM ALIEN "
                     + "WHERE NAMN = '" + alienNamn + "'");
             System.out.println(aliens);
+            
             txtAlienNamn.setText(aliens.get("NAMN"));
             txtAngeDatum.setText(aliens.get("REGISTRERINGSDATUM"));
             txtLosenord.setText(aliens.get("LOSENORD"));
