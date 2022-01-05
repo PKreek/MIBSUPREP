@@ -387,11 +387,6 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         }
     }
     private void sokAlien(){
-        txtAlienNamn.setText("");
-        txtAngeDatum.setText("");
-        txtLosenord.setText("");
-        txtTelefonnr.setText("");
-        
         
         String alienNamn = txtAngeAlien.getText();
       
