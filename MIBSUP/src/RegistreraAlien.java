@@ -235,6 +235,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fillComboBox() throws InfException {
+        //Fyller comboboxen med platsnamn
         String query1 = "SELECT BENAMNING FROM PLATS";
         ArrayList<String> omrade = idb.fetchColumn(query1);
         for (String ettOmrade : omrade) {
@@ -244,7 +245,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
     }
     private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
-        // TODO add your handling code here
+        // Utför registrering av alien
         String losenord = txtLosenord.getText();
         String alienNamn = txtNamn.getText();
         String valdStad = cbxStad.getSelectedItem().toString();
@@ -332,7 +333,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     private void cbxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRasActionPerformed
-        // TODO add your handling code here:
+        // Tar fram textrutan för antal armar beroende på vilken ras man valt i comboboxen
         int i = cbxRas.getSelectedIndex();
         switch (i) {
             case 0:
@@ -355,6 +356,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxRasActionPerformed
 
     private String datum() {
+        // Sätter datumet i datumfältet till dagens
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         this.datum = dateFormat.format(date);
@@ -363,7 +365,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }
     
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 

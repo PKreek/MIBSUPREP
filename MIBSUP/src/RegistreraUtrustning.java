@@ -120,12 +120,12 @@ public class RegistreraUtrustning extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void btnRegistreraUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraUtrustningActionPerformed
-        // TODO add your handling code here:
+        // Registrerar utrustning som har angetts i textfältet
         String angeUtrustning = txtAngeUtrustning.getText();
         try {
             String utrustningsID = idb.getAutoIncrement("UTRUSTNING", "UTRUSTNINGS_ID");

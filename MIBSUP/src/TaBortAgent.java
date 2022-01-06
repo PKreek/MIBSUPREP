@@ -139,37 +139,47 @@ public class TaBortAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void KonfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KonfirmeraActionPerformed
-try {
-            String agenten = vilkenAgent.getText();
+
+        String deleteAgentAlienTabell = "";
+        String deleteFalt = "";
+        
+        try {
+            String agenten = vilkenAgent.getText().toString();
             String nyAgent = cbxAllaAgenter.getSelectedItem().toString();
-            String query = "select * from agent where namn = '" + agenten + "'";
-           String query1 = "select agent_id from agent where namn = '" + agenten +"'";
+            String query = "select Agent.Agent_ID from agent where Agent.Namn = '" + agenten + "'";
+           String query1 = "select Agent_ID from agent where Namn = '" + agenten +"'";
            String query2 = "select agent_id from agent where namn = '" + nyAgent +"'";
             String id = idb.fetchSingle(query1);
             String id1 = idb.fetchSingle(query2);
-            if ( idb.fetchSingle(query) == null) {
+            String id2 = idb.fetchSingle(query);
+             deleteAgentAlienTabell = "update alien set ansvarig_agent = " +id1 +" where ansvarig_agent =" + id + "";
+             deleteFalt = "delete from faltagent where agent_id =" + id + "";
+            if (id2 == null) {
                 System.out.println("Fel inmatning");
                 System.out.println(id);
-                System.out.println(query);
+                System.out.println(query1);
             } else {
-                String deleteQuery = "delete from agent where namn ='" + agenten + "'";
-                idb.delete(deleteQuery);
-                  String deleteFalt = "delete from faltagent where agent_id ='" + id + "'";
-                idb.delete(deleteFalt);
-                  String deleteInneharFordon = "delete from innehar_fordon where agent_id ='" + id + "'";
-                idb.delete(deleteInneharFordon);
-                  String deleteInneharUtrustning = "delete from innehar_utrustning where agent_id ='" +id + "'";
-                idb.delete(deleteInneharUtrustning);
-                  String deleteKontorschef = "delete from kontorschef where agent_id ='" + id + "'";
-                idb.delete(deleteKontorschef);
-                  String deleteOmrade = "delete from omradeschef where agent_id ='" + id + "'";
-                idb.delete(deleteOmrade);
-                  String deleteAgentAlienTabell = "update alien set Agent_id = '" +id1 +"' where agent_id ='" + id + "'";
+                 
                 idb.update(deleteAgentAlienTabell);
+                  
+                idb.delete(deleteFalt);
+                  String deleteInneharFordon = "delete from innehar_fordon where agent_id =" + id + "";
+                idb.delete(deleteInneharFordon);
+                  String deleteInneharUtrustning = "delete from innehar_utrustning where agent_id =" +id + "";
+                idb.delete(deleteInneharUtrustning);
+                  String deleteKontorschef = "delete from kontorschef where agent_id =" + id + "";
+                idb.delete(deleteKontorschef);
+                  String deleteOmrade = "delete from omradeschef where agent_id =" + id + "";
+                idb.delete(deleteOmrade);
+                 String deleteQuery = "delete from agent where namn ='" + agenten + "'";
+                idb.delete(deleteQuery);
+                 
             }
 
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Fel namn " + ex);
+            System.out.println(deleteAgentAlienTabell);
+            System.out.println(deleteFalt);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_KonfirmeraActionPerformed

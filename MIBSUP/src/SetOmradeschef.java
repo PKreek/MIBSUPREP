@@ -234,7 +234,7 @@ public class SetOmradeschef extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAndraActionPerformed
 
     private void fillCmbOmrade(){
-        //Fyller område comboboxen
+        //Fyller områdecomboboxen
         String query1 = "SELECT Omrade.Benamning FROM Omrade";
         ArrayList<String> allAreas;
         try{
