@@ -302,6 +302,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fillComboBoxPlats() throws InfException {
+        //Fyller combox med olika platser som finns lagrade i databasen
         String query = "SELECT BENAMNING FROM PLATS";
         ArrayList<String> omrade = idb.fetchColumn(query);
         for (String ettOmrade : omrade) {
@@ -311,6 +312,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
     }
 
     private void fillComboBoxAgent() throws InfException {
+        //Fyller combobox med alla agenter som finns i databasen
         String query = "SELECT AGENT.NAMN FROM AGENT";
         ArrayList<String> agent = idb.fetchColumn(query);
         for (String agentNamn : agent) {
@@ -319,7 +321,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
     }
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 private boolean okFunktion()
@@ -360,7 +362,7 @@ private boolean okFunktion()
     }
     
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
-        // TODO add your handling code here:
+        // Utför ändring som gjorts
          if(okFunktion() == true)
         {
         String alienNamn = txtAngeAlien.getText();
@@ -391,6 +393,7 @@ private boolean okFunktion()
         }
     }//GEN-LAST:event_btnAndraActionPerformed
     private void kollaAntal() throws InfException {
+        //Kontrollerar antal armar baserat på ras
         String alienNamn = txtAngeAlien.getText();
         int alienID = Integer.parseInt(idb.fetchSingle("SELECT ALIEN_ID FROM ALIEN WHERE NAMN = '" + alienNamn + "'"));
         int i = cbxRas.getSelectedIndex();
@@ -409,6 +412,7 @@ private boolean okFunktion()
     }
 
     private void registreraRas() throws InfException {
+        //Ändrar informationen baserat på ändringar man gjort i metoden btnAndraActionPerformed
         String alienNamn = txtAngeAlien.getText();
         int alienID = Integer.parseInt(idb.fetchSingle("SELECT ALIEN_ID FROM ALIEN WHERE NAMN = '" + alienNamn + "'"));
         System.out.println(alienID);
@@ -448,7 +452,7 @@ private boolean okFunktion()
     }
 
     private void sokAlien() {
-
+        //Söker upp alien och skriver ut information i textfältet
         String alienNamn = txtAngeAlien.getText();
 
         try {
@@ -484,6 +488,7 @@ private boolean okFunktion()
     }
 
     private void hamtaRas() throws InfException {
+        //Hämtar olika raser som aliens kan ha
         String angeSokning = txtAngeAlien.getText();
         String query1 = "Select alien_id from Alien where namn = '" + angeSokning + "'";
         int alienId = Integer.parseInt(idb.fetchSingle(query1));
@@ -508,12 +513,12 @@ private boolean okFunktion()
 
     }
     private void btnSokAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienActionPerformed
-        // TODO add your handling code here:
+        // Utför sökningen av alien via knapp
         sokAlien();
     }//GEN-LAST:event_btnSokAlienActionPerformed
 
     private void cbxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRasActionPerformed
-        // TODO add your handling code here:
+        // Baserat på vilken ras man valt i combobox kan en ny ruta dyka upp där man måste fylla i antal armar
         int i = cbxRas.getSelectedIndex();
         switch (i) {
             case 0: {
@@ -553,7 +558,7 @@ private boolean okFunktion()
     }//GEN-LAST:event_cbxRasActionPerformed
 
     private void txtAngeAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAngeAlienActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtAngeAlienActionPerformed
 
     /**

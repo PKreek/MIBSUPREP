@@ -139,7 +139,7 @@ public class TaBortAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void KonfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KonfirmeraActionPerformed
-
+        //Utför borttagning av specificerad agent
         String deleteAgentAlienTabell = "";
         String deleteFalt = "";
         
@@ -181,9 +181,9 @@ public class TaBortAgent extends javax.swing.JFrame {
             System.out.println(deleteAgentAlienTabell);
             System.out.println(deleteFalt);
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_KonfirmeraActionPerformed
     public void fyllVarde() throws InfException
+    //Fyller combobox med alla agenter som finns i databasen
     {
        String query ="select namn from agent";
        ArrayList<String> listan;
@@ -198,7 +198,7 @@ public class TaBortAgent extends javax.swing.JFrame {
     
     
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 

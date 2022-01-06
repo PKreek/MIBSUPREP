@@ -30,6 +30,7 @@ public class Validering {
     }
             
     public static boolean agentEllerAlien(String vem) {
+        //Validerar om man valt alien eller ej i inloggningssidan
         boolean resultat = true;
         if (vem.equals("Agent")) {
             resultat = false;
@@ -83,7 +84,7 @@ public class Validering {
         return sant;
     }
     
-    public static boolean arInteger(JTextField varde) //Ska kolla om värdet är integer. Ska bara användas till namn va?? 
+    public static boolean arInteger(JTextField varde) //Ska kolla om värdet är integer.
     {
         boolean sant = false;
         String enText = varde.getText();
@@ -99,6 +100,7 @@ public class Validering {
     
 public static boolean kollaLosen(String losen, String gammalt, String nytt, String nyttIgen)
 {
+    //Validerar utifall lösenordersbytet uppfyller kraven
     
     boolean funkar = false; 
     if(gammalt.equals(losen) && nytt.equals(nyttIgen) && nytt != gammalt && nytt.length() <= 6){
@@ -111,6 +113,7 @@ public static boolean kollaLosen(String losen, String gammalt, String nytt, Stri
 
 public static boolean nyttLosen (String nyttLosen,String nyttLosenIgen, String gammalt, String losenord)
 {
+    //Kontrollerar så nya lösenordet har skrivits in korrekt i rätt fält
     boolean stammer = false;
     if(nyttLosen != nyttLosenIgen && gammalt.equals(losenord)){
       stammer = true;}
@@ -118,6 +121,7 @@ public static boolean nyttLosen (String nyttLosen,String nyttLosenIgen, String g
 }
 
 public static boolean comboBox (JComboBox cbx){
+    //Validerar så man valt ett alternativ i comboxar och inte standardvärdet som kan finnas
     boolean resultat = true;
     if(cbx.getSelectedIndex()==0){
         JOptionPane.showMessageDialog(null, "Välj ett av de alternativ som finns");

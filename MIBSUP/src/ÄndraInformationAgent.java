@@ -273,6 +273,7 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fillComboBoxOmrade() throws InfException {
+        //Fyller comboboxen för område med alla områden som finns
         String query = "SELECT BENAMNING FROM OMRADE";
         ArrayList<String> omrade = idb.fetchColumn(query);
         for (String ettOmrade : omrade) {
@@ -281,7 +282,7 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
     }
 
     private void sokAgent() {
-
+        //Privat metod som utför en sökning
         String agentNamn = txtAngeAgent.getText();
         try {
             HashMap<String, String> agentLista = idb.fetchRow("SELECT NAMN, TELEFON, ANSTALLNINGSDATUM, ADMINISTRATOR, LOSENORD, BENAMNING FROM AGENT"
@@ -310,7 +311,7 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
 
     }
     private void btnSokAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAgentActionPerformed
-        // TODO add your handling code here:
+        // Utför sökningen av agent via knapp
         sokAgent();
 
     }//GEN-LAST:event_btnSokAgentActionPerformed
@@ -354,7 +355,7 @@ private boolean okFunktion()
         return ok; 
     }
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
-        // TODO add your handling code here:
+        // Utför ändring som man valt att göra
         if(okFunktion() == true)
         {
         String agentNamn = txtAngeAgent.getText();
@@ -382,7 +383,7 @@ private boolean okFunktion()
     }//GEN-LAST:event_btnAndraActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
