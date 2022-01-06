@@ -29,6 +29,16 @@ public class Validering {
         return resultat;
     }
     
+    public static boolean arTom(String text)
+    {
+        boolean sant =true; 
+        if(text.isEmpty())
+        {
+            sant = false; 
+        }
+        return sant; 
+    }
+    
 public static boolean kollaLosen(String losen, String gammalt, String nytt, String nyttIgen)
 {
     
