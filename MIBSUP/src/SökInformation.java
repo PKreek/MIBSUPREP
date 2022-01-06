@@ -169,6 +169,7 @@ public class SökInformation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fillComboBox() throws InfException {
+        // Fyller comboboxen med områdesnamn
         String query = "SELECT BENAMNING FROM OMRADE";
         ArrayList<String> omrade = idb.fetchColumn(query);
         for (String ettOmrade : omrade) {
@@ -179,7 +180,7 @@ public class SökInformation extends javax.swing.JFrame {
 
 
     private void cbxSokvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSokvalActionPerformed
-        // TODO add your handling code here:
+        // Tar fram reserande rutor som man får söka i beroende på vilket val man gör i comboboxen cbxSokval
         String sokVal = cbxSokval.getSelectedItem().toString();
         if (sokVal.equals("Alien") || sokVal.equals("Områdeschef")) {
 
@@ -202,7 +203,7 @@ public class SökInformation extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxSokvalActionPerformed
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
-        // TODO add your handling code here:
+        // Utför sökning och fyller textarean med information 
         txtAreaLista.setText("");
         int i = cbxSokval.getSelectedIndex();
         String angeSokning = txtAnge.getText();
@@ -255,6 +256,7 @@ public class SökInformation extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokActionPerformed
 
     private void hamtaRas() throws InfException {
+        //Kontrollerar så inga val har gjorts fel
         String angeSokning = txtAnge.getText();
         String query1 = "Select alien_id from Alien where namn = '" + angeSokning + "'";
         int alienId = Integer.parseInt(idb.fetchSingle(query1));
@@ -280,13 +282,13 @@ public class SökInformation extends javax.swing.JFrame {
     }
 
     private void cbxOmradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxOmradeActionPerformed
-        // TODO add your handling code here:
+        // Fyller områdesboxen med områdesnamn
         String valtOmrade = cbxOmrade.getSelectedItem().toString();
         txtAnge.setText(valtOmrade);
     }//GEN-LAST:event_cbxOmradeActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
