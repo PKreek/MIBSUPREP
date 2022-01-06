@@ -23,13 +23,9 @@ public class SattAdmin extends javax.swing.JFrame {
         initComponents();
         fyllVarde();
     }
-    
-    public void andraAdmin()
-    {
-        
-    }
 
     public void fyllVarde() throws InfException
+    // Väljer ut agenter som inte har adminrätt och fyller comboboxen
     {
         String query = "select namn from agent where administrator = 'N'"; 
        ArrayList<String> lista = idb.fetchColumn(query);
@@ -141,7 +137,8 @@ public class SattAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmeraActionPerformed
-           String agenten = (String) cbxAgentNamn.getSelectedItem();
+          //Ändrar adminrättigheter för vald agent 
+          String agenten = (String) cbxAgentNamn.getSelectedItem();
           String uppdatera = "UPDATE AGENT SET ADMINISTRATOR = '" + "J" + "'" + "WHERE AGENT.NAMN = '" + agenten + "'";
            try {
              String hamtaAdmin = idb.fetchSingle(uppdatera);
@@ -150,8 +147,6 @@ public class SattAdmin extends javax.swing.JFrame {
          } catch (InfException ex) {
              Logger.getLogger(SattAdmin.class.getName()).log(Level.SEVERE, null, ex);
          }
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnConfirmeraActionPerformed
 
     private void cbxAgentNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAgentNamnActionPerformed
@@ -159,7 +154,7 @@ public class SattAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxAgentNamnActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
