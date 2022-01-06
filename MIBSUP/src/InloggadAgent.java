@@ -202,8 +202,8 @@ public class InloggadAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
+        // Startar rutan där man registrerar aliens
         try {
-            // TODO add your handling code here:
             new RegistreraAlien(anvandarnamn, idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAgent.class.getName()).log(Level.SEVERE, null, ex);
@@ -212,13 +212,13 @@ public class InloggadAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     private void btnAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraLosenActionPerformed
-        // TODO add your handling code here:
+        // Startar rutan där man kan ändra lösenord
         new ÄndraLösenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
     }//GEN-LAST:event_btnAndraLosenActionPerformed
 
     private void btnListaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaAliensActionPerformed
+        // Startar rutan där man listar alla aliens
         try {
-            // TODO add your handling code here:
             new ListaAliens(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAgent.class.getName()).log(Level.SEVERE, null, ex);
@@ -226,8 +226,8 @@ public class InloggadAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListaAliensActionPerformed
 
     private void btnSokInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokInformationActionPerformed
+        // Startar rutan där man söker information om aliens eller agenter
         try {
-            // TODO add your handling code here:
             new SökInformation(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAgent.class.getName()).log(Level.SEVERE, null, ex);
@@ -235,13 +235,13 @@ public class InloggadAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokInformationActionPerformed
 
     private void btnRegistreraUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraUtrustningActionPerformed
-        // TODO add your handling code here:
+        // Startar rutan där man registrerar utrustning
         new RegistreraUtrustning(idb).setVisible(true);
     }//GEN-LAST:event_btnRegistreraUtrustningActionPerformed
 
     private void btnÄndraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraAlienActionPerformed
+        // Startar rutan där man ändrar information om alien
         try {
-            // TODO add your handling code here:
             new ÄndraInformationAlien(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAgent.class.getName()).log(Level.SEVERE, null, ex);

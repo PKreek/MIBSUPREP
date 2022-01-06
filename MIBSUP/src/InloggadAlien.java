@@ -31,31 +31,6 @@ public class InloggadAlien extends javax.swing.JFrame {
         this.idb = idb;
         this.anvandare = anvandare;
     }
-    
-    
-    /*public String getAgentNamnDB()
-    {
-        try{
-        String query = "Select Agent.Namn from Agent" +
-        "join Omradeschef on Omradeschef.Agent_ID = Agent.Agent_ID" +
-        "join Alien on alien.Plats = Omradeschef.Omrade" + 
-        "Where Alien.Namn = '" + this.anvandare + "'";
-        String agentTest = idb.fetchSingle(query);
-        System.out.println(query);
-        lblAgentNamn.setText(agentTest);
-        }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Något gick fel " + e);
-        }
-        return InloggadAlien.anvandare;
-    }
-    
-    public void setAgentNamnDB()
-    {
-        lblAgentNamn.setText(getAgentNamnDB());
-    }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,12 +146,13 @@ public class InloggadAlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraLosenActionPerformed
-        // TODO add your handling code here:
+        // Startar rutan där man kan ändra lösenord
         new ÄndraLösenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
     }//GEN-LAST:event_btnAndraLosenActionPerformed
 
     private void btnKontaktUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKontaktUppgifterActionPerformed
-       System.out.println(anvandarnamn);
+       // Tar fram information i textarean om vem som är områdeschef där alien är placerad
+        System.out.println(anvandarnamn);
        
         try {
             JtxtKollaUppgifter.setText("");

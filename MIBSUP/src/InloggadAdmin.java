@@ -302,7 +302,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            // TODO add your handling code here:
+            //Startar rutan där man kan ändra information om agenter
             new ÄndraInformationAgent(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -310,13 +310,13 @@ public class InloggadAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnSetOmradesChefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetOmradesChefActionPerformed
-        // TODO add your handling code here:
+        // Startar rutan där man kan ändra områdeschef
         new SetOmradeschef(idb).setVisible(true);
     }//GEN-LAST:event_btnSetOmradesChefActionPerformed
 
     private void btnRegistreraAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAgentActionPerformed
         try {
-            // TODO add your handling code here:
+            // Startar rautan där man kan registrera agenter
             new RegistreraAgent(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -325,7 +325,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
 
     private void btnAndraInfoAlienActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         try {
-            // TODO add your handling code here:
+            // Startar rutan där man kan ändra information om aliens
             new ÄndraInformationAlien(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -338,7 +338,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
 
     private void btnSokAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAgentActionPerformed
         try {
-            // TODO add your handling code here:
+            // Startar rutan där man kan söka information om agenter
             new SokInfoAgent(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -346,32 +346,31 @@ public class InloggadAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokAgentActionPerformed
 
     private void btnTaBortUtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortUtrActionPerformed
+        // Startar rutan där man kan ta bort utrustning
         try {
             new TaBortUtrustning(idb).setVisible(true);
-
-            // TODO add your handling code here:
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnTaBortUtrActionPerformed
 
     private void btnSattAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSattAdminActionPerformed
+        //Startar rutan där man kan ge adminrättigheter till agenter
         try {
             new SattAdmin(idb).setVisible(true);
-            // TODO add your handling code here:
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSattAdminActionPerformed
 
     private void btnTaBortAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAlienActionPerformed
+        //Startar rutan där man tar bort aliens från systemet
         new TaBortAlien(idb).setVisible(true);
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnTaBortAlienActionPerformed
 
     private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
+        // Startar rutan där man kan registrera aliens
         try {
-            // TODO add your handling code here:
             new RegistreraAlien(anvandarnamn, idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -379,18 +378,18 @@ public class InloggadAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     private void btnAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraLosenActionPerformed
-        // TODO add your handling code here:
+        // Startar rutan där man kan ändra lösenord
         new ÄndraLösenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
     }//GEN-LAST:event_btnAndraLosenActionPerformed
 
     private void btnSetKontorschefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetKontorschefActionPerformed
-        // TODO add your handling code here:
+        // Startar rutan där man kan ändra kontorschef
         new setKontorschef(idb).setVisible(true);
     }//GEN-LAST:event_btnSetKontorschefActionPerformed
 
     private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAgentActionPerformed
+        //Startar rutan där man kan ta bort agenter
         try {
-            // TODO add your handling code here:
             new TaBortAgent(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);

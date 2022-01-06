@@ -161,7 +161,7 @@ public class Inloggningssida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
-
+        // Anger vad knappen logga in gör
         String selectedValue = cbxVerifiering.getSelectedItem().toString();
         String anvandarNamn = txtInloggAnvandare.getText();
         String losenordet = new String(pswInloggLosen.getPassword());
@@ -216,7 +216,8 @@ public class Inloggningssida extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
     private void pswInloggLosenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswInloggLosenKeyPressed
-       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+       //Gör att man kan klicka på enter för att logga in när man är i lösenordsfältet
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
             btnLoggaIn.doClick();
         }
@@ -224,11 +225,11 @@ public class Inloggningssida extends javax.swing.JFrame {
     }//GEN-LAST:event_pswInloggLosenKeyPressed
 
     private void txtInloggAnvandareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInloggAnvandareActionPerformed
-        // TODO add your handling code here:
+        // Textruta för användare
     }//GEN-LAST:event_txtInloggAnvandareActionPerformed
 
     private void pswInloggLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswInloggLosenActionPerformed
-        // TODO add your handling code here:
+        // Textruta för lösenord
     }//GEN-LAST:event_pswInloggLosenActionPerformed
 
     /**
