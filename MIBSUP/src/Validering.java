@@ -21,7 +21,7 @@ public class Validering {
         
     }
             
-    public static boolean gickDet(String vem) {
+    public static boolean agentEllerAlien(String vem) {
         boolean resultat = true;
         if (vem.equals("Agent")) {
             resultat = false;

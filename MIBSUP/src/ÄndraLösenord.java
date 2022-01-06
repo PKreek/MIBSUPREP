@@ -164,7 +164,7 @@ public class ÄndraLösenord extends javax.swing.JFrame {
     private void btnAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraLosenActionPerformed
         try {
             // TODO add your handling code here:
-            if (Validering.gickDet(anvandare) == false) {
+            if (Validering.agentEllerAlien(anvandare) == false) {
                 losenordAgenten();
             } else {
                 losenordAliens();

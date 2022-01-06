@@ -167,7 +167,7 @@ public class Inloggningssida extends javax.swing.JFrame {
         String losenordet = new String(pswInloggLosen.getPassword());
         
         // Kollar om det är en Alien
-        if (Validering.gickDet(selectedValue)==true) {
+        if (Validering.agentEllerAlien(selectedValue)==true) {
             try {
                 String query = "SELECT LOSENORD FROM ALIEN WHERE ALIEN.LOSENORD = '" + losenordet + "'" + "AND ALIEN.NAMN = '" + anvandarNamn + "'";
                 System.out.println(query);
@@ -187,7 +187,7 @@ public class Inloggningssida extends javax.swing.JFrame {
         }
         
         //Kolla om det är en agent
-       if (Validering.gickDet(selectedValue)==false) {
+       if (Validering.agentEllerAlien(selectedValue)==false) {
             try {
                 String query2 = "SELECT LOSENORD FROM AGENT WHERE AGENT.LOSENORD = '" + losenordet + "'" + "AND AGENT.NAMN = '" + anvandarNamn + "'";
                 System.out.println(query2);
