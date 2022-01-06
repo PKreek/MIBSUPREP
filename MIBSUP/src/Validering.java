@@ -1,4 +1,5 @@
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import oru.inf.InfDB;
@@ -115,4 +116,15 @@ public static boolean nyttLosen (String nyttLosen,String nyttLosenIgen, String g
       stammer = true;}
     return stammer;
 }
+
+public static boolean comboBox (JComboBox cbx){
+    boolean resultat = true;
+    if(cbx.getSelectedIndex()==0){
+        JOptionPane.showMessageDialog(null, "Välj ett av de alternativ som finns");
+        return false;
+    }
+    return resultat;
+}
+
+
 }
