@@ -6,7 +6,7 @@ import oru.inf.InfException;
  *
  * @author patrickkreek
  */
-        
+//Startclass som kontroller att man är inloggad i databasen när programmet startar        
 public class StartClass {
     
     private static InfDB idb;

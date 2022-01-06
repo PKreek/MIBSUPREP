@@ -28,6 +28,7 @@ public class SokInfoAgent extends javax.swing.JFrame {
         fyllVarde();
     }
     public void fyllVarde() throws InfException
+    //Fyller comboboxen med agentnamn
     {
         String query = "select namn from agent";
          ArrayList<String> lista = idb.fetchColumn(query);
@@ -144,7 +145,8 @@ public class SokInfoAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
-         String agenten = (String) cbxAgenten.getSelectedItem();
+        //Utför sökning på vald agent i comboboxen
+        String agenten = (String) cbxAgenten.getSelectedItem();
         txtInfon.setText("");
          try {
         HashMap<String, String> listan = idb.fetchRow("SELECT * from agent join omrade on agent.omrade = omrade.omrades_ID where agent.namn='" + agenten+"'");
@@ -162,7 +164,7 @@ public class SokInfoAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
