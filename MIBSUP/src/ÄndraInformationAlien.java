@@ -16,7 +16,7 @@ import oru.inf.InfException;
  * @author noahjarvback
  */
 public class ÄndraInformationAlien extends javax.swing.JFrame {
-    
+
     private static InfDB idb;
 
     /**
@@ -29,7 +29,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         fillComboBoxAgent();
         lblAntal.setVisible(false);
         txtAntalAB.setVisible(false);
-        
+
     }
 
     /**
@@ -304,7 +304,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             System.out.println(omrade);
         }
     }
-    
+
     private void fillComboBoxAgent() throws InfException {
         String query = "SELECT AGENT.NAMN FROM AGENT";
         ArrayList<String> agent = idb.fetchColumn(query);
@@ -328,7 +328,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         String valdPlats = cbxPlats.getSelectedItem().toString();
         String valdAgent = cbxAgent.getSelectedItem().toString();
         String valdRas = cbxRas.getSelectedItem().toString();
-        
+
         try {
             idb.update("UPDATE ALIEN SET REGISTRERINGSDATUM = '" + datum + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
             idb.update("UPDATE ALIEN SET LOSENORD = '" + losenord + "'" + "WHERE ALIEN.NAMN ='" + alienNamn + "'");
@@ -339,21 +339,38 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             idb.update("UPDATE ALIEN SET PLATS = '" + platsID + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
             registreraRas();
             idb.update("UPDATE ALIEN SET NAMN = '" + alienNytt + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
-            
+
             JOptionPane.showMessageDialog(null, "Alien har blivit uppdaterad");
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
         sokAlien();
-        
+
     }//GEN-LAST:event_btnAndraActionPerformed
-    
+    private void kollaAntal() throws InfException {
+        String alienNamn = txtAngeAlien.getText();
+        int alienID = Integer.parseInt(idb.fetchSingle("SELECT ALIEN_ID FROM ALIEN WHERE NAMN = '" + alienNamn + "'"));
+        int i = cbxRas.getSelectedIndex();
+        switch (i) {
+            case 1:{
+                String antalBoogies = idb.fetchSingle("SELECT ANTAL_BOOGIES FROM BOGLODITE WHERE ALIEN_ID = " + alienID);
+                txtAntalAB.setText(antalBoogies);
+                break;
+            }
+            case 2:{
+                String antalArmar = idb.fetchSingle("SELECT ANTAL_ARMAR FROM SQUID WHERE ALIEN_ID = " + alienID);
+                txtAntalAB.setText(antalArmar);
+                break;
+            }
+        }
+    }
+
     private void registreraRas() throws InfException {
         String alienNamn = txtAngeAlien.getText();
         int alienID = Integer.parseInt(idb.fetchSingle("SELECT ALIEN_ID FROM ALIEN WHERE NAMN = '" + alienNamn + "'"));
         System.out.println(alienID);
         int i = cbxRas.getSelectedIndex();
-        
+
         try {
             switch (i) {
                 case 1: {
@@ -364,7 +381,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                     idb.insert("INSERT INTO BOGLODITE (ALIEN_ID, ANTAL_BOOGIES)" + "VALUES(" + alienID + "," + antal + ")");
                     break;
                 }
-                
+
                 case 2: {
                     String antal = txtAntalAB.getText();
                     idb.delete("DELETE FROM BOGLODITE WHERE ALIEN_ID = " + alienID);
@@ -383,25 +400,25 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             }
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
-            
+
         }
     }
 
     private void sokAlien() {
-        
+
         String alienNamn = txtAngeAlien.getText();
-        
+
         try {
             HashMap<String, String> lista = idb.fetchRow("SELECT AGENT.NAMN, BENAMNING FROM AGENT "
                     + "JOIN ALIEN ON ANSVARIG_AGENT = AGENT_ID "
                     + "JOIN PLATS ON PLATS = PLATS_ID "
                     + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
-            System.out.println(lista);            
-            
+            System.out.println(lista);
+
             HashMap<String, String> aliens = idb.fetchRow("SELECT NAMN, REGISTRERINGSDATUM, LOSENORD, TELEFON FROM ALIEN "
                     + "WHERE NAMN = '" + alienNamn + "'");
             System.out.println(aliens);
-            
+
             txtAlienNamn.setText(aliens.get("NAMN"));
             txtAngeDatum.setText(aliens.get("REGISTRERINGSDATUM"));
             txtLosenord.setText(aliens.get("LOSENORD"));
@@ -416,23 +433,23 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             txtAreaLista.append("Ansvarig agent:  " + lista.get("NAMN") + "\n");
             txtAreaLista.append("Plats:  " + lista.get("BENAMNING"));
             hamtaRas();
-            
+
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        
+
     }
-    
+
     private void hamtaRas() throws InfException {
         String angeSokning = txtAngeAlien.getText();
         String query1 = "Select alien_id from Alien where namn = '" + angeSokning + "'";
         int alienId = Integer.parseInt(idb.fetchSingle(query1));
         String query = "Select alien_id from Boglodite where alien_id = " + alienId + "";
         String isBoggie = idb.fetchSingle(query);
-        
+
         String query2 = "Select alien_id from Squid where alien_id = " + alienId + "";
         String isSquid = idb.fetchSingle(query2);
-        
+
         String query3 = "Select alien_id from Worm where alien_id = " + alienId + "";
         String isWorm = idb.fetchSingle(query3);
         if (isBoggie != null) {
@@ -445,7 +462,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             txtAreaLista.append("\n" + "Ras:  " + "Worm");
             cbxRas.setSelectedItem("Worm");
         }
-        
+
     }
     private void btnSokAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienActionPerformed
         // TODO add your handling code here:
@@ -464,14 +481,24 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             case 1: {
                 txtAntalAB.setVisible(true);
                 lblAntal.setVisible(true);
-                txtAntalAB.setText("Antal boogies:");
+            try {
+                kollaAntal();
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+                
                 break;
             }
-            
+
             case 2: {
                 txtAntalAB.setVisible(true);
                 lblAntal.setVisible(true);
-                txtAntalAB.setText("Antal armar:");
+            try {
+                kollaAntal();
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+                
                 break;
             }
             case 3: {
