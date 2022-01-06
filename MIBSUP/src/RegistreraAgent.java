@@ -264,7 +264,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxActionPerformed
 
-    public boolean okFunktion()
+    private boolean okFunktion()
         //Valideringsmetod för registrering av agent
     {
         boolean ok = true;
