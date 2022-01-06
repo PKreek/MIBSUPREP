@@ -244,6 +244,37 @@ public class RegistreraAlien extends javax.swing.JFrame {
         System.out.println(idb.fetchColumn(query1));
 
     }
+       private boolean okFunktion()
+        //Valideringsmetod för registrering av agent
+    {
+        boolean ok = true;
+        if(Validering.arTom(txtNamn) == true)
+                {
+                    ok = false; 
+                }
+         if(Validering.langdNamn(txtNamn) == true)
+        {
+            ok = false; 
+        }
+          if(Validering.arTom(txtTelefonNr) == true )
+                {
+                    ok = false; 
+                }
+          if(Validering.langTelefon(txtTelefonNr) == true )
+                {
+                    ok = false;
+                }
+       
+         if(Validering.arTom(txtLosenord) == true)
+                {
+                    ok = false; 
+                }
+          if(Validering.langLosen(txtLosenord) == true)
+                {
+                    ok = false; 
+                }
+        return ok; 
+    }
     private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
         // Utför registrering av alien
         String losenord = txtLosenord.getText();
@@ -254,6 +285,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
         String anvandare = "SELECT AGENT_ID FROM AGENT WHERE NAMN = '" + anvandarnamn + "'";
         String query = "SELECT NAMN FROM ALIEN";
         String fragaID = "";
+        
+        if(okFunktion()== true)
+        {
 
         try {
             fragaID = idb.getAutoIncrement("Alien", "Alien_ID");
@@ -329,7 +363,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         }
 
-
+        }
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     private void cbxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRasActionPerformed
