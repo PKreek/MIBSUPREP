@@ -268,28 +268,28 @@ public class RegistreraAgent extends javax.swing.JFrame {
         //Valideringsmetod för registrering av agent
     {
         boolean ok = true;
-        if(Validering.arTom(txtNamn) == false)
+        if(Validering.arTom(txtNamn) == true)
                 {
                     ok = false; 
                 }
-        else if(Validering.langdNamn(txtNamn) == false)
+         if(Validering.langdNamn(txtNamn) == true)
         {
             ok = false; 
         }
-        else  if(Validering.arTom(txtTelefon) == false )
+          if(Validering.arTom(txtTelefon) == true )
                 {
                     ok = false; 
                 }
-        else  if(Validering.langTelefon(txtTelefon) == false )
+          if(Validering.langTelefon(txtTelefon) == true )
                 {
                     ok = false;
                 }
        
-        else if(Validering.arTom(txtLosen) == false)
+         if(Validering.arTom(txtLosen) == true)
                 {
                     ok = false; 
                 }
-        else  if(Validering.langLosen(txtLosen) == true)
+          if(Validering.langLosen(txtLosen) == true)
                 {
                     ok = false; 
                 }

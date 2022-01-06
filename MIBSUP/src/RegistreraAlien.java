@@ -248,28 +248,28 @@ public class RegistreraAlien extends javax.swing.JFrame {
         //Valideringsmetod för registrering av agent
     {
         boolean ok = true;
-        if(Validering.arTom(txtNamn) == false)
+        if(Validering.arTom(txtNamn) == true)
                 {
                     ok = false; 
                 }
-        else if(Validering.langdNamn(txtNamn) == false)
+         if(Validering.langdNamn(txtNamn) == true)
         {
             ok = false; 
         }
-        else  if(Validering.arTom(txtTelefonNr) == false )
+          if(Validering.arTom(txtTelefonNr) == true )
                 {
                     ok = false; 
                 }
-        else  if(Validering.langTelefon(txtTelefonNr) == false )
+          if(Validering.langTelefon(txtTelefonNr) == true )
                 {
                     ok = false;
                 }
        
-        else if(Validering.arTom(txtLosenord) == false)
+         if(Validering.arTom(txtLosenord) == true)
                 {
                     ok = false; 
                 }
-        else  if(Validering.langLosen(txtLosenord) == true)
+          if(Validering.langLosen(txtLosenord) == true)
                 {
                     ok = false; 
                 }
@@ -286,7 +286,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
         String query = "SELECT NAMN FROM ALIEN";
         String fragaID = "";
         
-        
+        if(okFunktion()== true)
+        {
 
         try {
             fragaID = idb.getAutoIncrement("Alien", "Alien_ID");
@@ -362,7 +363,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         }
 
-
+        }
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     private void cbxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRasActionPerformed
