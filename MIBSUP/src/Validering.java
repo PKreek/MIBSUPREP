@@ -38,7 +38,8 @@ public class Validering {
     
     public static boolean arTom(JTextField texten) // kolla om en ruta är tom
     {
-        boolean sant =false; 
+        boolean sant =false;
+        
         if(texten.getText().isEmpty())
         {
             sant = true; 
@@ -84,7 +85,9 @@ public class Validering {
     public static boolean arInteger(JTextField varde) //Ska kolla om värdet är integer. Ska bara användas till namn va?? 
     {
         boolean sant = false;
-        if(isInteger(varde))
+        String enText = varde.getText();
+        
+        if(!enText.matches("\\d+"))
         {
            sant = true;  
            JOptionPane.showMessageDialog(null, "Du kan bara skriva in bokstäver här");

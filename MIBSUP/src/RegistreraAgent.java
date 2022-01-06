@@ -266,28 +266,28 @@ public class RegistreraAgent extends javax.swing.JFrame {
     public boolean okFunktion()
     {
         boolean ok = true;
-        if(Validering.arTom(txtNamn) == true)
+        if(Validering.arTom(txtNamn) == false)
                 {
                     ok = false; 
                 }
-        if(Validering.langdNamn(txtNamn))
+        else if(Validering.langdNamn(txtNamn) == false)
         {
             ok = false; 
         }
-         if(Validering.arTom(txtTelefon) == true)
+        else  if(Validering.arTom(txtTelefon) == false )
                 {
                     ok = false; 
                 }
-        if(Validering.langTelefon(txtTelefon))
+        else  if(Validering.langTelefon(txtTelefon) == false )
                 {
                     ok = false;
                 }
        
-        if(Validering.arTom(txtLosen) == true)
+        else if(Validering.arTom(txtLosen) == false)
                 {
                     ok = false; 
                 }
-         if(Validering.langLosen(txtLosen) == true)
+        else  if(Validering.langLosen(txtLosen) == true)
                 {
                     ok = false; 
                 }
@@ -295,7 +295,8 @@ public class RegistreraAgent extends javax.swing.JFrame {
     }
     
     private void btnÄndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraActionPerformed
-
+if(okFunktion()== true)
+{
         String namn = txtNamn.getText();
         String telefonnummer = txtTelefon.getText();
         String losen = txtLosen.getText();
@@ -339,7 +340,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Fel namn " + ex);
         }
 
-
+}
     }//GEN-LAST:event_btnÄndraActionPerformed
 
     private String datum() {
