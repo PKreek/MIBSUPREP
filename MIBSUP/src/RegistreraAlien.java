@@ -356,6 +356,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxRasActionPerformed
 
     private String datum() {
+        // Sätter datumet i datumfältet till dagens
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         this.datum = dateFormat.format(date);
@@ -364,7 +365,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }
     
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
