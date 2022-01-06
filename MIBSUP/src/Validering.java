@@ -47,10 +47,10 @@ public class Validering {
         return sant; 
     }
     
-    public static boolean langLosen (String enText) // Kolla så lösenord är under 6
+    public static boolean langLosen (JTextField enText) // Kolla så lösenord är under 6
     {
         boolean sant = false;
-        if(enText.length()>6)
+        if(enText.getText().length()>6)
         {
             sant = true;
             JOptionPane.showMessageDialog(null, "Du har skrivit in för långt lösenord");
@@ -70,10 +70,10 @@ public class Validering {
     }
      
    
-    public static boolean langTelefon (String enText) // Ska användas i telfon i agent
+    public static boolean langTelefon (JTextField enText) // Ska användas i telfon i agent
     {
         boolean sant = false;
-        if(enText.length()>30)
+        if(enText.getText().length()>30)
         {
             sant = true;
             JOptionPane.showMessageDialog(null, "Du har skrivit in för långt telefonnummer");

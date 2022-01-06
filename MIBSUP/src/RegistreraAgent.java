@@ -274,6 +274,23 @@ public class RegistreraAgent extends javax.swing.JFrame {
         {
             ok = false; 
         }
+         if(Validering.arTom(txtTelefon) == true)
+                {
+                    ok = false; 
+                }
+        if(Validering.langTelefon(txtTelefon))
+                {
+                    ok = false;
+                }
+       
+        if(Validering.arTom(txtLosen) == true)
+                {
+                    ok = false; 
+                }
+         if(Validering.langLosen(txtLosen) == true)
+                {
+                    ok = false; 
+                }
         return ok; 
     }
     
