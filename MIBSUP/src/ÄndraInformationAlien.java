@@ -107,6 +107,11 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
 
         txtAngeAlien.setBackground(new java.awt.Color(255, 255, 255));
         txtAngeAlien.setForeground(new java.awt.Color(0, 0, 0));
+        txtAngeAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAngeAlienActionPerformed(evt);
+            }
+        });
 
         lblAlienNamn.setForeground(new java.awt.Color(153, 153, 153));
         lblAlienNamn.setText("Aliens namn:");
@@ -317,9 +322,47 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
-
+private boolean okFunktion()
+        //Valideringsmetod för registrering av agent
+    {
+        boolean ok = true;
+        if(Validering.arTom(txtAlienNamn) == true)
+                {
+                    ok = false; 
+                }
+     
+         if(Validering.arTom(txtAngeAlien) == true)
+                {
+                    ok = false; 
+                }
+          if(Validering.arTom(txtTelefonnr) == true )
+                {
+                    ok = false; 
+                }
+          if(Validering.langTelefon(txtTelefonnr) == true )
+                {
+                    ok = false;
+                }
+       
+         if(Validering.arTom(txtLosenord) == true)
+                {
+                    ok = false; 
+                }
+          if(Validering.langLosen(txtLosenord) == true)
+                {
+                    ok = false; 
+                }
+          if(Validering.arTom(txtAngeDatum) == true )
+                {
+                    ok = false; 
+                }
+        return ok; 
+    }
+    
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
+         if(okFunktion() == true)
+        {
         String alienNamn = txtAngeAlien.getText();
         String alienNytt = txtAlienNamn.getText();
         String datum = txtAngeDatum.getText();
@@ -345,7 +388,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         sokAlien();
-
+        }
     }//GEN-LAST:event_btnAndraActionPerformed
     private void kollaAntal() throws InfException {
         String alienNamn = txtAngeAlien.getText();
@@ -508,6 +551,10 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_cbxRasActionPerformed
+
+    private void txtAngeAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAngeAlienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAngeAlienActionPerformed
 
     /**
      * @param args the command line arguments
