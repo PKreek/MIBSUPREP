@@ -15,6 +15,13 @@ import oru.inf.InfDB;
 public class Validering {
 
     private static InfDB idb;
+
+    
+    private static boolean isInteger(JTextField varde) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+ 
     
     public Validering(InfDB idb){
         this.idb = idb;
@@ -29,13 +36,60 @@ public class Validering {
         return resultat;
     }
     
-    public static boolean arTom(String text)
+    public static boolean arTom(JTextField texten) // kolla om en ruta är tom
     {
-        boolean sant =true; 
-        if(text.isEmpty())
+        boolean sant =false; 
+        if(texten.getText().isEmpty())
         {
-            sant = false; 
+            sant = true; 
+            JOptionPane.showMessageDialog(null, "Du kan inte lämna rutan tom");
         }
+        return sant; 
+    }
+    
+    public static boolean langLosen (String enText) // Kolla så lösenord är under 6
+    {
+        boolean sant = false;
+        if(enText.length()>6)
+        {
+            sant = true;
+            JOptionPane.showMessageDialog(null, "Du har skrivit in för långt lösenord");
+        }
+        return sant;
+    }
+     
+    public static boolean langNamn (String enText) //Ska användas för namn i alien och agent
+    {
+        boolean sant = false;
+        if(enText.length()>20)
+        {
+            sant = true;
+            JOptionPane.showMessageDialog(null, "Du har skrivit in för långt namn");
+        }
+        return sant;
+    }
+     
+   
+    public static boolean langTelefon (String enText) // Ska användas i telfon i agent
+    {
+        boolean sant = false;
+        if(enText.length()>30)
+        {
+            sant = true;
+            JOptionPane.showMessageDialog(null, "Du har skrivit in för långt telefonnummer");
+        }
+        return sant;
+    }
+    
+    public static boolean arInteger(JTextField varde) //Ska kolla om värdet är integer. Ska bara användas till namn va?? 
+    {
+        boolean sant = false;
+        if(isInteger(varde))
+        {
+           sant = true;  
+           JOptionPane.showMessageDialog(null, "Du kan bara skriva in bokstäver här här");
+        }
+         
         return sant; 
     }
     
