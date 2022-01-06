@@ -73,7 +73,11 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
 
         txtAgentNamn.setBackground(new java.awt.Color(255, 255, 255));
         txtAgentNamn.setForeground(new java.awt.Color(0, 0, 0));
-        txtAgentNamn.setPreferredSize(new java.awt.Dimension(95, 30));
+        txtAgentNamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAgentNamnActionPerformed(evt);
+            }
+        });
 
         txtAnstDatum.setBackground(new java.awt.Color(255, 255, 255));
         txtAnstDatum.setForeground(new java.awt.Color(0, 0, 0));
@@ -96,7 +100,6 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
         cbxAdmin.setBackground(new java.awt.Color(255, 255, 255));
         cbxAdmin.setForeground(new java.awt.Color(0, 0, 0));
         cbxAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj admin:", "J", "N" }));
-        cbxAdmin.setSize(new java.awt.Dimension(72, 30));
 
         lblAgentNamn.setForeground(new java.awt.Color(153, 153, 153));
         lblAgentNamn.setText("Agentens namn:");
@@ -311,9 +314,49 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
         sokAgent();
 
     }//GEN-LAST:event_btnSokAgentActionPerformed
-
+private boolean okFunktion()
+        //Valideringsmetod för registrering av agent
+    {
+        boolean ok = true;
+        if(Validering.arTom(txtAngeAgent) == true)
+                {
+                    ok = false; 
+                }
+         if(Validering.langdNamn(txtAngeAgent) == true)
+        {
+            ok = false; 
+        }
+         if(Validering.arTom(txtAgentNamn) == true)
+                {
+                    ok = false; 
+                }
+          if(Validering.arTom(txtTelefon) == true )
+                {
+                    ok = false; 
+                }
+          if(Validering.langTelefon(txtTelefon) == true )
+                {
+                    ok = false;
+                }
+       
+         if(Validering.arTom(txtLosen) == true)
+                {
+                    ok = false; 
+                }
+          if(Validering.langLosen(txtLosen) == true)
+                {
+                    ok = false; 
+                }
+          if(Validering.arTom(txtAnstDatum) == true )
+                {
+                    ok = false; 
+                }
+        return ok; 
+    }
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
+        if(okFunktion() == true)
+        {
         String agentNamn = txtAngeAgent.getText();
         String agentNytt = txtAgentNamn.getText();
         String datum = txtAnstDatum.getText();
@@ -335,12 +378,17 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         sokAgent();
+        }
     }//GEN-LAST:event_btnAndraActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
+
+    private void txtAgentNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgentNamnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAgentNamnActionPerformed
 
     /**
      * @param args the command line arguments

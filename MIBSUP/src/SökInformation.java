@@ -79,6 +79,11 @@ public class SökInformation extends javax.swing.JFrame {
 
         txtAnge.setBackground(new java.awt.Color(255, 255, 255));
         txtAnge.setForeground(new java.awt.Color(0, 0, 0));
+        txtAnge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAngeActionPerformed(evt);
+            }
+        });
 
         txtAreaLista.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaLista.setColumns(20);
@@ -200,8 +205,21 @@ public class SökInformation extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_cbxSokvalActionPerformed
-
+private boolean okFunktion()
+        //Valideringsmetod för registrering av agent
+    {
+        boolean ok = true;
+        if(Validering.arTom(txtAnge) == true)
+                {
+                    ok = false; 
+                }
+      
+        return ok; 
+    }
+    
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
+if(okFunktion() == true)
+{
         // TODO add your handling code here:
         txtAreaLista.setText("");
         int i = cbxSokval.getSelectedIndex();
@@ -251,7 +269,7 @@ public class SökInformation extends javax.swing.JFrame {
                 break;
             }
 
-        }
+        }}
     }//GEN-LAST:event_btnSokActionPerformed
 
     private void hamtaRas() throws InfException {
@@ -289,6 +307,10 @@ public class SökInformation extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
+
+    private void txtAngeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAngeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAngeActionPerformed
 
     /**
      * @param args the command line arguments
