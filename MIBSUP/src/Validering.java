@@ -58,10 +58,10 @@ public class Validering {
         return sant;
     }
      
-    public static boolean langNamn (String enText) //Ska användas för namn i alien och agent
+    public static boolean langdNamn (JTextField enText) //Ska användas för namn i alien och agent
     {
         boolean sant = false;
-        if(enText.length()>20)
+        if(enText.getText().length()>20)
         {
             sant = true;
             JOptionPane.showMessageDialog(null, "Du har skrivit in för långt namn");

@@ -263,6 +263,20 @@ public class RegistreraAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxActionPerformed
 
+    public boolean okFunktion()
+    {
+        boolean ok = true;
+        if(Validering.arTom(txtNamn) == true)
+                {
+                    ok = false; 
+                }
+        if(Validering.langdNamn(txtNamn))
+        {
+            ok = false; 
+        }
+        return ok; 
+    }
+    
     private void btnÄndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraActionPerformed
 
         String namn = txtNamn.getText();
