@@ -263,40 +263,34 @@ public class RegistreraAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxActionPerformed
 
-    public boolean okFunktion()
-    {
+    private boolean okFunktion() {
         boolean ok = true;
-        if(Validering.arTom(txtNamn) == false)
-                {
-                    ok = false; 
-                }
-        else if(Validering.langdNamn(txtNamn) == false)
-        {
-            ok = false; 
+        if (Validering.arTom(txtNamn) == true) {
+            ok = false;
         }
-        else  if(Validering.arTom(txtTelefon) == false )
-                {
-                    ok = false; 
-                }
-        else  if(Validering.langTelefon(txtTelefon) == false )
-                {
-                    ok = false;
-                }
-       
-        else if(Validering.arTom(txtLosen) == false)
-                {
-                    ok = false; 
-                }
-        else  if(Validering.langLosen(txtLosen) == true)
-                {
-                    ok = false; 
-                }
-        return ok; 
+        if (Validering.langdNamn(txtNamn) == true) {
+            ok = false;
+        }
+        if (Validering.arTom(txtTelefon) == true) {
+            ok = false;
+        }
+        if (Validering.langTelefon(txtTelefon) == true) {
+            ok = false;
+        }
+
+        if (Validering.arTom(txtLosen) == true) {
+            ok = false;
+        }
+        if (Validering.langLosen(txtLosen) == true) {
+            ok = false;
+        }
+        System.out.println(ok);
+        return ok;
+        
     }
     
     private void btnÄndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraActionPerformed
-if(okFunktion()== true)
-{
+
         String namn = txtNamn.getText();
         String telefonnummer = txtTelefon.getText();
         String losen = txtLosen.getText();
@@ -305,6 +299,8 @@ if(okFunktion()== true)
         String query = "SELECT * FROM AGENT where namn = '" + hamtaNamn + "'";
         String omradet = (String) cbxOmråde.getSelectedItem();
         String admin = "N";
+        if(okFunktion()== true)
+{
         try {
             if (checkBox.isSelected()) {
                 admin = "J";
@@ -325,6 +321,7 @@ if(okFunktion()== true)
                         + admin + "'," + "'"
                         + losen + "',"
                         + omradeID + ");");
+                JOptionPane.showMessageDialog(null, " Agenten är registrerad");
 
             }
             System.out.println(telefonnummer);
@@ -341,6 +338,10 @@ if(okFunktion()== true)
         }
 
 }
+        else
+        {
+            System.out.println("hejhej");
+        }
     }//GEN-LAST:event_btnÄndraActionPerformed
 
     private String datum() {
