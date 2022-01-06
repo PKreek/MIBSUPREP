@@ -308,50 +308,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Fel namn " + ex);
         }
 
-//
-//        try {
-//            
-//            
-//           String omradeID = idb.fetchSingle("Select omrade_ID from omrade where benamning = '" + omradet + "'");
-//            String fragaID = idb.getAutoIncrement("Agent", "Agent_ID");
-//           ArrayList<String> listaAgent = idb.fetchColumn(query);
-//            boolean isFound = false;
-//            System.out.print(listaAgent);
-//
-//            while (isFound == false && i < listaAgent.size()) {
-//                if (listaAgent.get(i).equals(namn)) {
-//                    isFound = true;
-//                    JOptionPane.showMessageDialog(null, "Namnet finns redan registrerat");
-//                } else {
-//                    i++;
-//                }
-//            }
-//            if (isFound == true) {
-//                idb.insert("Insert into Agent(Agent_id, namn, telefon, anstallningsdatum, administrator, losenord, omrade)"
-//                        + "values(" + fragaID + ","
-//                        + namn + "," + "'"
-//                        + telefonnummer + "'," + "'"
-//                        + datum + "'," + "'"
-//                        + admin + "'," + "'"
-//                        + losen + "',"
-//                        + omradeID + ");");
-//                
-//
-//              
-//            }
-//            
-//// TODO add your handling code here:
-//        } catch (InfException ex) {
-//            Logger.getLogger(RegistreraAgent.class.getName()).log(Level.SEVERE, null, ex);
-//             System.out.println(namn);
-//                System.out.println(telefonnummer);
-//                System.out.println(losen);
-//                System.out.println(datum);
-//                System.out.println(query);
-//                System.out.println(omradet);
-//                System.out.println(admin);
-//                System.out.println(listaAgent);
-//        }
+
     }//GEN-LAST:event_btnÄndraActionPerformed
 
     private String datum() {
