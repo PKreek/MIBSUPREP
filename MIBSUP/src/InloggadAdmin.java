@@ -333,14 +333,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
 
     }                                            
 
-    private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        try {
-            // TODO add your handling code here:
-            new TaBortAgent(idb).setVisible(true);
-        } catch (InfException ex) {
-            Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }                                              
+                                
 
 
     private void btnSokAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAgentActionPerformed
@@ -351,10 +344,6 @@ public class InloggadAdmin extends javax.swing.JFrame {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSokAgentActionPerformed
-
-    private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAgentActionPerformed
-
-    }//GEN-LAST:event_btnTaBortAgentActionPerformed
 
     private void btnTaBortUtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortUtrActionPerformed
         try {
@@ -398,6 +387,15 @@ public class InloggadAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         new setKontorschef(idb).setVisible(true);
     }//GEN-LAST:event_btnSetKontorschefActionPerformed
+
+    private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAgentActionPerformed
+        try {
+            // TODO add your handling code here:
+            new TaBortAgent(idb).setVisible(true);
+        } catch (InfException ex) {
+            Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnTaBortAgentActionPerformed
 
     /**
      * @param args the command line arguments
