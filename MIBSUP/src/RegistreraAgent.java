@@ -1,5 +1,8 @@
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -10,7 +13,6 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author nikla
@@ -21,21 +23,23 @@ public class RegistreraAgent extends javax.swing.JFrame {
      * Creates new form RegistreraAgent
      */
     private static InfDB idb;
-   
+    private static String datum;
+
     public RegistreraAgent(InfDB idb) throws InfException {
         initComponents();
         this.idb = idb;
+        this.datum = datum();
+        txtNamn.requestFocus();
         fyllVardeOmrade();
     }
-    
-    public void fyllVardeOmrade() throws InfException
-    {
+
+    public void fyllVardeOmrade() throws InfException {
         String query = "SELECT BENAMNING FROM OMRADE";
         ArrayList<String> omrade = idb.fetchColumn(query);
         for (String ettOmrade : omrade) {
             cbxOmråde.addItem(ettOmrade);
-    }}
-      
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -239,7 +243,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAnstallningsDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnstallningsDatumActionPerformed
-            txtAnstallningsDatum.setText("");
+        txtAnstallningsDatum.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnstallningsDatumActionPerformed
 
@@ -260,30 +264,27 @@ public class RegistreraAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_checkBoxActionPerformed
 
     private void btnÄndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraActionPerformed
-         
+
         String namn = txtNamn.getText();
         String telefonnummer = txtTelefon.getText();
         String losen = txtLosen.getText();
         String datum = txtAnstallningsDatum.getText();
-        String hamtaNamn =txtNamn.getText();
-        String query = "SELECT * FROM AGENT where namn = '" + hamtaNamn +"'";
+        String hamtaNamn = txtNamn.getText();
+        String query = "SELECT * FROM AGENT where namn = '" + hamtaNamn + "'";
         String omradet = (String) cbxOmråde.getSelectedItem();
         String admin = "N";
-try {
-        if (checkBox.isSelected()) {
-           admin = "J";
-           }
-       
+        try {
+            if (checkBox.isSelected()) {
+                admin = "J";
+            }
+
             String omradeID = idb.fetchSingle("Select omrades_ID from omrade where benamning = '" + omradet + "'");
             String fragaID = idb.getAutoIncrement("Agent", "Agent_ID");
             String ettNamn = idb.fetchSingle(query);
-            
-            if(ettNamn != null)
-            {
+
+            if (ettNamn != null) {
                 System.out.println("Namnet finns redan");
-            }
-            else
-            {
+            } else {
                 idb.insert("Insert into Agent(Agent_id, namn, telefon, anstallningsdatum, administrator, losenord, omrade)"
                         + "values(" + fragaID + ",'"
                         + namn + "'," + "'"
@@ -291,23 +292,22 @@ try {
                         + datum + "'," + "'"
                         + admin + "'," + "'"
                         + losen + "',"
-                        + omradeID + ");"); 
-               
+                        + omradeID + ");");
+
             }
-               System.out.println(telefonnummer);
-                System.out.println(losen);
-                System.out.println(datum);
-                System.out.println(query);
-                System.out.println(omradet);
-                System.out.println(admin);
-                 System.out.println(ettNamn);
-                  System.out.println(hamtaNamn);
-            
+            System.out.println(telefonnummer);
+            System.out.println(losen);
+            System.out.println(datum);
+            System.out.println(query);
+            System.out.println(omradet);
+            System.out.println(admin);
+            System.out.println(ettNamn);
+            System.out.println(hamtaNamn);
+
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Fel namn " + ex);
         }
-        
-        
+
 //
 //        try {
 //            
@@ -354,11 +354,19 @@ try {
 //        }
     }//GEN-LAST:event_btnÄndraActionPerformed
 
+    private String datum() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        this.datum = dateFormat.format(date);
+        txtAnstallningsDatum.setText(datum);
+        return datum;
+    }
+
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -389,10 +397,10 @@ try {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-              
+
             }
         });
-}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvbryt;
@@ -416,5 +424,4 @@ try {
     private javax.swing.JTextField txtTelefon;
     // End of variables declaration//GEN-END:variables
 
-   
 }

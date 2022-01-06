@@ -1,5 +1,8 @@
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -18,6 +21,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
     private static String anvandarnamn;
     private static InfDB idb;
+    private static String datum;
     
 
     /**
@@ -27,9 +31,11 @@ public class RegistreraAlien extends javax.swing.JFrame {
         initComponents();
         this.anvandarnamn = anvandarnamn;
         this.idb = idb;
+        this.datum = datum();
         fillComboBox();
         txtAntalArmar.setVisible(false);
         lblAntalArmar.setVisible(false);
+        txtNamn.requestFocus();
     }
 
     /**
@@ -70,36 +76,15 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         txtRegistreringsDatum.setBackground(new java.awt.Color(255, 255, 255));
         txtRegistreringsDatum.setForeground(new java.awt.Color(0, 0, 0));
-        txtRegistreringsDatum.setText("YYYY-MM-DD");
-        txtRegistreringsDatum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRegistreringsDatumActionPerformed(evt);
-            }
-        });
 
         txtNamn.setBackground(new java.awt.Color(255, 255, 255));
         txtNamn.setForeground(new java.awt.Color(0, 0, 0));
-        txtNamn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNamnActionPerformed(evt);
-            }
-        });
 
         txtLosenord.setBackground(new java.awt.Color(255, 255, 255));
         txtLosenord.setForeground(new java.awt.Color(0, 0, 0));
-        txtLosenord.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLosenordActionPerformed(evt);
-            }
-        });
 
         txtTelefonNr.setBackground(new java.awt.Color(255, 255, 255));
         txtTelefonNr.setForeground(new java.awt.Color(0, 0, 0));
-        txtTelefonNr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonNrActionPerformed(evt);
-            }
-        });
 
         btnRegistreraAlien.setBackground(new java.awt.Color(255, 255, 255));
         btnRegistreraAlien.setForeground(new java.awt.Color(0, 0, 0));
@@ -142,11 +127,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
         cbxStad.setBackground(new java.awt.Color(255, 255, 255));
         cbxStad.setForeground(new java.awt.Color(0, 0, 0));
         cbxStad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj stad" }));
-        cbxStad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxStadActionPerformed(evt);
-            }
-        });
 
         cbxRas.setBackground(new java.awt.Color(255, 255, 255));
         cbxRas.setForeground(new java.awt.Color(0, 0, 0));
@@ -163,11 +143,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         txtAntalArmar.setBackground(new java.awt.Color(255, 255, 255));
         txtAntalArmar.setForeground(new java.awt.Color(0, 0, 0));
-        txtAntalArmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAntalArmarActionPerformed(evt);
-            }
-        });
 
         lblAntalArmar.setBackground(new java.awt.Color(153, 153, 153));
         lblAntalArmar.setForeground(new java.awt.Color(153, 153, 153));
@@ -356,11 +331,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
-    private void txtRegistreringsDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegistreringsDatumActionPerformed
-        // TODO add your handling code here:
-        txtRegistreringsDatum.setText("");
-    }//GEN-LAST:event_txtRegistreringsDatumActionPerformed
-
     private void cbxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRasActionPerformed
         // TODO add your handling code here:
         int i = cbxRas.getSelectedIndex();
@@ -384,30 +354,18 @@ public class RegistreraAlien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbxRasActionPerformed
 
+    private String datum() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        this.datum = dateFormat.format(date);
+        txtRegistreringsDatum.setText(datum);
+        return datum;
+    }
+    
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
-
-    private void txtNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNamnActionPerformed
-
-    private void txtLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLosenordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLosenordActionPerformed
-
-    private void txtTelefonNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonNrActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonNrActionPerformed
-
-    private void txtAntalArmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAntalArmarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAntalArmarActionPerformed
-
-    private void cbxStadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxStadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxStadActionPerformed
 
     /**
      * @param args the command line arguments
