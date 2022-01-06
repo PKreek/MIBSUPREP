@@ -34,6 +34,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
     }
 
     public void fyllVardeOmrade() throws InfException {
+        //Fyller områdescomboboxen med namn
         String query = "SELECT BENAMNING FROM OMRADE";
         ArrayList<String> omrade = idb.fetchColumn(query);
         for (String ettOmrade : omrade) {
@@ -264,6 +265,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_checkBoxActionPerformed
 
     public boolean okFunktion()
+        //Valideringsmetod för registrering av agent
     {
         boolean ok = true;
         if(Validering.arTom(txtNamn) == false)
@@ -344,6 +346,7 @@ if(okFunktion()== true)
     }//GEN-LAST:event_btnÄndraActionPerformed
 
     private String datum() {
+        //Sätter standarddatum till dagens datum
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         this.datum = dateFormat.format(date);
@@ -352,7 +355,7 @@ if(okFunktion()== true)
     }
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 

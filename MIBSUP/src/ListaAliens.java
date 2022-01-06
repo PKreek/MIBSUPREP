@@ -257,6 +257,7 @@ public class ListaAliens extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void fillComboBox() throws InfException {
+        // Fyller combobox med platsnamn
         String query = "SELECT BENAMNING FROM PLATS";
         ArrayList<String> omrade = idb.fetchColumn(query);
         for (String ettOmrade : omrade) {
@@ -267,7 +268,7 @@ public class ListaAliens extends javax.swing.JFrame {
     }
 
     private void btnSokAlienPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienPlatsActionPerformed
-        // TODO add your handling code here:
+        // Utför sökningen av Alien och skriver ut information i textarean
         txtAreaLista.setText("");
         cbxListaAliensRas.setSelectedItem("Välj ras");
         txtDatum1.setText("YYYY-MM-DD");
@@ -297,27 +298,27 @@ public class ListaAliens extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokAlienPlatsActionPerformed
 
     private void btnNollStallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNollStallActionPerformed
-        // TODO add your handling code here:
+        // Nollställer textarean
         txtAreaLista.setText("");
     }//GEN-LAST:event_btnNollStallActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan via avbrytknappen
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void txtDatum1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatum1ActionPerformed
-        // TODO add your handling code here:
+        // Sätter texten i datum1 till tomt
         txtDatum1.setText("");
     }//GEN-LAST:event_txtDatum1ActionPerformed
 
     private void txtDatum2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatum2ActionPerformed
-        // TODO add your handling code here:
+        // Sätter texten i datum2 till tomt
         txtDatum2.setText("");
     }//GEN-LAST:event_txtDatum2ActionPerformed
 
     private void btnSokAlienRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienRasActionPerformed
-        // TODO add your handling code here:
+        // Söker upp alien och fyller textrutan med information om dem
         txtAreaLista.setText("");
         cbxListaAliensPlats.setSelectedItem("Välj plats");
         txtDatum1.setText("YYYY-MM-DD");
@@ -377,7 +378,7 @@ public class ListaAliens extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokAlienRasActionPerformed
 
     private void btnSokAlienDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienDatumActionPerformed
-        // TODO add your handling code here:
+        // Listar aliens som är mellan datum 1 och datum 2
         txtAreaLista.setText("");
         cbxListaAliensPlats.setSelectedItem("Välj plats");
         cbxListaAliensRas.setSelectedItem("Välj ras");
