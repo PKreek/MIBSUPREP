@@ -41,7 +41,6 @@ public class InloggadAlien extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblAgentNamn = new javax.swing.JLabel();
         lblValkommenAlien = new javax.swing.JLabel();
         btnAndraLosen = new javax.swing.JButton();
         btnKontaktUppgifter = new javax.swing.JButton();
@@ -51,9 +50,6 @@ public class InloggadAlien extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(33, 31, 31));
-
-        lblAgentNamn.setFont(new java.awt.Font("Helvetica", 0, 18)); // NOI18N
-        lblAgentNamn.setForeground(new java.awt.Color(255, 255, 255));
 
         lblValkommenAlien.setFont(new java.awt.Font("Apple LiGothic", 1, 24)); // NOI18N
         lblValkommenAlien.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,31 +96,23 @@ public class InloggadAlien extends javax.swing.JFrame {
                         .addComponent(lblValkommenAlien))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnKontaktUppgifter)
-                        .addGap(56, 56, 56)
-                        .addComponent(lblAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnKontaktUppgifter))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnAndraLosen))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(lblValkommenAlien)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(lblAgentNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnKontaktUppgifter)
-                        .addGap(18, 18, 18)))
+                .addGap(83, 83, 83)
+                .addComponent(btnKontaktUppgifter)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(btnAndraLosen)
@@ -220,7 +208,6 @@ public class InloggadAlien extends javax.swing.JFrame {
     private javax.swing.JButton btnKontaktUppgifter;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblAgentNamn;
     private javax.swing.JLabel lblValkommenAlien;
     // End of variables declaration//GEN-END:variables
 }
