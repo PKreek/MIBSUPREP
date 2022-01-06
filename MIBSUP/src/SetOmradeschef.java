@@ -210,7 +210,7 @@ public class SetOmradeschef extends javax.swing.JFrame {
             
             }   
             catch (InfException err){
-            JOptionPane.showMessageDialog(null, valtOmrade + " har redan en områdeschef!");
+            JOptionPane.showMessageDialog(null, "Det går inte att vara områdeschef för två områden!");
             System.out.println("Internt felmeddelande" + err.getMessage());
         }
         

@@ -87,7 +87,7 @@ public class Validering {
         if(isInteger(varde))
         {
            sant = true;  
-           JOptionPane.showMessageDialog(null, "Du kan bara skriva in bokstäver här här");
+           JOptionPane.showMessageDialog(null, "Du kan bara skriva in bokstäver här");
         }
          
         return sant; 
