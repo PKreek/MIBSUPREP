@@ -38,7 +38,8 @@ public class Validering {
     
     public static boolean arTom(JTextField texten) // kolla om en ruta är tom
     {
-        boolean sant =false; 
+        boolean sant =false;
+        
         if(texten.getText().isEmpty())
         {
             sant = true; 
@@ -47,10 +48,10 @@ public class Validering {
         return sant; 
     }
     
-    public static boolean langLosen (String enText) // Kolla så lösenord är under 6
+    public static boolean langLosen (JTextField enText) // Kolla så lösenord är under 6
     {
         boolean sant = false;
-        if(enText.length()>6)
+        if(enText.getText().length()>6)
         {
             sant = true;
             JOptionPane.showMessageDialog(null, "Du har skrivit in för långt lösenord");
@@ -70,10 +71,10 @@ public class Validering {
     }
      
    
-    public static boolean langTelefon (String enText) // Ska användas i telfon i agent
+    public static boolean langTelefon (JTextField enText) // Ska användas i telfon i agent
     {
         boolean sant = false;
-        if(enText.length()>30)
+        if(enText.getText().length()>30)
         {
             sant = true;
             JOptionPane.showMessageDialog(null, "Du har skrivit in för långt telefonnummer");
@@ -84,7 +85,9 @@ public class Validering {
     public static boolean arInteger(JTextField varde) //Ska kolla om värdet är integer. Ska bara användas till namn va?? 
     {
         boolean sant = false;
-        if(isInteger(varde))
+        String enText = varde.getText();
+        
+        if(!enText.matches("\\d+"))
         {
            sant = true;  
            JOptionPane.showMessageDialog(null, "Du kan bara skriva in bokstäver här");
