@@ -271,19 +271,19 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
 
     private boolean okFunktion() {
         boolean ok = true;
-        if (Validering.arTom(txtAgentNamn) == true) {
+        if (Validering.kollaDatumCheck(txtAnstDatum.getText()) == false) {
             ok = false;
         }
-        if (Validering.langLosen(txtLosen) == true) {
+        else if (Validering.arTom(txtAgentNamn) == true) {
             ok = false;
         }
-        if (Validering.arTom(txtLosen) == true) {
+        else if (Validering.langLosen(txtLosen) == true) {
             ok = false;
         }
-        if (Validering.arTom(txtAnstDatum) == true) {
+        else if (Validering.arTom(txtLosen) == true) {
             ok = false;
         }
-        if (Validering.arTom(txtTelefon) == true) {
+        else if (Validering.arTom(txtTelefon) == true) {
             ok = false;
         }
         if (Validering.comboBox(cbxOmrade) == true) {
