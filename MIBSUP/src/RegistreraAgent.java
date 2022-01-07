@@ -313,7 +313,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
                 String ettNamn = idb.fetchSingle(query);
 
                 if (ettNamn != null) {
-                    System.out.println("Namnet finns redan");
+                    JOptionPane.showMessageDialog(null, "Namnet finns redan");
                 } else {
                     idb.insert("Insert into Agent(Agent_id, namn, telefon, anstallningsdatum, administrator, losenord, omrade)"
                             + "values(" + fragaID + ",'"

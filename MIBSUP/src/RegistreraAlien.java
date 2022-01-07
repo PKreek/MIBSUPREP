@@ -252,7 +252,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private boolean okFunktion() //Valideringsmetod för registrering av agent
     {
         boolean ok = true;
-        if (Validering.arTom(txtRegistreringsDatum) == true){
+        if (Validering.arTom(txtRegistreringsDatum) == true) {
             ok = false;
         }
         if (Validering.arTom(txtNamn) == true) {
@@ -282,7 +282,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj ett alternativ från listan med städer");
         }
-         if (cbxRas.getSelectedIndex() == 1 || cbxRas.getSelectedIndex() == 2) {
+        if (cbxRas.getSelectedIndex() == 1 || cbxRas.getSelectedIndex() == 2) {
             if (Validering.taltest(txtAntalArmar) == true) {
                 ok = false;
                 JOptionPane.showMessageDialog(null, "Ange antal");
@@ -299,7 +299,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
         String datum = txtRegistreringsDatum.getText();
         String teleNr = txtTelefonNr.getText();
         String anvandare = "SELECT AGENT_ID FROM AGENT WHERE NAMN = '" + anvandarnamn + "'";
-        String query = "SELECT NAMN FROM ALIEN";
+        String query = "SELECT NAMN FROM ALIEN WHERE NAMN = '" + alienNamn + "'";
         String fragaID = "";
 
         if (okFunktion() == true) {
@@ -309,21 +309,11 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 int staden = Integer.parseInt(idb.fetchSingle("SELECT PLATS_ID FROM PLATS WHERE BENAMNING = '" + valdStad + "'"));
                 int anvandarID = Integer.parseInt(idb.fetchSingle(anvandare));
                 System.out.println(anvandarID);
-                ArrayList<String> listaAliens = idb.fetchColumn(query);
-                System.out.println(listaAliens);
+                String alienNamnet = idb.fetchSingle(query);
 
-                int i = 0;
-                boolean isFound = false;
-
-                while (isFound == false && i < listaAliens.size()) {
-                    if (listaAliens.get(i).equals(alienNamn)) {
-                        isFound = true;
-                        JOptionPane.showMessageDialog(null, "Namnet finns redan registrerat");
-                    } else {
-                        i++;
-                    }
-                }
-                if (isFound == false) {
+                if (alienNamnet != null) {
+                    JOptionPane.showMessageDialog(null, "Namnet finns redan registrerat");
+                } else {
                     idb.insert("INSERT INTO ALIEN (ALIEN_ID, REGISTRERINGSDATUM, LOSENORD, NAMN, TELEFON, PLATS, ANSVARIG_AGENT)"
                             + "VALUES(" + fragaID + "," + "'"
                             + datum + "'," + "'"
@@ -332,6 +322,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                             + teleNr + "'," + "'"
                             + staden + "'," + "'"
                             + anvandarID + "')");
+                    laggTillRas();
                     JOptionPane.showMessageDialog(null, "Alien är registrerad");
 
                 }
@@ -340,47 +331,49 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, ex);
             }
 
-            int i = cbxRas.getSelectedIndex();
-            switch (i) {
-                case 1: {
-                    try {
-                        int antalBoogies = Integer.parseInt(txtAntalArmar.getText());
-                        idb.insert("INSERT INTO BOGLODITE (ALIEN_ID, ANTAL_BOOGIES)"
-                                + "VALUES(" + fragaID + "," + "'"
-                                + antalBoogies + "')");
-                    } catch (InfException e) {
-                        JOptionPane.showMessageDialog(null, e);
-                    }
-                    break;
-                }
-                case 2: {
-                    try {
-                        int antalArmar = Integer.parseInt(txtAntalArmar.getText());
-                        idb.insert("INSERT INTO SQUID (ALIEN_ID, ANTAL_ARMAR)"
-                                + "VALUES(" + fragaID + "," + "'"
-                                + antalArmar + "')");
-
-                    } catch (InfException e) {
-                        JOptionPane.showMessageDialog(null, e);
-                    }
-                    break;
-                }
-                case 3: {
-                    try {
-                        idb.insert("INSERT INTO WORM (ALIEN_ID)"
-                                + "VALUES(" + fragaID + ")");
-
-                    } catch (InfException e) {
-                        JOptionPane.showMessageDialog(null, e);
-                    }
-                    break;
-                }
-
-            }
-
         }
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
+    private void laggTillRas() throws InfException {
+        String fragaID = idb.getAutoIncrement("Alien", "Alien_ID");
+        int i = cbxRas.getSelectedIndex();
+        switch (i) {
+            case 1: {
+                try {
+                    int antalBoogies = Integer.parseInt(txtAntalArmar.getText());
+                    idb.insert("INSERT INTO BOGLODITE (ALIEN_ID, ANTAL_BOOGIES)"
+                            + "VALUES(" + fragaID + "," + "'"
+                            + antalBoogies + "')");
+                } catch (InfException e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+                break;
+            }
+            case 2: {
+                try {
+                    int antalArmar = Integer.parseInt(txtAntalArmar.getText());
+                    idb.insert("INSERT INTO SQUID (ALIEN_ID, ANTAL_ARMAR)"
+                            + "VALUES(" + fragaID + "," + "'"
+                            + antalArmar + "')");
+
+                } catch (InfException e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+                break;
+            }
+            case 3: {
+                try {
+                    idb.insert("INSERT INTO WORM (ALIEN_ID)"
+                            + "VALUES(" + fragaID + ")");
+
+                } catch (InfException e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+                break;
+            }
+
+        }
+    }
     private void cbxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRasActionPerformed
         // Tar fram textrutan för antal armar beroende på vilken ras man valt i comboboxen
         int i = cbxRas.getSelectedIndex();
@@ -440,13 +433,17 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistreraAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistreraAlien.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistreraAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistreraAlien.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistreraAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistreraAlien.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistreraAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistreraAlien.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -456,7 +453,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
                 try {
                     new RegistreraAlien(anvandarnamn, idb).setVisible(true);
                 } catch (InfException ex) {
-                    Logger.getLogger(RegistreraAlien.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RegistreraAlien.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
