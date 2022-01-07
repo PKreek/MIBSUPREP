@@ -293,6 +293,7 @@ public class RegistreraAgent extends javax.swing.JFrame {
                 {
                     ok = false; 
                 }
+          
         return ok; 
     }
     

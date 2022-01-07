@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -24,6 +25,15 @@ public class SattAdmin extends javax.swing.JFrame {
         fyllVarde();
     }
 
+    private boolean okFunktion(){
+        boolean ok = true;
+        if(Validering.comboBox(cbxAgentNamn) == true){
+            ok = false; 
+            JOptionPane.showMessageDialog(null, "Välj en agent från listan");
+        }
+        return ok;
+    }
+    
     public void fyllVarde() throws InfException
     // Väljer ut agenter som inte har adminrätt och fyller comboboxen
     {
@@ -138,15 +148,18 @@ public class SattAdmin extends javax.swing.JFrame {
 
     private void btnConfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmeraActionPerformed
           //Ändrar adminrättigheter för vald agent 
+          if(okFunktion() == true){
           String agenten = (String) cbxAgentNamn.getSelectedItem();
           String uppdatera = "UPDATE AGENT SET ADMINISTRATOR = '" + "J" + "'" + "WHERE AGENT.NAMN = '" + agenten + "'";
            try {
              String hamtaAdmin = idb.fetchSingle(uppdatera);
+             JOptionPane.showMessageDialog(null, "Agenten är satt till administratör");
              System.out.println(agenten);
            System.out.println(hamtaAdmin);
          } catch (InfException ex) {
              Logger.getLogger(SattAdmin.class.getName()).log(Level.SEVERE, null, ex);
          }
+          }
     }//GEN-LAST:event_btnConfirmeraActionPerformed
 
     private void cbxAgentNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAgentNamnActionPerformed

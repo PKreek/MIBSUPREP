@@ -10,7 +10,6 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author nikla
@@ -23,18 +22,16 @@ public class TaBortUtrustning extends javax.swing.JFrame {
      * Creates new form TaBortUtrustning
      */
     public TaBortUtrustning(InfDB idb) throws InfException {
-         this.idb = idb;
+        this.idb = idb;
         initComponents();
         fyllVarde();
     }
-    
-    public void fyllVarde() throws InfException
-    {
+
+    public void fyllVarde() throws InfException {
         //Fyller comboboxen med all utrustning som finns inlagd i databasen
         String query1 = "Select Benamning from utrustning";
         ArrayList<String> lista = idb.fetchColumn(query1);
-        for (String i : lista)
-        {
+        for (String i : lista) {
             cbxUtrustning.addItem(i);
         }
     }
@@ -139,15 +136,27 @@ public class TaBortUtrustning extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean okFunktion() {
+        boolean ok = true;
+        if (Validering.comboBox(cbxUtrustning) == true) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj utrustning från listan");
+        }
+        return ok;
+    }
+
     private void btnConfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmeraActionPerformed
-    //Utför borttagning av vad utrustning
+        //Utför borttagning av vad utrustning
+        if(okFunktion()==true){
+
         String utrustningen = (String) cbxUtrustning.getSelectedItem();
-        String borttagen = "delete from utrustning where benamning ='"+utrustningen+"'";
+        String borttagen = "delete from utrustning where benamning ='" + utrustningen + "'";
         try {
             idb.delete(borttagen);
-            // TODO add your handling code here:
+            JOptionPane.showMessageDialog(null, "Utrustningen är borttagen");
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Fel" + ex);
+        }
         }
     }//GEN-LAST:event_btnConfirmeraActionPerformed
 
@@ -186,7 +195,7 @@ public class TaBortUtrustning extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }

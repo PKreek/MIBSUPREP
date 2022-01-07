@@ -22,7 +22,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private static String anvandarnamn;
     private static InfDB idb;
     private static String datum;
-    
 
     /**
      * Creates new form RegistreraAlien
@@ -249,36 +248,45 @@ public class RegistreraAlien extends javax.swing.JFrame {
         System.out.println(idb.fetchColumn(query1));
 
     }
-       private boolean okFunktion()
-        //Valideringsmetod för registrering av agent
+
+    private boolean okFunktion() //Valideringsmetod för registrering av agent
     {
         boolean ok = true;
-        if(Validering.arTom(txtNamn) == true)
-                {
-                    ok = false; 
-                }
-         if(Validering.langdNamn(txtNamn) == true)
-        {
-            ok = false; 
+        if (Validering.arTom(txtNamn) == true) {
+            ok = false;
         }
-          if(Validering.arTom(txtTelefonNr) == true )
-                {
-                    ok = false; 
-                }
-          if(Validering.langTelefon(txtTelefonNr) == true )
-                {
-                    ok = false;
-                }
-       
-         if(Validering.arTom(txtLosenord) == true)
-                {
-                    ok = false; 
-                }
-          if(Validering.langLosen(txtLosenord) == true)
-                {
-                    ok = false; 
-                }
-        return ok; 
+        if (Validering.langdNamn(txtNamn) == true) {
+            ok = false;
+        }
+        if (Validering.arTom(txtTelefonNr) == true) {
+            ok = false;
+        }
+        if (Validering.langTelefon(txtTelefonNr) == true) {
+            ok = false;
+        }
+
+        if (Validering.arTom(txtLosenord) == true) {
+            ok = false;
+        }
+        if (Validering.langLosen(txtLosenord) == true) {
+            ok = false;
+        }
+        if (Validering.comboBox(cbxRas) == true) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ett alternativ från listan med ras");
+        }
+        if (Validering.comboBox(cbxStad) == true) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ett alternativ från listan med städer");
+        }
+         if (cbxRas.getSelectedIndex() == 1 || cbxRas.getSelectedIndex() == 2) {
+            if (Validering.taltest(txtAntalArmar) == true) {
+                ok = false;
+                JOptionPane.showMessageDialog(null, "Ange antal");
+            }
+        }
+
+        return ok;
     }
     private void btnRegistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraAlienActionPerformed
         // Utför registrering av alien
@@ -290,83 +298,82 @@ public class RegistreraAlien extends javax.swing.JFrame {
         String anvandare = "SELECT AGENT_ID FROM AGENT WHERE NAMN = '" + anvandarnamn + "'";
         String query = "SELECT NAMN FROM ALIEN";
         String fragaID = "";
-        
-        if(okFunktion()== true)
-        {
 
-        try {
-            fragaID = idb.getAutoIncrement("Alien", "Alien_ID");
-            int staden = Integer.parseInt(idb.fetchSingle("SELECT PLATS_ID FROM PLATS WHERE BENAMNING = '" + valdStad + "'"));
-            int anvandarID = Integer.parseInt(idb.fetchSingle(anvandare));
-            System.out.println(anvandarID);
-            ArrayList<String> listaAliens = idb.fetchColumn(query);
-            System.out.println(listaAliens);
+        if (okFunktion() == true) {
 
-            int i = 0;
-            boolean isFound = false;
+            try {
+                fragaID = idb.getAutoIncrement("Alien", "Alien_ID");
+                int staden = Integer.parseInt(idb.fetchSingle("SELECT PLATS_ID FROM PLATS WHERE BENAMNING = '" + valdStad + "'"));
+                int anvandarID = Integer.parseInt(idb.fetchSingle(anvandare));
+                System.out.println(anvandarID);
+                ArrayList<String> listaAliens = idb.fetchColumn(query);
+                System.out.println(listaAliens);
 
-            while (isFound == false && i < listaAliens.size()) {
-                if (listaAliens.get(i).equals(alienNamn)) {
-                    isFound = true;
-                    JOptionPane.showMessageDialog(null, "Namnet finns redan registrerat");
-                } else {
-                    i++;
+                int i = 0;
+                boolean isFound = false;
+
+                while (isFound == false && i < listaAliens.size()) {
+                    if (listaAliens.get(i).equals(alienNamn)) {
+                        isFound = true;
+                        JOptionPane.showMessageDialog(null, "Namnet finns redan registrerat");
+                    } else {
+                        i++;
+                    }
                 }
-            }
-            if (isFound == false) {
-                idb.insert("INSERT INTO ALIEN (ALIEN_ID, REGISTRERINGSDATUM, LOSENORD, NAMN, TELEFON, PLATS, ANSVARIG_AGENT)"
-                        + "VALUES(" + fragaID + "," + "'"
-                        + datum + "'," + "'"
-                        + losenord + "'," + "'"
-                        + alienNamn + "'," + "'"
-                        + teleNr + "'," + "'"
-                        + staden + "'," + "'"
-                        + anvandarID + "')");
-                JOptionPane.showMessageDialog(null, "Alien är registrerad");
-
-            }
-
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-
-        int i = cbxRas.getSelectedIndex();
-        switch (i) {
-            case 1: {
-                try {
-                    int antalBoogies = Integer.parseInt(txtAntalArmar.getText());
-                    idb.insert("INSERT INTO BOGLODITE (ALIEN_ID, ANTAL_BOOGIES)"
+                if (isFound == false) {
+                    idb.insert("INSERT INTO ALIEN (ALIEN_ID, REGISTRERINGSDATUM, LOSENORD, NAMN, TELEFON, PLATS, ANSVARIG_AGENT)"
                             + "VALUES(" + fragaID + "," + "'"
-                            + antalBoogies + "')");
-                } catch (InfException e) {
-                    JOptionPane.showMessageDialog(null, e);
-                }
-                break;
-            }
-            case 2: {
-                try {
-                    int antalArmar = Integer.parseInt(txtAntalArmar.getText());
-                    idb.insert("INSERT INTO SQUID (ALIEN_ID, ANTAL_ARMAR)"
-                            + "VALUES(" + fragaID + "," + "'"
-                            + antalArmar + "')");
+                            + datum + "'," + "'"
+                            + losenord + "'," + "'"
+                            + alienNamn + "'," + "'"
+                            + teleNr + "'," + "'"
+                            + staden + "'," + "'"
+                            + anvandarID + "')");
+                    JOptionPane.showMessageDialog(null, "Alien är registrerad");
 
-                } catch (InfException e) {
-                    JOptionPane.showMessageDialog(null, e);
                 }
-                break;
-            }
-            case 3: {
-                try {
-                    idb.insert("INSERT INTO WORM (ALIEN_ID)"
-                            + "VALUES(" + fragaID + ")");
 
-                } catch (InfException e) {
-                    JOptionPane.showMessageDialog(null, e);
-                }
-                break;
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, ex);
             }
 
-        }
+            int i = cbxRas.getSelectedIndex();
+            switch (i) {
+                case 1: {
+                    try {
+                        int antalBoogies = Integer.parseInt(txtAntalArmar.getText());
+                        idb.insert("INSERT INTO BOGLODITE (ALIEN_ID, ANTAL_BOOGIES)"
+                                + "VALUES(" + fragaID + "," + "'"
+                                + antalBoogies + "')");
+                    } catch (InfException e) {
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                    break;
+                }
+                case 2: {
+                    try {
+                        int antalArmar = Integer.parseInt(txtAntalArmar.getText());
+                        idb.insert("INSERT INTO SQUID (ALIEN_ID, ANTAL_ARMAR)"
+                                + "VALUES(" + fragaID + "," + "'"
+                                + antalArmar + "')");
+
+                    } catch (InfException e) {
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                    break;
+                }
+                case 3: {
+                    try {
+                        idb.insert("INSERT INTO WORM (ALIEN_ID)"
+                                + "VALUES(" + fragaID + ")");
+
+                    } catch (InfException e) {
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                    break;
+                }
+
+            }
 
         }
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
@@ -378,6 +385,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
             case 0:
                 txtAntalArmar.setVisible(false);
                 lblAntalArmar.setVisible(false);
+                break;
             case 1:
                 txtAntalArmar.setVisible(true);
                 lblAntalArmar.setVisible(true);
@@ -402,7 +410,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
         txtRegistreringsDatum.setText(datum);
         return datum;
     }
-    
+
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         // Stänger ner rutan
         dispose();

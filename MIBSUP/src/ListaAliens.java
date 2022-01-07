@@ -267,8 +267,27 @@ public class ListaAliens extends javax.swing.JFrame {
 
     }
 
+    private boolean okFunktion(){
+        boolean ok = true;
+        if(Validering.comboBox(cbxListaAliensPlats)== true){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj en plats från listan");
+        }
+        return ok;
+    }
+        
+    private boolean okFunktion2(){
+        boolean ok = true;
+        if(Validering.comboBox(cbxListaAliensRas)==true){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj en ras från listan");
+        }
+        return ok;
+    }
+    
     private void btnSokAlienPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienPlatsActionPerformed
         // Utför sökningen av Alien och skriver ut information i textarean
+        if(okFunktion() == true){
         txtAreaLista.setText("");
         cbxListaAliensRas.setSelectedItem("Välj ras");
         txtDatum1.setText("YYYY-MM-DD");
@@ -292,6 +311,7 @@ public class ListaAliens extends javax.swing.JFrame {
 
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
+        }
         }
 
 
@@ -319,6 +339,7 @@ public class ListaAliens extends javax.swing.JFrame {
 
     private void btnSokAlienRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienRasActionPerformed
         // Söker upp alien och fyller textrutan med information om dem
+        if(okFunktion2() == true){
         txtAreaLista.setText("");
         cbxListaAliensPlats.setSelectedItem("Välj plats");
         txtDatum1.setText("YYYY-MM-DD");
@@ -373,6 +394,7 @@ public class ListaAliens extends javax.swing.JFrame {
 
             }
 
+        }
         }
 
     }//GEN-LAST:event_btnSokAlienRasActionPerformed

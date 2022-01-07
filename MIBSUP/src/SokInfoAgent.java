@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -144,8 +145,18 @@ public class SokInfoAgent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean okFunktion(){
+        boolean ok = true;
+        if(Validering.comboBox(cbxAgenten) == true){
+            ok = false; 
+            JOptionPane.showMessageDialog(null, "Välj en agent från listan");
+        }
+        return ok;
+    }
+    
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
         //Utför sökning på vald agent i comboboxen
+        if(okFunktion() == true){
         String agenten = (String) cbxAgenten.getSelectedItem();
         txtInfon.setText("");
          try {
@@ -160,6 +171,7 @@ public class SokInfoAgent extends javax.swing.JFrame {
          
         } catch (InfException ex) {
             Logger.getLogger(SokInfoAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_btnSokActionPerformed
 

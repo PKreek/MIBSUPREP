@@ -178,7 +178,23 @@ public class SökInformation extends javax.swing.JFrame {
         }
     }
 
+    private boolean okFunktion (){
+        boolean ok = true;
+        if(Validering.comboBox(cbxSokval) == true){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från alien eller omradeschef som finns");
+        }
+        return ok;
+    }
 
+    private boolean okFunktion2 (){
+        boolean ok = true;
+        if(Validering.comboBox(cbxOmrade) == true){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från område som finns");
+        }
+        return ok;
+    }
     private void cbxSokvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSokvalActionPerformed
         // Tar fram reserande rutor som man får söka i beroende på vilket val man gör i comboboxen cbxSokval
         String sokVal = cbxSokval.getSelectedItem().toString();
@@ -204,14 +220,16 @@ public class SökInformation extends javax.swing.JFrame {
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
         // Utför sökning och fyller textarean med information 
+        if(okFunktion()==true){
         txtAreaLista.setText("");
         int i = cbxSokval.getSelectedIndex();
         String angeSokning = txtAnge.getText();
         switch (i) {
             case 1: {
+                
 
                 try {
-
+                    
                     HashMap<String, String> alienInfo2 = idb.fetchRow("SELECT AGENT.NAMN, BENAMNING FROM ALIEN "
                             + "JOIN PLATS ON ALIEN.PLATS = PLATS.PLATS_ID "
                             + "JOIN AGENT on ALIEN.ANSVARIG_AGENT = AGENT.AGENT_ID "
@@ -236,9 +254,11 @@ public class SökInformation extends javax.swing.JFrame {
                 } catch (InfException ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }
+                
                 break;
             }
             case 2: {
+                if(okFunktion2()==true){
                 try {
                     String omradeschef = idb.fetchSingle("SELECT Agent.NAMN FROM Agent "
                             + "JOIN Omradeschef ON Agent.Agent_ID = Omradeschef.Agent_ID "
@@ -251,8 +271,11 @@ public class SökInformation extends javax.swing.JFrame {
                 }
                 break;
             }
+            }
 
         }
+        }
+        
     }//GEN-LAST:event_btnSokActionPerformed
 
     private void hamtaRas() throws InfException {

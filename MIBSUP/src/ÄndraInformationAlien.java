@@ -332,6 +332,12 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från ras som finns");
     }
+        if (cbxRas.getSelectedIndex() == 1 || cbxRas.getSelectedIndex() == 2) {
+            if (Validering.taltest(txtAntalAB) == true) {
+                ok = false;
+                JOptionPane.showMessageDialog(null, "Ange antal");
+            }
+        }
         return ok;
     }
     
