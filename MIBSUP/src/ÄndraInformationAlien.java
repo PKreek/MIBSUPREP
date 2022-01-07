@@ -380,6 +380,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                 idb.update("UPDATE ALIEN SET NAMN = '" + alienNytt + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
 
                 JOptionPane.showMessageDialog(null, "Alien har blivit uppdaterad");
+                txtAngeAlien.setText(txtAlienNamn.getText());
             } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
