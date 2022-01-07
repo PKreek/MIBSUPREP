@@ -267,51 +267,63 @@ public class ListaAliens extends javax.swing.JFrame {
 
     }
 
-    private boolean okFunktion(){
+    private boolean okFunktion() {
         boolean ok = true;
-        if(Validering.comboBox(cbxListaAliensPlats)== true){
+        if (Validering.comboBox(cbxListaAliensPlats) == true) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj en plats från listan");
         }
+
         return ok;
     }
-        
-    private boolean okFunktion2(){
+
+    private boolean okFunktion2() {
         boolean ok = true;
-        if(Validering.comboBox(cbxListaAliensRas)==true){
+        if (Validering.comboBox(cbxListaAliensRas) == true) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj en ras från listan");
         }
         return ok;
     }
-    
+
+    private boolean okFunktion3() {
+        boolean ok = true;
+        if (Validering.kollaDatumCheck(txtDatum1.getText()) == false) {
+            ok = false;
+        } else if (Validering.kollaDatumCheck(txtDatum2.getText()) == false) {
+            ok = false;
+        }
+        return ok;
+    }
+
+
     private void btnSokAlienPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienPlatsActionPerformed
         // Utför sökningen av Alien och skriver ut information i textarean
-        if(okFunktion() == true){
-        txtAreaLista.setText("");
-        cbxListaAliensRas.setSelectedItem("Välj ras");
-        txtDatum1.setText("YYYY-MM-DD");
-        txtDatum2.setText("YYYY-MM-DD");
+        if (okFunktion() == true) {
+            txtAreaLista.setText("");
+            cbxListaAliensRas.setSelectedItem("Välj ras");
+            txtDatum1.setText("YYYY-MM-DD");
+            txtDatum2.setText("YYYY-MM-DD");
 
-        String valdStad = cbxListaAliensPlats.getSelectedItem().toString();
-        String query2 = "SELECT NAMN FROM Alien "
-                + "JOIN PLATS ON ALIEN.PLATS = PLATS.PLATS_ID "
-                + "WHERE BENAMNING = '" + valdStad + "'";
-        System.out.println(query2);
-        try {
-            String textStad = cbxListaAliensPlats.getSelectedItem().toString();
-            ArrayList<String> alienLista = idb.fetchColumn(query2);
-            txtAreaLista.append("Namn från:\t" + textStad + ("\n"));
-            for (String alienNamn : alienLista) {
-                txtAreaLista.append(alienNamn + ("\n"));
+            String valdStad = cbxListaAliensPlats.getSelectedItem().toString();
+            String query2 = "SELECT NAMN FROM Alien "
+                    + "JOIN PLATS ON ALIEN.PLATS = PLATS.PLATS_ID "
+                    + "WHERE BENAMNING = '" + valdStad + "'";
+            System.out.println(query2);
+            try {
+                String textStad = cbxListaAliensPlats.getSelectedItem().toString();
+                ArrayList<String> alienLista = idb.fetchColumn(query2);
+                txtAreaLista.append("Namn från:\t" + textStad + ("\n"));
+                for (String alienNamn : alienLista) {
+                    txtAreaLista.append(alienNamn + ("\n"));
 
-                System.out.println(alienNamn);
+                    System.out.println(alienNamn);
 
+                }
+
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, ex);
             }
-
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
         }
 
 
@@ -339,72 +351,73 @@ public class ListaAliens extends javax.swing.JFrame {
 
     private void btnSokAlienRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienRasActionPerformed
         // Söker upp alien och fyller textrutan med information om dem
-        if(okFunktion2() == true){
-        txtAreaLista.setText("");
-        cbxListaAliensPlats.setSelectedItem("Välj plats");
-        txtDatum1.setText("YYYY-MM-DD");
-        txtDatum2.setText("YYYY-MM-DD");
-        
-        int i = cbxListaAliensRas.getSelectedIndex();
-        switch (i) {
-            case 1: {
-                try {
-                    txtAreaLista.append("Namn från rasen: Boglodite\t" + ("\n"));
-                    ArrayList<String> bogloditeRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
-                            + "JOIN BOGLODITE ON ALIEN.ALIEN_ID = BOGLODITE.ALIEN_ID");
-                    for (String alienNamn : bogloditeRas) {
-                        txtAreaLista.append(alienNamn + ("\n"));
-                    }
+        if (okFunktion2() == true) {
+            txtAreaLista.setText("");
+            cbxListaAliensPlats.setSelectedItem("Välj plats");
+            txtDatum1.setText("YYYY-MM-DD");
+            txtDatum2.setText("YYYY-MM-DD");
 
-                } catch (InfException ex) {
-                    JOptionPane.showMessageDialog(null, ex);
+            int i = cbxListaAliensRas.getSelectedIndex();
+            switch (i) {
+                case 1: {
+                    try {
+                        txtAreaLista.append("Namn från rasen: Boglodite\t" + ("\n"));
+                        ArrayList<String> bogloditeRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
+                                + "JOIN BOGLODITE ON ALIEN.ALIEN_ID = BOGLODITE.ALIEN_ID");
+                        for (String alienNamn : bogloditeRas) {
+                            txtAreaLista.append(alienNamn + ("\n"));
+                        }
 
-                }
-                break;
-            }
-            case 2: {
-                try {
-                    txtAreaLista.append("Namn från rasen: Squid\t" + ("\n"));
-                    ArrayList<String> squidRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
-                            + "JOIN SQUID ON ALIEN.ALIEN_ID = SQUID.ALIEN_ID");
-                    for (String alienNamn : squidRas) {
-                        txtAreaLista.append(alienNamn + ("\n"));
+                    } catch (InfException ex) {
+                        JOptionPane.showMessageDialog(null, ex);
 
                     }
-                } catch (InfException ex) {
-                    JOptionPane.showMessageDialog(null, ex);
-
+                    break;
                 }
-                break;
-            }
-            case 3: {
-                txtAreaLista.append("Namn från rasen: Worm\t" + ("\n"));
-                try {
-                    ArrayList<String> wormRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
-                            + "JOIN WORM ON ALIEN.ALIEN_ID = WORM.ALIEN_ID");
-                    for (String alienNamn : wormRas) {
-                        txtAreaLista.append(alienNamn + ("\n"));
+                case 2: {
+                    try {
+                        txtAreaLista.append("Namn från rasen: Squid\t" + ("\n"));
+                        ArrayList<String> squidRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
+                                + "JOIN SQUID ON ALIEN.ALIEN_ID = SQUID.ALIEN_ID");
+                        for (String alienNamn : squidRas) {
+                            txtAreaLista.append(alienNamn + ("\n"));
+
+                        }
+                    } catch (InfException ex) {
+                        JOptionPane.showMessageDialog(null, ex);
+
                     }
+                    break;
+                }
+                case 3: {
+                    txtAreaLista.append("Namn från rasen: Worm\t" + ("\n"));
+                    try {
+                        ArrayList<String> wormRas = idb.fetchColumn("SELECT NAMN FROM ALIEN "
+                                + "JOIN WORM ON ALIEN.ALIEN_ID = WORM.ALIEN_ID");
+                        for (String alienNamn : wormRas) {
+                            txtAreaLista.append(alienNamn + ("\n"));
+                        }
 
-                } catch (InfException ex) {
-                    JOptionPane.showMessageDialog(null, ex);
+                    } catch (InfException ex) {
+                        JOptionPane.showMessageDialog(null, ex);
+
+                    }
+                    break;
 
                 }
-                break;
 
             }
-
-        }
         }
 
     }//GEN-LAST:event_btnSokAlienRasActionPerformed
 
     private void btnSokAlienDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienDatumActionPerformed
         // Listar aliens som är mellan datum 1 och datum 2
+        if(okFunktion3()){
         txtAreaLista.setText("");
         cbxListaAliensPlats.setSelectedItem("Välj plats");
         cbxListaAliensRas.setSelectedItem("Välj ras");
-        
+
         String datum1 = txtDatum1.getText();
         String datum2 = txtDatum2.getText();
         String query = "SELECT ALIEN.NAMN FROM AlIEN WHERE REGISTRERINGSDATUM BETWEEN '" + datum1 + "'" + "AND'" + datum2 + "'";
@@ -412,13 +425,13 @@ public class ListaAliens extends javax.swing.JFrame {
         try {
             txtAreaLista.append("Aliens registrerade:\t" + ("\n"));
             ArrayList<String> datumLista = idb.fetchColumn(query);
-            for(String datum : datumLista){
+            for (String datum : datumLista) {
                 txtAreaLista.append(datum + ("\n"));
             }
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-
+        }
     }//GEN-LAST:event_btnSokAlienDatumActionPerformed
 
     /**
