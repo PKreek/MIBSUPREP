@@ -165,7 +165,7 @@ public class SokInfoAgent extends javax.swing.JFrame {
          txtInfon.append("\nTelefonnumret:\t" + listan.get("Telefon"));
          txtInfon.append("\nAnställningsdatum:\t" + listan.get("Anstallningsdatum"));
          txtInfon.append("\nAdministratör?:\t" + listan.get("Administrator"));
-         txtInfon.append("\nAnsvarig för område:\t" + listan.get("Benamning"));
+         txtInfon.append("\nTillhör område:\t" + listan.get("Benamning"));
          
          
          
