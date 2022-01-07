@@ -116,14 +116,25 @@ public class Validering {
     public static boolean taltest(JTextField taltest) {
         boolean arTal = false;
         String idid = taltest.getText();
-        
-        if(!idid.matches("\\d+")){
-        arTal = true;
-    }
-        else {
-                taltest.requestFocus();
+
+        if (!idid.matches("\\d+")) {
+            arTal = true;
+        } else {
+            taltest.requestFocus();
         }
         return arTal;
+    }
+
+    public static boolean kollaDatumCheck(String datum) {
+        boolean resultat = false;
+
+        if (datum.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            resultat = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Fel datumformat, prova igen enligt 'YYYY-MM-DD'");
+        }
+
+        return resultat;
     }
 
 }

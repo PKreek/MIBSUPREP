@@ -252,23 +252,18 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private boolean okFunktion() //Valideringsmetod för registrering av agent
     {
         boolean ok = true;
-        if (Validering.arTom(txtRegistreringsDatum) == true) {
+        if (Validering.kollaDatumCheck(txtRegistreringsDatum.getText()) == true) {
             ok = false;
         }
         if (Validering.arTom(txtNamn) == true) {
             ok = false;
-        }
-        if (Validering.langdNamn(txtNamn) == true) {
+        } else if (Validering.langdNamn(txtNamn) == true) {
             ok = false;
-        }
-        if (Validering.arTom(txtTelefonNr) == true) {
+        } else if (Validering.arTom(txtTelefonNr) == true) {
             ok = false;
-        }
-        if (Validering.langTelefon(txtTelefonNr) == true) {
+        } else if (Validering.langTelefon(txtTelefonNr) == true) {
             ok = false;
-        }
-
-        if (Validering.arTom(txtLosenord) == true) {
+        } else if (Validering.arTom(txtLosenord) == true) {
             ok = false;
         }
         if (Validering.langLosen(txtLosenord) == true) {
@@ -323,7 +318,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
                             + teleNr + "'," + "'"
                             + staden + "'," + "'"
                             + anvandarID + "')");
-                     JOptionPane.showMessageDialog(null, "Alien är registrerad");
+                    JOptionPane.showMessageDialog(null, "Alien är registrerad");
                     int i = cbxRas.getSelectedIndex();
                     switch (i) {
                         case 1: {
@@ -363,7 +358,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
                 }
 
-                
             } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
