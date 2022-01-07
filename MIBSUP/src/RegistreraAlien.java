@@ -335,6 +335,7 @@ public class RegistreraAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
     private void laggTillRas() throws InfException {
+        //Lägger till ras beroende på vad man valt i comboboxen
         String fragaID = idb.getAutoIncrement("Alien", "Alien_ID");
         int i = cbxRas.getSelectedIndex();
         switch (i) {
