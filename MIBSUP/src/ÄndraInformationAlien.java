@@ -318,20 +318,20 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
-    private boolean okFunktion (){
+    private boolean okFunktion() {
         boolean ok = true;
-        if(Validering.comboBox(cbxPlats) == true){
+        if (Validering.comboBox(cbxPlats) == true) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från plats som finns");
         }
-        if(Validering.comboBox(cbxAgent) == true){
+        if (Validering.comboBox(cbxAgent) == true) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från agent som finns");
         }
-        if(Validering.comboBox(cbxRas) == true){
+        if (Validering.comboBox(cbxRas) == true) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från ras som finns");
-    }
+        }
         if (cbxRas.getSelectedIndex() == 1 || cbxRas.getSelectedIndex() == 2) {
             if (Validering.taltest(txtAntalAB) == true) {
                 ok = false;
@@ -340,35 +340,35 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         }
         return ok;
     }
-    
+
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
-        if(okFunktion() == true){
-        String alienNamn = txtAngeAlien.getText();
-        String alienNytt = txtAlienNamn.getText();
-        String datum = txtAngeDatum.getText();
-        String losenord = txtLosenord.getText();
-        String telefonNr = txtTelefonnr.getText();
-        String valdPlats = cbxPlats.getSelectedItem().toString();
-        String valdAgent = cbxAgent.getSelectedItem().toString();
-        String valdRas = cbxRas.getSelectedItem().toString();
+        if (okFunktion() == true) {
+            String alienNamn = txtAngeAlien.getText();
+            String alienNytt = txtAlienNamn.getText();
+            String datum = txtAngeDatum.getText();
+            String losenord = txtLosenord.getText();
+            String telefonNr = txtTelefonnr.getText();
+            String valdPlats = cbxPlats.getSelectedItem().toString();
+            String valdAgent = cbxAgent.getSelectedItem().toString();
+            String valdRas = cbxRas.getSelectedItem().toString();
 
-        try {
-            idb.update("UPDATE ALIEN SET REGISTRERINGSDATUM = '" + datum + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
-            idb.update("UPDATE ALIEN SET LOSENORD = '" + losenord + "'" + "WHERE ALIEN.NAMN ='" + alienNamn + "'");
-            idb.update("UPDATE ALIEN SET TELEFON = '" + telefonNr + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
-            int agentID = Integer.parseInt(idb.fetchSingle("SELECT AGENT_ID FROM AGENT WHERE NAMN = '" + valdAgent + "'"));
-            idb.update("UPDATE ALIEN SET ANSVARIG_AGENT = '" + agentID + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
-            int platsID = Integer.parseInt(idb.fetchSingle("SELECT PLATS_ID FROM PLATS WHERE BENAMNING = '" + valdPlats + "'"));
-            idb.update("UPDATE ALIEN SET PLATS = '" + platsID + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
-            registreraRas();
-            idb.update("UPDATE ALIEN SET NAMN = '" + alienNytt + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+            try {
+                idb.update("UPDATE ALIEN SET REGISTRERINGSDATUM = '" + datum + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+                idb.update("UPDATE ALIEN SET LOSENORD = '" + losenord + "'" + "WHERE ALIEN.NAMN ='" + alienNamn + "'");
+                idb.update("UPDATE ALIEN SET TELEFON = '" + telefonNr + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+                int agentID = Integer.parseInt(idb.fetchSingle("SELECT AGENT_ID FROM AGENT WHERE NAMN = '" + valdAgent + "'"));
+                idb.update("UPDATE ALIEN SET ANSVARIG_AGENT = '" + agentID + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+                int platsID = Integer.parseInt(idb.fetchSingle("SELECT PLATS_ID FROM PLATS WHERE BENAMNING = '" + valdPlats + "'"));
+                idb.update("UPDATE ALIEN SET PLATS = '" + platsID + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+                registreraRas();
+                idb.update("UPDATE ALIEN SET NAMN = '" + alienNytt + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
 
-            JOptionPane.showMessageDialog(null, "Alien har blivit uppdaterad");
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        sokAlien();
+                JOptionPane.showMessageDialog(null, "Alien har blivit uppdaterad");
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            sokAlien();
         }
     }//GEN-LAST:event_btnAndraActionPerformed
     private void kollaAntal() throws InfException {
@@ -376,12 +376,12 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         int alienID = Integer.parseInt(idb.fetchSingle("SELECT ALIEN_ID FROM ALIEN WHERE NAMN = '" + alienNamn + "'"));
         int i = cbxRas.getSelectedIndex();
         switch (i) {
-            case 1:{
+            case 1: {
                 String antalBoogies = idb.fetchSingle("SELECT ANTAL_BOOGIES FROM BOGLODITE WHERE ALIEN_ID = " + alienID);
                 txtAntalAB.setText(antalBoogies);
                 break;
             }
-            case 2:{
+            case 2: {
                 String antalArmar = idb.fetchSingle("SELECT ANTAL_ARMAR FROM SQUID WHERE ALIEN_ID = " + alienID);
                 txtAntalAB.setText(antalArmar);
                 break;
@@ -443,31 +443,37 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                     + "WHERE NAMN = '" + alienNamn + "'");
             System.out.println(aliens);
             alienNamn = aliens.get("NAMN");
-            if(alienNamn == null){
+            if (alienNamn == null) {
                 JOptionPane.showMessageDialog(null, "Alien finns inte");
-            }
-            else{
+                txtAlienNamn.setText("");
+                txtAngeDatum.setText("YYYY-MM-DD");
+                txtLosenord.setText("");
+                txtTelefonnr.setText("");
+                cbxAgent.setSelectedItem("Välj agent:");
+                cbxPlats.setSelectedItem("Välj plats:");
+                cbxRas.setSelectedItem("Välj ras:");
+                txtAreaLista.setText("");
+            } else {
 
-            txtAlienNamn.setText(aliens.get("NAMN"));
-            txtAngeDatum.setText(aliens.get("REGISTRERINGSDATUM"));
-            txtLosenord.setText(aliens.get("LOSENORD"));
-            txtTelefonnr.setText(aliens.get("TELEFON"));
-            cbxAgent.setSelectedItem(lista.get("NAMN"));
-            cbxPlats.setSelectedItem(lista.get("BENAMNING"));
-            txtAreaLista.setText("");
-            txtAreaLista.append("Namn:  " + aliens.get("NAMN") + "\n");
-            txtAreaLista.append("Registreringsdatum:  " + aliens.get("REGISTRERINGSDATUM") + "\n");
-            txtAreaLista.append("Lösenord:  " + aliens.get("LOSENORD") + "\n");
-            txtAreaLista.append("Telefonnummer:  " + aliens.get("TELEFON") + "\n");
-            txtAreaLista.append("Ansvarig agent:  " + lista.get("NAMN") + "\n");
-            txtAreaLista.append("Plats:  " + lista.get("BENAMNING"));
-            hamtaRas();
+                txtAlienNamn.setText(aliens.get("NAMN"));
+                txtAngeDatum.setText(aliens.get("REGISTRERINGSDATUM"));
+                txtLosenord.setText(aliens.get("LOSENORD"));
+                txtTelefonnr.setText(aliens.get("TELEFON"));
+                cbxAgent.setSelectedItem(lista.get("NAMN"));
+                cbxPlats.setSelectedItem(lista.get("BENAMNING"));
+                txtAreaLista.setText("");
+                txtAreaLista.append("Namn:  " + aliens.get("NAMN") + "\n");
+                txtAreaLista.append("Registreringsdatum:  " + aliens.get("REGISTRERINGSDATUM") + "\n");
+                txtAreaLista.append("Lösenord:  " + aliens.get("LOSENORD") + "\n");
+                txtAreaLista.append("Telefonnummer:  " + aliens.get("TELEFON") + "\n");
+                txtAreaLista.append("Ansvarig agent:  " + lista.get("NAMN") + "\n");
+                txtAreaLista.append("Plats:  " + lista.get("BENAMNING"));
+                hamtaRas();
             }
 
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        
 
     }
 
@@ -497,7 +503,8 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
     }
     private void btnSokAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienActionPerformed
         // TODO add your handling code here:
-        sokAlien();
+            sokAlien();
+            
     }//GEN-LAST:event_btnSokAlienActionPerformed
 
     private void cbxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRasActionPerformed
@@ -512,24 +519,24 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             case 1: {
                 txtAntalAB.setVisible(true);
                 lblAntal.setVisible(true);
-            try {
-                kollaAntal();
-            } catch (InfException ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
-                
+                try {
+                    kollaAntal();
+                } catch (InfException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
+
                 break;
             }
 
             case 2: {
                 txtAntalAB.setVisible(true);
                 lblAntal.setVisible(true);
-            try {
-                kollaAntal();
-            } catch (InfException ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
-                
+                try {
+                    kollaAntal();
+                } catch (InfException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
+
                 break;
             }
             case 3: {
