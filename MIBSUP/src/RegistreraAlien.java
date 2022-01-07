@@ -313,7 +313,8 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
                 if (alienNamnet != null) {
                     JOptionPane.showMessageDialog(null, "Namnet finns redan registrerat");
-                } else {
+                }
+                if (alienNamnet == null) {
                     idb.insert("INSERT INTO ALIEN (ALIEN_ID, REGISTRERINGSDATUM, LOSENORD, NAMN, TELEFON, PLATS, ANSVARIG_AGENT)"
                             + "VALUES(" + fragaID + "," + "'"
                             + datum + "'," + "'"
@@ -322,11 +323,47 @@ public class RegistreraAlien extends javax.swing.JFrame {
                             + teleNr + "'," + "'"
                             + staden + "'," + "'"
                             + anvandarID + "')");
-                    laggTillRas();
-                    JOptionPane.showMessageDialog(null, "Alien är registrerad");
+                     JOptionPane.showMessageDialog(null, "Alien är registrerad");
+                    int i = cbxRas.getSelectedIndex();
+                    switch (i) {
+                        case 1: {
+                            try {
+                                int antalBoogies = Integer.parseInt(txtAntalArmar.getText());
+                                idb.insert("INSERT INTO BOGLODITE (ALIEN_ID, ANTAL_BOOGIES)"
+                                        + "VALUES(" + fragaID + "," + "'"
+                                        + antalBoogies + "')");
+                            } catch (InfException e) {
+                                JOptionPane.showMessageDialog(null, e);
+                            }
+                            break;
+                        }
+                        case 2: {
+                            try {
+                                int antalArmar = Integer.parseInt(txtAntalArmar.getText());
+                                idb.insert("INSERT INTO SQUID (ALIEN_ID, ANTAL_ARMAR)"
+                                        + "VALUES(" + fragaID + "," + "'"
+                                        + antalArmar + "')");
+
+                            } catch (InfException e) {
+                                JOptionPane.showMessageDialog(null, e);
+                            }
+                            break;
+                        }
+                        case 3: {
+                            try {
+                                idb.insert("INSERT INTO WORM (ALIEN_ID)"
+                                        + "VALUES(" + fragaID + ")");
+
+                            } catch (InfException e) {
+                                JOptionPane.showMessageDialog(null, e);
+                            }
+                            break;
+                        }
+                    }
 
                 }
 
+                
             } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
@@ -334,46 +371,6 @@ public class RegistreraAlien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegistreraAlienActionPerformed
 
-    private void laggTillRas() throws InfException {
-        String fragaID = idb.getAutoIncrement("Alien", "Alien_ID");
-        int i = cbxRas.getSelectedIndex();
-        switch (i) {
-            case 1: {
-                try {
-                    int antalBoogies = Integer.parseInt(txtAntalArmar.getText());
-                    idb.insert("INSERT INTO BOGLODITE (ALIEN_ID, ANTAL_BOOGIES)"
-                            + "VALUES(" + fragaID + "," + "'"
-                            + antalBoogies + "')");
-                } catch (InfException e) {
-                    JOptionPane.showMessageDialog(null, e);
-                }
-                break;
-            }
-            case 2: {
-                try {
-                    int antalArmar = Integer.parseInt(txtAntalArmar.getText());
-                    idb.insert("INSERT INTO SQUID (ALIEN_ID, ANTAL_ARMAR)"
-                            + "VALUES(" + fragaID + "," + "'"
-                            + antalArmar + "')");
-
-                } catch (InfException e) {
-                    JOptionPane.showMessageDialog(null, e);
-                }
-                break;
-            }
-            case 3: {
-                try {
-                    idb.insert("INSERT INTO WORM (ALIEN_ID)"
-                            + "VALUES(" + fragaID + ")");
-
-                } catch (InfException e) {
-                    JOptionPane.showMessageDialog(null, e);
-                }
-                break;
-            }
-
-        }
-    }
     private void cbxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRasActionPerformed
         // Tar fram textrutan för antal armar beroende på vilken ras man valt i comboboxen
         int i = cbxRas.getSelectedIndex();
