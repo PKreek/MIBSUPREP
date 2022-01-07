@@ -278,7 +278,7 @@ public class SetOmradeschef extends javax.swing.JFrame {
         //Fyller textarean med information om alla agenter som finns. 
         txtaOmrade.append("Agent_ID" + "\t");
         txtaOmrade.append("Omrade" + "\t");
-        txtaOmrade.append("Benamning" + "\n");
+        txtaOmrade.append("Benämning" + "\n");
         
         ArrayList<HashMap<String, String>> omradeInfo;
         
