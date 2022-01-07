@@ -269,6 +269,21 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private boolean okFunktion (){
+        boolean ok = true;
+        if(Validering.comboBox(cbxAdmin) == true){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från admin som finns");
+        }
+        if(Validering.comboBox(cbxOmrade) == true){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från område som finns");
+        }
+        return ok;
+    }
+        
+    
     private void fillComboBoxOmrade() throws InfException {
         String query = "SELECT BENAMNING FROM OMRADE";
         ArrayList<String> omrade = idb.fetchColumn(query);
@@ -280,27 +295,34 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
     private void sokAgent() {
 
         String agentNamn = txtAngeAgent.getText();
+
         try {
             HashMap<String, String> agentLista = idb.fetchRow("SELECT NAMN, TELEFON, ANSTALLNINGSDATUM, ADMINISTRATOR, LOSENORD, BENAMNING FROM AGENT"
                     + " JOIN OMRADE ON OMRADES_ID = OMRADE "
                     + " WHERE NAMN = '" + agentNamn + "'");
             System.out.println(agentLista);
+            agentNamn = agentLista.get("NAMN");
 
-            txtAgentNamn.setText(agentLista.get("NAMN"));
-            txtAnstDatum.setText(agentLista.get("ANSTALLNINGSDATUM"));
-            txtLosen.setText(agentLista.get("LOSENORD"));
-            txtTelefon.setText(agentLista.get("TELEFON"));
-            cbxAdmin.setSelectedItem(agentLista.get("ADMINISTRATOR"));
-            cbxOmrade.setSelectedItem(agentLista.get("BENAMNING"));
-            
-            txtAreaLista.setText("");
-            txtAreaLista.append("Namn:  " + agentLista.get("NAMN") + "\n");
-            txtAreaLista.append("Anställningsdatum:  " + agentLista.get("ANSTALLNINGSDATUM") + "\n");
-            txtAreaLista.append("Lösenord:  " + agentLista.get("LOSENORD") + "\n");
-            txtAreaLista.append("Telefonnummer:  " + agentLista.get("TELEFON") + "\n");
-            txtAreaLista.append("Administratör:  " + agentLista.get("ADMINISTRATOR") + "\n");
-            txtAreaLista.append("Område:  " + agentLista.get("BENAMNING")+ "\n");
+            if (agentNamn == null) {
+                JOptionPane.showMessageDialog(null, "Agenten finns inte");
+            } else {
 
+                txtAgentNamn.setText(agentLista.get("NAMN"));
+                txtAnstDatum.setText(agentLista.get("ANSTALLNINGSDATUM"));
+                txtLosen.setText(agentLista.get("LOSENORD"));
+                txtTelefon.setText(agentLista.get("TELEFON"));
+                cbxAdmin.setSelectedItem(agentLista.get("ADMINISTRATOR"));
+                cbxOmrade.setSelectedItem(agentLista.get("BENAMNING"));
+
+                txtAreaLista.setText("");
+                txtAreaLista.append("Namn:  " + agentLista.get("NAMN") + "\n");
+                txtAreaLista.append("Anställningsdatum:  " + agentLista.get("ANSTALLNINGSDATUM") + "\n");
+                txtAreaLista.append("Lösenord:  " + agentLista.get("LOSENORD") + "\n");
+                txtAreaLista.append("Telefonnummer:  " + agentLista.get("TELEFON") + "\n");
+                txtAreaLista.append("Administratör:  " + agentLista.get("ADMINISTRATOR") + "\n");
+                txtAreaLista.append("Område:  " + agentLista.get("BENAMNING") + "\n");
+
+            }
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -310,10 +332,12 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
         sokAgent();
 
+
     }//GEN-LAST:event_btnSokAgentActionPerformed
 
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
+        if(okFunktion()==true){
         String agentNamn = txtAngeAgent.getText();
         String agentNytt = txtAgentNamn.getText();
         String datum = txtAnstDatum.getText();
@@ -321,20 +345,22 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
         String telefonNr = txtTelefon.getText();
         String omrade = cbxOmrade.getSelectedItem().toString();
         String admin = cbxAdmin.getSelectedItem().toString();
-        
+
         try {
             idb.update("UPDATE AGENT SET ANSTALLNINGSDATUM = '" + datum + "'" + "WHERE NAMN = '" + agentNamn + "'");
-            idb.update("UPDATE AGENT SET LOSENORD = '" + losen +"'" + "WHERE NAMN = '" + agentNamn + "'");
+            idb.update("UPDATE AGENT SET LOSENORD = '" + losen + "'" + "WHERE NAMN = '" + agentNamn + "'");
             idb.update("UPDATE AGENT SET TELEFON = '" + telefonNr + "'" + "WHERE NAMN = '" + agentNamn + "'");
             idb.update("UPDATE AGENT SET ADMINISTRATOR = '" + admin + "'" + "WHERE NAMN = '" + agentNamn + "'");
             int omradesID = Integer.parseInt(idb.fetchSingle("SELECT OMRADES_ID FROM OMRADE WHERE BENAMNING = '" + omrade + "'"));
             idb.update("UPDATE AGENT SET OMRADE = '" + omradesID + "'" + "WHERE NAMN = '" + agentNamn + "'");
-            idb.update("UPDATE AGENT SET NAMN = '" + agentNytt + "'" + "WHERE NAMN = '" + agentNamn +"'");
+            idb.update("UPDATE AGENT SET NAMN = '" + agentNytt + "'" + "WHERE NAMN = '" + agentNamn + "'");
             JOptionPane.showMessageDialog(null, "Agenten har uppdaterats");
+            sokAgent();
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        sokAgent();
+        }
+
     }//GEN-LAST:event_btnAndraActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed

@@ -318,8 +318,26 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
+    private boolean okFunktion (){
+        boolean ok = true;
+        if(Validering.comboBox(cbxPlats) == true){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från plats som finns");
+        }
+        if(Validering.comboBox(cbxAgent) == true){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från agent som finns");
+        }
+        if(Validering.comboBox(cbxRas) == true){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från ras som finns");
+    }
+        return ok;
+    }
+    
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
+        if(okFunktion() == true){
         String alienNamn = txtAngeAlien.getText();
         String alienNytt = txtAlienNamn.getText();
         String datum = txtAngeDatum.getText();
@@ -345,7 +363,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         sokAlien();
-
+        }
     }//GEN-LAST:event_btnAndraActionPerformed
     private void kollaAntal() throws InfException {
         String alienNamn = txtAngeAlien.getText();
@@ -418,6 +436,11 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             HashMap<String, String> aliens = idb.fetchRow("SELECT NAMN, REGISTRERINGSDATUM, LOSENORD, TELEFON FROM ALIEN "
                     + "WHERE NAMN = '" + alienNamn + "'");
             System.out.println(aliens);
+            alienNamn = aliens.get("NAMN");
+            if(alienNamn == null){
+                JOptionPane.showMessageDialog(null, "Alien finns inte");
+            }
+            else{
 
             txtAlienNamn.setText(aliens.get("NAMN"));
             txtAngeDatum.setText(aliens.get("REGISTRERINGSDATUM"));
@@ -433,10 +456,12 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
             txtAreaLista.append("Ansvarig agent:  " + lista.get("NAMN") + "\n");
             txtAreaLista.append("Plats:  " + lista.get("BENAMNING"));
             hamtaRas();
+            }
 
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        
 
     }
 
