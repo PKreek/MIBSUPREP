@@ -30,6 +30,7 @@ public class TaBortUtrustning extends javax.swing.JFrame {
     
     public void fyllVarde() throws InfException
     {
+        //Fyller comboboxen med all utrustning som finns inlagd i databasen
         String query1 = "Select Benamning from utrustning";
         ArrayList<String> lista = idb.fetchColumn(query1);
         for (String i : lista)
@@ -139,8 +140,9 @@ public class TaBortUtrustning extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmeraActionPerformed
-String utrustningen = (String) cbxUtrustning.getSelectedItem();
-String borttagen = "delete from utrustning where benamning ='"+utrustningen+"'";
+    //Utför borttagning av vad utrustning
+        String utrustningen = (String) cbxUtrustning.getSelectedItem();
+        String borttagen = "delete from utrustning where benamning ='"+utrustningen+"'";
         try {
             idb.delete(borttagen);
             // TODO add your handling code here:
@@ -150,7 +152,7 @@ String borttagen = "delete from utrustning where benamning ='"+utrustningen+"'";
     }//GEN-LAST:event_btnConfirmeraActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 

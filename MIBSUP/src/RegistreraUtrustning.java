@@ -59,6 +59,11 @@ public class RegistreraUtrustning extends javax.swing.JFrame {
         });
 
         txtAngeUtrustning.setBackground(new java.awt.Color(255, 255, 255));
+        txtAngeUtrustning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAngeUtrustningActionPerformed(evt);
+            }
+        });
 
         lblRegistrera.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
         lblRegistrera.setForeground(new java.awt.Color(153, 153, 153));
@@ -123,9 +128,25 @@ public class RegistreraUtrustning extends javax.swing.JFrame {
         // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
-
+private boolean okFunktion()
+        //Valideringsmetod för registrering av agent
+    {
+        boolean ok = true;
+        if(Validering.arTom(txtAngeUtrustning) == true)
+                {
+                    ok = false; 
+                }
+         if(Validering.langdNamn(txtAngeUtrustning) == true)
+        {
+            ok = false; 
+        }
+        return ok; 
+    }
+    
     private void btnRegistreraUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraUtrustningActionPerformed
         // Registrerar utrustning som har angetts i textfältet
+        if(okFunktion()==true)
+        {
         String angeUtrustning = txtAngeUtrustning.getText();
         try {
             String utrustningsID = idb.getAutoIncrement("UTRUSTNING", "UTRUSTNINGS_ID");
@@ -134,8 +155,12 @@ public class RegistreraUtrustning extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Utrustningen är registrerad");
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
-        }
+        }}
     }//GEN-LAST:event_btnRegistreraUtrustningActionPerformed
+
+    private void txtAngeUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAngeUtrustningActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAngeUtrustningActionPerformed
 
     /**
      * @param args the command line arguments

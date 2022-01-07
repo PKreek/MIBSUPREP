@@ -163,7 +163,7 @@ public class ÄndraLösenord extends javax.swing.JFrame {
 
     private void btnAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraLosenActionPerformed
         try {
-            // TODO add your handling code here:
+            // Ser till så valideringen gått genom och ändrar lösenord
             if (Validering.agentEllerAlien(anvandare) == false) {
                 losenordAgenten();
             } else {
@@ -176,6 +176,7 @@ public class ÄndraLösenord extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAndraLosenActionPerformed
 
     private void losenordAliens() throws InfException {
+        //Ändrar lösenord specifikt för aliens
         String gammaltLosen = new String(pswAktuelltLosen.getPassword());
         String nyttLosen = new String(pswNyttLosen.getPassword());
         String nyttLosenIgen = new String(pswNyttLosenIgen.getPassword());
@@ -201,6 +202,7 @@ public class ÄndraLösenord extends javax.swing.JFrame {
     }
 
     private void losenordAgenten() throws InfException {
+        //Ändrar lösenord specifikt för agenter
         String gammaltLosen = new String(pswAktuelltLosen.getPassword());
         String nyttLosen = new String(pswNyttLosen.getPassword());
         String nyttLosenIgen = new String(pswNyttLosenIgen.getPassword());
@@ -223,12 +225,12 @@ public class ÄndraLösenord extends javax.swing.JFrame {
 
     }
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void pswAktuelltLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswAktuelltLosenActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_pswAktuelltLosenActionPerformed
 
     /**

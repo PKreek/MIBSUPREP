@@ -135,7 +135,7 @@ public class TaBortAlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterKnappActionPerformed
-        // TODO add your handling code here:
+        // Utför borttagning av specificerad alien om namn finns och står i textfältet
         try {
             String alien = vilkenAlie.getText();
             System.out.println(alien);
@@ -162,6 +162,7 @@ public class TaBortAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_enterKnappActionPerformed
 
     private void vilkenAlieKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vilkenAlieKeyPressed
+        // Gör att man kan klicka på enter för att köra metoden enterKnappActionPerformed()
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
             enterKnapp.doClick();
@@ -170,11 +171,11 @@ public class TaBortAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_vilkenAlieKeyPressed
 
     private void vilkenAlieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vilkenAlieActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_vilkenAlieActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        // TODO add your handling code here:
+        // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 

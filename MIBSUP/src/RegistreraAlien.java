@@ -143,6 +143,11 @@ public class RegistreraAlien extends javax.swing.JFrame {
 
         txtAntalArmar.setBackground(new java.awt.Color(255, 255, 255));
         txtAntalArmar.setForeground(new java.awt.Color(0, 0, 0));
+        txtAntalArmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAntalArmarActionPerformed(evt);
+            }
+        });
 
         lblAntalArmar.setBackground(new java.awt.Color(153, 153, 153));
         lblAntalArmar.setForeground(new java.awt.Color(153, 153, 153));
@@ -402,6 +407,10 @@ public class RegistreraAlien extends javax.swing.JFrame {
         // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
+
+    private void txtAntalArmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAntalArmarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAntalArmarActionPerformed
 
     /**
      * @param args the command line arguments
