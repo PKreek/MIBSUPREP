@@ -272,13 +272,28 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
     
     private boolean okFunktion (){
         boolean ok = true;
-        if(Validering.comboBox(cbxAdmin) == true){
+          if (Validering.arTom(txtAgentNamn) == true){
             ok = false;
-            JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från admin som finns");
+        }
+        if (Validering.langLosen(txtLosen) == true){
+            ok = false;
+        }
+        if (Validering.arTom(txtLosen) == true){
+            ok = false;
+        }
+        if (Validering.arTom(txtAnstDatum) == true){
+            ok = false;
+        }
+        if (Validering.arTom(txtTelefon) == true){
+            ok = false;
         }
         if(Validering.comboBox(cbxOmrade) == true){
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från område som finns");
+        }
+        if(Validering.comboBox(cbxAdmin) == true){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från admin som finns");
         }
         return ok;
     }
@@ -305,6 +320,13 @@ public class ÄndraInformationAgent extends javax.swing.JFrame {
 
             if (agentNamn == null) {
                 JOptionPane.showMessageDialog(null, "Agenten finns inte");
+                txtAgentNamn.setText("");
+                txtAnstDatum.setText("YYYY-MM-DD");
+                txtLosen.setText("");
+                txtTelefon.setText("");
+                cbxAdmin.setSelectedItem("Välj admin:");
+                cbxOmrade.setSelectedItem("Välj område:");          
+                txtAreaLista.setText("");
             } else {
 
                 txtAgentNamn.setText(agentLista.get("NAMN"));

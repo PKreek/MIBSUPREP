@@ -77,6 +77,12 @@ public class TaBortAgent extends javax.swing.JFrame {
             }
         });
 
+        cbxAllaAgenter.setBackground(new java.awt.Color(255, 255, 255));
+        cbxAllaAgenter.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblVilkenAgent.setBackground(new java.awt.Color(153, 153, 153));
+        lblVilkenAgent.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblVilkenAgent.setForeground(new java.awt.Color(153, 153, 153));
         lblVilkenAgent.setText("Vilken agent tar över ansvaret för alien?");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -86,20 +92,21 @@ public class TaBortAgent extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lblTaBortAgent)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(lblVilkenAgent))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(vilkenAgent, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(Konfirmera)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnAvbryt)))
-                        .addComponent(lblTaBortAgent))
-                    .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxAllaAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                        .addGap(147, 147, 147)
+                        .addComponent(cbxAllaAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,21 +114,18 @@ public class TaBortAgent extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(lblTaBortAgent)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(lblVilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbxAllaAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxAllaAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Konfirmera)
                     .addComponent(btnAvbryt))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,10 +142,19 @@ public class TaBortAgent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     private boolean okFunktion(){
+        boolean ok = true;
+        if(Validering.arTom(vilkenAgent)){
+            ok = false;
+        }
+        return ok;
+    }
+     
     private void KonfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KonfirmeraActionPerformed
         //Utför borttagning av specificerad agent
         String deleteAgentAlienTabell = "";
         String deleteFalt = "";
+        if(okFunktion() == true){
         
         try {
             String agenten = vilkenAgent.getText().toString();
@@ -155,7 +168,7 @@ public class TaBortAgent extends javax.swing.JFrame {
              deleteAgentAlienTabell = "update alien set ansvarig_agent = " +id1 +" where ansvarig_agent =" + id + "";
              deleteFalt = "delete from faltagent where agent_id =" + id + "";
             if (id2 == null) {
-                System.out.println("Fel inmatning");
+                JOptionPane.showMessageDialog(null, "Agenten finns inte");
                 System.out.println(id);
                 System.out.println(query1);
             } else {
@@ -173,6 +186,7 @@ public class TaBortAgent extends javax.swing.JFrame {
                 idb.delete(deleteOmrade);
                  String deleteQuery = "delete from agent where namn ='" + agenten + "'";
                 idb.delete(deleteQuery);
+                JOptionPane.showMessageDialog(null, "Agenten är borttagen");
                  
             }
 
@@ -181,7 +195,9 @@ public class TaBortAgent extends javax.swing.JFrame {
             System.out.println(deleteAgentAlienTabell);
             System.out.println(deleteFalt);
         }
+        }
     }//GEN-LAST:event_KonfirmeraActionPerformed
+   
     public void fyllVarde() throws InfException
     //Fyller combobox med alla agenter som finns i databasen
     {

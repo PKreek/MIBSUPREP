@@ -252,6 +252,9 @@ public class RegistreraAlien extends javax.swing.JFrame {
     private boolean okFunktion() //Valideringsmetod för registrering av agent
     {
         boolean ok = true;
+        if (Validering.arTom(txtRegistreringsDatum) == true){
+            ok = false;
+        }
         if (Validering.arTom(txtNamn) == true) {
             ok = false;
         }

@@ -184,6 +184,9 @@ public class SökInformation extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från alien eller omradeschef som finns");
         }
+        if(Validering.arTom(txtAnge) == true){
+            ok = false;
+        }
         return ok;
     }
 
@@ -238,7 +241,11 @@ public class SökInformation extends javax.swing.JFrame {
 
                     HashMap<String, String> alienInfo = idb.fetchRow("SELECT ALIEN_ID, NAMN, LOSENORD, REGISTRERINGSDATUM, TELEFON FROM ALIEN "
                             + "WHERE ALIEN.NAMN = '" + angeSokning + "'");
-
+                    angeSokning = alienInfo.get("NAMN");
+                    if (angeSokning == null) {
+                        JOptionPane.showMessageDialog(null, "Aliennamnet finns inte");
+                    }
+                    else{
                     txtAreaLista.append("Aliens ID:\t" + alienInfo.get("ALIEN_ID"));
                     txtAreaLista.append("\nAliens namn:\t" + alienInfo.get("NAMN"));
                     txtAreaLista.append("\nAliens lösenord:\t" + alienInfo.get("LOSENORD"));
@@ -247,9 +254,6 @@ public class SökInformation extends javax.swing.JFrame {
                     txtAreaLista.append("\nAnsvarig agent:\t" + alienInfo2.get("NAMN"));
                     txtAreaLista.append("\nStad:\t" + alienInfo2.get("BENAMNING"));
                     hamtaRas();
-
-                    if (!angeSokning.equals(alienInfo.get("NAMN"))) {
-                        JOptionPane.showMessageDialog(null, "Aliennamnet finns inte");
                     }
                 } catch (InfException ex) {
                     JOptionPane.showMessageDialog(null, ex);
@@ -260,12 +264,17 @@ public class SökInformation extends javax.swing.JFrame {
             case 2: {
                 if(okFunktion2()==true){
                 try {
-                    String omradeschef = idb.fetchSingle("SELECT Agent.NAMN FROM Agent "
+                    HashMap<String, String> agentListan = idb.fetchRow("SELECT NAMN, BENAMNING FROM Agent "
                             + "JOIN Omradeschef ON Agent.Agent_ID = Omradeschef.Agent_ID "
                             + "JOIN Omrade ON Agent.Omrade = Omrade.Omrades_ID "
                             + "WHERE OMRADE.Benamning = '" + angeSokning + "'");
-
-                    txtAreaLista.append("Områdeschef:\t" + omradeschef);
+                    angeSokning = agentListan.get("BENAMNING");
+                    if(angeSokning == null){
+                        JOptionPane.showMessageDialog(null, "Området finns inte");
+                    }
+                    else{
+                    txtAreaLista.append("Områdeschef:\t" + agentListan.get("NAMN"));
+                    }
                 } catch (InfException ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }

@@ -264,86 +264,82 @@ public class RegistreraAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxActionPerformed
 
-    private boolean okFunktion()
-        //Valideringsmetod för registrering av agent
+    private boolean okFunktion() //Valideringsmetod för registrering av agent
     {
         boolean ok = true;
-        if(Validering.arTom(txtNamn) == true)
-                {
-                    ok = false; 
-                }
-         if(Validering.langdNamn(txtNamn) == true)
-        {
-            ok = false; 
+        if (Validering.arTom(txtAnstallningsDatum) == true) {
+            ok = false;
         }
-          if(Validering.arTom(txtTelefon) == true )
-                {
-                    ok = false; 
-                }
-          if(Validering.langTelefon(txtTelefon) == true )
-                {
-                    ok = false;
-                }
-       
-         if(Validering.arTom(txtLosen) == true)
-                {
-                    ok = false; 
-                }
-          if(Validering.langLosen(txtLosen) == true)
-                {
-                    ok = false; 
-                }
-          
-        return ok; 
+        if (Validering.arTom(txtNamn) == true) {
+            ok = false;
+        }
+        if (Validering.langdNamn(txtNamn) == true) {
+            ok = false;
+        }
+        if (Validering.arTom(txtTelefon) == true) {
+            ok = false;
+        }
+        if (Validering.langTelefon(txtTelefon) == true) {
+            ok = false;
+        }
+
+        if (Validering.arTom(txtLosen) == true) {
+            ok = false;
+        }
+        if (Validering.langLosen(txtLosen) == true) {
+            ok = false;
+        }
+
+        return ok;
     }
-    
+
     private void btnÄndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraActionPerformed
-if(okFunktion()== true)
-{
-        String namn = txtNamn.getText();
-        String telefonnummer = txtTelefon.getText();
-        String losen = txtLosen.getText();
-        String datum = txtAnstallningsDatum.getText();
-        String hamtaNamn = txtNamn.getText();
-        String query = "SELECT * FROM AGENT where namn = '" + hamtaNamn + "'";
-        String omradet = (String) cbxOmråde.getSelectedItem();
-        String admin = "N";
-        try {
-            if (checkBox.isSelected()) {
-                admin = "J";
+        if (okFunktion() == true) {
+            String namn = txtNamn.getText();
+            String telefonnummer = txtTelefon.getText();
+            String losen = txtLosen.getText();
+            String datum = txtAnstallningsDatum.getText();
+            String hamtaNamn = txtNamn.getText();
+            String query = "SELECT * FROM AGENT where namn = '" + hamtaNamn + "'";
+            String omradet = (String) cbxOmråde.getSelectedItem();
+            String admin = "N";
+            try {
+                if (checkBox.isSelected()) {
+                    admin = "J";
+                }
+
+                String omradeID = idb.fetchSingle("Select omrades_ID from omrade where benamning = '" + omradet + "'");
+                String fragaID = idb.getAutoIncrement("Agent", "Agent_ID");
+                String ettNamn = idb.fetchSingle(query);
+
+                if (ettNamn != null) {
+                    System.out.println("Namnet finns redan");
+                } else {
+                    idb.insert("Insert into Agent(Agent_id, namn, telefon, anstallningsdatum, administrator, losenord, omrade)"
+                            + "values(" + fragaID + ",'"
+                            + namn + "'," + "'"
+                            + telefonnummer + "'," + "'"
+                            + datum + "'," + "'"
+                            + admin + "'," + "'"
+                            + losen + "',"
+                            + omradeID + ");");
+                    JOptionPane.showMessageDialog(null, "Agenten är registrerad");
+
+                }
+                System.out.println(telefonnummer);
+                System.out.println(losen);
+                System.out.println(datum);
+                System.out.println(query);
+                System.out.println(omradet);
+                System.out.println(admin);
+                System.out.println(ettNamn);
+                System.out.println(hamtaNamn);
+
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, "Fel namn " + ex);
             }
 
-            String omradeID = idb.fetchSingle("Select omrades_ID from omrade where benamning = '" + omradet + "'");
-            String fragaID = idb.getAutoIncrement("Agent", "Agent_ID");
-            String ettNamn = idb.fetchSingle(query);
-
-            if (ettNamn != null) {
-                System.out.println("Namnet finns redan");
-            } else {
-                idb.insert("Insert into Agent(Agent_id, namn, telefon, anstallningsdatum, administrator, losenord, omrade)"
-                        + "values(" + fragaID + ",'"
-                        + namn + "'," + "'"
-                        + telefonnummer + "'," + "'"
-                        + datum + "'," + "'"
-                        + admin + "'," + "'"
-                        + losen + "',"
-                        + omradeID + ");");
-
-            }
-            System.out.println(telefonnummer);
-            System.out.println(losen);
-            System.out.println(datum);
-            System.out.println(query);
-            System.out.println(omradet);
-            System.out.println(admin);
-            System.out.println(ettNamn);
-            System.out.println(hamtaNamn);
-
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Fel namn " + ex);
         }
-
-}
     }//GEN-LAST:event_btnÄndraActionPerformed
 
     private String datum() {

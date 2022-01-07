@@ -134,8 +134,17 @@ public class TaBortAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean okFunktion(){
+        boolean ok = true;
+        if(Validering.arTom(vilkenAlie)){
+            ok = false;
+        }
+        return ok;
+    }
+
     private void enterKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterKnappActionPerformed
         // Utför borttagning av specificerad alien om namn finns och står i textfältet
+        if(okFunktion() == true){
         try {
             String alien = vilkenAlie.getText();
             System.out.println(alien);
@@ -147,15 +156,16 @@ public class TaBortAlien extends javax.swing.JFrame {
            // System.out.println(alien);
 
             if (idb.fetchSingle(query) == null) {
-                System.out.println("Fel inmatning");
+                JOptionPane.showMessageDialog(null, "Alien finns inte");
             } else {
                 String deleteQuery = "delete from alien where namn ='"+alien+"'";
                 idb.delete(deleteQuery);
-                System.out.println("Alien är borttagen");
+                JOptionPane.showMessageDialog(null, "Alien är borttagen");
             }
 
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Fel namn " + ex);
+        }
         }
 
 

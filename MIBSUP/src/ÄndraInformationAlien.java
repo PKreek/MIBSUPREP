@@ -320,6 +320,21 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
 
     private boolean okFunktion() {
         boolean ok = true;
+        if (Validering.arTom(txtAlienNamn) == true){
+            ok = false;
+        }
+        if (Validering.langLosen(txtLosenord) == true){
+            ok = false;
+        }
+        if (Validering.arTom(txtLosenord) == true){
+            ok = false;
+        }
+        if (Validering.arTom(txtAngeDatum) == true){
+            ok = false;
+        }
+        if (Validering.arTom(txtTelefonnr) == true){
+            ok = false;
+        }
         if (Validering.comboBox(cbxPlats) == true) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj ett av de alternativ från plats som finns");
@@ -454,7 +469,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                 cbxRas.setSelectedItem("Välj ras:");
                 txtAreaLista.setText("");
             } else {
-
+                
                 txtAlienNamn.setText(aliens.get("NAMN"));
                 txtAngeDatum.setText(aliens.get("REGISTRERINGSDATUM"));
                 txtLosenord.setText(aliens.get("LOSENORD"));
@@ -462,6 +477,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                 cbxAgent.setSelectedItem(lista.get("NAMN"));
                 cbxPlats.setSelectedItem(lista.get("BENAMNING"));
                 txtAreaLista.setText("");
+               
                 txtAreaLista.append("Namn:  " + aliens.get("NAMN") + "\n");
                 txtAreaLista.append("Registreringsdatum:  " + aliens.get("REGISTRERINGSDATUM") + "\n");
                 txtAreaLista.append("Lösenord:  " + aliens.get("LOSENORD") + "\n");
@@ -504,6 +520,7 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
     private void btnSokAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienActionPerformed
         // TODO add your handling code here:
             sokAlien();
+            
             
     }//GEN-LAST:event_btnSokAlienActionPerformed
 
