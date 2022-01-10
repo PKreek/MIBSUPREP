@@ -303,7 +303,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             //Startar rutan där man kan ändra information om agenter
-            new ÄndraInformationAgent(idb).setVisible(true);
+            new AndraInformationAgent(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -326,7 +326,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
     private void btnAndraInfoAlienActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         try {
             // Startar rutan där man kan ändra information om aliens
-            new ÄndraInformationAlien(idb).setVisible(true);
+            new AndraInformationAlien(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -379,7 +379,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
 
     private void btnAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraLosenActionPerformed
         // Startar rutan där man kan ändra lösenord
-        new ÄndraLösenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
+        new AndraLosenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
     }//GEN-LAST:event_btnAndraLosenActionPerformed
 
     private void btnSetKontorschefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetKontorschefActionPerformed

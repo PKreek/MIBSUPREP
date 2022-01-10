@@ -135,7 +135,7 @@ public class InloggadAlien extends javax.swing.JFrame {
 
     private void btnAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraLosenActionPerformed
         // Startar rutan där man kan ändra lösenord
-        new ÄndraLösenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
+        new AndraLosenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
     }//GEN-LAST:event_btnAndraLosenActionPerformed
 
     private void btnKontaktUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKontaktUppgifterActionPerformed

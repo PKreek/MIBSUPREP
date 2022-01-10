@@ -15,14 +15,14 @@ import oru.inf.InfException;
  *
  * @author noahjarvback
  */
-public class SökInformation extends javax.swing.JFrame {
+public class SokInformation extends javax.swing.JFrame {
 
     private static InfDB idb;
 
     /**
      * Creates new form SökInformation
      */
-    public SökInformation(InfDB idb) throws InfException {
+    public SokInformation(InfDB idb) throws InfException {
         initComponents();
         this.idb = idb;
         txtAnge.setVisible(false);
@@ -341,27 +341,28 @@ public class SökInformation extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SökInformation.class
+            java.util.logging.Logger.getLogger(SokInformation.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SökInformation.class
+            java.util.logging.Logger.getLogger(SokInformation.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SökInformation.class
+            java.util.logging.Logger.getLogger(SokInformation.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SökInformation.class
+            java.util.logging.Logger.getLogger(SokInformation.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new SökInformation(idb).setVisible(true);
+                    new SokInformation(idb).setVisible(true);
                 } catch (InfException ex) {
-                    Logger.getLogger(SökInformation.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(SokInformation.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

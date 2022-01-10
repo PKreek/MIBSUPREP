@@ -213,7 +213,7 @@ public class InloggadAgent extends javax.swing.JFrame {
 
     private void btnAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraLosenActionPerformed
         // Startar rutan där man kan ändra lösenord
-        new ÄndraLösenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
+        new AndraLosenord(anvandarnamn, losenord, idb, anvandare).setVisible(true);
     }//GEN-LAST:event_btnAndraLosenActionPerformed
 
     private void btnListaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaAliensActionPerformed
@@ -228,7 +228,7 @@ public class InloggadAgent extends javax.swing.JFrame {
     private void btnSokInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokInformationActionPerformed
         // Startar rutan där man söker information om aliens eller agenter
         try {
-            new SökInformation(idb).setVisible(true);
+            new SokInformation(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -242,7 +242,7 @@ public class InloggadAgent extends javax.swing.JFrame {
     private void btnÄndraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraAlienActionPerformed
         // Startar rutan där man ändrar information om alien
         try {
-            new ÄndraInformationAlien(idb).setVisible(true);
+            new AndraInformationAlien(idb).setVisible(true);
         } catch (InfException ex) {
             Logger.getLogger(InloggadAgent.class.getName()).log(Level.SEVERE, null, ex);
         }

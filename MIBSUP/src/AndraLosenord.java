@@ -13,7 +13,7 @@ import oru.inf.InfException;
  *
  * @author noahjarvback
  */
-public class ÄndraLösenord extends javax.swing.JFrame {
+public class AndraLosenord extends javax.swing.JFrame {
 
     private static String anvandarNamn;
     private static String losenord;
@@ -23,7 +23,7 @@ public class ÄndraLösenord extends javax.swing.JFrame {
     /**
      * Creates new form ÄndraLösenord
      */
-    public ÄndraLösenord(String anvandarNamn, String losenord, InfDB idb, String anvandare) {
+    public AndraLosenord(String anvandarNamn, String losenord, InfDB idb, String anvandare) {
         initComponents();
         this.anvandarNamn = anvandarNamn;
         this.losenord = losenord;
@@ -171,7 +171,7 @@ public class ÄndraLösenord extends javax.swing.JFrame {
             }
 
         } catch (InfException ex) {
-            Logger.getLogger(ÄndraLösenord.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AndraLosenord.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAndraLosenActionPerformed
 
@@ -250,20 +250,21 @@ public class ÄndraLösenord extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ÄndraLösenord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AndraLosenord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ÄndraLösenord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AndraLosenord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ÄndraLösenord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AndraLosenord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ÄndraLösenord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AndraLosenord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ÄndraLösenord(anvandarNamn, losenord, idb, anvandare).setVisible(true);
+                new AndraLosenord(anvandarNamn, losenord, idb, anvandare).setVisible(true);
             }
         });
     }

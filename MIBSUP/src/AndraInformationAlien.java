@@ -15,14 +15,14 @@ import oru.inf.InfException;
  *
  * @author noahjarvback
  */
-public class ÄndraInformationAlien extends javax.swing.JFrame {
+public class AndraInformationAlien extends javax.swing.JFrame {
 
     private static InfDB idb;
 
     /**
      * Creates new form ÄndraInformationAlien
      */
-    public ÄndraInformationAlien(InfDB idb) throws InfException {
+    public AndraInformationAlien(InfDB idb) throws InfException {
         initComponents();
         this.idb = idb;
         fillComboBoxPlats();
@@ -582,23 +582,24 @@ public class ÄndraInformationAlien extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ÄndraInformationAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AndraInformationAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ÄndraInformationAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AndraInformationAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ÄndraInformationAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AndraInformationAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ÄndraInformationAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AndraInformationAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new ÄndraInformationAlien(idb).setVisible(true);
+                    new AndraInformationAlien(idb).setVisible(true);
                 } catch (InfException ex) {
-                    Logger.getLogger(ÄndraInformationAlien.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(AndraInformationAlien.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
