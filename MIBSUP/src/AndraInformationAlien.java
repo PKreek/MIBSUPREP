@@ -322,17 +322,13 @@ public class AndraInformationAlien extends javax.swing.JFrame {
         boolean ok = true;
         if (Validering.kollaDatumCheck(txtAngeDatum.getText()) == false) {
             ok = false;
-        } 
-        else if (Validering.arTom(txtAlienNamn) == true) {
+        } else if (Validering.arTom(txtAlienNamn) == true) {
             ok = false;
-        }
-        else if (Validering.langLosen(txtLosenord) == true) {
+        } else if (Validering.langLosen(txtLosenord) == true) {
             ok = false;
-        } 
-        else if (Validering.arTom(txtLosenord) == true) {
+        } else if (Validering.arTom(txtLosenord) == true) {
             ok = false;
-        } 
-        else if (Validering.arTom(txtTelefonnr) == true) {
+        } else if (Validering.arTom(txtTelefonnr) == true) {
             ok = false;
         }
         if (Validering.comboBox(cbxPlats) == true) {
@@ -356,11 +352,35 @@ public class AndraInformationAlien extends javax.swing.JFrame {
         return ok;
     }
 
+    private void andraNamn() throws InfException {
+        String alienNamn = txtAngeAlien.getText();
+        String nyttAlienNamn = txtAlienNamn.getText();
+
+        boolean arSamma = false;
+        boolean arDubblett = false;
+        ArrayList<String> alienLista = idb.fetchColumn("SELECT NAMN FROM ALIEN");
+
+        if (alienNamn.equals(nyttAlienNamn)) {
+            arSamma = true;
+        }
+
+        if (arSamma == false) {
+            for (String aliens : alienLista) {           
+                if (nyttAlienNamn.equals(aliens)) {
+                    arDubblett = true;
+                    JOptionPane.showMessageDialog(null, "Namnet finns redan!");
+                }
+            }
+        }
+        if (arDubblett == false && arSamma == false) {
+            idb.update("UPDATE ALIEN SET NAMN = '" + nyttAlienNamn + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+            txtAngeAlien.setText(nyttAlienNamn);
+        } 
+    }
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
         if (okFunktion() == true) {
             String alienNamn = txtAngeAlien.getText();
-            String alienNytt = txtAlienNamn.getText();
             String datum = txtAngeDatum.getText();
             String losenord = txtLosenord.getText();
             String telefonNr = txtTelefonnr.getText();
@@ -377,10 +397,9 @@ public class AndraInformationAlien extends javax.swing.JFrame {
                 int platsID = Integer.parseInt(idb.fetchSingle("SELECT PLATS_ID FROM PLATS WHERE BENAMNING = '" + valdPlats + "'"));
                 idb.update("UPDATE ALIEN SET PLATS = '" + platsID + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
                 registreraRas();
-                idb.update("UPDATE ALIEN SET NAMN = '" + alienNytt + "'" + "WHERE ALIEN.NAMN = '" + alienNamn + "'");
+                andraNamn();
 
                 JOptionPane.showMessageDialog(null, "Alien har blivit uppdaterad");
-                txtAngeAlien.setText(txtAlienNamn.getText());
             } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }

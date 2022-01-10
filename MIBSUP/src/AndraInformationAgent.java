@@ -355,6 +355,31 @@ public class AndraInformationAgent extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSokAgentActionPerformed
 
+    private void andraNamn() throws InfException{
+        String agentNamn = txtAngeAgent.getText();
+        String nyttAgentNamn = txtAgentNamn.getText();
+
+        boolean arSamma = false;
+        boolean arDubblett = false;
+        ArrayList<String> agentLista = idb.fetchColumn("SELECT NAMN FROM AGENT");
+
+        if (agentNamn.equals(nyttAgentNamn)) {
+            arSamma = true;
+        }
+
+        if (arSamma == false) {
+            for (String agenter : agentLista) {           
+                if (nyttAgentNamn.equals(agenter)) {
+                    arDubblett = true;
+                    JOptionPane.showMessageDialog(null, "Namnet finns redan!");
+                }
+            }
+        }
+        if (arDubblett == false && arSamma == false) {
+            idb.update("UPDATE AGENT SET NAMN = '" + nyttAgentNamn + "'" + "WHERE NAMN = '" + agentNamn + "'");
+            txtAngeAgent.setText(txtAgentNamn.getText());
+        } 
+    }
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
         if (okFunktion() == true) {
@@ -372,11 +397,11 @@ public class AndraInformationAgent extends javax.swing.JFrame {
                 idb.update("UPDATE AGENT SET TELEFON = '" + telefonNr + "'" + "WHERE NAMN = '" + agentNamn + "'");
                 idb.update("UPDATE AGENT SET ADMINISTRATOR = '" + admin + "'" + "WHERE NAMN = '" + agentNamn + "'");
                 int omradesID = Integer.parseInt(idb.fetchSingle("SELECT OMRADES_ID FROM OMRADE WHERE BENAMNING = '" + omrade + "'"));
-                idb.update("UPDATE AGENT SET OMRADE = '" + omradesID + "'" + "WHERE NAMN = '" + agentNamn + "'");
-                idb.update("UPDATE AGENT SET NAMN = '" + agentNytt + "'" + "WHERE NAMN = '" + agentNamn + "'");
+                idb.update("UPDATE AGENT SET OMRADE = '" + omradesID + "'" + "WHERE NAMN = '" + agentNamn + "'");  
+                andraNamn();
                 JOptionPane.showMessageDialog(null, "Agenten har uppdaterats");
 
-                txtAngeAgent.setText(txtAgentNamn.getText());
+                
             } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
