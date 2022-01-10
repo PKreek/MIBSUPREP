@@ -55,6 +55,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
         btnSetOmradesChef = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnSetKontorschef = new javax.swing.JButton();
+        btnLoggaUt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -215,10 +216,27 @@ public class InloggadAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnLoggaUt.setBackground(new java.awt.Color(33, 31, 31));
+        btnLoggaUt.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        btnLoggaUt.setForeground(new java.awt.Color(153, 153, 153));
+        btnLoggaUt.setText("Logga ut");
+        btnLoggaUt.setBorder(null);
+        btnLoggaUt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaUtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSattAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTaBortAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,20 +262,16 @@ public class InloggadAdmin extends javax.swing.JFrame {
                             .addComponent(btnRegistreraAgent)
                             .addComponent(jButton1)
                             .addComponent(btnSetKontorschef)
-                            .addComponent(btnSokAgent))
+                            .addComponent(btnSokAgent)
+                            .addComponent(btnLoggaUt))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTaBortAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSattAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(12, 12, 12)
                 .addComponent(lblVälkommenAdmin)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblKontoOversikt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistreraAlien)
@@ -269,7 +283,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
                 .addComponent(btnRegistreraAgent)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSattAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnTaBortAgent)
@@ -283,7 +297,9 @@ public class InloggadAdmin extends javax.swing.JFrame {
                 .addComponent(btnSetKontorschef)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAndraLosen)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLoggaUt)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -396,6 +412,12 @@ public class InloggadAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTaBortAgentActionPerformed
 
+    private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
+        // TODO add your handling code here:
+        new Inloggningssida(idb).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLoggaUtActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -434,6 +456,7 @@ public class InloggadAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndraInfoAlien;
     private javax.swing.JButton btnAndraLosen;
+    private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnRegistreraAgent;
     private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JButton btnSattAdmin;

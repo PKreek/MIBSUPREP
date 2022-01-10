@@ -46,6 +46,7 @@ public class InloggadAlien extends javax.swing.JFrame {
         btnKontaktUppgifter = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         JtxtKollaUppgifter = new javax.swing.JTextArea();
+        btnLoggaUt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,7 +57,7 @@ public class InloggadAlien extends javax.swing.JFrame {
         lblValkommenAlien.setText("Välkommen Alien");
 
         btnAndraLosen.setBackground(new java.awt.Color(33, 31, 31));
-        btnAndraLosen.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnAndraLosen.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
         btnAndraLosen.setForeground(new java.awt.Color(153, 153, 153));
         btnAndraLosen.setText("Ändra lösenord");
         btnAndraLosen.setBorder(null);
@@ -85,6 +86,18 @@ public class InloggadAlien extends javax.swing.JFrame {
         JtxtKollaUppgifter.setTabSize(1);
         jScrollPane1.setViewportView(JtxtKollaUppgifter);
 
+        btnLoggaUt.setBackground(new java.awt.Color(33, 31, 31));
+        btnLoggaUt.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        btnLoggaUt.setForeground(new java.awt.Color(153, 153, 153));
+        btnLoggaUt.setText("Logga ut");
+        btnLoggaUt.setBorder(null);
+        btnLoggaUt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaUtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,7 +115,10 @@ public class InloggadAlien extends javax.swing.JFrame {
                         .addComponent(btnAndraLosen))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnLoggaUt)))
                 .addContainerGap(123, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -114,9 +130,11 @@ public class InloggadAlien extends javax.swing.JFrame {
                 .addComponent(btnKontaktUppgifter)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(btnAndraLosen)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLoggaUt)
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,6 +184,12 @@ public class InloggadAlien extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnKontaktUppgifterActionPerformed
 
+    private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
+        // TODO add your handling code here:
+        new Inloggningssida(idb).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLoggaUtActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -206,6 +230,7 @@ public class InloggadAlien extends javax.swing.JFrame {
     private javax.swing.JTextArea JtxtKollaUppgifter;
     private javax.swing.JButton btnAndraLosen;
     private javax.swing.JButton btnKontaktUppgifter;
+    private javax.swing.JButton btnLoggaUt;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblValkommenAlien;

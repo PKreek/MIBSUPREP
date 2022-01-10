@@ -48,6 +48,7 @@ public class InloggadAgent extends javax.swing.JFrame {
         btnSokInformation = new javax.swing.JButton();
         btnRegistreraUtrustning = new javax.swing.JButton();
         btnÄndraAlien = new javax.swing.JButton();
+        btnLoggaUt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,6 +134,18 @@ public class InloggadAgent extends javax.swing.JFrame {
             }
         });
 
+        btnLoggaUt.setBackground(new java.awt.Color(33, 31, 31));
+        btnLoggaUt.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        btnLoggaUt.setForeground(new java.awt.Color(153, 153, 153));
+        btnLoggaUt.setText("Logga ut");
+        btnLoggaUt.setBorder(null);
+        btnLoggaUt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaUtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -160,7 +173,10 @@ public class InloggadAgent extends javax.swing.JFrame {
                     .addComponent(btnAndraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnÄndraAlien)))
+                        .addComponent(btnÄndraAlien))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnLoggaUt)))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -182,7 +198,9 @@ public class InloggadAgent extends javax.swing.JFrame {
                 .addComponent(btnRegistreraUtrustning)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAndraLosen)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLoggaUt)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -248,6 +266,12 @@ public class InloggadAgent extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnÄndraAlienActionPerformed
 
+    private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
+        // TODO add your handling code here:
+        new Inloggningssida(idb).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLoggaUtActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,6 +310,7 @@ public class InloggadAgent extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndraLosen;
     private javax.swing.JButton btnListaAliens;
+    private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnRegistreraAlien;
     private javax.swing.JButton btnRegistreraUtrustning;
     private javax.swing.JButton btnSokInformation;
