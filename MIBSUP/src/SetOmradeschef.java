@@ -1,21 +1,22 @@
+
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author patrickkreek
  */
 public class SetOmradeschef extends javax.swing.JFrame {
-    
+
     private InfDB idb;
-    
+
     /**
      * Creates new form SetOmradeschef
      */
@@ -196,109 +197,113 @@ public class SetOmradeschef extends javax.swing.JFrame {
         //Ändrar områdeschef
         String valdAgent = cmbAgent.getSelectedItem().toString();
         String valtOmrade = cmbOmrade.getSelectedItem().toString();
-        
-        try{
-            if(valdAgent != null && valtOmrade != null){
-                int agentID = Integer.parseInt(idb.fetchSingle("Select Agent_ID from Agent where Namn = '" + valdAgent + "'"));
-                int omradeID = Integer.parseInt(idb.fetchSingle("Select Omrade.Omrades_ID from Omrade where Omrade.Benamning = '" + valtOmrade + "'"));
+        try {
+            int agentID = Integer.parseInt(idb.fetchSingle("Select Agent_ID from Agent where Namn = '" + valdAgent + "'"));
+            String omrade = idb.fetchSingle("select omrades_id from omrade where benamning = '" + valtOmrade +"'");
+            String omradesChef = idb.fetchSingle("Select Omrades_ID from Omrade join omradeschef on omrades_id = omrade where Benamning = '" + valtOmrade + "'");
+            
+            if (omradesChef == null) {
+
+                idb.insert("INSERT INTO OMRADESCHEF(AGENT_ID, OMRADE) VALUES(" + agentID + "," + omrade + ")");
+                JOptionPane.showMessageDialog(null, valdAgent + " Är nu områdeschef för område: " + valtOmrade);
+                txtaOmrade.setText("");
+                fillTxtOmrade();
+            } else {
                 idb.update("Update Omradeschef set Omradeschef.Agent_ID = '" + agentID + "'" + "Where Omrade = '" + omradeID + "'");
                 System.out.println("Områdeschef har uppdaterats. ");
                 JOptionPane.showMessageDialog(null, valdAgent + " Är nu områdeschef för område: " + valtOmrade);
                 txtaOmrade.setText("");
                 fillTxtOmrade();
-                }
-            
-            }   
-            catch (InfException err){
+            }
+
+        } catch (InfException err) {
             JOptionPane.showMessageDialog(null, "Det går inte att vara områdeschef för två områden!");
             System.out.println("Internt felmeddelande" + err.getMessage());
         }
-        
+
     }
-    private void fillCmbAgent(){
+
+    private void fillCmbAgent() {
         //Fyller agent comboboxen
         String query = "Select namn from agent";
         ArrayList<String> allAgentNames;
-        try{
+        try {
             allAgentNames = idb.fetchColumn(query);
-            
-            for(String names : allAgentNames){
+
+            for (String names : allAgentNames) {
                 cmbAgent.addItem(names);
-                
+
             }
-        }    
-        catch (InfException err){
+        } catch (InfException err) {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande" + err.getMessage());
         }
     }//GEN-LAST:event_btnAndraActionPerformed
 
-    private void fillCmbOmrade(){
+    private void fillCmbOmrade() {
         //Fyller områdecomboboxen
         String query1 = "SELECT Omrade.Benamning FROM Omrade";
         ArrayList<String> allAreas;
-        try{
+        try {
             allAreas = idb.fetchColumn(query1);
-            
-            for(String areas : allAreas){
+
+            for (String areas : allAreas) {
                 cmbOmrade.addItem(areas);
             }
-        }
-        catch (InfException err){
+        } catch (InfException err) {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande" + err.getMessage());
         }
     }
-    
-    private void fillTxtAInfo(){
+
+    private void fillTxtAInfo() {
         //Fyller textarean med information om alla agenter som finns. 
         txtaInfo.append("Agent_ID" + "\t");
         txtaInfo.append("Namn" + "\t");
         txtaInfo.append("Telefon" + "\n");
-        
+
         ArrayList<HashMap<String, String>> agentInfo;
-        
+
         try {
-        String query2 = "SELECT Agent.Agent_ID, Agent.Namn, agent.Telefon from Agent";
-        agentInfo = idb.fetchRows(query2);
-        
-        for(HashMap<String, String> aI : agentInfo){
-            txtaInfo.append(aI.get("Agent_ID") + "\t");
-            txtaInfo.append(aI.get("Namn") + "\t");
-            txtaInfo.append(aI.get("Telefon") + "\n");
+            String query2 = "SELECT Agent.Agent_ID, Agent.Namn, agent.Telefon from Agent";
+            agentInfo = idb.fetchRows(query2);
+
+            for (HashMap<String, String> aI : agentInfo) {
+                txtaInfo.append(aI.get("Agent_ID") + "\t");
+                txtaInfo.append(aI.get("Namn") + "\t");
+                txtaInfo.append(aI.get("Telefon") + "\n");
             }
-        } catch (InfException err){
+        } catch (InfException err) {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande" + err.getMessage());
-        
+
         }
     }
-    
-    private void fillTxtOmrade(){
+
+    private void fillTxtOmrade() {
         //Fyller textarean med information om alla agenter som finns. 
         txtaOmrade.append("Agent_ID" + "\t");
         txtaOmrade.append("Omrade" + "\t");
         txtaOmrade.append("Benämning" + "\n");
-        
+
         ArrayList<HashMap<String, String>> omradeInfo;
-        
+
         try {
-        String query3 = "SELECT Omradeschef.Agent_ID, Omradeschef.Omrade, Omrade.Benamning from Omradeschef join Omrade on Omradeschef.Omrade = Omrade.Omrades_ID";
-        omradeInfo = idb.fetchRows(query3);
-        
-        for(HashMap<String, String> oI : omradeInfo){
-            txtaOmrade.append(oI.get("Agent_ID") + "\t");
-            txtaOmrade.append(oI.get("Omrade") + "\t");
-            txtaOmrade.append(oI.get("Benamning") + "\n");
+            String query3 = "SELECT Omradeschef.Agent_ID, Omradeschef.Omrade, Omrade.Benamning from Omradeschef join Omrade on Omradeschef.Omrade = Omrade.Omrades_ID";
+            omradeInfo = idb.fetchRows(query3);
+
+            for (HashMap<String, String> oI : omradeInfo) {
+                txtaOmrade.append(oI.get("Agent_ID") + "\t");
+                txtaOmrade.append(oI.get("Omrade") + "\t");
+                txtaOmrade.append(oI.get("Benamning") + "\n");
             }
-        } catch (InfException err){
+        } catch (InfException err) {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande" + err.getMessage());
-        
+
         }
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -329,7 +334,7 @@ public class SetOmradeschef extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }

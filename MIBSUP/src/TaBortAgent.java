@@ -1,5 +1,7 @@
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -8,7 +10,6 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author nikla
@@ -21,9 +22,11 @@ public class TaBortAgent extends javax.swing.JFrame {
      * Creates new form TaBortAgent
      */
     public TaBortAgent(InfDB idb) throws InfException {
-     this.idb = idb;
+        this.idb = idb;
         initComponents();
         fyllVarde();
+        lblVilkenAgent.setVisible(false);
+        cbxAllaAgenter.setVisible(false);
     }
 
     /**
@@ -37,12 +40,12 @@ public class TaBortAgent extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         labelText = new javax.swing.JLabel();
-        vilkenAgent = new javax.swing.JTextField();
         Konfirmera = new javax.swing.JButton();
         lblTaBortAgent = new javax.swing.JLabel();
         btnAvbryt = new javax.swing.JButton();
         cbxAllaAgenter = new javax.swing.JComboBox<>();
         lblVilkenAgent = new javax.swing.JLabel();
+        cbxAngeAgent = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,10 +53,7 @@ public class TaBortAgent extends javax.swing.JFrame {
 
         labelText.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         labelText.setForeground(new java.awt.Color(153, 153, 153));
-        labelText.setText("Ange namn för den agent du vill ta bort:");
-
-        vilkenAgent.setBackground(new java.awt.Color(255, 255, 255));
-        vilkenAgent.setForeground(new java.awt.Color(0, 0, 0));
+        labelText.setText("Ange agenten du vill ta bort:");
 
         Konfirmera.setBackground(new java.awt.Color(255, 255, 255));
         Konfirmera.setForeground(new java.awt.Color(0, 0, 0));
@@ -85,6 +85,15 @@ public class TaBortAgent extends javax.swing.JFrame {
         lblVilkenAgent.setForeground(new java.awt.Color(153, 153, 153));
         lblVilkenAgent.setText("Vilken agent tar över ansvaret för alien?");
 
+        cbxAngeAgent.setBackground(new java.awt.Color(255, 255, 255));
+        cbxAngeAgent.setForeground(new java.awt.Color(0, 0, 0));
+        cbxAngeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent:" }));
+        cbxAngeAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAngeAgentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -92,40 +101,35 @@ public class TaBortAgent extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelText)
+                    .addComponent(lblVilkenAgent)
+                    .addComponent(cbxAllaAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Konfirmera)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAvbryt))
                     .addComponent(lblTaBortAgent)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(lblVilkenAgent))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(vilkenAgent, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Konfirmera)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAvbryt)))
-                        .addGap(147, 147, 147)
-                        .addComponent(cbxAllaAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(cbxAngeAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblTaBortAgent)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelText, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(labelText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vilkenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxAllaAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addComponent(cbxAngeAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblVilkenAgent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbxAllaAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Konfirmera)
                     .addComponent(btnAvbryt))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,87 +140,94 @@ public class TaBortAgent extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     private boolean okFunktion(){
+    private boolean okFunktion() {
         boolean ok = true;
-        if(Validering.arTom(vilkenAgent)){
+        if (Validering.comboBox(cbxAngeAgent)) {
             ok = false;
+            JOptionPane.showMessageDialog(null, "Välj en agent från listan");
         }
         return ok;
     }
-     
+
     private void KonfirmeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KonfirmeraActionPerformed
         //Utför borttagning av specificerad agent
-        String deleteAgentAlienTabell = "";
-        String deleteFalt = "";
-        if(okFunktion() == true){
-        
-        try {
-            String agenten = vilkenAgent.getText().toString();
-            String nyAgent = cbxAllaAgenter.getSelectedItem().toString();
-            String query = "select Agent.Agent_ID from agent where Agent.Namn = '" + agenten + "'";
-           String query1 = "select Agent_ID from agent where Namn = '" + agenten +"'";
-           String query2 = "select agent_id from agent where namn = '" + nyAgent +"'";
-            String id = idb.fetchSingle(query1);
-            String id1 = idb.fetchSingle(query2);
-            String id2 = idb.fetchSingle(query);
-             deleteAgentAlienTabell = "update alien set ansvarig_agent = " +id1 +" where ansvarig_agent =" + id + "";
-             deleteFalt = "delete from faltagent where agent_id =" + id + "";
-            if (id2 == null) {
-                JOptionPane.showMessageDialog(null, "Agenten finns inte");
-                System.out.println(id);
-                System.out.println(query1);
-            } else {
-                 
-                idb.update(deleteAgentAlienTabell);
-                  
-                idb.delete(deleteFalt);
-                  String deleteInneharFordon = "delete from innehar_fordon where agent_id =" + id + "";
-                idb.delete(deleteInneharFordon);
-                  String deleteInneharUtrustning = "delete from innehar_utrustning where agent_id =" +id + "";
-                idb.delete(deleteInneharUtrustning);
-                  String deleteKontorschef = "delete from kontorschef where agent_id =" + id + "";
-                idb.delete(deleteKontorschef);
-                  String deleteOmrade = "delete from omradeschef where agent_id =" + id + "";
-                idb.delete(deleteOmrade);
-                 String deleteQuery = "delete from agent where namn ='" + agenten + "'";
-                idb.delete(deleteQuery);
-                JOptionPane.showMessageDialog(null, "Agenten är borttagen");
-                 
-            }
+        if (okFunktion() == true) {
 
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Fel namn " + ex);
-            System.out.println(deleteAgentAlienTabell);
-            System.out.println(deleteFalt);
+            try {
+                String agenten = cbxAngeAgent.getSelectedItem().toString();
+                String nyAgent = cbxAllaAgenter.getSelectedItem().toString();
+
+                String id = idb.fetchSingle("SELECT AGENT_ID FROM AGENT WHERE NAMN = '" + agenten + "'");
+                String id1 = idb.fetchSingle("SELECT AGENT_ID FROM AGENT WHERE NAMN = '" + nyAgent + "'");
+
+                String ansvarigAgent = idb.fetchSingle("SELECT ANSVARIG_AGENT FROM ALIEN WHERE ANSVARIG_AGENT = '" + id + "'");
+
+                if (ansvarigAgent != null) {
+                    idb.update("UPDATE ALIEN SET ANSVARIG_AGENT = '" + id1 + "'" + "WHERE ANSVARIG_AGENT = '" + id + "'");
+                    idb.delete("DELETE FROM FALTAGENT WHERE AGENT_ID = '" + id +"'");
+                    idb.delete("DELETE FROM INNEHAR_FORDON WHERE AGENT_ID = '" + id + "'");
+                    idb.delete("DELETE FROM INNEHAR_UTRUSTNING WHERE AGENT_ID = '" + id + "'");
+                    idb.delete("DELETE FROM KONTORSCHEF WHERE AGENT_ID = '" + id + "'");
+                    idb.delete("DELETE FROM OMRADESCHEF WHERE AGENT_ID = '" + id + "'");
+                    idb.delete("DELETE FROM AGENT WHERE AGENT_ID = '" + id + "'");
+                    JOptionPane.showMessageDialog(null, "Agenten är borttagen");
+                }
+                else{
+                    idb.delete("DELETE FROM FALTAGENT WHERE AGENT_ID = '" + id +"'");
+                    idb.delete("DELETE FROM INNEHAR_FORDON WHERE AGENT_ID = '" + id + "'");
+                    idb.delete("DELETE FROM INNEHAR_UTRUSTNING WHERE AGENT_ID = '" + id + "'");
+                    idb.delete("DELETE FROM KONTORSCHEF WHERE AGENT_ID = '" + id + "'");
+                    idb.delete("DELETE FROM OMRADESCHEF WHERE AGENT_ID = '" + id + "'");
+                    idb.delete("DELETE FROM AGENT WHERE AGENT_ID = '" + id + "'");
+                    JOptionPane.showMessageDialog(null, "Agenten är borttagen");
+                }
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
         }
-        }
+
     }//GEN-LAST:event_KonfirmeraActionPerformed
-   
-    public void fyllVarde() throws InfException
-    //Fyller combobox med alla agenter som finns i databasen
+
+    public void fyllVarde() throws InfException //Fyller combobox med alla agenter som finns i databasen
     {
-       String query ="select namn from agent";
-       ArrayList<String> listan;
-       
-       listan = idb.fetchColumn(query);
-       for (String enLista: listan)
-       {
-           cbxAllaAgenter.addItem(enLista);
-       }
-       
+        String query = "SELECT NAMN FROM AGENT";
+        ArrayList<String> listan;
+
+        listan = idb.fetchColumn(query);
+        for (String enLista : listan) {
+            cbxAllaAgenter.addItem(enLista);
+            cbxAngeAgent.addItem(enLista);
+        }
     }
-    
-    
+
+
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         // Stänger ner rutan
         dispose();
     }//GEN-LAST:event_btnAvbrytActionPerformed
+
+    private void cbxAngeAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAngeAgentActionPerformed
+        try {
+            // TODO add your handling code here:
+            String agenten = cbxAngeAgent.getSelectedItem().toString();
+            String id = idb.fetchSingle("SELECT AGENT_ID FROM AGENT WHERE NAMN = '" + agenten + "'");
+            String kollaAgent = idb.fetchSingle("SELECT ANSVARIG_AGENT FROM ALIEN WHERE ANSVARIG_AGENT  = '" + id + "'");
+
+            if (kollaAgent != null) {
+                lblVilkenAgent.setVisible(true);
+                cbxAllaAgenter.setVisible(true);
+            }
+
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }//GEN-LAST:event_cbxAngeAgentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,7 +259,7 @@ public class TaBortAgent extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
@@ -257,10 +268,10 @@ public class TaBortAgent extends javax.swing.JFrame {
     private javax.swing.JButton Konfirmera;
     private javax.swing.JButton btnAvbryt;
     private javax.swing.JComboBox<String> cbxAllaAgenter;
+    private javax.swing.JComboBox<String> cbxAngeAgent;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelText;
     private javax.swing.JLabel lblTaBortAgent;
     private javax.swing.JLabel lblVilkenAgent;
-    private javax.swing.JTextField vilkenAgent;
     // End of variables declaration//GEN-END:variables
 }
