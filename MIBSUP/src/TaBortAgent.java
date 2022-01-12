@@ -168,7 +168,10 @@ public class TaBortAgent extends javax.swing.JFrame {
 
                 String ansvarigAgent = idb.fetchSingle("SELECT ANSVARIG_AGENT FROM ALIEN WHERE ANSVARIG_AGENT = '" + id + "'");
 
-                if (ansvarigAgent != null) {
+                if(agenten.equals(nyAgent)){
+                    JOptionPane.showMessageDialog(null, "Man kan inte välja samma agent!");
+                }
+                else if (ansvarigAgent != null) {
                     idb.update("UPDATE ALIEN SET ANSVARIG_AGENT = '" + id1 + "'" + "WHERE ANSVARIG_AGENT = '" + id + "'");
                     idb.delete("DELETE FROM FALTAGENT WHERE AGENT_ID = '" + id +"'");
                     idb.delete("DELETE FROM INNEHAR_FORDON WHERE AGENT_ID = '" + id + "'");
