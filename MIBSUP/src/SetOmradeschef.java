@@ -200,7 +200,7 @@ public class SetOmradeschef extends javax.swing.JFrame {
         try {
             int agentID = Integer.parseInt(idb.fetchSingle("Select Agent_ID from Agent where Namn = '" + valdAgent + "'"));
             String omrade = idb.fetchSingle("select omrades_id from omrade where benamning = '" + valtOmrade +"'");
-            String omradesChef = idb.fetchSingle("Select Omrades_ID from Omrade join omradeschef on omrades_id = omrade where Benamning = '" + valtOmrade + "'");
+            String omradesChef = idb.fetchSingle("Select Omrade from Omradeschef join omrade on omrades_id = omrade where Benamning = '" + valtOmrade + "'");
             
             if (omradesChef == null) {
 
@@ -209,7 +209,7 @@ public class SetOmradeschef extends javax.swing.JFrame {
                 txtaOmrade.setText("");
                 fillTxtOmrade();
             } else {
-                idb.update("Update Omradeschef set Omradeschef.Agent_ID = '" + agentID + "'" + "Where Omrade = '" + omrade + "'");
+                idb.update("Update Omradeschef set Omradeschef.Agent_ID = '" + agentID + "'" + "Where Omrade = '" + omradesChef + "'");
                 System.out.println("Områdeschef har uppdaterats. ");
                 JOptionPane.showMessageDialog(null, valdAgent + " Är nu områdeschef för område: " + valtOmrade);
                 txtaOmrade.setText("");
