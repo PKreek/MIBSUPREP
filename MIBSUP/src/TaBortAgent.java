@@ -169,7 +169,7 @@ public class TaBortAgent extends javax.swing.JFrame {
                 String ansvarigAgent = idb.fetchSingle("SELECT ANSVARIG_AGENT FROM ALIEN WHERE ANSVARIG_AGENT = '" + id + "'");
 
                 if(agenten.equals(nyAgent)){
-                    JOptionPane.showMessageDialog(null, "Man kan inte välja samma agent!");
+                    JOptionPane.showMessageDialog(null, "Man kan inte välja samma agent som man vill ta bort!");
                 }
                 else if (ansvarigAgent != null) {
                     idb.update("UPDATE ALIEN SET ANSVARIG_AGENT = '" + id1 + "'" + "WHERE ANSVARIG_AGENT = '" + id + "'");
