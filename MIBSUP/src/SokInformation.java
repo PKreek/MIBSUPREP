@@ -266,7 +266,7 @@ public class SokInformation extends javax.swing.JFrame {
                 try {
                     HashMap<String, String> agentListan = idb.fetchRow("SELECT NAMN, BENAMNING FROM AGENT "
                             + "JOIN OMRADESCHEF ON AGENT.AGENT_ID = OMRADESCHEF.AGENT_ID "
-                            + "JOIN OMRADE ON OMRADE.OMRADES_ID = OMRADESCHEF.Omrade "
+                            + "JOIN OMRADE ON OMRADE.OMRADES_ID = OMRADESCHEF.OMRADE "
                             + "WHERE BENAMNING = '" + angeSokning + "'");
                     angeSokning = agentListan.get("BENAMNING");
                     System.out.println(angeSokning);
