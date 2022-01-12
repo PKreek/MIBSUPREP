@@ -209,7 +209,7 @@ public class SetOmradeschef extends javax.swing.JFrame {
                 txtaOmrade.setText("");
                 fillTxtOmrade();
             } else {
-                idb.update("Update Omradeschef set Omradeschef.Agent_ID = '" + agentID + "'" + "Where Omrade = '" + omradesChef + "'");
+                idb.update("Update Omradeschef set Omradeschef.Agent_ID = '" + agentID + "'" + "Where Omrade = '" + omrade + "'");
                 System.out.println("Områdeschef har uppdaterats. ");
                 JOptionPane.showMessageDialog(null, valdAgent + " Är nu områdeschef för område: " + valtOmrade);
                 txtaOmrade.setText("");

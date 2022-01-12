@@ -264,11 +264,12 @@ public class SokInformation extends javax.swing.JFrame {
             case 2: {
                 if(okFunktion2()==true){
                 try {
-                    HashMap<String, String> agentListan = idb.fetchRow("SELECT NAMN, BENAMNING FROM Agent "
-                            + "JOIN Omradeschef ON Agent.Agent_ID = Omradeschef.Agent_ID "
-                            + "JOIN Omrade ON Agent.Omrade = Omrade.Omrades_ID "
-                            + "WHERE OMRADE.Benamning = '" + angeSokning + "'");
+                    HashMap<String, String> agentListan = idb.fetchRow("SELECT NAMN, BENAMNING FROM AGENT "
+                            + "JOIN OMRADESCHEF ON AGENT.AGENT_ID = OMRADESCHEF.AGENT_ID "
+                            + "JOIN OMRADE ON OMRADE.OMRADES_ID = OMRADESCHEF.Omrade "
+                            + "WHERE BENAMNING = '" + angeSokning + "'");
                     angeSokning = agentListan.get("BENAMNING");
+                    System.out.println(angeSokning);
                     if(angeSokning == null){
                         JOptionPane.showMessageDialog(null, "Området finns inte");
                     }
