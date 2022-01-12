@@ -263,14 +263,15 @@ public class SokInformation extends javax.swing.JFrame {
             }
             case 2: {
                 if(okFunktion2()==true){
+                  String omradet = cbxOmrade.getSelectedItem().toString();
                 try {
                     HashMap<String, String> agentListan = idb.fetchRow("SELECT NAMN, BENAMNING FROM OMRADESCHEF "
                             + "JOIN AGENT ON AGENT.AGENT_ID = OMRADESCHEF.AGENT_ID "
                             + "JOIN OMRADE ON OMRADE.OMRADES_ID = OMRADESCHEF.OMRADE "
                             + "WHERE BENAMNING = '" + angeSokning + "'");
-                    angeSokning = agentListan.get("BENAMNING");
-                    System.out.println(angeSokning);
-                    if(angeSokning == null){
+                    
+                    
+                    if(!angeSokning.equals(omradet)){
                         JOptionPane.showMessageDialog(null, "Området finns inte");
                     }
                     else{
