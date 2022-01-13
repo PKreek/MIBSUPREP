@@ -33,7 +33,7 @@ public class Validering {
         return resultat;
     }
 
-    public static boolean arTom(JTextField texten) // kolla om en ruta är tom
+    public static boolean arTom(JTextField texten) 
     {
         boolean sant = false;
 
@@ -44,7 +44,7 @@ public class Validering {
         return sant;
     }
 
-    public static boolean langLosen(JTextField enText) // Kolla så lösenord är under 6
+    public static boolean langLosen(JTextField enText) 
     {
         boolean sant = false;
         if (enText.getText().length() > 6) {
@@ -54,7 +54,7 @@ public class Validering {
         return sant;
     }
 
-    public static boolean langdNamn(JTextField enText) //Ska användas för namn i alien och agent
+    public static boolean langdNamn(JTextField enText) 
     {
         boolean sant = false;
         if (enText.getText().length() > 20) {
@@ -64,7 +64,7 @@ public class Validering {
         return sant;
     }
 
-    public static boolean langTelefon(JTextField enText) // Ska användas i telfon i agent
+    public static boolean langTelefon(JTextField enText) 
     {
         boolean sant = false;
         if (enText.getText().length() > 30) {
@@ -74,7 +74,7 @@ public class Validering {
         return sant;
     }
 
-    public static boolean arInteger(JTextField varde) //Ska kolla om värdet är integer. Ska bara användas till namn va?? 
+    public static boolean arInteger(JTextField varde)  
     {
         boolean sant = false;
         String enText = varde.getText();
