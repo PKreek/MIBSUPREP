@@ -226,6 +226,10 @@ public class TaBortAgent extends javax.swing.JFrame {
                 lblVilkenAgent.setVisible(true);
                 cbxAllaAgenter.setVisible(true);
             }
+            else{
+                lblVilkenAgent.setVisible(false);
+                cbxAllaAgenter.setVisible(false);
+            }
 
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, ex);
